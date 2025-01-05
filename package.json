@@ -3,6 +3,10 @@
   "workspaces": [
     "markdown",
     "docs",
+    "icons",
     "component-doc"
-  ]
+  ],
+  "devDependencies": {
+    "@changesets/cli": "^2.27.11"
+  }
 }

@@ -7,7 +7,7 @@ import remarkDirective from 'remark-directive';
 
 import { useMemo } from '@lukekaalim/act';
 
-const parser = unified()
+export const parser = unified()
   .use(remarkParse)
   .use(remarkFrontmatter)
   .use(remarkGfm)

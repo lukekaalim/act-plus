@@ -1,7 +1,13 @@
 {
   "name": "@lukekaalim/act-doc",
   "main": "mod.ts",
+  "version": "1.0.0",
   "dependencies": {
-    "@lukekaalim/act": "^3.0.0"
+    "@lukekaalim/act": "^3.0.0",
+    "@lukekaalim/act-web": "^3.2.0",
+    "@lukekaalim/act-icons": "^1.0.0",
+    "@types/mdast": "^4.0.4",
+    "change-case": "^5.4.4",
+    "mdast-util-to-string": "^4.0.0"
   }
 }

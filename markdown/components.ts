@@ -2,22 +2,42 @@ import { Component, h, Node } from '@lukekaalim/act';
 import { Nodes as MdastNode, Paragraph } from 'mdast';
 import { MdxJsxFlowElement } from 'mdast-util-mdx-jsx';
 
-export type MarkdownProps = {
+export type MarkdownComponentProps = {
   attributes: Record<string, string | number | boolean>
 }
 
-type MarkdownComponent = Component<MarkdownProps>;
+export type MarkdownComponent = Component<MarkdownComponentProps>;
 
-type MarkdownRendererOptions = {
-  components?: Record<string, MarkdownComponent>,
-  classNames?: { [key in MdastNode["type"]]?: string },
-  styles?: { [key in MdastNode["type"]]?: Record<string, unknown> },
+export type OverrideComponentProps = {
+  node: MdastNode,
+  renderer: MdastRenderer,
+  className: string,
+  style: Record<string, unknown>,
 }
+export type OverrideComponent = Component<OverrideComponentProps>;
+
+export type MarkdownRendererOptions = {
+  components?: Record<string, MarkdownComponent>,
+  overrides?: Record<string, OverrideComponent>,
+  classNames?: { [key in (MdastNode["type"] | 'checkbox')]?: string },
+  styles?: { [key in (MdastNode["type"] | 'checkbox')]?: Record<string, unknown> },
+}
+export type MdastRenderer = ReturnType<typeof createMdastRenderer>;
 
 export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
-  const mdastToNode = (node: MdastNode, ): Node => {
-    const className = (options.classNames || {})[node.type];
-    const style = (options.styles || {})[node.type];
+  const mdastToNode = (node: MdastNode): Node => {
+    const className = (options.classNames || {})[node.type] || '';
+    const style = (options.styles || {})[node.type] || {};
+    const override = (options.overrides || {})[node.type]
+
+    if (override) {
+      return h(override, {
+        node,
+        renderer: mdastToNode,
+        className,
+        style,
+      })
+    }
 
     const props: Record<string, unknown> = {};
     if (className)
@@ -51,11 +71,20 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
       case 'list':
         return h('ul', { ...props }, node.children.map(mdastToNode));
       case 'listItem':
-        if (node.checked !== null)
+        if (node.checked !== null) {
+          const checkboxProps = {
+            type: 'checkbox',
+            disabled: true,
+            checked: node.checked,
+            className: (options.classNames || {})['checkbox'],
+            style: (options.styles || {})['checkbox'] || { display: 'inline' }
+          }
           return h('li', { ...props }, [
-            h('input', { type: 'checkbox', disabled: true, checked: node.checked, style: { display: 'inline' } }),
-            (node.children[0] as Paragraph).children.map(mdastToNode)
+            h('input', checkboxProps),
+            (node.children[0] as Paragraph).children.map(mdastToNode),
+            node.children.slice(1).map(mdastToNode),
           ]);
+        }
         return h('li', { ...props }, (node.children[0] as Paragraph).children.map(mdastToNode));
       case 'table':
         return h('table', { ...props }, node.children.map(mdastToNode));
@@ -78,6 +107,7 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
   }
 
   const mdxJsxFlowElementToNode = (node: MdxJsxFlowElement) => {
+    console.log({ node });
     if (!node.name)
       return null;
     const component = (options.components || {})[node.name];
