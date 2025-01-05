@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "devDependencies": {
+    "vite": "^6.0.5"
+  },
+  "dependencies": {
+    "@lukekaalim/act": "^3.0.0",
+    "@lukekaalim/act-web": "^3.0.0",
+    "@lukekaalim/act-markdown": "^2.0.0"
+  }
+}

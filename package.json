@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "workspaces": [
+    "markdown",
+    "docs",
+    "component-doc"
+  ]
+}

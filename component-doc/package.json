@@ -1,0 +1,7 @@
+{
+  "name": "@lukekaalim/act-doc",
+  "main": "mod.ts",
+  "dependencies": {
+    "@lukekaalim/act": "^3.0.0"
+  }
+}
