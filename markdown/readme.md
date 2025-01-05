@@ -35,8 +35,8 @@ const MyApp = () => {
 
 Support for the following features builtin:
   - [ ] Directives
-  - [ ] MDX support
-  - [ ] Github-flavored markdown
+  - [x] MDX support
+  - [x] Github-flavored markdown
   - [ ] Frontmatter
 
 ## Exports

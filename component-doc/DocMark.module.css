@@ -81,3 +81,18 @@ h1.heading {
 .component {
   margin: 0 -2em;
 }
+
+.table {
+  border-collapse: collapse;
+}
+
+.table > tr:first-child > .tableCell {
+  font-weight: bold;
+  background-color: #f3f3f3;
+  border-bottom: 3px solid black;
+}
+
+.tableCell {
+  border: 1px solid black;
+  padding: 8px;
+}

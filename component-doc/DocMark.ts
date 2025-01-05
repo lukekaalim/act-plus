@@ -8,17 +8,19 @@ import { snakeCase } from 'change-case';
 
 export type DocMarkProps = {
   text: string,
-  options?: MarkdownRendererOptions
+  options?: MarkdownRendererOptions & { inlineComponents?: Record<string, MarkdownComponent> }
 };
 
 export const DocMark: Component<DocMarkProps> = ({ text, options = {} }) => {
+  
   const finalOptions: MarkdownRendererOptions = {
     ...defaultOptions,
     ...options,
-    components: options.components && Object.fromEntries(
-      Object.entries(options.components)
-        .map(([key, component]) => [key, wrapMarkdownComponent(component)])
-    )
+    components: Object.fromEntries([
+      options.components && Object.entries(options.components)
+        .map(([key, component]) => [key, wrapMarkdownComponent(component)]) || [],
+      Object.entries(options.inlineComponents || []),
+    ].flat(1))
   };
 
   return h('article', { className: classes.article },
@@ -56,6 +58,8 @@ const defaultOptions: MarkdownRendererOptions = {
     checkbox: classes.checkbox,
     blockquote: classes.blockquote,
     link: classes.anchor,
+    table: classes.table,
+    tableCell: classes.tableCell,
   },
   overrides: {
     'heading': DocMarkHeading

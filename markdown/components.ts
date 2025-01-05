@@ -1,6 +1,6 @@
 import { Component, h, Node } from '@lukekaalim/act';
 import { Nodes as MdastNode, Paragraph } from 'mdast';
-import { MdxJsxFlowElement } from 'mdast-util-mdx-jsx';
+import { MdxJsxFlowElement, MdxJsxTextElement } from 'mdast-util-mdx-jsx';
 
 export type MarkdownComponentProps = {
   attributes: Record<string, string | number | boolean>
@@ -99,6 +99,7 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
       case 'mdxjsEsm':
         return h('pre', {}, 'Not Supported');
       case 'mdxJsxFlowElement':
+      case 'mdxJsxTextElement':
         return mdxJsxFlowElementToNode(node);
       default:
         console.warn(`Unknown element "${node.type}"`, node)
@@ -106,7 +107,7 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
     }
   }
 
-  const mdxJsxFlowElementToNode = (node: MdxJsxFlowElement) => {
+  const mdxJsxFlowElementToNode = (node: MdxJsxFlowElement | MdxJsxTextElement) => {
     console.log({ node });
     if (!node.name)
       return null;

@@ -131,7 +131,10 @@ const pages = [
 
   DocPage.create(
     '/icons',
-    h(DocMark, { text: markdownReadmeMd }),
+    h(AsyncNode, {
+      nodeKey: 'act-icons/mod.doc',
+      loadNode: () => import('@lukekaalim/act-icons/mod.doc').then(m => m.default)
+    }),
     [h(SVGRepo, { key: '530511/picture' }), '@lukekaalim/act-icons']
   ),
   // test subpages

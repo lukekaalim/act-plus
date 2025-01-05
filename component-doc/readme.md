@@ -31,6 +31,6 @@ your tool of choice!
 There are a few general-purpose packages
 that are also maintained here, for convinence:
 
-  - [@lukekaalim/act-markdown](https://www.example.com)
-  - [@lukekaalim/act-icons](https://www.example.com)
+  - [@lukekaalim/act-markdown](/markdown)
+  - [@lukekaalim/act-icons](/icons)
   - [@lukekaalim/act-curve](https://www.example.com)
