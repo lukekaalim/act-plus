@@ -137,6 +137,14 @@ const pages = [
     }),
     [h(SVGRepo, { key: '530511/picture' }), '@lukekaalim/act-icons']
   ),
+  DocPage.create(
+    '/curve',
+    h(AsyncNode, {
+      nodeKey: 'act-curve/mod.doc',
+      loadNode: () => import('@lukekaalim/act-curve/mod.doc').then(m => m.default)
+    }),
+    [h(SVGRepo, { key: '530511/picture' }), '@lukekaalim/act-curve']
+  ),
   // test subpages
   DocPage.create('/subpages', h(SubPage)),
   DocPage.create('/subpages/another/imaginary/subpage', h(SubPage)),
