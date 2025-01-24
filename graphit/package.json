@@ -1,0 +1,15 @@
+{
+  "name": "@lukekaalim/act-graphit",
+  "version": "1.0.0",
+  "description": "An Act-based graphing component library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@lukekaalim/act": "^3.1.0",
+    "@lukekaalim/act-web": "^3.2.1"
+  }
+}

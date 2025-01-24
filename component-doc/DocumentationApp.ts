@@ -7,6 +7,7 @@ import { DocPage } from "./DocPage";
 
 import docMarkClasses from './DocMark.module.css';
 import { asyncNodeRegistryContext, useRootAynscNodeRegistry } from "./AsyncComponent";
+import { DefProvider } from "@lukekaalim/act-graphit/Defs";
 
 export type DocumentationAppProps = {
   pages: DocPage[],
@@ -26,12 +27,15 @@ export const DocumentationApp: Component<DocumentationAppProps> = ({ pages }) =>
 
   const currentPage = pageMap.get(navigation.location.pathname);
 
-  return h(asyncNodeRegistryContext.Provider, { value: asyncNodeRegistry },
+  return [
+    h(DefProvider),
+    h(asyncNodeRegistryContext.Provider, { value: asyncNodeRegistry },
     h(DocLayout, {
       ref,
       content: h(ErrorBoundary, { onError: console.error }, currentPage || h(NotFound)),
       navPanel: h(NavigationPanel, { navigation, pages })
     }))
+  ]
 }
 
 const NotFound = () => {

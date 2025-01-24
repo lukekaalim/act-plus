@@ -79,7 +79,9 @@ h1.heading {
 }
 
 .component {
-  margin: 0 -2em;
+  margin: 1em -2em;
+  display: flex;
+  flex-direction: column;
 }
 
 .table {

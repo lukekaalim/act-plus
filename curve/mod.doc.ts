@@ -1,6 +1,11 @@
-import { h } from "@lukekaalim/act";
-import { hs, SVG } from "@lukekaalim/act-web";
-import { curve1, lerp } from "./math";
+import { h, useRef, useState } from "@lukekaalim/act";
+import { hs, HTML, SVG } from "@lukekaalim/act-web";
+import { curve3, curve4, lerp } from "./math";
+import { CartesianSpace } from "../graphit/CartesianSpace";
+import { LinePath } from "../graphit/LinePath";
+import { EditablePoint } from "@lukekaalim/act-graphit/EditablePoint";
+import { Vector } from "@lukekaalim/act-graphit/vector";
+import { useAnimatedValue, useBezierAnimation } from "./useAnimatedValue";
 
 type Vector2 = { x: number, y: number };
 const Vector2 = {
@@ -15,46 +20,197 @@ const Line2 = {
   new: (start: Vector2, end: Vector2): Line2 => ({ start, end }),
 } 
 
-const lerp2d = (a: Vector2, b: Vector2, t: number): Vector2 => {
-  return Vector2.new(
-    lerp(a.x, b.x, t),
-    lerp(a.y, b.y, t),
-  )
+const Curve4Demo = ({ progress }: { progress: number }) => {
+  const [start, setStart] = useState(Vector2.new(0, 0));
+  const [midA, setMidA] = useState(Vector2.new(100, 300));
+  const [midB, setMidB] = useState(Vector2.new(500, 500));
+  const [end, setEnd] = useState(Vector2.new(600, 600));
+
+
+  const [altMidB, setAltMidB] = useState(Vector2.new(700, 700));
+  const [altEnd, setAltEnd] = useState(Vector2.new(600, 800));
+
+  const interpA = {
+    x: lerp(start.x, midA.x, progress/100),
+    y: lerp(start.y, midA.y, progress/100),
+  };
+  const interpB = {
+    x: lerp(midA.x, midB.x, progress/100),
+    y: lerp(midA.y, midB.y, progress/100),
+  };
+  const interpC = {
+    x: lerp(midB.x, end.x, progress/100),
+    y: lerp(midB.y, end.y, progress/100),
+  };
+  const interpD = {
+    x: lerp(interpA.x, interpB.x, progress/100),
+    y: lerp(interpA.y, interpB.y, progress/100),
+  }
+  const interpE = {
+    x: lerp(interpB.x, interpC.x, progress/100),
+    y: lerp(interpB.y, interpC.y, progress/100),
+  }
+  const interpF = {
+    x: lerp(interpD.x, interpE.x, progress/100),
+    y: lerp(interpD.y, interpE.y, progress/100),
+  }
+
+  return h('g', {  }, [
+    h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
+      let v = Vector2.new(
+        curve4(start.x, midA.x, midB.x, end.x, p),
+        curve4(start.y, midA.y, midB.y, end.y, p)
+      )
+      return v;
+    }, }),
+    h(EditablePoint, { point: start, onPointEdit: setStart }),
+    h(EditablePoint, { point: midA, onPointEdit: setMidA }),
+    h(EditablePoint, { point: midB, onPointEdit: setMidB }),
+    h(EditablePoint, { point: end, onPointEdit: setEnd }),
+
+    h(EditablePoint, { point: altMidB, onPointEdit: setAltMidB }),
+    h(EditablePoint, { point: altEnd, onPointEdit: setAltEnd }),
+
+    h('line', {
+      x1: interpA.x,
+      y1: interpA.y,
+
+      x2: interpB.x,
+      y2: interpB.y,
+      stroke: 'red'
+    }),
+    h('line', {
+      x1: interpB.x,
+      y1: interpB.y,
+
+      x2: interpC.x,
+      y2: interpC.y,
+      stroke: 'red'
+    }),
+    h('line', {
+      x1: interpD.x,
+      y1: interpD.y,
+
+      x2: interpE.x,
+      y2: interpE.y,
+      stroke: 'red'
+    }),
+    h('circle', {
+      cx: interpF.x,
+      cy: interpF.y,
+      r: 4,
+      fill: 'yellow',
+      stroke: 'black'
+    }),
+
+    h('line', { x1: start.x, y1: start.y, x2: midA.x, y2: midA.y, stroke: 'red' }),
+    h('line', { x1: end.x, y1: end.y, x2: midB.x, y2: midB.y, stroke: 'red' }),
+
+    h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
+      let v = Vector2.new(
+        curve4(interpF.x, interpE.x, altMidB.x, altEnd.x, p),
+        curve4(interpF.y, interpE.y, altMidB.y, altEnd.y, p)
+      )
+      return v;
+    }, }),
+
+    h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
+      let v = Vector2.new(
+        curve4(interpF.x, interpE.x, interpC.x, end.x, p),
+        curve4(interpF.y, interpE.y, interpC.y, end.y, p)
+      )
+      v = Vector(2).add(v, { x: 200, y: 0 })
+      return v;
+    }, }),
+    h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
+      let v = Vector2.new(
+        curve4(interpF.x, interpD.x, interpA.x, start.x, p),
+        curve4(interpF.y, interpD.y, interpA.y, start.y, p)
+      )
+      v = Vector(2).add(v, { x: -200, y: 0 })
+      return v;
+    }, }),
+  ])
 }
 
-const drawLine = (draw: (progress: number) => Vector2, resolution: number): Line2[] => {
-  return Array.from({ length: resolution }).map((_, index) => {
-    const startProgress = index/resolution;
-    const endProgress = (index+1)/resolution;
-    return Line2.new(
-      draw(startProgress),
-      draw(endProgress),
-    );
+const Curve3Demo = ({ progress }: { progress: number }) => {
+  const [start, setStart] = useState(Vector2.new(0, 0));
+  const [mid, setMid] = useState(Vector2.new(100, 500));
+  const [end, setEnd] = useState(Vector2.new(600, 600));
+
+  return h('g', {}, [
+    h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
+      let v = Vector2.new(
+        curve3(start.x, mid.x, end.x, p),
+        curve3(start.y, mid.y, end.y, p)
+      )
+      return v;
+    }, }),
+    h('line', {
+      x1: lerp(start.x, mid.x, progress/100),
+      y1: lerp(start.y, mid.y, progress/100),
+      x2: lerp(mid.x, end.x, progress/100),
+      y2: lerp(mid.y, end.y, progress/100),
+      stroke: 'red'
+    }),
+    h('circle', {
+      cx: curve3(start.x, mid.x, end.x, progress/100),
+      cy: curve3(start.y, mid.y, end.y, progress/100),
+      r: 4,
+      fill: 'yellow',
+      stroke: 'black'
+    }),
+
+
+    h(EditablePoint, { point: start, onPointEdit: setStart }),
+    h('line', { x1: start.x, y1: start.y, x2: mid.x, y2: mid.y, stroke: 'red' }),
+    h(EditablePoint, { point: mid, onPointEdit: setMid }),
+    h('line', { x1: mid.x, y1: mid.y, x2: end.x, y2: end.y, stroke: 'blue' }),
+    h(EditablePoint, { point: end, onPointEdit: setEnd }),
+  ])
+}
+
+const AnimDemo = () => {
+  const [value, setValue] = useAnimatedValue(0, 200);
+
+  const ref = useRef<SVGCircleElement | null>(null);
+
+  useBezierAnimation(value, point => {
+    const el = ref.current as SVGCircleElement;
+    el.setAttribute('cx', point.toString());
   })
+
+  return h('g', {}, [
+    h('foreignObject', { width: 200, height: 30 }, h(HTML, {}, [
+      h('button', { onClick: () => setValue(-80, performance.now()) }, 'Left'),
+      h('button', { onClick: () => setValue(0, performance.now()) }, 'Middle'),
+      h('button', { onClick: () => setValue(80, performance.now()) }, 'Right'),
+    ])),
+    h('circle', {
+      ref,
+      cy: 50,
+      r: 20,
+    })
+  ])
 }
 
 export default () => {
-  const start = Vector2.new(0, 0);
-  const mid = Vector2.new(0, 50);
-  const end = Vector2.new(50, 50);
+  
+  const [progress, setProgress] = useState(50);
 
-  const lines = drawLine((p) => {
-    let v = Vector2.new(
-      curve1(start.x, mid.x, end.x, p),
-      curve1(start.y, mid.y, end.y, p)
-    )
-    v = Vector2.scalar.add(v, 20);
-
-    return v;
-  }, 100);
-
-  return h(SVG, {}, h('svg', { className: '' }, [
-    lines.map(line => h('line', {
-      stroke: 'black',
-      x1: line.start.x,
-      y1: line.start.y,
-      x2: line.end.x,
-      y2: line.end.y
-    }))
-  ]))
+  return h('div', { style: { display: 'flex', flexDirection: 'column', height: '100%' }}, [
+    h('input', { type: 'range', min: 0, max: 100, value: progress, onInput: (e: InputEvent) => setProgress((e.currentTarget as HTMLInputElement).valueAsNumber) }),
+    h(CartesianSpace, { offset: { x: 100, y: 100 }}, h('g', {  }, [
+      h('foreignObject', { x: 8, y: 0, width: 400, height: 200 }, h(HTML, {}, [
+        h('h1', {}, '@lukekaalim/act-curve'),
+        h('p', {}, `A lite animation and math libary for @lukekaalim/act`),
+      ])),
+      h('g', { transform: `translate(0 100)` }, 
+        h(Curve3Demo, { progress })),
+      h('g', { transform: `translate(0 600)` }, 
+        h(Curve4Demo, { progress })),
+      h('g', { transform: `translate(500 100)` }, 
+        h(AnimDemo)),
+    ]))
+  ]);
 };

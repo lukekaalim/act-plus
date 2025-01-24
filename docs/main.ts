@@ -128,6 +128,14 @@ const pages = [
     h(SVGRepo, { key: '437819/corner-down-right' }),
     'markdown-test-page'
   ]),
+  DocPage.create(
+    '/graphit',
+    h(AsyncNode, {
+      nodeKey: 'graphit/mod.doc',
+      loadNode: () => import('@lukekaalim/act-graphit/mod.doc').then(m => m.default)
+    }),
+    '@lukekaalim/act-graphit'
+  ),
 
   DocPage.create(
     '/icons',
@@ -141,7 +149,7 @@ const pages = [
     '/curve',
     h(AsyncNode, {
       nodeKey: 'act-curve/mod.doc',
-      loadNode: () => import('@lukekaalim/act-curve/mod.doc').then(m => m.default)
+      loadNode: () => import('@lukekaalim/act-curve/mod.doc').then(m => h(m.default))
     }),
     [h(SVGRepo, { key: '530511/picture' }), '@lukekaalim/act-curve']
   ),
