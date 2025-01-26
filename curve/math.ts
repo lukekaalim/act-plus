@@ -18,5 +18,4 @@ export const curve4 = (a: number, b: number, c: number, d: number, progress: num
   )
 }
 
-
-type Bezier4Point = [start: number, control1: number, control2: number, end: number];
+type Bezier4Points = [start: number, control1: number, control2: number, end: number];

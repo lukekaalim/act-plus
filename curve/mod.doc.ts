@@ -1,11 +1,15 @@
 import { h, useRef, useState } from "@lukekaalim/act";
 import { hs, HTML, SVG } from "@lukekaalim/act-web";
-import { curve3, curve4, lerp } from "./math";
+
 import { CartesianSpace } from "../graphit/CartesianSpace";
 import { LinePath } from "../graphit/LinePath";
 import { EditablePoint } from "@lukekaalim/act-graphit/EditablePoint";
 import { Vector } from "@lukekaalim/act-graphit/vector";
-import { useAnimatedValue, useBezierAnimation } from "./useAnimatedValue";
+import {
+  useAnimatedValue,
+  useBezierAnimation,
+  curve3, curve4, lerp
+} from "./mod";
 
 type Vector2 = { x: number, y: number };
 const Vector2 = {

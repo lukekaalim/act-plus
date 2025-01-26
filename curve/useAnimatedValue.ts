@@ -32,21 +32,3 @@ export const useAnimatedValue = (initial: number, duration: number) => {
 
   return [anim, setValue] as const;
 }
-
-export const useBezierAnimation = (anim: BezierAnimation, onFrame: (point: number) => void) => {
-  useEffect(() => {
-    const callback = () => {
-      const now = performance.now();
-      const progress = getSpanProgress(anim.span, now);
-      const [a, b, c, d] = anim.points;
-      const point = curve4(a, b, c, d, progress);
-      onFrame(point);
-
-      id = requestAnimationFrame(callback);
-    };
-    let id = requestAnimationFrame(callback);
-    return () => {
-      cancelAnimationFrame(id);
-    }
-  }, [anim, onFrame])
-};
