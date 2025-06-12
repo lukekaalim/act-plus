@@ -6,10 +6,15 @@ import { LinePath } from "../graphit/LinePath";
 import { EditablePoint } from "@lukekaalim/act-graphit/EditablePoint";
 import { Vector } from "@lukekaalim/act-graphit/vector";
 import {
+  Animation1D,
+  Curve2D,
+  lerp,
   useAnimatedValue,
-  useBezierAnimation,
-  curve3, curve4, lerp
+  useSpan,
+  //useBezierAnimation,
+  //curve3, curve4, lerp
 } from "./mod";
+import classes from './docs/index.module.css';
 
 type Vector2 = { x: number, y: number };
 const Vector2 = {
@@ -61,10 +66,7 @@ const Curve4Demo = ({ progress }: { progress: number }) => {
 
   return h('g', {  }, [
     h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
-      let v = Vector2.new(
-        curve4(start.x, midA.x, midB.x, end.x, p),
-        curve4(start.y, midA.y, midB.y, end.y, p)
-      )
+      let v = Curve2D.curve4(start, midA, midB, end, p);
       return v;
     }, }),
     h(EditablePoint, { point: start, onPointEdit: setStart }),
@@ -111,26 +113,17 @@ const Curve4Demo = ({ progress }: { progress: number }) => {
     h('line', { x1: end.x, y1: end.y, x2: midB.x, y2: midB.y, stroke: 'red' }),
 
     h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
-      let v = Vector2.new(
-        curve4(interpF.x, interpE.x, altMidB.x, altEnd.x, p),
-        curve4(interpF.y, interpE.y, altMidB.y, altEnd.y, p)
-      )
+      let v = Curve2D.curve4(interpF, interpE, altMidB, altEnd, p);
       return v;
     }, }),
 
     h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
-      let v = Vector2.new(
-        curve4(interpF.x, interpE.x, interpC.x, end.x, p),
-        curve4(interpF.y, interpE.y, interpC.y, end.y, p)
-      )
+      let v = Curve2D.curve4(interpF, interpE, interpC, end, p);
       v = Vector(2).add(v, { x: 200, y: 0 })
       return v;
     }, }),
     h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
-      let v = Vector2.new(
-        curve4(interpF.x, interpD.x, interpA.x, start.x, p),
-        curve4(interpF.y, interpD.y, interpA.y, start.y, p)
-      )
+      let v = Curve2D.curve4(interpF, interpD, interpA, start, p);
       v = Vector(2).add(v, { x: -200, y: 0 })
       return v;
     }, }),
@@ -142,12 +135,11 @@ const Curve3Demo = ({ progress }: { progress: number }) => {
   const [mid, setMid] = useState(Vector2.new(100, 500));
   const [end, setEnd] = useState(Vector2.new(600, 600));
 
+  const circleVec = Curve2D.curve3(start, mid, end, progress/100);
+
   return h('g', {}, [
     h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
-      let v = Vector2.new(
-        curve3(start.x, mid.x, end.x, p),
-        curve3(start.y, mid.y, end.y, p)
-      )
+      let v = Curve2D.curve3(start, mid, end, p);
       return v;
     }, }),
     h('line', {
@@ -158,8 +150,8 @@ const Curve3Demo = ({ progress }: { progress: number }) => {
       stroke: 'red'
     }),
     h('circle', {
-      cx: curve3(start.x, mid.x, end.x, progress/100),
-      cy: curve3(start.y, mid.y, end.y, progress/100),
+      cx: circleVec.x,
+      cy: circleVec.y,
       r: 4,
       fill: 'yellow',
       stroke: 'black'
@@ -179,9 +171,9 @@ const AnimDemo = () => {
 
   const ref = useRef<SVGCircleElement | null>(null);
 
-  useBezierAnimation(value, point => {
+  Animation1D.Bezier4.useAnimation(value, ({ x }) => {
     const el = ref.current as SVGCircleElement;
-    el.setAttribute('cx', point.toString());
+    el.setAttribute('cx', x.toString());
   })
 
   return h('g', {}, [
@@ -202,7 +194,7 @@ export default () => {
   
   const [progress, setProgress] = useState(50);
 
-  return h('div', { style: { display: 'flex', flexDirection: 'column', height: '100%' }}, [
+  return h('div', { className: classes.fullpageSVG }, [
     h('input', { type: 'range', min: 0, max: 100, value: progress, onInput: (e: InputEvent) => setProgress((e.currentTarget as HTMLInputElement).valueAsNumber) }),
     h(CartesianSpace, { offset: { x: 100, y: 100 }}, h('g', {  }, [
       h('foreignObject', { x: 8, y: 0, width: 400, height: 200 }, h(HTML, {}, [

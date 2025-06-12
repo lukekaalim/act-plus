@@ -1,166 +1,122 @@
-import { Component, h, useEffect, useRef } from '@lukekaalim/act';
-import { HTML, render } from '@lukekaalim/act-web';
-import { MarkdownComponent, MarkdownRendererOptions, Markdown } from '@lukekaalim/act-markdown';
-import { DocPage, DocumentationApp } from '@lukekaalim/act-doc';
+import { h, useRef, useState } from '@lukekaalim/act';
+import { render } from '@lukekaalim/act-web';
 
-import markdownReadmeMd from '../markdown/readme.md?raw';
+import {
+  useRouter,
+  useDOMIntergration,
+  RouterLocation,
+  RouterPage,
+  useRouterContext,
+  RouterContext,
+} from '@lukekaalim/act-router';
 
-import { DocMark } from '@lukekaalim/act-doc/DocMark';
-import { SVGRepo } from '@lukekaalim/act-icons';
-import { AsyncNode } from '@lukekaalim/act-doc/AsyncComponent';
+const Nav = () => {
+  return h('nav', {}, pages.map(page => {
+    return h('li', { }, h('a', { href: page.path }, page.display))
+  }));
+}
 
-const md = `
-# Hello World
+const Home = () => {
+  return [
+    h(Nav),
+    h('h1', {}, 'Home Page'),
+    h('p', {}, [
+      'This is the content of the home page. ',
+      h('a', { href: '/about' }, 'This is a link to a different page')
+    ]),
+  ]
+}
+const About = () => {
+  return [
+    h(Nav),
+    h('h1', {}, 'About Page'),
+    h('p', {}, [
+      'This lets you learn more about this project',
+    ]),
+  ]
+}
+const ListPage = () => {
+  return [
+    h(Nav),
+    h('h1', {}, 'List Page'),
+    h('ol', {}, [
+      h('li', {}, h('a', { href: '#first' }, 'First')),
+      h('li', {}, h('a', { href: '#second' }, 'Second')),
+      h('li', {}, h('a', { href: '#third' }, 'Third')),
+    ]),
+    h('h2', { id: 'first' }, h('a', { href: '#first' }, 'First')),
+    h('p', {}, Array.from({ length: 300 }).map(_ => `Some text! `).join('')),
+    h('h2', { id: 'second' }, h('a', { href: '#second' }, 'Second')),
+    h('p', {}, Array.from({ length: 300 }).map(_ => `Some text! `).join('')),
+    h('h2', { id: 'third' }, h('a', { href: '#third' }, 'Third')),
+    h('p', {}, Array.from({ length: 300 }).map(_ => `Some text! `).join('')),
+  ]
+}
+const Search = () => {
+  const router = useRouterContext();
 
-Im luke
+  const [search, setSearch] = useState('');
 
-## Testing da tools
+  const resultQuery = router.location.query.search || '';
 
-\`\`\`
-Cool code!
-\`\`\`
-
-Or maybe some \`inline code\`
-
-Or how about a list:
-  - with one
-  - and two
-  - and three
-    But it kind of keeps going
-
-Or a list with checkboxes
-  - [ ] TODO
-  - [X] Done
-
-> Yeah, well. Whatever.
-
-|here|is|
-|-|-|
-|a|table|
-
-<CoolComponent />
-
-But what it
-
-it kept going
-
-longer
-
-and longer
-
-and longer
-
-and longer
-
-and longer
-
-and longer
-
-<Demo />
-
-`
-const CoolComponent: MarkdownComponent = ({ attributes, children }) => {
-  const style = {
-    border: '3px solid green',
-    background: 'lightgreen',
-    borderRadius: '8px',
-    padding: '8px',
-    margin: '8px',
-    display: 'inline-block'
+  const onInput = (event: InputEvent) => {
+    setSearch((event.target as HTMLInputElement).value)
+  };
+  const onSubmit = (event: SubmitEvent) => {
+    event.preventDefault();
+    router.navigate({
+      path: '/search',
+      query: { search },
+      hash: ''
+    })
   }
-  return h('pre', { style }, [`Hell yea, ${attributes.name || 'Cool Dude'}!`, children]);
+
+  return [
+    h(Nav),
+    h('h1', {}, 'Search'),
+    h('form', { onSubmit }, [
+      h('input', {
+        type: 'text',
+        value: search, 
+        onInput,
+      })
+    ]),
+    h('p', {}, `Searched for: "${resultQuery}"`),
+    h('ul', {}, pages.filter(page => page.path.includes(resultQuery)).map(page => {
+      return h('li', {}, h('a', { href: page.path }, page.display))
+    }) )
+  ]
 }
 
-const SubPage = () => {
-  return 'subpage!';
-}
+const pages = RouterPage.map({
+  '/': { display: 'home', component: Home },
+  '/about': { component: About },
+  '/list': { component: ListPage },
+  '/search': { component: Search }
+})
 
-const Demo = () => {
+const ExampleApp = () => {
   const ref = useRef<HTMLElement | null>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el)
-      return;
-    const animate = () => {
-      el.style.background = `hsl(${Date.now() / 5 % 360}deg, 100%, 90%)`;
-      id = requestAnimationFrame(animate);
-    };
-    let id = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(id);
-  }, [])
+  const router = useRouter({
+    initialLocation: RouterLocation.fromURL(new URL(document.location.href)),
+    pages,
+  });
+  useDOMIntergration(router);
 
-  return h('div', { ref, style: {
-    padding: '2em',
-  } }, 'A prismatic component!');
+  return h(RouterContext.Provider, { value: router },
+    h('div', { ref, style: {
+      width: '800px',
+      margin: 'auto',
+      background: '#eaeaea',
+      padding: '24px'
+    } },
+      h(router.page.component, { onReady() { console.log('Page ready'); }, })
+    )
+  )
 };
 
-const components = {
-  Demo,
-}
-
-const options: MarkdownRendererOptions = {
-  components: { CoolComponent, Demo },
-  styles: {
-    table: { borderCollapse: 'collapse' },
-    tableCell: { border: '1px solid black', padding: '4px' },
-    blockquote: { background: 'darkgrey', borderLeft: '12px solid lightgrey' , padding: '12px'}
-  }
-}
-
-const pages = [
-  DocPage.create('/',
-    h(AsyncNode, {
-      nodeKey: 'act-doc/mod.doc',
-      loadNode: () => import('@lukekaalim/act-doc/mod.doc').then(m => m.default)
-    }), [
-      h(SVGRepo, { key: '530508/front-page' }),
-      '@lukekaalim/act-doc'
-    ]),
-
-
-  // markdown
-  DocPage.create(
-    '/markdown',
-    h(DocMark, { text: markdownReadmeMd, options: { components } }),
-    [h(SVGRepo, { key: '530516/document' }), '@lukekaalim/act-markdown']
-  ),
-  DocPage.create('/markdown/test', h(Markdown, { text: md, options }), [
-    h(SVGRepo, { key: '437819/corner-down-right' }),
-    'markdown-test-page'
-  ]),
-  DocPage.create(
-    '/graphit',
-    h(AsyncNode, {
-      nodeKey: 'graphit/mod.doc',
-      loadNode: () => import('@lukekaalim/act-graphit/mod.doc').then(m => m.default)
-    }),
-    '@lukekaalim/act-graphit'
-  ),
-
-  DocPage.create(
-    '/icons',
-    h(AsyncNode, {
-      nodeKey: 'act-icons/mod.doc',
-      loadNode: () => import('@lukekaalim/act-icons/mod.doc').then(m => m.default)
-    }),
-    [h(SVGRepo, { key: '530511/picture' }), '@lukekaalim/act-icons']
-  ),
-  DocPage.create(
-    '/curve',
-    h(AsyncNode, {
-      nodeKey: 'act-curve/mod.doc',
-      loadNode: () => import('@lukekaalim/act-curve/mod.doc').then(m => h(m.default))
-    }),
-    [h(SVGRepo, { key: '530511/picture' }), '@lukekaalim/act-curve']
-  ),
-  // test subpages
-  DocPage.create('/subpages', h(SubPage)),
-  DocPage.create('/subpages/another/imaginary/subpage', h(SubPage)),
-  DocPage.create('/subpages/another/pagewithashared/root', h(SubPage)),
-];
-
 const main = () => {
-  render(h(HTML, {}, h(DocumentationApp, { pages })), document.body);
+  render(h('div', {}, h(ExampleApp)), document.body);
 };
 
 main();

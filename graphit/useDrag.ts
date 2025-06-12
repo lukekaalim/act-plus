@@ -4,6 +4,7 @@ import { Vector } from "./vector";
 export const useDrag = (
   ref: ReadonlyRef<null | HTMLElement | SVGElement>,
   onElementMove: (positionDelta: Vector<2>) => void,
+  shouldStartDrag: (event: PointerEvent) => boolean = () => true,
 ) => {
   const [dragging, setDragging] = useState(false);
   useEffect(() => {
@@ -13,6 +14,8 @@ export const useDrag = (
     let dragging = false;
     const onPointerDown = (event: PointerEvent) => {
       if (event.defaultPrevented)
+        return;
+      if (!shouldStartDrag(event))
         return;
       event.preventDefault();
       setDragging(true);

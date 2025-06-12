@@ -1,13 +1,13 @@
-import { Component, createId, h, useMemo, useState } from "@lukekaalim/act";
+import { Component, createId, h, ReadonlyRef, useMemo, useState } from "@lukekaalim/act";
 import { Vector } from "./vector";
-import { off } from "process";
 
 export type GridProps = {
   offset?: Vector<2>,
   scale?: Vector<2>,
 
   stroke?: string,
-  strokeWidth?: number
+  strokeWidth?: number,
+  ref?: ReadonlyRef<SVGRectElement>
 };
 
 export const Grid: Component<GridProps> = ({
@@ -15,6 +15,7 @@ export const Grid: Component<GridProps> = ({
   scale = Vector(2).scalar.add(Vector(2).create(), 100),
   stroke = "grey",
   strokeWidth = 1,
+  ref = {},
 }) => {
   const [gridId] = useState(createId());
 
@@ -36,6 +37,6 @@ export const Grid: Component<GridProps> = ({
         })
       ])
     ]),
-    h('rect', { width: '100%', height: '100%', fill: `url(#${gridId})` })
+    h('rect', { ref, width: '100%', height: '100%', fill: `url(#${gridId})` })
   ]
 }

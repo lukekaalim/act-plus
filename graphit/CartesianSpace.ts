@@ -22,7 +22,12 @@ export const CartesianSpace: Component<CartesianSpaceProps> = ({ children, offse
   const onDrag = useMemo(() => {
     return (delta: Vector<2>) => setDragOffset(prev => Vector(2).add(prev, delta))
   }, [])
-  const dragging = useDrag(ref, onDrag)
+  const dragging = useDrag(ref, onDrag, event => {
+    if (event.target instanceof HTMLElement)
+      if (event.target.tagName === 'BUTTON')
+        return false;
+    return true;
+  })
 
   const combinedOffset = Vector(2).add(dragOffset, offset);
 

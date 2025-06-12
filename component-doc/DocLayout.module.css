@@ -19,7 +19,7 @@
 
   /*background-color: rgb(235, 240, 241);*/
 
-  overflow-y: auto;
+  overflow: none;
 }
 
 .docLayoutNavPanel {
@@ -33,4 +33,7 @@
 .docLayoutMainContent {
   flex: 1;
   margin: 0 16em;
+
+  position: relative;
+  overflow-y: auto;
 }

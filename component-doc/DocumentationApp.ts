@@ -7,7 +7,8 @@ import { DocPage } from "./DocPage";
 
 import docMarkClasses from './DocMark.module.css';
 import { asyncNodeRegistryContext, useRootAynscNodeRegistry } from "./AsyncComponent";
-import { DefProvider } from "@lukekaalim/act-graphit/Defs";
+import { DefProvider } from "@lukekaalim/act-graphit";
+import { PageTransitionDriver, usePageTransition } from "./pageTransition";
 
 export type DocumentationAppProps = {
   pages: DocPage[],
@@ -17,7 +18,7 @@ export const DocumentationApp: Component<DocumentationAppProps> = ({ pages }) =>
   const ref = useRef<null | HTMLElement>(null);
   
   const pageMap = useMemo(() => {
-    return new Map(pages.map(page => [page.path, page.element]))
+    return new Map(pages.map(page => [page.path, page]))
   }, [pages]);
 
   const navigation = useRootNavigationController(new URL(document.location.href));
@@ -25,14 +26,21 @@ export const DocumentationApp: Component<DocumentationAppProps> = ({ pages }) =>
 
   useNavigationListener(ref, navigation);
 
-  const currentPage = pageMap.get(navigation.location.pathname);
+  const path = navigation.location.pathname;
+
+  const currentPage = pageMap.get(path) || { path: '', element: h(NotFound), link: '' };
+
+  const pageAnimStates = usePageTransition(currentPage);
+  console.log(pageAnimStates);
 
   return [
     h(DefProvider),
     h(asyncNodeRegistryContext.Provider, { value: asyncNodeRegistry },
     h(DocLayout, {
       ref,
-      content: h(ErrorBoundary, { onError: console.error }, currentPage || h(NotFound)),
+      content: h(ErrorBoundary, { onError: console.error, key: path }, pageAnimStates.map(state => {
+        return h(PageTransitionDriver, { state, key: `${state.page.path}(${state.id})` })
+      })),
       navPanel: h(NavigationPanel, { navigation, pages })
     }))
   ]

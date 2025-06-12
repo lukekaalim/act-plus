@@ -6,6 +6,7 @@
     "curve",
     "graphit",
     "icons",
+    "router",
     "component-doc"
   ],
   "devDependencies": {

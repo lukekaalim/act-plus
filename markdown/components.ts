@@ -108,7 +108,6 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
   }
 
   const mdxJsxFlowElementToNode = (node: MdxJsxFlowElement | MdxJsxTextElement) => {
-    console.log({ node });
     if (!node.name)
       return null;
     const component = (options.components || {})[node.name];

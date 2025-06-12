@@ -2,7 +2,7 @@
   "name": "@lukekaalim/act-curve",
   "main": "mod.ts",
   "devDependencies": {
-    "@lukekaalim/act": "^3.1.0",
+    "@lukekaalim/act": "^3.2.0",
     "@lukekaalim/act-web": "^3.2.1"
   }
 }
