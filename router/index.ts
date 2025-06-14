@@ -2,6 +2,7 @@ export * from './web';
 export * from './component';
 export * from './context';
 export * from './event_emitter';
-export * from './location';
+export * from './url';
 export * from './pages';
 export * from './router';
+export * from './link';

@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: row;
+
+  gap: 32px;
+
+  position: relative;
+
+  height: 400px;
+  background: #226985;
+  background: linear-gradient(0deg, rgb(255, 248, 225) 0%, rgb(129, 208, 255) 100%);
+
+  justify-content: center;
+}
+
+.background {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+}
+.backgroundContent {
+  display: flex;
+}
+
+.blurbContent {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.498);
+  backdrop-filter: blur(8px);
+  box-shadow: 4px 8px 5px 0px rgba(0, 0, 0, 0.148);
+
+  border-radius: 8px;
+
+  width: 320px;
+
+  margin: auto;
+  transform: translateX(400px);
+}
+
+.blurb {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.498);
+  backdrop-filter: blur(8px);
+  box-shadow: 4px 8px 5px 0px rgba(0, 0, 0, 0.148);
+  border-radius: 8px;
+  width: 320px;
+  margin: auto 0px;
+}

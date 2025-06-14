@@ -1,14 +1,21 @@
-import { h, useRef, useState } from '@lukekaalim/act';
+import { Component, h, useRef, useState } from '@lukekaalim/act';
 import { render } from '@lukekaalim/act-web';
 
 import {
   useRouter,
   useDOMIntergration,
-  RouterLocation,
   RouterPage,
   useRouterContext,
   RouterContext,
+  createRelativeURLFactory,
+  WebLink,
 } from '@lukekaalim/act-router';
+import { Grid3, Hero, TopBanner } from '@lukekaalim/act-doc';
+
+import iconPlusURL from './media/icon-plus.png';
+import { SVGRepo } from '@lukekaalim/act-icons';
+
+const origin = createRelativeURLFactory();
 
 const Nav = () => {
   return h('nav', {}, pages.map(page => {
@@ -57,18 +64,14 @@ const Search = () => {
 
   const [search, setSearch] = useState('');
 
-  const resultQuery = router.location.query.search || '';
+  const resultQuery = router.location.searchParams.get('search') || '';
 
   const onInput = (event: InputEvent) => {
     setSearch((event.target as HTMLInputElement).value)
   };
   const onSubmit = (event: SubmitEvent) => {
     event.preventDefault();
-    router.navigate({
-      path: '/search',
-      query: { search },
-      hash: ''
-    })
+    router.navigate(origin.createURL('/search', { search }))
   }
 
   return [
@@ -88,20 +91,203 @@ const Search = () => {
   ]
 }
 
+const IconTextBannerLogo = () => {
+  return [
+    h('img', {
+      src: iconPlusURL,
+      style: { 'border-radius': '8px', background: 'white', margin: '8px' }
+    }),
+    h('h1', { style: {
+      'font-size': '18px',
+      'white-space': 'pre',
+      'margin': 'auto',
+      'padding': '0 8px',
+      color: 'white'
+    } }, '@lukekaalim/act-plus')
+  ]
+}
+const BannerLink: Component = ({ children }) => {
+  return h('span', { style: {
+      'display': 'flex',
+      'font-size': '18px',
+      'white-space': 'pre',
+      'margin': 'auto',
+      'padding': '0 8px',
+      color: 'white'
+    } }, children)
+}
+
+const DemoPage = () => {
+  const style = {
+
+  };
+  return h('div', { style }, [
+    h(TopBanner, {
+      logoLink: {
+        location: origin.createURL('/'),
+        display: h(IconTextBannerLogo),
+      },
+      topLevelLinks: [
+        {
+          location: origin.createURL('/about'),
+          display: h(BannerLink, {}, 'About')
+        },
+        {
+          location: origin.createURL('/demo', {}, 'packages'),
+          display: h(BannerLink, {}, 'Packages')
+        },
+        {
+          location: origin.createURL('/changelog'),
+          display: h(BannerLink, {}, 'Changelog')
+        },
+        {
+          location: origin.createURL('/blog'),
+          display: h(BannerLink, {}, 'Blog')
+        },
+        {
+          location: new URL(`https://github.com/lukekaalim/act-compdoc`),
+          display: h(BannerLink, {}, [
+            h(SVGRepo, { key: `512317/github-142`, style: { filter: `invert(1)` } }),
+            ' Github'
+          ])
+        },
+      ],
+      endContext: h('span', { style: {
+        border: '2px solid white',
+        'border-radius': '8px',
+        background: 'white',
+        cursor: 'pointer',
+        color: 'black',
+        padding: '8px',
+        'white-space': 'nowrap',
+        display: 'flex',
+        'justify-content': 'center',
+        'align-items': 'center',
+        margin: '8px'
+      } }, ["v1.0.0-beta 0", h(SVGRepo, { key: `500841/dropdown`, style: { 'margin-left': '4px' } })])
+    }),
+    h(Hero, {
+      backgroundContent: h('img', {
+        src: iconPlusURL,
+      }),
+      blurbContent: [
+        h(WebLink, {
+          style: { color: 'rgb(57, 120, 238)', 'text-decoration-color': 'rgb(57, 120, 238)' },
+          link: { display: h('h2', {}, '@lukekaalim/act-plus'),
+            location: new URL('https://github.com/lukekaalim/act-compdoc')
+          }
+        }),
+        h('p', {},
+          'This project is a combination of useful packages in the @lukekaalim/act ecosystem.'
+        ),
+        h('p', {},
+          'Including component libraries for documentation, routing, icons, graphs, animations, and more!'
+        ),
+      ]
+    }),
+    h('h2', {
+      style: { width: '1000px', margin: '24px auto', 'text-align': 'center' },
+      id: 'packages',
+    }, 'Packages'),
+    h(Grid3, {
+      cards: [
+        {
+          id: 'doc',
+          destination: origin.createURL('/packages/@lukekaalim/act-doc'),
+          content: [
+            h('h3', {}, '@lukekaalim/act-doc'),
+            h('p', {}, 'A component library for building developer documentation websites in act!'),
+          ]
+        },
+        {
+          id: 'tsdoc',
+          destination: origin.createURL('/packages/@lukekaalim/act-tsdoc'),
+          content: [
+            h('h3', {}, '@lukekaalim/act-tsdoc'),
+            h('p', {}, 'Components for building typescript docs using the Typescript Compiler API, and the tsdoc tool'),
+          ],
+        },
+        {
+          id: 'httpdoc',
+          destination: origin.createURL('/packages/@lukekaalim/act-httpdoc'),
+          content: [
+            h('h3', {}, '@lukekaalim/act-httpdoc'),
+            h('p', {}, 'Components for building openapi/swagger, blueprint, JsonSchema (or other HTTP API specification tools)'),
+          ],
+        },
+        {
+          id: 'graphit',
+          destination: origin.createURL('/packages/@lukekaalim/act-graphit'),
+          content: [
+            h('h3', {}, '@lukekaalim/act-graphit'),
+            h('p', {}, 'Components for drawing SVGs, and controls for editing them dynamically'),
+          ],
+        },
+        {
+          id: 'curve',
+          destination: origin.createURL('/packages/@lukekaalim/act-curve'),
+          content: [
+            h('h3', {}, '@lukekaalim/act-curve'),
+            h('p', {}, 'Animation Library for act, from 1 to 3 dimensions. Keyframes, bezier curves, render loops.'),
+          ],
+        },
+        {
+          id: 'markdown',
+          destination: origin.createURL('/packages/@lukekaalim/act-markdown'),
+          content: [
+            h('h3', {}, '@lukekaalim/act-markdown'),
+            h('p', {}, 'Markdown rendering library - uses the mdast AST to generate lovley markdown. Support for various plugins, as well as MDX!'),
+          ],
+        },
+        {
+          id: 'router',
+          destination: origin.createURL('/packages/@lukekaalim/act-router'),
+          content: [
+            h('h3', {}, '@lukekaalim/act-router'),
+            h('p', {}, 'Page/Link library for handling SPAs neatly.'),
+          ],
+        },
+        {
+          id: 'icons',
+          destination: origin.createURL('/packages/@lukekaalim/act-icons'),
+          content: [
+            h('h3', {}, '@lukekaalim/act-icons'),
+            h('p', {}, 'Simple Icon library that intergrates with a few Icon APIs to provide images based on icon IDs'),
+          ],
+        },
+      ]
+    })
+  ])
+}
+
+const BlogPage = () => {
+  return [
+    h(Nav),
+    h('h1', {}, 'BLOGPAGE'),
+  ];
+}
+
 const pages = RouterPage.map({
   '/': { display: 'home', component: Home },
   '/about': { component: About },
   '/list': { component: ListPage },
+  '/demo': { component: DemoPage },
+  '/blog': { component: BlogPage },
   '/search': { component: Search }
 })
 
 const ExampleApp = () => {
   const ref = useRef<HTMLElement | null>(null);
   const router = useRouter({
-    initialLocation: RouterLocation.fromURL(new URL(document.location.href)),
+    initialLocation: new URL(document.location.href),
     pages,
   });
   useDOMIntergration(router);
+
+  if (router.page.path === '/demo')
+    return h(RouterContext.Provider, { value: router },
+      h(router.page.component, { onReady() { console.log('Page ready'); }, })
+    );
 
   return h(RouterContext.Provider, { value: router },
     h('div', { ref, style: {

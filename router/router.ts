@@ -1,17 +1,22 @@
 import { useState } from '@lukekaalim/act';
 
-import { RouterLocation } from "./location";
 import { RouterPage } from "./pages";
 import { createEventEmitter, EventEmitter } from './event_emitter';
 import { RouterEvent } from './events';
+import { isURLEqual } from './url';
 
 export type Router = {
   pages: RouterPage[],
 
   page: RouterPage,
-  location: RouterLocation,
+  location: URL,
 
-  navigate(location: RouterLocation): void,
+  navigate(location: URL): void,
+  /**
+   * A special version of Navigate that doesn't trigger a "navigate" event -
+   * useful for "going back" in history
+   * */
+  replace(location: URL): void
 
   subscribe: EventEmitter<RouterEvent>["subscribe"],
 };
@@ -22,22 +27,22 @@ export type RouterConfig = {
   specialPages?: {
     notFound?: RouterPage,
   },
-  initialLocation?: RouterLocation,
+  initialLocation: URL,
 };
 
-const findPage = (pages: RouterPage[], location: RouterLocation) => {
+const findPage = (pages: RouterPage[], location: URL) => {
   const page = pages
-    .find(page => page.path.toLowerCase() === location.path.toLowerCase());
+    .find(page => page.path.toLowerCase() === location.pathname.toLowerCase());
   return page || null;
 }
 
 export const useRouter = ({ initialLocation, pages, specialPages }: RouterConfig): Router => {
-  const [location, setLocation] = useState(initialLocation || RouterLocation.ROOT);
+  const [location, setLocation] = useState(initialLocation);
   const [emitter] = useState(() => createEventEmitter<RouterEvent>());
 
-  const navigate = (nextLocation: RouterLocation) => {
+  const navigate = (nextLocation: URL) => {
     setLocation(prevLocation => {
-      if (RouterLocation.equals(prevLocation, nextLocation)) {
+      if (isURLEqual(prevLocation, nextLocation)) {
         emitter.emit({ type: 'refocus' });
         return prevLocation;
       }
@@ -49,6 +54,9 @@ export const useRouter = ({ initialLocation, pages, specialPages }: RouterConfig
       return nextLocation;
     });
   };
+  const replace = (nextLocation: URL) => {
+    setLocation(nextLocation)
+  }
 
   const page = findPage(pages, location) || RouterPage.EMPTY;
 
@@ -58,6 +66,7 @@ export const useRouter = ({ initialLocation, pages, specialPages }: RouterConfig
     page,
     location,
     pages,
-    navigate
+    navigate,
+    replace,
   }
 };

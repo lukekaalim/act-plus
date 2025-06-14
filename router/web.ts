@@ -1,7 +1,8 @@
-import { Ref, useEffect, useMemo } from '@lukekaalim/act';
+import { Component, h, Ref, useEffect, useMemo } from '@lukekaalim/act';
 import { Router } from "./router";
-import { RouterLocation } from './location';
 import { useRouterEvents } from './events';
+import { Link } from './link';
+import { useRouterContext } from './context';
 
 /**
  * Listens to Click events that happen on anchors, and if
@@ -36,11 +37,7 @@ export const useDOMAnchorIntercept = (
         return;
 
       event.preventDefault();
-      router.navigate({
-        path: url.pathname,
-        query: Object.fromEntries(url.searchParams.entries()),
-        hash: url.hash,
-      });
+      router.navigate(url);
     };
     el.addEventListener('click', onClick);
     return () => {
@@ -56,9 +53,8 @@ export const useDOMAnchorIntercept = (
  * @param router 
  */
 export const useDOMHashScroll = (router: Router) => {
-  const focus = (location: RouterLocation) => {
+  const focus = (location: URL) => {
     const hash = location.hash;
-    console.log(hash);
     if (!hash)
       return;
     const elementId = hash.slice(1);
@@ -94,10 +90,16 @@ export const useDOMHistoryPush = (router: Router, history: History, origin: stri
   useRouterEvents(router, useMemo(() => event => {
       switch (event.type) {
         case 'navigate':
-          history.pushState(null, '', RouterLocation.toURL(event.location, origin));
+          history.pushState(null, '', event.location);
           break;
       }
   }, []));
+
+  useEffect(() => {
+    window.addEventListener('popstate', event => {
+      router.replace(new URL(window.location.href))
+    })
+  }, [])
 }
 
 export type RouterDOMIntergrationConfig = {
@@ -122,4 +124,26 @@ export const useDOMIntergration = (
   useDOMHashScroll(router);
   useDOMHistoryPush(router, history, origin);
   useDOMAnchorIntercept(router, rootElement, origin);
+}
+
+export type WebLinkProps = {
+  link: Link,
+  style?: Record<string, string | number>,
+  className?: string,
+  id?: string,
+  disabled?: boolean,
+}
+
+
+export const WebLink: Component<WebLinkProps> = ({ link, children, ...props }) => {
+  const router = useRouterContext();
+  
+  const onClick = (e: MouseEvent) => {
+    if (link.location.origin !== router.location.origin)
+      return;
+    e.preventDefault();
+    router.navigate(link.location);
+  }
+
+  return h('a', { ...props, href: link.location.href, onClick }, link.display)
 }

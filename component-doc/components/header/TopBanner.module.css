@@ -1,0 +1,53 @@
+.container {
+  height: var(--top-bar-height, 54px);
+
+  display: flex;
+  flex-direction: row;
+  background-color: var(--primary-color, rgb(57, 120, 238));
+  color: var(--primary-text-color, white);
+}
+
+.logo {
+  display: flex;
+  flex: 0;
+  flex-direction: row;
+
+  text-decoration: none;
+
+  margin: 6px;
+  border-radius: 8px;
+}
+
+.verticalLineSeperator {
+  width: 0px;
+  border-left: solid 2px white;
+  margin: 12px 0px;
+}
+
+.topLevelLink {
+  display: flex;
+  text-decoration: none;
+
+  margin: 6px;
+  border-radius: 8px;
+}
+
+.topLevelLink, .logo {
+  transition: background-color 0.2s, text-decoration-color 0.2s;
+  background-color: rgba(255, 255, 255, 0);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0);
+}
+.logo:hover, .topLevelLink:hover {
+  background-color: rgba(255, 255, 255, 0.288);
+  text-decoration-color: white;
+}
+
+.blankSeperator {
+  flex: 1;
+}
+
+.endContent {
+  display: flex;
+  flex: 0;
+}
