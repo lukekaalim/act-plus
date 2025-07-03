@@ -7,7 +7,8 @@
     "graphit",
     "icons",
     "router",
-    "component-doc"
+    "component-doc",
+    "doc-ts"
   ],
   "devDependencies": {
     "@changesets/cli": "^2.27.11",

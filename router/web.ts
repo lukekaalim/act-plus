@@ -28,11 +28,16 @@ export const useDOMAnchorIntercept = (
       const target = event.target;
       if (event.defaultPrevented)
         return;
-      if (!(target instanceof HTMLAnchorElement))
+      if (!(target instanceof HTMLElement))
+        return;
+
+      const anchor = target.closest(`a`);
+
+      if (!anchor)
         return;
       if (event.button !== 0)
         return;
-      const url = new URL(target.href);
+      const url = new URL(anchor.href);
       if (url.origin !== origin)
         return;
 
@@ -102,24 +107,24 @@ export const useDOMHistoryPush = (router: Router, history: History, origin: stri
   }, [])
 }
 
-export type RouterDOMIntergrationConfig = {
+export type RouterDOMIntegrationConfig = {
   history?: History,
   origin?: string,
   rootElement?: Ref<null | HTMLElement>,
 }
 
 /**
- * Automatically intergrates web-specific router intergrations,
+ * Automatically integrates web-specific router integrations,
  * such as scrolling to the selected hash, calling history.push
  * on navigation, and capturing regular anchor clicks.
  */
-export const useDOMIntergration = (
+export const useDOMIntegration = (
   router: Router,
   {
     history = window.history,
     origin = document.location.origin,
     rootElement = { current: document.body }
-  }: RouterDOMIntergrationConfig = {}
+  }: RouterDOMIntegrationConfig = {}
 ) => {
   useDOMHashScroll(router);
   useDOMHistoryPush(router, history, origin);

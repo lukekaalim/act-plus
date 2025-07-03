@@ -94,8 +94,8 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
         return h('td', { ...props }, node.children.map(mdastToNode));
       case 'strong':
         return h('strong', { ...props }, node.children.map(mdastToNode));
-
       case 'yaml':
+        return null;
       case 'mdxjsEsm':
         return h('pre', {}, 'Not Supported');
       case 'mdxJsxFlowElement':

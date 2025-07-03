@@ -3,7 +3,7 @@ import { useState } from '@lukekaalim/act';
 import { RouterPage } from "./pages";
 import { createEventEmitter, EventEmitter } from './event_emitter';
 import { RouterEvent } from './events';
-import { isURLEqual } from './url';
+import { isPathEqual, isURLEqual } from './url';
 
 export type Router = {
   pages: RouterPage[],
@@ -32,7 +32,7 @@ export type RouterConfig = {
 
 const findPage = (pages: RouterPage[], location: URL) => {
   const page = pages
-    .find(page => page.path.toLowerCase() === location.pathname.toLowerCase());
+    .find(page => isPathEqual(page.path, location.pathname));
   return page || null;
 }
 

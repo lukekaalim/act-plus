@@ -1,0 +1,36 @@
+.mkCode {
+  white-space: pre;
+  display: block;
+
+  background-color: rgb(22, 21, 44);
+  color: white;
+
+  padding: 16px;
+
+  font-family: monospace;
+  margin: 8px 0;
+
+  border-radius: 8px;
+  border: 2px solid rgb(182, 179, 203);
+}
+
+.inlineCode {
+  background-color: rgb(80, 91, 114);
+  color: white;
+  font-family: monospace;
+  font-size: 16px;
+  padding: 2px 8px;
+  border-radius: 8px;
+
+  user-select: all;
+}
+
+.paragraph {
+  margin: 32px auto;
+
+  font-family: "Arvo";
+}
+
+.heading {
+  font-family: "Arvo";
+}

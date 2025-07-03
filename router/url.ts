@@ -1,3 +1,15 @@
+export const normalizePath = (path: string) => {
+  return path
+    .toLocaleLowerCase()
+    .split('/').filter(Boolean).join('/')
+}
+
+export const isPathEqual = (left: string, right: string) => {
+  console.log(normalizePath(left))
+  console.log(normalizePath(right))
+  return normalizePath(left) === normalizePath(right)
+}
+
 /**
  * A `@lukekaalim/act` specific URL equality
  * evaluation.
@@ -9,7 +21,7 @@
 export const isURLEqual = (left: URL, right: URL) => {
   if (left.origin !== right.origin)
     return false;
-  if (left.pathname !== right.pathname)
+  if (isPathEqual(left.pathname, right.pathname))
     return false;
   if (left.hash !== right.hash)
     return false;

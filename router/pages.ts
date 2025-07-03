@@ -12,7 +12,7 @@ export type RouterPage = {
 };
 
 export const RouterPage = {
-  EMPTY: { path: '/', display: '', component: () => null },
+  EMPTY: { path: '/', display: '', component: () => 'EMPTY' },
 
   map(pageMap: Record<string, { display?: Node, component: RouterPageComponent }>): RouterPage[] {
     const pages = Object.entries(pageMap).map(([path, { display, component }]) => {

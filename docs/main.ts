@@ -1,19 +1,29 @@
 import { Component, h, useRef, useState } from '@lukekaalim/act';
 import { render } from '@lukekaalim/act-web';
 
+
 import {
   useRouter,
-  useDOMIntergration,
+  useDOMIntegration,
   RouterPage,
   useRouterContext,
   RouterContext,
   createRelativeURLFactory,
   WebLink,
 } from '@lukekaalim/act-router';
-import { Grid3, Hero, TopBanner } from '@lukekaalim/act-doc';
+import { Grid3, Hero, MarkdownArticle, TopBanner } from '@lukekaalim/act-doc';
+
+import { documents } from "./markdown";
+import { pages as pagesStore } from './pages';
 
 import iconPlusURL from './media/icon-plus.png';
 import { SVGRepo } from '@lukekaalim/act-icons';
+import { storeContext, useStore } from '@lukekaalim/act-doc/contexts/stores';
+import { tags } from './tags';
+import { StoredArticle } from '@lukekaalim/act-doc/components/article/StoredArticle';
+import { Article } from '@lukekaalim/act-doc/components/article/Article';
+import { Content } from '@lukekaalim/act-doc/components/content/Content';
+import { SideNav } from '@lukekaalim/act-doc/components/sidenav/SideNav';
 
 const origin = createRelativeURLFactory();
 
@@ -117,55 +127,56 @@ const BannerLink: Component = ({ children }) => {
     } }, children)
 }
 
+const banner = h(TopBanner, {
+  logoLink: {
+    location: origin.createURL('/'),
+    display: h(IconTextBannerLogo),
+  },
+  topLevelLinks: [
+    {
+      location: origin.createURL('/about'),
+      display: h(BannerLink, {}, 'About')
+    },
+    {
+      location: origin.createURL('/demo', {}, 'packages'),
+      display: h(BannerLink, {}, 'Packages')
+    },
+    {
+      location: origin.createURL('/changelog'),
+      display: h(BannerLink, {}, 'Changelog')
+    },
+    {
+      location: origin.createURL('/blog'),
+      display: h(BannerLink, {}, 'Blog')
+    },
+    {
+      location: new URL(`https://github.com/lukekaalim/act-compdoc`),
+      display: h(BannerLink, {}, [
+        h(SVGRepo, { key: `512317/github-142`, style: { filter: `invert(1)` } }),
+        ' Github'
+      ])
+    },
+  ],
+  endContext: h('span', { style: {
+    border: '2px solid white',
+    'border-radius': '8px',
+    background: 'white',
+    cursor: 'pointer',
+    color: 'black',
+    padding: '8px',
+    'white-space': 'nowrap',
+    display: 'flex',
+    'justify-content': 'center',
+    'align-items': 'center',
+    margin: '8px'
+  } }, ["v1.0.0-beta 0", h(SVGRepo, { key: `500841/dropdown`, style: { 'margin-left': '4px' } })])
+});
+
 const DemoPage = () => {
   const style = {
 
   };
   return h('div', { style }, [
-    h(TopBanner, {
-      logoLink: {
-        location: origin.createURL('/'),
-        display: h(IconTextBannerLogo),
-      },
-      topLevelLinks: [
-        {
-          location: origin.createURL('/about'),
-          display: h(BannerLink, {}, 'About')
-        },
-        {
-          location: origin.createURL('/demo', {}, 'packages'),
-          display: h(BannerLink, {}, 'Packages')
-        },
-        {
-          location: origin.createURL('/changelog'),
-          display: h(BannerLink, {}, 'Changelog')
-        },
-        {
-          location: origin.createURL('/blog'),
-          display: h(BannerLink, {}, 'Blog')
-        },
-        {
-          location: new URL(`https://github.com/lukekaalim/act-compdoc`),
-          display: h(BannerLink, {}, [
-            h(SVGRepo, { key: `512317/github-142`, style: { filter: `invert(1)` } }),
-            ' Github'
-          ])
-        },
-      ],
-      endContext: h('span', { style: {
-        border: '2px solid white',
-        'border-radius': '8px',
-        background: 'white',
-        cursor: 'pointer',
-        color: 'black',
-        padding: '8px',
-        'white-space': 'nowrap',
-        display: 'flex',
-        'justify-content': 'center',
-        'align-items': 'center',
-        margin: '8px'
-      } }, ["v1.0.0-beta 0", h(SVGRepo, { key: `500841/dropdown`, style: { 'margin-left': '4px' } })])
-    }),
     h(Hero, {
       backgroundContent: h('img', {
         src: iconPlusURL,
@@ -260,11 +271,19 @@ const DemoPage = () => {
   ])
 }
 
+const blogs = [
+  import('./blogs/0.md?raw'),
+  import('./blogs/1.md?raw'),
+]
+
 const BlogPage = () => {
-  return [
-    h(Nav),
-    h('h1', {}, 'BLOGPAGE'),
-  ];
+  const { document } = useStore();
+  return h('div', {}, [
+    h('div', {}, [
+      document.getByTag('blog', tags).map(blog =>
+        h(Article, { meta: blog.meta, hiddenTagKeys: ['blog'] }, blog.content)),
+    ])
+  ]);
 }
 
 const pages = RouterPage.map({
@@ -275,6 +294,7 @@ const pages = RouterPage.map({
   '/blog': { component: BlogPage },
   '/search': { component: Search }
 })
+pages.push(...pagesStore.pages);
 
 const ExampleApp = () => {
   const ref = useRef<HTMLElement | null>(null);
@@ -282,23 +302,23 @@ const ExampleApp = () => {
     initialLocation: new URL(document.location.href),
     pages,
   });
-  useDOMIntergration(router);
-
-  if (router.page.path === '/demo')
-    return h(RouterContext.Provider, { value: router },
-      h(router.page.component, { onReady() { console.log('Page ready'); }, })
-    );
+  useDOMIntegration(router);
 
   return h(RouterContext.Provider, { value: router },
-    h('div', { ref, style: {
-      width: '800px',
-      margin: 'auto',
-      background: '#eaeaea',
-      padding: '24px'
-    } },
-      h(router.page.component, { onReady() { console.log('Page ready'); }, })
+    h(storeContext.Provider, { value: { tags, page: pagesStore, document: documents } },
+      [
+        banner,
+        h(Content, {
+          leftSidebar: h(SideNav, {}, [
+            h('p', {}, 'lolol')
+          ]),
+          main: h(router.page.component, { onReady() { console.log('Page ready'); }, }),
+          rightSidebar: null,
+        })
+        
+      ]
     )
-  )
+  );
 };
 
 const main = () => {
