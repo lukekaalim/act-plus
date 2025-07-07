@@ -5,3 +5,4 @@ export * from './grid/card';
 export * from './grid/Grid3';
 
 export * from './article/MarkdownArticle';
+export * from './sidenav';
