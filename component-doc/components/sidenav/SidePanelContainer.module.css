@@ -1,8 +1,31 @@
 .container {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
+
+  position: relative;
 }
 
 .main {
-  width: var(--main-content-width)
+  overflow: auto;
+  width: 100%;
+}
+
+.left, .right {
+  width: var(--sidepanel-width, 400px);
+
+  position: sticky;
+  overflow: auto;
+  top: 0px;
+}
+
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}
+
+.inner {
+  overflow: auto;
 }

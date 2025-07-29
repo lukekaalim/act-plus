@@ -9,18 +9,23 @@ export type PageStore = {
   prefix(pathPrefix: string): PageStore,
   
   pages: RouterPage[],
+
+  fullPath(path: string): string,
 };
 
 export const createPageStore = (pages: RouterPage[] = [], prefix: string = ''): PageStore => {
 
   const store = {
     add(path: string, component: RouterPageComponent) {
-      path = prefix + path;
+      path = store.fullPath(path);
       pages.push({ path, component, display: '' });
       return store;
     },
     prefix(pathPrefix: string) {
-      return createPageStore(pages, prefix + pathPrefix);
+      return createPageStore(pages, store.fullPath(pathPrefix));
+    },
+    fullPath(path: string) {
+      return prefix + path;
     },
     pages
   }

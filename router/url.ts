@@ -5,8 +5,6 @@ export const normalizePath = (path: string) => {
 }
 
 export const isPathEqual = (left: string, right: string) => {
-  console.log(normalizePath(left))
-  console.log(normalizePath(right))
   return normalizePath(left) === normalizePath(right)
 }
 
@@ -21,7 +19,7 @@ export const isPathEqual = (left: string, right: string) => {
 export const isURLEqual = (left: URL, right: URL) => {
   if (left.origin !== right.origin)
     return false;
-  if (isPathEqual(left.pathname, right.pathname))
+  if (!isPathEqual(left.pathname, right.pathname))
     return false;
   if (left.hash !== right.hash)
     return false;

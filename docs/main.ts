@@ -11,7 +11,7 @@ import {
   createRelativeURLFactory,
   WebLink,
 } from '@lukekaalim/act-router';
-import { Grid3, Hero, MarkdownArticle, TopBanner } from '@lukekaalim/act-doc';
+import { Grid3, Hero, MarkdownArticle, SidePanelContainer, TopBanner } from '@lukekaalim/act-doc';
 
 import { documents } from "./markdown";
 import { pages as pagesStore } from './pages';
@@ -267,7 +267,20 @@ const DemoPage = () => {
           ],
         },
       ]
-    })
+    }),
+
+    h(SidePanelContainer, {
+      scrollWindowRef: { current: document.body },
+      left: h(SideNav, {}, [
+        h(SideNav.List, {}, [
+          h(SideNav.List.Anchor, { href: './' }, 'Main'),
+          h(SideNav.List.Anchor, { href: './components' }, 'Components'),
+          h(SideNav.List.Anchor, { href: './components' }, 'Components'),
+        ])
+      ]),
+      right: 'rofl'
+    }, h('div', { style: { height: '5000px', margin: '0 auto', width: '800px' }}, h(MarkdownArticle, { content: `# Yoooo` })))
+    
   ])
 }
 
@@ -308,21 +321,19 @@ const ExampleApp = () => {
     h(storeContext.Provider, { value: { tags, page: pagesStore, document: documents } },
       [
         banner,
-        h(Content, {
-          leftSidebar: h(SideNav, {}, [
-            h('p', {}, 'lolol')
-          ]),
-          main: h(router.page.component, { onReady() { console.log('Page ready'); }, }),
-          rightSidebar: null,
-        })
-        
+        h(router.page.component, { onReady() { console.log('Page ready'); }, })
       ]
     )
   );
 };
 
 const main = () => {
-  render(h('div', {}, h(ExampleApp)), document.body);
+  const style = {
+    height: '100%',
+    display: 'flex',
+    'flex-direction': 'column',
+  };
+  render(h('div', { style }, h(ExampleApp)), document.body);
 };
 
 main();

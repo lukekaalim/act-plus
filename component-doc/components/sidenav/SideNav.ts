@@ -28,7 +28,7 @@ export const SideNavAnchorEntry: Component<SideNavAnchorListEntryProps> = ({ hre
 };
 
 export type SideNavAnchorSubListEntryProps = {
-  heading: string
+  heading: Node
 };
 
 export const SideNavAnchorSubListEntry: Component<SideNavAnchorSubListEntryProps> = ({ heading, children }) => {

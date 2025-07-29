@@ -5,6 +5,8 @@
   "dependencies": {
     "@lukekaalim/act": "^3.2.0",
     "@lukekaalim/act-web": "^3.2.1",
+    "change-case": "^5.4.4",
+    "mdast-util-to-string": "^4.0.0",
     "remark-directive": "^3.0.0",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",

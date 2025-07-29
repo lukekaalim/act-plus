@@ -41,15 +41,18 @@ export const useRouter = ({ initialLocation, pages, specialPages }: RouterConfig
   const [emitter] = useState(() => createEventEmitter<RouterEvent>());
 
   const navigate = (nextLocation: URL) => {
+    console.log(`Recived navigate to`, nextLocation)
     setLocation(prevLocation => {
       if (isURLEqual(prevLocation, nextLocation)) {
+        console.info(`Refocusing on: "${nextLocation}"`)
         emitter.emit({ type: 'refocus' });
         return prevLocation;
       }
       const page = findPage(pages, nextLocation);
       if (!page)
-        return prevLocation;
+        return (console.info(`Rejecting navigation to: "${nextLocation}"`), prevLocation);
 
+      console.info(`Navigating to: "${nextLocation}"`)
       emitter.emit({ type: 'navigate', page, location: nextLocation });
       return nextLocation;
     });

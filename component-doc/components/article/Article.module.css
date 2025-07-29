@@ -5,8 +5,9 @@
 
   padding: 32px;
 
-  max-width: var(--article-content-width, 800px);
-  box-shadow: 0 10px 20px 0px #00000014;
+  width: var(--article-content-width, 800px);
+
+  font-size: 18px;
 }
 
 .details {

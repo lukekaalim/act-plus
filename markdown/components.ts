@@ -1,6 +1,8 @@
 import { Component, h, Node } from '@lukekaalim/act';
-import { Nodes as MdastNode, Paragraph } from 'mdast';
+import { Heading, Nodes as MdastNode, Paragraph } from 'mdast';
 import { MdxJsxFlowElement, MdxJsxTextElement } from 'mdast-util-mdx-jsx';
+import { toString } from 'mdast-util-to-string';
+import { kebabCase } from 'change-case';
 
 export type MarkdownComponentProps = {
   attributes: Record<string, string | number | boolean>
@@ -23,6 +25,11 @@ export type MarkdownRendererOptions = {
   styles?: { [key in (MdastNode["type"] | 'checkbox')]?: Record<string, unknown> },
 }
 export type MdastRenderer = ReturnType<typeof createMdastRenderer>;
+
+export const getHeadingId = (heading: Heading) => {
+  const id = kebabCase(toString(heading) || '');
+  return id;
+}
 
 export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
   const mdastToNode = (node: MdastNode): Node => {
@@ -49,7 +56,8 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
       case 'root':
         return node.children.map(mdastToNode);
       case 'heading':
-        return h(`h${node.depth}`, { ...props }, node.children.map(mdastToNode));
+        const id = getHeadingId(node)
+        return h(`h${node.depth}`, { id, ...props }, node.children.map(mdastToNode));
       case 'text':
         return node.value;
       case 'paragraph':
