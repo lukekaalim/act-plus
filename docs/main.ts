@@ -300,7 +300,7 @@ const BlogPage = () => {
 }
 
 const pages = RouterPage.map({
-  '/': { display: 'home', component: Home },
+  '/': { component: DemoPage },
   '/about': { component: About },
   '/list': { component: ListPage },
   '/demo': { component: DemoPage },
