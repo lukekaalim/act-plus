@@ -12,6 +12,8 @@
 
   border-radius: 8px;
   border: 2px solid rgb(182, 179, 203);
+
+  margin: 0 -32px;
 }
 
 .inlineCode {
@@ -32,5 +34,5 @@
 }
 
 .heading {
-  font-family: "Arvo";
+  
 }

@@ -1,11 +1,12 @@
 import { Component, h } from "@lukekaalim/act";
-import { MarkdownArticle, NavTree, SideNav, SidePanelContainer } from "@lukekaalim/act-doc";
+import { createNavTreeFromExpression, MarkdownArticle, NavTree, NavTreeCompactExpression, SideNav, SidePanelContainer } from "@lukekaalim/act-doc";
 import { VerticalNavMenu } from "@lukekaalim/act-doc/components/vertical_nav_menu/VerticalNavMenu";
 import { PageStore } from "@lukekaalim/act-doc/stores";
 import { getHeadingId, parser } from "@lukekaalim/act-markdown";
 
 import { Heading, Node, Parent, Root } from 'mdast';
 import { toString } from 'mdast-util-to-string';
+
 
 const markdown = {
   index: (await import('./index.md?raw')).default,
@@ -54,36 +55,38 @@ const buildNavTreeFromMarkdown = (markdownRoot: Root) => {
 }
 
 export const createPages = (pages: PageStore) => {
-  const packageNav = h(SideNav, {}, [
-    h(SideNav.List, {}, [
-      h(SideNav.List.Anchor, { href: pages.fullPath('/') }, 'Main'),
-      h(SideNav.List.Anchor, { href: pages.fullPath('/components')}, 'Components'),
-      h(SideNav.List.Anchor, { href: pages.fullPath('/guides') }, 'Guides'),
-      h(SideNav.List.SubList, { heading: "A list" }, [
-        h(SideNav.List.Anchor, { href: "" }, 'List Entry'),
-      ]),
-    ])
-  ]);
-  const createHeadings = (markdownText: string) => {
-    const root = parser.parse(markdownText);
-    const tree = buildNavTreeFromMarkdown(root);
-
-    return h(VerticalNavMenu, { tree });
+  const createMarkdownLink = (name: string, path: string, markdown: string): NavTreeCompactExpression => {
+    const fullPath = pages.fullPath(path)
+    const root = parser.parse(markdown);
+    const tree = buildNavTreeFromMarkdown(root).map(nav => {
+      nav.link.href = fullPath + nav.link.href
+    });
+    return [name, fullPath, [tree]]
   }
+
+  const tree = createNavTreeFromExpression([[
+    createMarkdownLink('Main', '/', markdown.index),
+    createMarkdownLink('Components', '/components', markdown.components),
+    createMarkdownLink('Guides', '/guides', markdown.guide),
+  ]]);
+
+  const packageNav = h(SideNav, {}, [
+    h(VerticalNavMenu, { tree })
+  ]);
 
   pages.add('/', () => h(SidePanelContainer, {
       left: packageNav,
-      right: createHeadings(markdown.index)
+      right: h(SideNav, {}, h(VerticalNavMenu, { tree: tree.find(tree => tree.link.content == 'Main') }))
     }, h(MarkdownArticle, { content: markdown.index })),
   );
   pages.add('/components', () => h(SidePanelContainer, {
       left: packageNav,
-      right: createHeadings(markdown.components)
+      right: h(SideNav, {}, h(VerticalNavMenu, { tree:  tree.find(tree => tree.link.content == 'Components') }))
     }, h(MarkdownArticle, { content: markdown.components })),
   );
   pages.add('/guides', () => h(SidePanelContainer, {
       left: packageNav,
-      right: createHeadings(markdown.guide)
+      right: h(SideNav, {}, h(VerticalNavMenu, { tree:  tree.find(tree => tree.link.content == 'Guides') }))
     }, h(MarkdownArticle, { content: markdown.guide })),
   );
 

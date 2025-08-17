@@ -1,6 +1,7 @@
 import { Component, h, useEffect, useMemo, useState } from "@lukekaalim/act";
 //import { DynamicModule } from "../../lib/Module";
 import { createMdastRenderer, useRemarkParser } from "@lukekaalim/act-markdown";
+import { TypeNodeDoc } from "@lukekaalim/act-doc-ts";
 
 import * as YAML from 'yaml';
 import { Article, ArticleMetadata } from "./Article";
@@ -8,8 +9,10 @@ import { Article, ArticleMetadata } from "./Article";
 import classes from './MarkdownArticle.module.css';
 import { useStore } from "../../contexts/stores";
 
+
 export const renderMarkdown = createMdastRenderer({
   classNames: {
+    heading: classes.heading,
     code: classes.mkCode,
     inlineCode: classes.inlineCode,
     paragraph: classes.paragraph
@@ -17,6 +20,9 @@ export const renderMarkdown = createMdastRenderer({
   components: {
     CoolComponent() {
       return h('button', { onClick: () => alert('Hell yea') }, `I'm cool!`)
+    },
+    PropDoc() {
+      return h(TypeNodeDoc, { });
     }
   }
 });

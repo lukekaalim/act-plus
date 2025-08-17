@@ -10,6 +10,11 @@ export type PageStore = {
   
   pages: RouterPage[],
 
+  /**
+   * Create a "fullepath" from a relative path
+   * (Prepending the prefix)
+   * @param path 
+   */
   fullPath(path: string): string,
 };
 

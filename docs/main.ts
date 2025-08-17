@@ -268,19 +268,6 @@ const DemoPage = () => {
         },
       ]
     }),
-
-    h(SidePanelContainer, {
-      scrollWindowRef: { current: document.body },
-      left: h(SideNav, {}, [
-        h(SideNav.List, {}, [
-          h(SideNav.List.Anchor, { href: './' }, 'Main'),
-          h(SideNav.List.Anchor, { href: './components' }, 'Components'),
-          h(SideNav.List.Anchor, { href: './components' }, 'Components'),
-        ])
-      ]),
-      right: 'rofl'
-    }, h('div', { style: { height: '5000px', margin: '0 auto', width: '800px' }}, h(MarkdownArticle, { content: `# Yoooo` })))
-    
   ])
 }
 

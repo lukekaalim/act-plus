@@ -8,15 +8,13 @@ export type VerticalNavMenuProps = {
 
 export const VerticalNavMenu: Component<VerticalNavMenuProps> = ({ tree }) => {
   if (!tree.children.length) {
-    if (!tree.link)
-      throw new Error();
     return h(VerticalNavMenuLink, {
       content: tree.link.content,
       href: tree.link.href
     });
   }
 
-  if (!tree.link) {
+  if (!tree.link.content) {
     return h(VerticalNavMenuList, {
       entries: tree.children.map(tree => h(VerticalNavMenu, { tree }))
     });

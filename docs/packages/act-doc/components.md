@@ -17,9 +17,23 @@ it.
 
 ### DocApp
 
-The DocApp component is the primary entrypoint.
+<CompDoc version="1" />
 
-#### Usage:
+The DocApp component is the primary entrypoint. It's a "Full Page" component
+that takes up as much space as possible, and contains the navigation system,
+documentation loading system and other top-level concerns.
+
+To use this, you can embed this into your own component, or just choose to render
+this at the highest level.
+
+> If you want more customisation than what the DocApp can provide, take a look
+> at the individual components!
+
+#### Props
+
+<PropDoc component="DocApp" />
+
+#### Usage
 
 ```ts
 const docs = [
@@ -27,7 +41,9 @@ const docs = [
   new Document('my-cool-manual-doc')
 ];
 render(document.body, h(DocApp, { docs }));
-````
+```
+
+#### Preview
 
 ## Structural
 
