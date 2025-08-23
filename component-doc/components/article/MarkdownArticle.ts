@@ -1,14 +1,16 @@
 import { Component, h, useEffect, useMemo, useState } from "@lukekaalim/act";
 //import { DynamicModule } from "../../lib/Module";
 import { createMdastRenderer, useRemarkParser } from "@lukekaalim/act-markdown";
-import { TypeNodeDoc } from "@lukekaalim/act-doc-ts";
+import { srcFile, TypeNodeDoc } from "@lukekaalim/act-doc-ts";
 
 import * as YAML from 'yaml';
 import { Article, ArticleMetadata } from "./Article";
 
 import classes from './MarkdownArticle.module.css';
 import { useStore } from "../../contexts/stores";
+import { findIdentifiersInFile } from "@lukekaalim/act-doc-ts/registry";
 
+const ids = findIdentifiersInFile(srcFile)
 
 export const renderMarkdown = createMdastRenderer({
   classNames: {
@@ -21,8 +23,12 @@ export const renderMarkdown = createMdastRenderer({
     CoolComponent() {
       return h('button', { onClick: () => alert('Hell yea') }, `I'm cool!`)
     },
-    PropDoc() {
-      return h(TypeNodeDoc, { });
+    PropDoc(props) {
+      const componentName = props.attributes.component as string;
+      const component = ids.functions.get(componentName);
+      if (!component)
+        return `Cant find component: "${componentName}"`
+      return h(TypeNodeDoc, { type: component, doc: null });
     }
   }
 });

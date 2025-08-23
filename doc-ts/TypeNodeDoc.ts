@@ -1,11 +1,18 @@
 // DocTS is about displaying typescript documentation
-import { CompilerHost, createCompilerHost, createProgram, createSolutionBuilderHost, createSourceFile, factory, isTypeLiteralNode, ScriptTarget, SymbolFlags, SyntaxKind, TypeNode } from 'typescript';
+import { CompilerHost, createCompilerHost, createProgram, createSolutionBuilderHost, createSourceFile, factory, FunctionDeclaration, isFunctionDeclaration, isTypeLiteralNode, ScriptTarget, SymbolFlags, SyntaxKind, TypeNode } from 'typescript';
 import { DocNode } from '@microsoft/tsdoc';
 import { h, Component } from '@lukekaalim/act';
+import { findIdentifiersInFile } from './registry';
+import { SyntaxNode } from './SyntaxNode';
+import { CodeBox } from '@lukekaalim/act-doc/components/article/CodeBox';
+
+const srcs = import.meta.glob('../**/*.ts', { query: 'raw' });
+
+console.log(srcs);
 
 export type TypeNodeDocProps = {
   type: TypeNode,
-  doc: DocNode
+  doc: DocNode | null
 };
 
 /**
@@ -22,72 +29,36 @@ export type TypeNodePreviewProps = {
 }
 
 const TypeNodePreview: Component<TypeNodePreviewProps> = ({ node }) => {
-  return null;
-  if (isTypeLiteralNode(node)) {
-    return 'Type literal!';
-  }
-
-  console.warn(`Unknown type`, SyntaxKind[node.kind])
-  return 'Unknown type';
+  return h(CodeBox, {}, h(SyntaxNode, { node, indent: 0 }))
 }
 
 
 const src = `
-/***
- * My cool function 
- *
+/**
+ * This is a tsdoc comment on the component
  */
-function myFunc(myParam: MyType) {
-  console.log('My function contents');
+export const MyCoolComponent: Component<CoolProps> = () => {
+  return 'cool';
+};
+
+/**
+ * This is a tsdoc comment on the props
+ * 
+ */
+export type CoolProps = {
+  value: string,
+  otherValue: DistantIdentifier,
+};
+
+export function MyOtherComponent({ value, otherValue }: CoolProps) {
+  return 'cool';
 }
 `
 
-const files = [
-  createSourceFile('src.ts', src, ScriptTarget.ES2024),
-  createSourceFile('default.lib.ts', '', ScriptTarget.ES2024)
-]
+export const srcFile = createSourceFile('src.ts', src, ScriptTarget.ES2024);
 
-console.log(SyntaxKind[files[0].statements[0].kind]);
+srcFile.statements.map(statement => {
+  console.log(SyntaxKind[statement.kind], statement);
+})
 
-const createMemoryCompilerHost = (): CompilerHost => {
-  return {
-    getDefaultLibFileName() {
-      return 'deafult.lib.ts';
-    },
-    getSourceFile(filename, target, onError, shouldCreate) {
-      return files.find(file => file.fileName === filename);
-    },
-    writeFile(filename, contents, byteOrderMark) {
-      console.log(`writing file`, filename, contents)
-    },
-    getCurrentDirectory() {
-      return '/';
-    },
-    getCanonicalFileName(fileName) {
-      return fileName;
-    },
-    fileExists(fileName) {
-      return false;
-    },
-    readFile(fileName) {
-      return '';
-    },
-    useCaseSensitiveFileNames() {
-      return true;
-    },
-    getNewLine() {
-      return `\n`;
-    },
-  };
-}
-
-const program = createProgram({
-  rootNames: ['src.ts'],
-  host: createMemoryCompilerHost(),
-  options: {}
-});
-
-const checker = program.getTypeChecker();
-
-console.log('resolve', checker.resolveName('myFunc', files[0], SymbolFlags.All, false));
-
+console.log(findIdentifiersInFile(srcFile));

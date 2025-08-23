@@ -29,9 +29,9 @@ this at the highest level.
 > If you want more customisation than what the DocApp can provide, take a look
 > at the individual components!
 
-#### Props
+#### Type
 
-<PropDoc component="DocApp" />
+<PropDoc component="MyCoolComponent" />
 
 #### Usage
 
