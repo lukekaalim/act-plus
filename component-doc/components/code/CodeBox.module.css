@@ -1,0 +1,22 @@
+.codeBox {
+  white-space: pre;
+  display: block;
+
+  background-color: rgb(22, 21, 44);
+  color: white;
+
+  padding: 16px;
+
+  font-family: monospace;
+  margin: 8px 0;
+
+  border-radius: 8px;
+  border: 2px solid rgb(182, 179, 203);
+}
+
+.lineNumber {
+  color: white;
+  background-color: black;
+
+  user-select: none;
+}

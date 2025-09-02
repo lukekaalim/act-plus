@@ -3,14 +3,15 @@ import { Component, h, useEffect, useMemo, useState } from "@lukekaalim/act";
 import { createMdastRenderer, useRemarkParser } from "@lukekaalim/act-markdown";
 import { srcFile, TypeNodeDoc } from "@lukekaalim/act-doc-ts";
 
+import { SyntaxKind } from 'typescript';
+
 import * as YAML from 'yaml';
 import { Article, ArticleMetadata } from "./Article";
 
 import classes from './MarkdownArticle.module.css';
 import { useStore } from "../../contexts/stores";
-import { findIdentifiersInFile } from "@lukekaalim/act-doc-ts/registry";
-
-const ids = findIdentifiersInFile(srcFile)
+import { CodeBox } from "./CodeBox";
+import { useMdxContext } from "./MDXContext";
 
 export const renderMarkdown = createMdastRenderer({
   classNames: {
@@ -20,16 +21,6 @@ export const renderMarkdown = createMdastRenderer({
     paragraph: classes.paragraph
   },
   components: {
-    CoolComponent() {
-      return h('button', { onClick: () => alert('Hell yea') }, `I'm cool!`)
-    },
-    PropDoc(props) {
-      const componentName = props.attributes.component as string;
-      const component = ids.functions.get(componentName);
-      if (!component)
-        return `Cant find component: "${componentName}"`
-      return h(TypeNodeDoc, { type: component, doc: null });
-    }
   }
 });
 
@@ -37,11 +28,11 @@ export type MarkdownArticleProps = {
   content: string | Promise<DynamicModule<string>>
 };
 
-export const MarkdownArticle: Component<MarkdownArticleProps> = ({ content }) => {
+export const MarkdownArticle: Component<MarkdownArticleProps> = ({ content, children }) => {
   if (typeof content !== 'string')
-    return h(DynamicMarkdownArticle, { module: content });
+    return h(DynamicMarkdownArticle, { module: content }, children);
 
-  return h(StaticMarkdownArticle, { markdown: content });
+  return h(StaticMarkdownArticle, { markdown: content }, children);
 };
 
 type DynamicMarkdownArticleProps = {
@@ -63,10 +54,22 @@ type StaticMarkdownArticleProps = {
   markdown: string
 };
 
-const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ markdown }) => {
+const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ markdown, children }) => {
   const root = useRemarkParser(markdown);
 
-  const nodes = useMemo(() => renderMarkdown(root), [markdown]);
+  const mdx = useMdxContext()
+
+  const renderer = useMemo(() => createMdastRenderer({
+    classNames: {
+      heading: classes.heading,
+      code: classes.mkCode,
+      inlineCode: classes.inlineCode,
+      paragraph: classes.paragraph
+    },
+    components: Object.fromEntries(mdx.globalComponentMap.entries())
+  }), [mdx]);
+
+  const nodes = useMemo(() => renderer(root), [markdown, renderer]);
 
   const { tags } = useStore()
 
@@ -87,6 +90,7 @@ const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ markdown
         }
       }),
       nodes,
+      children,
     ]);
   }
 

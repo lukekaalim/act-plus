@@ -6,3 +6,5 @@ export * from './grid/Grid3';
 
 export * from './article/MarkdownArticle';
 export * from './sidenav';
+
+export * from './code';

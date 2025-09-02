@@ -1,17 +1,10 @@
 // DocTS is about displaying typescript documentation
-import { CompilerHost, createCompilerHost, createProgram, createSolutionBuilderHost, createSourceFile, factory, FunctionDeclaration, isFunctionDeclaration, isTypeLiteralNode, ScriptTarget, SymbolFlags, SyntaxKind, TypeNode } from 'typescript';
+import {  createSourceFile, factory, FunctionDeclaration, isFunctionDeclaration, isIdentifier, isTypeLiteralNode, isVariableDeclaration, Node, ScriptTarget, SourceFile, SymbolFlags, SyntaxKind, TypeNode } from 'typescript';
 import { DocNode } from '@microsoft/tsdoc';
 import { h, Component } from '@lukekaalim/act';
-import { findIdentifiersInFile } from './registry';
-import { SyntaxNode } from './SyntaxNode';
-import { CodeBox } from '@lukekaalim/act-doc/components/article/CodeBox';
-
-const srcs = import.meta.glob('../**/*.ts', { query: 'raw' });
-
-console.log(srcs);
 
 export type TypeNodeDocProps = {
-  type: TypeNode,
+  type: Node,
   doc: DocNode | null
 };
 
@@ -25,11 +18,22 @@ export const TypeNodeDoc: Component<TypeNodeDocProps> = ({ type }) => {
 };
 
 export type TypeNodePreviewProps = {
-  node: TypeNode,
+  node: Node,
 }
 
 const TypeNodePreview: Component<TypeNodePreviewProps> = ({ node }) => {
-  return h(CodeBox, {}, h(SyntaxNode, { node, indent: 0 }))
+  const sourceFile = node.getSourceFile();
+
+  if (isVariableDeclaration(node) && node.type && isIdentifier(node.name)) {
+    return h(Code, {
+      content: `${'const'} ${node.name.text}: ${node.type.getText(sourceFile)};`,
+      language: 'typescript'
+    })
+  }
+    
+  return [
+    h(Code, { content: node.getText(sourceFile), language: 'typescript' })
+  ];
 }
 
 
@@ -56,9 +60,3 @@ export function MyOtherComponent({ value, otherValue }: CoolProps) {
 `
 
 export const srcFile = createSourceFile('src.ts', src, ScriptTarget.ES2024);
-
-srcFile.statements.map(statement => {
-  console.log(SyntaxKind[statement.kind], statement);
-})
-
-console.log(findIdentifiersInFile(srcFile));

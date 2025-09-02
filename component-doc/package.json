@@ -11,6 +11,7 @@
     "change-case": "^5.4.4",
     "color": "^5.0.0",
     "date-fns": "^4.1.0",
+    "lowlight": "^3.3.0",
     "mdast-util-to-string": "^4.0.0",
     "yaml": "^2.8.0"
   }

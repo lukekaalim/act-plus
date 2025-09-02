@@ -10,10 +10,18 @@ import { asyncNodeRegistryContext, useRootAynscNodeRegistry } from "./AsyncCompo
 import { DefProvider } from "@lukekaalim/act-graphit";
 import { PageTransitionDriver, usePageTransition } from "./pageTransition";
 
+/**
+ * This is some documentation props
+ */
 export type DocumentationAppProps = {
   pages: DocPage[],
 }
 
+/**
+ * I dunno
+ * @param param0 
+ * @returns Whatever
+ */
 export const DocumentationApp: Component<DocumentationAppProps> = ({ pages }) => {
   const ref = useRef<null | HTMLElement>(null);
   
@@ -50,4 +58,8 @@ const NotFound = () => {
   return h('article', { className: docMarkClasses.article }, [
     h('h1', {}, '404 - Page not found'),
   ])
+}
+
+function SampleFunc(myArg: number): string {
+  return '';
 }

@@ -1,5 +1,8 @@
 import { Component, h } from "@lukekaalim/act";
 import { createNavTreeFromExpression, MarkdownArticle, NavTree, NavTreeCompactExpression, SideNav, SidePanelContainer } from "@lukekaalim/act-doc";
+import { DocTs } from "@lukekaalim/act-doc-ts";
+import { analyzeString } from "@lukekaalim/act-doc-ts/analysis";
+import { DocTsRegistry } from "@lukekaalim/act-doc-ts/registry";
 import { VerticalNavMenu } from "@lukekaalim/act-doc/components/vertical_nav_menu/VerticalNavMenu";
 import { PageStore } from "@lukekaalim/act-doc/stores";
 import { getHeadingId, parser } from "@lukekaalim/act-markdown";
@@ -13,6 +16,13 @@ const markdown = {
   components: (await import('./components.md?raw')).default,
   guide: (await import('./guide.md?raw')).default,
 }
+
+const docFragments = analyzeString(
+  await import('@lukekaalim/act-doc/DocumentationApp.ts?raw')
+    .then(m => m.default)
+)
+
+const appFrag = docFragments.find(frag => frag.identifier === 'DocumentationApp')
 
 const buildNavTreeFromMarkdown = (markdownRoot: Root) => {
   const treeRoot = new NavTree();
@@ -79,16 +89,22 @@ export const createPages = (pages: PageStore) => {
       right: h(SideNav, {}, h(VerticalNavMenu, { tree: tree.find(tree => tree.link.content == 'Main') }))
     }, h(MarkdownArticle, { content: markdown.index })),
   );
+  const sampleFunc = docFragments.find(f => f.identifier === 'SampleFunc');
   pages.add('/components', () => h(SidePanelContainer, {
       left: packageNav,
       right: h(SideNav, {}, h(VerticalNavMenu, { tree:  tree.find(tree => tree.link.content == 'Components') }))
-    }, h(MarkdownArticle, { content: markdown.components })),
+    }, [
+      h(MarkdownArticle, { content: markdown.components }, [
+        !!appFrag && h(DocTs, { fragment: appFrag }),
+        !!sampleFunc && h(DocTs, { fragment: sampleFunc }),
+      ])
+    ]),
   );
+
   pages.add('/guides', () => h(SidePanelContainer, {
       left: packageNav,
       right: h(SideNav, {}, h(VerticalNavMenu, { tree:  tree.find(tree => tree.link.content == 'Guides') }))
     }, h(MarkdownArticle, { content: markdown.guide })),
   );
-
-  console.log(pages.pages)
 }
+

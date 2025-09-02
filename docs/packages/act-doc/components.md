@@ -15,11 +15,11 @@ Framework components take in high-level props descibing an entire
 system or set of components, and renders out all the UI needed to descibe
 it.
 
-### DocApp
+### DocumentationApp
 
-<CompDoc version="1" />
+<DocTs identifier="DocumentationApp" />
 
-The DocApp component is the primary entrypoint. It's a "Full Page" component
+The `DocumentationApp` component is the primary entrypoint. It's a "Full Page" component
 that takes up as much space as possible, and contains the navigation system,
 documentation loading system and other top-level concerns.
 
@@ -29,9 +29,8 @@ this at the highest level.
 > If you want more customisation than what the DocApp can provide, take a look
 > at the individual components!
 
-#### Type
+#### Props
 
-<PropDoc component="MyCoolComponent" />
 
 #### Usage
 

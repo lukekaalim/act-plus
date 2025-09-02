@@ -5,7 +5,7 @@ import { toString } from 'mdast-util-to-string';
 import { kebabCase } from 'change-case';
 
 export type MarkdownComponentProps = {
-  attributes: Record<string, string | number | boolean>
+  attributes: Record<string, unknown>
 }
 
 export type MarkdownComponent = Component<MarkdownComponentProps>;
