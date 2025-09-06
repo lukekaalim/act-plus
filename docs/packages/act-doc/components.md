@@ -17,7 +17,7 @@ it.
 
 ### DocumentationApp
 
-<DocTs identifier="DocumentationApp" />
+<DocTs namespace="@lukekaalim/act-doc" identifier="DocumentationApp" />
 
 The `DocumentationApp` component is the primary entrypoint. It's a "Full Page" component
 that takes up as much space as possible, and contains the navigation system,
@@ -31,10 +31,11 @@ this at the highest level.
 
 #### Props
 
+<DocTs namespace="@lukekaalim/act-doc" identifier="DocumentationAppProps" />
 
 #### Usage
 
-```ts
+```typescript
 const docs = [
   ...allFoundDocuments(),
   new Document('my-cool-manual-doc')
@@ -46,6 +47,10 @@ render(document.body, h(DocApp, { docs }));
 
 ## Structural
 
+Structural components are the alternative to using the DocumentationApp -
+these are the raw building blocks for creating navigation elements,
+side panels, top bars and everything else to move about a documentation site.
+
 ### TopBar
 
 ### SideNav
@@ -54,16 +59,27 @@ render(document.body, h(DocApp, { docs }));
 
 ## Content
 
+_"Content"_ is a category of components from Doc that is meant
+to capture elements that describe _specific technical_ elements
+of documentation, from interactive demos, syntax-highlighted
+code blocks, markdown renderers and all in-between.
+
+Regardless if you are using the Framework entrypoint or assembling
+components togther manually, you will always need to use a Content component
+to describe something.
+
 ### Article
+
+<DocTs namespace="@lukekaalim/act-doc" identifier="Article" />
+<DocTs namespace="@lukekaalim/act-doc" identifier="ArticleProps" />
+
+### CodeBox
+
+<DocTs namespace="@lukekaalim/act-doc" identifier="CodeBox" />
+<DocTs namespace="@lukekaalim/act-doc" identifier="CodeBoxProps" />
 
 ### CardGrid
 
 ### Demo
 
-## Hero
-
-## Tags
-
-### TagPill
-
-### TagRow
+### Tags

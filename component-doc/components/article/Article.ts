@@ -5,6 +5,24 @@ import { DocumentMetadata, Tag } from '../../lib';
 import { TagStore } from '../../stores';
 import { useStore } from '../../contexts/stores';
 
+// Kinda weird hack
+import mkClasses from './MarkdownArticle.module.css';
+
+export const articleClassNames = {
+  heading: mkClasses.heading,
+  code: mkClasses.mkCode,
+  inlineCode: mkClasses.inlineCode,
+  paragraph: mkClasses.paragraph
+}
+const articleElementTypes = {
+  code: 'code',
+  inlineCode: 'code',
+  paragraph: 'p',
+} as Record<keyof typeof articleClassNames, string>
+export const article = Object.fromEntries(Object.keys(articleClassNames).map(key => {
+  return [key, ({ children }) => h(articleElementTypes[key], { className: articleClassNames[key] }, children)]
+})) as Record<keyof typeof articleClassNames, Component>;
+
 
 export type ArticleProps = {
   meta?: DocumentMetadata,

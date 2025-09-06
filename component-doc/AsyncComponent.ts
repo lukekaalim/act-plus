@@ -56,7 +56,6 @@ export const AsyncNode: Component<AsyncNodeProps> = ({ nodeKey = null, loadNode 
     
     loadNode()
       .then(node => {
-        console.log(`Async node loaded`);
         setNode(node);
         if (registry && nodeKey)
           registry.addNode(nodeKey, node);

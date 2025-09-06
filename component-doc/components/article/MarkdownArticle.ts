@@ -1,54 +1,36 @@
-import { Component, h, useEffect, useMemo, useState } from "@lukekaalim/act";
-//import { DynamicModule } from "../../lib/Module";
-import { createMdastRenderer, useRemarkParser } from "@lukekaalim/act-markdown";
-import { srcFile, TypeNodeDoc } from "@lukekaalim/act-doc-ts";
-
-import { SyntaxKind } from 'typescript';
+import { Component, h, useMemo } from "@lukekaalim/act";
+import { createMdastRenderer, OverrideComponentProps, useRemarkParser } from "@lukekaalim/act-markdown";
 
 import * as YAML from 'yaml';
 import { Article, ArticleMetadata } from "./Article";
 
 import classes from './MarkdownArticle.module.css';
+import articleClasses from './Article.module.css';
 import { useStore } from "../../contexts/stores";
-import { CodeBox } from "./CodeBox";
 import { useMdxContext } from "./MDXContext";
+import { Code } from "mdast";
+import { SyntaxHighlightingCodeBox } from "../code";
 
 export const renderMarkdown = createMdastRenderer({
   classNames: {
     heading: classes.heading,
     code: classes.mkCode,
     inlineCode: classes.inlineCode,
-    paragraph: classes.paragraph
+    paragraph: classes.paragraph,
+    blockquote: articleClasses.blockQuote
   },
   components: {
   }
 });
 
 export type MarkdownArticleProps = {
-  content: string | Promise<DynamicModule<string>>
+  content: string
 };
 
 export const MarkdownArticle: Component<MarkdownArticleProps> = ({ content, children }) => {
-  if (typeof content !== 'string')
-    return h(DynamicMarkdownArticle, { module: content }, children);
-
   return h(StaticMarkdownArticle, { markdown: content }, children);
 };
 
-type DynamicMarkdownArticleProps = {
-  module: Promise<DynamicModule<string>>
-};
-
-
-const DynamicMarkdownArticle: Component<DynamicMarkdownArticleProps> = ({ module }) => {
-  const [content, setContent] = useState('');
-
-  useEffect(() => {
-    module.then(({ default: content }) => setContent(content));
-  }, []);
-
-  return h(StaticMarkdownArticle, { markdown: content });
-}
 
 type StaticMarkdownArticleProps = {
   markdown: string
@@ -58,15 +40,25 @@ const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ markdown
   const root = useRemarkParser(markdown);
 
   const mdx = useMdxContext()
-
   const renderer = useMemo(() => createMdastRenderer({
     classNames: {
       heading: classes.heading,
       code: classes.mkCode,
       inlineCode: classes.inlineCode,
-      paragraph: classes.paragraph
+      paragraph: classes.paragraph,
+      blockquote: articleClasses.blockQuote,
+      image: articleClasses.image,
     },
-    components: Object.fromEntries(mdx.globalComponentMap.entries())
+    components: Object.fromEntries(mdx.globalComponentMap.entries()),
+    overrides: {
+      code: ({ node }: OverrideComponentProps) => {
+        const codeNode = node as Code;
+        return h(SyntaxHighlightingCodeBox, {
+          language: codeNode.lang || undefined,
+          code: codeNode.value.trim()
+        });
+      }
+    }
   }), [mdx]);
 
   const nodes = useMemo(() => renderer(root), [markdown, renderer]);

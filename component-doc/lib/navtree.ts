@@ -33,7 +33,18 @@ export class NavTree {
   find(func: (tree: NavTree) => boolean): NavTree | void {
     if (func(this))
       return this;
-    return this.children.find(child => child.find(func));
+    for (const child of this.children) {
+      const result = child.find(func);
+      if (result)
+        return result;
+    }
+  }
+  clone() {
+    const clone = new NavTree();
+    clone.parent = this.parent;
+    clone.link = { ...this.link };
+    clone.children = [...this.children];
+    return clone;
   }
 }
 

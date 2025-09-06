@@ -1,3 +1,5 @@
-export * from './TypeNodeDoc';
+export * from './DocTs';
 
-export * from './AnalysisBlock';
+export * from './analysis';
+export * from './syntax';
+export * from './registry';

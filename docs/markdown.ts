@@ -7,5 +7,3 @@ const globs = {
 }
 
 documents.addMarkdownGlob(globs.markdown);
-
-console.log(documents.documents);

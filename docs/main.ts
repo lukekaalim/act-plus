@@ -212,9 +212,9 @@ const DemoPage = () => {
         },
         {
           id: 'tsdoc',
-          destination: origin.createURL('/packages/@lukekaalim/act-tsdoc'),
+          destination: origin.createURL('/packages/@lukekaalim/act-doc-ts'),
           content: [
-            h('h3', {}, '@lukekaalim/act-tsdoc'),
+            h('h3', {}, '@lukekaalim/act-doc-ts'),
             h('p', {}, 'Components for building typescript docs using the Typescript Compiler API, and the tsdoc tool'),
           ],
         },

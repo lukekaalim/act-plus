@@ -71,7 +71,7 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
       case 'inlineCode':
         return h('code', { ...props }, node.value);
       case 'image':
-        return h('img', { ...props, src: node.url, alt: node.alt, title: node.title });
+        return h('img', { ...props, src: node.url, alt: node.alt || '', title: node.title || '' });
       case 'emphasis':
         return h('i', { ...props }, node.children.map(mdastToNode));
       case 'link':
@@ -109,6 +109,8 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
       case 'mdxJsxFlowElement':
       case 'mdxJsxTextElement':
         return mdxJsxFlowElementToNode(node);
+      case 'thematicBreak':
+        return h('br');
       default:
         console.warn(`Unknown element "${node.type}"`, node)
         return null;
@@ -131,7 +133,6 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
                 return [];
               switch (attribute.value.type) {
                 case 'mdxJsxAttributeValueExpression':
-                  console.log(attribute.name, attribute.value.value)
                   return [attribute.name, JSON.parse(attribute.value.value)]
                 default:
                   return [];
@@ -145,4 +146,28 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
   }
 
   return mdastToNode;
+}
+
+export const buildMdxAttributes = (node: MdxJsxFlowElement | MdxJsxTextElement) => {
+  const attributes = Object.fromEntries(node.attributes.map(attribute => {
+    switch (attribute.type) {
+      case 'mdxJsxAttribute':
+        switch (typeof attribute.value) {
+          case 'string':
+            return [attribute.name, attribute.value];
+          case 'object':
+            if (attribute.value === null)
+              return [];
+            switch (attribute.value.type) {
+              case 'mdxJsxAttributeValueExpression':
+                return [attribute.name, JSON.parse(attribute.value.value)]
+              default:
+                return [];
+            }
+        }
+      case 'mdxJsxExpressionAttribute':
+        return []
+    }
+  }))
+  return attributes;
 }

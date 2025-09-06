@@ -1,0 +1,11 @@
+.identifier {
+  color: rgb(57, 120, 238);
+  font-size: 16px;
+
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.1s;
+}
+
+.identifier:hover {
+  text-decoration-color: rgb(57, 120, 238);
+}

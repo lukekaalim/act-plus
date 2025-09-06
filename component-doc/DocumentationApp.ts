@@ -10,17 +10,21 @@ import { asyncNodeRegistryContext, useRootAynscNodeRegistry } from "./AsyncCompo
 import { DefProvider } from "@lukekaalim/act-graphit";
 import { PageTransitionDriver, usePageTransition } from "./pageTransition";
 
-/**
- * This is some documentation props
- */
 export type DocumentationAppProps = {
+  /**
+   * All the pages the documentation app will manage.
+   */
   pages: DocPage[],
 }
 
 /**
- * I dunno
- * @param param0 
- * @returns Whatever
+ * Create a **Full Page** documentation website, using the pages
+ * passed in to create a navigation heiarchy.
+ * 
+ * @example Mount the app directly into your DOM:
+ * ```ts
+ * render(document.body, h(DocumentationApp, { pages }));
+ * ```
  */
 export const DocumentationApp: Component<DocumentationAppProps> = ({ pages }) => {
   const ref = useRef<null | HTMLElement>(null);
@@ -58,8 +62,4 @@ const NotFound = () => {
   return h('article', { className: docMarkClasses.article }, [
     h('h1', {}, '404 - Page not found'),
   ])
-}
-
-function SampleFunc(myArg: number): string {
-  return '';
 }

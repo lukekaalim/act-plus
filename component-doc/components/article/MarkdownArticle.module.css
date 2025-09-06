@@ -28,7 +28,7 @@
 .paragraph {
   margin: 32px auto;
 
-  font-family: "Arvo";
+  _font-family: "Arvo";
 }
 
 .heading {

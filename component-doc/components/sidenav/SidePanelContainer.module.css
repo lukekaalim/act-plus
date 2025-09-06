@@ -4,10 +4,11 @@
   align-items: flex-start;
 
   position: relative;
+  background-color: rgb(241, 241, 244);
+  flex: 1;
 }
 
 .main {
-  overflow: auto;
   width: 100%;
 }
 

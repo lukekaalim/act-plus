@@ -1,8 +1,8 @@
-import { Component, h, Node } from '@lukekaalim/act';
+import { Component, h, Node, useEffect, useRef, useState } from '@lukekaalim/act';
 import { common, createLowlight } from 'lowlight';
 import { Nodes } from 'hast';
 
-import 'highlight.js/styles/monokai.css'
+import 'highlight.js/styles/an-old-hope.css'
 import classes from './CodeBox.module.css';
 
 /**
@@ -40,6 +40,7 @@ export const hljsClassNames = {
   templateTag: 'hljs-template-tag',
   templateVariable: 'hljs-template-variable',
   class: 'hljs-class',
+  titleClass: 'hljs-title class_',
 
   
   comment: 'hljs-comment',
@@ -59,25 +60,6 @@ export const hljs = Object.fromEntries(
     })
 ) as Record<HLJSClassName, Component>;
 
-const lowlight = createLowlight(common)
-
-const renderLowlight = (element: Nodes): Node => {
-  switch (element.type) {
-    case 'root':
-      return element.children.map(renderLowlight);
-    case 'element':
-      return h(element.tagName, {
-        classList: element.properties['className']
-      }, element.children.map(renderLowlight));
-      return (console.log(element), element.type);
-    case 'text':
-      return element.value;
-    default:
-      console.warn(element);
-      return 'none';
-  }
-}
-
 export type CodeBoxProps = {
   lineStart?: number,
   lines: Node[],
@@ -88,6 +70,30 @@ export type CodeBoxProps = {
  * string as if it were code, applying _syntax highlighting_.
  */
 export const CodeBox: Component<CodeBoxProps> = ({ lines, lineStart = 0 }) => {
+  const ref = useRef<null | HTMLElement>(null);
+  const [lineGuess, setLineGuess] = useState(1);
+
+  useEffect(() => {
+    if (!ref.current)
+      return;
+    const lineCount = ref.current.textContent.match(/\n/g);
+    if (lineCount)
+      setLineGuess(lineCount.length + 1);
+  }, [lines.length])
+
+  if (lines.length < 2) {
+    return h('code', { className: classes.codeBox }, h('table', {}, [
+      h('tbody', {}, Array.from({ length: lineGuess }).map((_, lineOffset) => {
+        const lineIndex = lineStart + lineOffset
+        return h('tr', {}, [
+          h('td', { className: classes.lineNumber }, lineIndex + '.'),
+          lineOffset === 0 && h('td', { rowSpan: lineGuess },
+            h('pre', { ref, className: classes.unknownLineGuessBox }, lines[0]))
+        ])
+      }))
+    ]))
+  }
+
   return h('code', { className: classes.codeBox }, h('table', {}, [
     h('tbody', {}, lines.map((line, lineOffset) => {
       const lineIndex = lineStart + lineOffset

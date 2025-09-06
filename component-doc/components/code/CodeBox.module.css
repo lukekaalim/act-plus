@@ -12,11 +12,16 @@
 
   border-radius: 8px;
   border: 2px solid rgb(182, 179, 203);
+
+  overflow: auto;
 }
 
 .lineNumber {
-  color: white;
-  background-color: black;
-
   user-select: none;
+  color: rgb(122, 130, 158)
+}
+
+.unknownLineGuessBox {
+  line-height: 25px;
+  margin: 0;
 }

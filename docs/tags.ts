@@ -10,5 +10,3 @@ tags.add(
   Tag('blog'),
   Tag('api'),
 )
-
-console.log('tags', tags.tags)

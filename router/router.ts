@@ -41,7 +41,6 @@ export const useRouter = ({ initialLocation, pages, specialPages }: RouterConfig
   const [emitter] = useState(() => createEventEmitter<RouterEvent>());
 
   const navigate = (nextLocation: URL) => {
-    console.log(`Recived navigate to`, nextLocation)
     setLocation(prevLocation => {
       if (isURLEqual(prevLocation, nextLocation)) {
         console.info(`Refocusing on: "${nextLocation}"`)
