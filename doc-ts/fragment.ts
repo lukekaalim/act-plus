@@ -11,6 +11,7 @@ import ts from "typescript";
 
 export type FragmentRendererProps = {
   fragment: AnalysisFragment,
+  isRootFragment?: boolean,
 }
 
 /**
@@ -27,7 +28,9 @@ export const getFragmentHtmlId = (fragment: AnalysisFragment) => {
 const getFragmentLink = (fragment: AnalysisFragment) => {
   const href = '#' + getFragmentHtmlId(fragment);
 
-  const nodes = [fragment.identifier];
+  const identifierParts = fragment.identifier.split('.')
+
+  const nodes = [identifierParts[identifierParts.length - 1]];
 
   switch (fragment.syntax.kind) {
     case ts.SyntaxKind.MethodSignature: {
@@ -45,15 +48,15 @@ const getFragmentLink = (fragment: AnalysisFragment) => {
   return h('a', { href, className: classes.identifier }, nodes);
 }
 
-export const FragmentRenderer: Component<FragmentRendererProps> = ({ fragment }) => {
+export const FragmentRenderer: Component<FragmentRendererProps> = ({ fragment, isRootFragment = true }) => {
   return [
     h('div', {}, [
-      h('dt', { id: getFragmentHtmlId(fragment) },
+      !isRootFragment && h('dt', { id: getFragmentHtmlId(fragment) },
         h('strong', {}, getFragmentLink(fragment))),
 
       h('dd', {}, renderer.renderNode(fragment.doc)),
     ]),
-    fragment.children.map(fragment => h(FragmentRenderer, { fragment }))
+    fragment.children.map(fragment => h(FragmentRenderer, { fragment, isRootFragment: false }))
   ]
 };
 

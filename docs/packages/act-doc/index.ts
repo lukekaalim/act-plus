@@ -1,5 +1,5 @@
 import { h } from "@lukekaalim/act";
-import { createNavTreeFromExpression, MarkdownArticle, NavTree, NavTreeCompactExpression, SideNav, SidePanelContainer } from "@lukekaalim/act-doc";
+import { CodeBox, createNavTreeFromExpression, DemoStore, MarkdownArticle, NavTree, NavTreeCompactExpression, SideNav, SidePanelContainer } from "@lukekaalim/act-doc";
 import { DocTsRegistry } from "@lukekaalim/act-doc-ts";
 import { VerticalNavMenu } from "@lukekaalim/act-doc/components/vertical_nav_menu/VerticalNavMenu";
 import { PageStore } from "@lukekaalim/act-doc/stores";
@@ -22,6 +22,9 @@ const code = {
   CodeBox: (await import('@lukekaalim/act-doc/components/code/CodeBox.ts?raw')).default,
   Article: (await import('@lukekaalim/act-doc/components/article/Article.ts?raw')).default,
 }
+
+DemoStore.global.subjects.set('CodeBox', () =>
+  h(CodeBox, { lines: ['Some sample', 'Lines of code']}))
 
 
 const buildNavTreeFromMarkdown = (markdownRoot: Root) => {

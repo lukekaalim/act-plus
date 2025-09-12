@@ -75,8 +75,9 @@ to describe something.
 
 ### CodeBox
 
-<DocTs namespace="@lukekaalim/act-doc" identifier="CodeBox" />
-<DocTs namespace="@lukekaalim/act-doc" identifier="CodeBoxProps" />
+<DocTs namespace="@lukekaalim/act-doc" identifiers="CodeBox,CodeBoxProps" />
+
+<Demo subject="CodeBox" />
 
 ### CardGrid
 

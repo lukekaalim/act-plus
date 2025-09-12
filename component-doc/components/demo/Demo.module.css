@@ -1,0 +1,8 @@
+.container {
+  margin: 0 -64px;
+  background-color: rgb(210, 236, 236);
+  padding: 64px;
+
+  overflow: auto;
+  box-shadow: inset 0 0 8px 8px #0000000d;
+}

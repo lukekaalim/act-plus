@@ -17,6 +17,7 @@ export type SupportedAnalysisTypescriptNode =
   | ts.VariableDeclaration
 
 export type AnalysisFragment = {
+  //parent: AnalysisFragment | null,
   identifier: string,
   doc: DocComment,
   syntax: SupportedAnalysisTypescriptNode,

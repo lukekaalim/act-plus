@@ -66,8 +66,11 @@ export type CodeBoxProps = {
 };
 
 /**
- * The Code component renders out a pre-formatted
- * string as if it were code, applying _syntax highlighting_.
+ * The CodeBox is for rendering "lines of code".
+ * 
+ * If only a single line is provided, then the CodeBox attempts
+ * to "Guess" if there are any actual lines by measuring the amount
+ * of "newline" characters it finds.
  */
 export const CodeBox: Component<CodeBoxProps> = ({ lines, lineStart = 0 }) => {
   const ref = useRef<null | HTMLElement>(null);

@@ -101,6 +101,10 @@ export const createSyntaxRenderer = (
   const renderVariableDeclaration = (node: ts.VariableDeclaration) => {
     const identifier = (node.name as ts.Identifier);
 
+    const parent = (node.parent as ts.VariableDeclarationList);
+    const declarationKeyword = parent.flags && ts.NodeFlags[parent.flags] || 'var';
+
+    addToLine(h(hljs.keyword, {}, declarationKeyword.toLocaleLowerCase()), ' ');
     addToLine(h(hljs.titleClass, {}, identifier.text));
     if (node.type) {
       addToLine(': ');
