@@ -7,4 +7,4 @@ export type DocPage = {
 
 export type DocPageContent =
   | { type: 'node', node: Node }
-  | { type: 'markdown', markdown: string }
+  | { type: 'article', articleId: string }
