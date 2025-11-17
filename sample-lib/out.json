@@ -1,0 +1,78 @@
+{
+	"schemaVersion": "2.0",
+	"id": 0,
+	"name": "sample-lib",
+	"variant": "project",
+	"kind": 1,
+	"flags": {},
+	"children": [
+		{
+			"id": 1,
+			"name": "my_export",
+			"variant": "declaration",
+			"kind": 32,
+			"flags": {
+				"isConst": true
+			},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Important export of this package"
+					}
+				]
+			},
+			"sources": [
+				{
+					"fileName": "main.ts",
+					"line": 4,
+					"character": 13
+				}
+			],
+			"type": {
+				"type": "intrinsic",
+				"name": "string"
+			},
+			"defaultValue": "\"A cool Export\""
+		}
+	],
+	"groups": [
+		{
+			"title": "Variables",
+			"children": [
+				1
+			]
+		}
+	],
+	"packageName": "sample-lib",
+	"readme": [
+		{
+			"kind": "text",
+			"text": "# Sample Libary\n\nThis is a sample library that exposes a single variable\nas it's export, as a sample project for parsing doc-ts."
+		}
+	],
+	"symbolIdMap": {
+		"0": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": ""
+		},
+		"1": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "my_export"
+		}
+	},
+	"files": {
+		"entries": {
+			"1": "main.ts",
+			"2": "readme.md",
+			"3": ""
+		},
+		"reflections": {
+			"1": 0,
+			"2": 0,
+			"3": 0
+		}
+	}
+}

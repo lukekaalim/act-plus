@@ -1,16 +1,15 @@
 {
   "private": true,
   "devDependencies": {
-    "vite": "^6.0.5"
+    "vite": "^7.1.10"
   },
   "dependencies": {
-    "@lukekaalim/act-router": "*",
-    
     "@lukekaalim/act": "^3.2.0",
     "@lukekaalim/act-debug": "^1.0.0-alpha.0",
     "@lukekaalim/act-doc": "^1.0.0",
     "@lukekaalim/act-icons": "^1.0.0",
     "@lukekaalim/act-markdown": "^2.0.0",
+    "@lukekaalim/act-router": "*",
     "@lukekaalim/act-web": "^3.4.0-alpha.0"
   }
 }

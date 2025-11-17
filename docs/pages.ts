@@ -3,6 +3,7 @@ import { StoredArticle } from "@lukekaalim/act-doc/components/article/StoredArti
 import { createPageStore } from "@lukekaalim/act-doc/stores/page";
 import * as actDoc from './packages/act-doc';
 import { createDocTsPages } from "@lukekaalim/act-doc-ts/doc";
+import { createSampleDocPages } from "../sample-lib/docs";
 
 export const pages = createPageStore();
 
@@ -18,3 +19,4 @@ const packagePages = pages.prefix('/packages/@lukekaalim')
 
 actDoc.createPages(packagePages.prefix('/act-doc'))
 createDocTsPages(packagePages.prefix('/act-doc-ts'))
+createSampleDocPages(packagePages.prefix('/sample'))

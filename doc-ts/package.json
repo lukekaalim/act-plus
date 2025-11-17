@@ -5,6 +5,7 @@
   "dependencies": {
     "@lukekaalim/act": "*",
     "@microsoft/tsdoc": "^0.15.1",
+    "typedoc": "^0.28.14",
     "typescript": "^5.9.2",
     "unist-util-visit": "^5.0.0"
   }
