@@ -19,8 +19,9 @@ const articleElementTypes = {
   inlineCode: 'code',
   paragraph: 'p',
 } as Record<keyof typeof articleClassNames, string>
+
 export const article = Object.fromEntries(Object.keys(articleClassNames).map(key => {
-  return [key, ({ children }) => h(articleElementTypes[key], { className: articleClassNames[key] }, children)]
+  return [key, ({ children }) => h(articleElementTypes[key as keyof typeof articleClassNames], { className: articleClassNames[key as keyof typeof articleClassNames] }, children)]
 })) as Record<keyof typeof articleClassNames, Component>;
 
 

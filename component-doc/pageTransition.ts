@@ -1,5 +1,5 @@
 import { Bezier4Animation, createTransitionAPI, Vector1D, Animation1D } from "@lukekaalim/act-curve";
-import { DocPage } from './DocPage';
+import { DocPage, renderDocPageContent } from './DocPage';
 import { Component, createId, h, OpaqueID, useMemo, useRef } from "@lukekaalim/act";
 import classes from './PageTransition.module.css';
 
@@ -86,5 +86,5 @@ export const PageTransitionDriver: Component<{ state: PageTransitionState }> = (
   })
 
   return h('div', { ref, className: classes.pageTransitionDriver },
-    state.page.element)
+    renderDocPageContent(state.page.content))
 }

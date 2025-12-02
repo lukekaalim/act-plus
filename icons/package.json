@@ -3,7 +3,7 @@
   "main": "mod.ts",
   "version": "1.0.0",
   "dependencies": {
-    "@lukekaalim/act": "^3.2.0",
+    "@lukekaalim/act": "^3.2.1",
     "@lukekaalim/act-web": "^3.2.1",
     "@svg-icons/feather": "^1.87.0"
   }

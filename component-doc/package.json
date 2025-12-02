@@ -3,7 +3,7 @@
   "main": "index.ts",
   "version": "1.0.0",
   "dependencies": {
-    "@lukekaalim/act": "^3.2.0",
+    "@lukekaalim/act": "^3.2.1",
     "@lukekaalim/act-icons": "^1.0.0",
     "@lukekaalim/act-web": "^3.2.1",
     "@sindresorhus/string-hash": "^2.0.0",

@@ -1,5 +1,5 @@
 import { h, useState } from "@lukekaalim/act";
-import { DocMark } from "@lukekaalim/act-doc";
+import { MarkdownArticle } from "@lukekaalim/act-doc";
 import { MarkdownComponent } from "@lukekaalim/act-markdown";
 import { CartesianSpace } from "./CartesianSpace";
 import { LinePath } from "./LinePath";
@@ -60,12 +60,12 @@ const LinePathDemo = () => {
   ]))
 }
 
-export default h(DocMark, {
-  text: await import('./readme.md?raw').then(m => m.default),
-  options: {
-    components: {
-      CartesianSpaceDemo,
-      LinePathDemo
-    }
-  }
+export default h(MarkdownArticle, {
+  content: await import('./readme.md?raw').then(m => m.default),
+  //options: {
+  //  components: {
+  //    CartesianSpaceDemo,
+  //    LinePathDemo
+  //  }
+  //}
 })

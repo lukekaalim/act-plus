@@ -6,6 +6,7 @@
     "module": "ES2022",
     "moduleResolution": "bundler",
     "types": ["vite/client", "@types/node"],
+    "skipLibCheck": true,
     "noEmit": true
   }
 }

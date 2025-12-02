@@ -73,5 +73,5 @@ const NavigationEntry: Component<NavigationEntryProps> = ({ navigation, path, pa
   return h('a', {
     href: page.path,
     className: [classes.navigationLink, selected && classes.selected].join(' '),
-  }, page.link || segmentDisplay)
+  }, page.path || segmentDisplay)
 }

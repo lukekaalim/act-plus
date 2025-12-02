@@ -10,6 +10,7 @@ import { useStore } from "../../contexts/stores";
 import { useMdxContext } from "./MDXContext";
 import { Code } from "mdast";
 import { SyntaxHighlightingCodeBox } from "../code";
+import { useAppSetup } from "../../plugin/AppSetup";
 
 export const renderMarkdown = createMdastRenderer({
   classNames: {
@@ -36,10 +37,12 @@ type StaticMarkdownArticleProps = {
   markdown: string
 };
 
-const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ markdown, children }) => {
+export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ markdown, children }) => {
   const root = useRemarkParser(markdown);
 
   const mdx = useMdxContext()
+  const setup = useAppSetup();
+
   const renderer = useMemo(() => createMdastRenderer({
     classNames: {
       heading: classes.heading,
@@ -49,7 +52,7 @@ const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ markdown
       blockquote: articleClasses.blockQuote,
       image: articleClasses.image,
     },
-    components: Object.fromEntries(mdx.globalComponentMap.entries()),
+    components: Object.fromEntries([...mdx.globalComponentMap.entries(), ...setup.MDXComponents]),
     overrides: {
       code: ({ node }: OverrideComponentProps) => {
         const codeNode = node as Code;

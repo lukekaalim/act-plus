@@ -7,6 +7,83 @@
 	"flags": {},
 	"children": [
 		{
+			"id": 2,
+			"name": "My_Type",
+			"variant": "declaration",
+			"kind": 2097152,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "This is a cool type that is also exported"
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 4,
+					"name": "prop",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "main.ts",
+							"line": 21,
+							"character": 40,
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/45ccfb629086a77412a8a5baa99647975b978eff/sample-lib/main.ts#L21"
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "intrinsic",
+								"name": "string"
+							},
+							{
+								"type": "reference",
+								"target": 5,
+								"name": "T",
+								"package": "sample-lib",
+								"refersToTypeParameter": true
+							}
+						]
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						4
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "main.ts",
+					"line": 21,
+					"character": 12,
+					"url": "https://github.com/lukekaalim/act-compdoc/blob/45ccfb629086a77412a8a5baa99647975b978eff/sample-lib/main.ts#L21"
+				}
+			],
+			"typeParameters": [
+				{
+					"id": 5,
+					"name": "T",
+					"variant": "typeParam",
+					"kind": 131072,
+					"flags": {},
+					"type": {
+						"type": "literal",
+						"value": true
+					}
+				}
+			]
+		},
+		{
 			"id": 1,
 			"name": "my_export",
 			"variant": "declaration",
@@ -20,13 +97,53 @@
 						"kind": "text",
 						"text": "Important export of this package"
 					}
+				],
+				"blockTags": [
+					{
+						"tag": "@version",
+						"content": [
+							{
+								"kind": "text",
+								"text": "1.0.0"
+							}
+						]
+					},
+					{
+						"tag": "@external",
+						"content": []
+					},
+					{
+						"tag": "@param",
+						"name": "Alpha",
+						"content": [
+							{
+								"kind": "text",
+								"text": "The description for Alpha parameter "
+							},
+							{
+								"kind": "inline-tag",
+								"tag": "@link",
+								"text": "Foo.Bar"
+							}
+						]
+					},
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "code",
+								"text": "```ts\nSome code, demonstrating it's function\n```"
+							}
+						]
+					}
 				]
 			},
 			"sources": [
 				{
 					"fileName": "main.ts",
-					"line": 4,
-					"character": 13
+					"line": 15,
+					"character": 13,
+					"url": "https://github.com/lukekaalim/act-compdoc/blob/45ccfb629086a77412a8a5baa99647975b978eff/sample-lib/main.ts#L15"
 				}
 			],
 			"type": {
@@ -38,6 +155,12 @@
 	],
 	"groups": [
 		{
+			"title": "Type Aliases",
+			"children": [
+				2
+			]
+		},
+		{
 			"title": "Variables",
 			"children": [
 				1
@@ -48,7 +171,7 @@
 	"readme": [
 		{
 			"kind": "text",
-			"text": "# Sample Libary\n\nThis is a sample library that exposes a single variable\nas it's export, as a sample project for parsing doc-ts."
+			"text": "# Sample Libary\n\nThis is a sample library that exposes a single variable\nas it's export, as a sample project for parsing doc-ts.\n\n<TypeDoc project=\"sample-lib\" name=\"my_export\" />\n<TypeDoc project=\"sample-lib\" name=\"My_Type\" />"
 		}
 	],
 	"symbolIdMap": {
@@ -61,6 +184,21 @@
 			"packageName": "sample-lib",
 			"packagePath": "main.ts",
 			"qualifiedName": "my_export"
+		},
+		"2": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "My_Type"
+		},
+		"4": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type.prop"
+		},
+		"5": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "T"
 		}
 	},
 	"files": {

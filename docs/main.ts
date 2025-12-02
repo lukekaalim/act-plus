@@ -11,10 +11,9 @@ import {
   createRelativeURLFactory,
   WebLink,
 } from '@lukekaalim/act-router';
-import { Grid3, Hero, MarkdownArticle, SidePanelContainer, TopBanner } from '@lukekaalim/act-doc';
+import { AppSetupContext, createPageStore, Grid3, Hero, intializeApplication, MarkdownArticle, SidePanelContainer, TopBanner } from '@lukekaalim/act-doc';
 
 import { documents } from "./markdown";
-import { pages as pagesStore } from './pages';
 
 import iconPlusURL from './media/icon-plus.png';
 import { SVGRepo } from '@lukekaalim/act-icons';
@@ -24,6 +23,10 @@ import { StoredArticle } from '@lukekaalim/act-doc/components/article/StoredArti
 import { Article } from '@lukekaalim/act-doc/components/article/Article';
 import { Content } from '@lukekaalim/act-doc/components/content/Content';
 import { SideNav } from '@lukekaalim/act-doc/components/sidenav/SideNav';
+import { createTypeDocPlugin } from '@lukekaalim/act-doc-ts/plugin';
+import { createPages } from './packages/act-doc';
+import { createDocTsPages } from '@lukekaalim/act-doc-ts/doc';
+import { createSampleDocPages } from '../sample-lib/docs';
 
 const origin = createRelativeURLFactory();
 
@@ -286,6 +289,24 @@ const BlogPage = () => {
   ]);
 }
 
+export const pageStore = createPageStore();
+
+const NotFound = () => h('h1', {}, `Page not found`)
+
+const packagePages = pageStore.prefix('/packages/@lukekaalim')
+  .add('/act-httpdoc', NotFound)
+  .add('/act-graphit', NotFound)
+  .add('/act-curve', NotFound)
+  .add('/act-markdown', NotFound)
+  .add('/act-router', NotFound)
+  .add('/act-icons', NotFound)
+
+const setup = intializeApplication([createTypeDocPlugin()])
+
+createPages(packagePages.prefix('/act-doc'))
+createDocTsPages(packagePages.prefix('/act-doc-ts'))
+createSampleDocPages(packagePages.prefix('/sample'), setup.api)
+
 const pages = RouterPage.map({
   '/': { component: DemoPage },
   '/about': { component: About },
@@ -294,7 +315,7 @@ const pages = RouterPage.map({
   '/blog': { component: BlogPage },
   '/search': { component: Search }
 })
-pages.push(...pagesStore.pages);
+pages.push(...pageStore.pages);
 
 const ExampleApp = () => {
   const ref = useRef<HTMLElement | null>(null);
@@ -304,14 +325,14 @@ const ExampleApp = () => {
   });
   useDOMIntegration(router);
 
-  return h(RouterContext.Provider, { value: router },
-    h(storeContext.Provider, { value: { tags, page: pagesStore, document: documents } },
+  return h(AppSetupContext.Provider, { value: setup }, h(RouterContext.Provider, { value: router },
+    h(storeContext.Provider, { value: { tags, page: pageStore, document: documents } },
       [
         banner,
         h(router.page.component, { onReady() { console.log('Page ready'); }, })
       ]
     )
-  );
+  ));
 };
 
 const main = () => {

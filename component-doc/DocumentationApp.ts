@@ -9,12 +9,16 @@ import docMarkClasses from './DocMark.module.css';
 import { asyncNodeRegistryContext, useRootAynscNodeRegistry } from "./AsyncComponent";
 import { DefProvider } from "@lukekaalim/act-graphit";
 import { PageTransitionDriver, usePageTransition } from "./pageTransition";
+import { DocPlugin } from "./plugin/DocPlugin";
+import { AppSetupContext, useApplicationInit } from "./plugin/AppSetup";
 
 export type DocumentationAppProps = {
   /**
    * All the pages the documentation app will manage.
    */
   pages: DocPage[],
+
+  plugins?: DocPlugin[],
 }
 
 /**
@@ -26,7 +30,10 @@ export type DocumentationAppProps = {
  * render(document.body, h(DocumentationApp, { pages }));
  * ```
  */
-export const DocumentationApp: Component<DocumentationAppProps> = ({ pages }) => {
+export const DocumentationApp: Component<DocumentationAppProps> = ({
+  pages,
+  plugins = []
+}) => {
   const ref = useRef<null | HTMLElement>(null);
   
   const pageMap = useMemo(() => {
@@ -40,12 +47,13 @@ export const DocumentationApp: Component<DocumentationAppProps> = ({ pages }) =>
 
   const path = navigation.location.pathname;
 
-  const currentPage = pageMap.get(path) || { path: '', element: h(NotFound), link: '' };
+  const currentPage: DocPage = pageMap.get(path) || { path: '', content: { type: 'node', node: h(NotFound) } };
 
   const pageAnimStates = usePageTransition(currentPage);
-  console.log(pageAnimStates);
+  
+  const setup = useApplicationInit(plugins);
 
-  return [
+  return h(AppSetupContext.Provider, { value: setup }, [
     h(DefProvider),
     h(asyncNodeRegistryContext.Provider, { value: asyncNodeRegistry },
     h(DocLayout, {
@@ -55,7 +63,7 @@ export const DocumentationApp: Component<DocumentationAppProps> = ({ pages }) =>
       })),
       navPanel: h(NavigationPanel, { navigation, pages })
     }))
-  ]
+  ])
 }
 
 const NotFound = () => {

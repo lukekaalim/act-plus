@@ -1,5 +1,5 @@
 import { h, useEffect, useRef } from "@lukekaalim/act";
-import { DocMark } from "@lukekaalim/act-doc";
+import { MarkdownArticle } from "@lukekaalim/act-doc";
 import md from './readme.md?raw';
 import { SVGRepo } from "./mod";
 import { MarkdownComponent } from "@lukekaalim/act-markdown";
@@ -10,7 +10,7 @@ const SVGRepoDemo: MarkdownComponent = (props) => {
     h(SVGRepo, { key: props.attributes.key as string }));
 }
 
-export default h(DocMark, {
-  text: md,
-  options: { inlineComponents: { SVGRepoDemo }}
+export default h(MarkdownArticle, {
+  content: md,
+  //options: { inlineComponents: { SVGRepoDemo }}
 });
