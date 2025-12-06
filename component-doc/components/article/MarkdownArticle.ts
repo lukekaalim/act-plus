@@ -8,9 +8,10 @@ import classes from './MarkdownArticle.module.css';
 import articleClasses from './Article.module.css';
 import { useStore } from "../../contexts/stores";
 import { useMdxContext } from "./MDXContext";
-import { Code } from "mdast";
+import { Code, Root } from "mdast";
 import { SyntaxHighlightingCodeBox } from "../code";
 import { useAppSetup } from "../../plugin/AppSetup";
+import { useDocApp } from "../../application";
 
 export const renderMarkdown = createMdastRenderer({
   classNames: {
@@ -34,14 +35,18 @@ export const MarkdownArticle: Component<MarkdownArticleProps> = ({ content, chil
 
 
 type StaticMarkdownArticleProps = {
-  markdown: string
+  markdown?: string,
+  root?: Root,
 };
 
-export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ markdown, children }) => {
-  const root = useRemarkParser(markdown);
+export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ markdown, root, children }) => {
+  const stringRoot = useRemarkParser(markdown || '');
+  const finalRoot = root || stringRoot;
 
   const mdx = useMdxContext()
   const setup = useAppSetup();
+
+  const app = useDocApp();
 
   const renderer = useMemo(() => createMdastRenderer({
     classNames: {
@@ -52,7 +57,7 @@ export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ m
       blockquote: articleClasses.blockQuote,
       image: articleClasses.image,
     },
-    components: Object.fromEntries([...mdx.globalComponentMap.entries(), ...setup.MDXComponents]),
+    components: Object.fromEntries([...mdx.globalComponentMap.entries(), ...setup.MDXComponents, ...app.component.components.map(c => [c.name, c.component])]),
     overrides: {
       code: ({ node }: OverrideComponentProps) => {
         const codeNode = node as Code;
@@ -64,12 +69,12 @@ export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ m
     }
   }), [mdx]);
 
-  const nodes = useMemo(() => renderer(root), [markdown, renderer]);
+  const nodes = useMemo(() => renderer(finalRoot), [markdown, renderer]);
 
   const { tags } = useStore()
 
-  if (root.children[0] && root.children[0].type === 'yaml') {
-    const child = root.children[0];
+  if (finalRoot.children[0] && finalRoot.children[0].type === 'yaml') {
+    const child = finalRoot.children[0];
     const frontmatter = YAML.parse(child.value);
     
     return h(Article, {}, [

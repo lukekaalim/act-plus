@@ -1,7 +1,8 @@
-import { Component, h } from '@lukekaalim/act';
+import { Component, h, useMemo } from '@lukekaalim/act';
 import { CodeBox, renderMarkdown, StaticMarkdownArticle } from '@lukekaalim/act-doc';
 import { Markdown, parser } from '@lukekaalim/act-markdown';
 import { Comment, CommentDisplayPart, DeclarationReflection } from 'typedoc';
+import { renderTypeSyntax, TypeRenderer } from './TypeRenderer';
 
 export type DeclarationReflectionRendererProps = {
   declarationReflection: DeclarationReflection,
@@ -12,14 +13,15 @@ export const DeclarationReflectionRenderer: Component<DeclarationReflectionRende
   declarationReflection,
   headingLevel = 2
 }) => {
+  const lines = useMemo(() => declarationReflection.type && renderTypeSyntax(declarationReflection.type), []);
   const id = declarationReflection.project.name + '.' + declarationReflection.getFullName();
+
   return [
     h(`h${headingLevel}`, { id }, h('a', { href: `#${id}` }, declarationReflection.name)),
-    h(CodeBox, { lines: [declarationReflection.toString()] }),
-    !!declarationReflection.defaultValue && h(CodeBox, { lines: [declarationReflection.defaultValue] }),
+    !!lines && h(CodeBox, { lines }),
     !!declarationReflection.comment && h(CommentRenderer, { comment: declarationReflection.comment })
-  ]
-}
+  ];
+};
 
 type CommentRendererProps = {
   comment: Comment,
@@ -47,7 +49,7 @@ const CommentDisplayPartRenderer = ({ part }: CommentDisplayPartRendererProps) =
     case 'code':
       return renderMarkdown(parser.parse(part.text))
     case 'text':
-      return h('span', {}, part.text);
+      return renderMarkdown(parser.parse(part.text))
     case 'inline-tag':
       return h('a', {}, [part.tag, part.text]);
     case 'relative-link':

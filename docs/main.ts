@@ -11,7 +11,7 @@ import {
   createRelativeURLFactory,
   WebLink,
 } from '@lukekaalim/act-router';
-import { AppSetupContext, createPageStore, Grid3, Hero, intializeApplication, MarkdownArticle, SidePanelContainer, TopBanner } from '@lukekaalim/act-doc';
+import { AppSetupContext, createPageStore, Grid3, Hero, intializeApplication, TopBanner } from '@lukekaalim/act-doc';
 
 import { documents } from "./markdown";
 
@@ -19,14 +19,13 @@ import iconPlusURL from './media/icon-plus.png';
 import { SVGRepo } from '@lukekaalim/act-icons';
 import { storeContext, useStore } from '@lukekaalim/act-doc/contexts/stores';
 import { tags } from './tags';
-import { StoredArticle } from '@lukekaalim/act-doc/components/article/StoredArticle';
 import { Article } from '@lukekaalim/act-doc/components/article/Article';
-import { Content } from '@lukekaalim/act-doc/components/content/Content';
-import { SideNav } from '@lukekaalim/act-doc/components/sidenav/SideNav';
-import { createTypeDocPlugin } from '@lukekaalim/act-doc-ts/plugin';
+import { TypeDocPlugin } from '@lukekaalim/act-doc-ts/plugin';
 import { createPages } from './packages/act-doc';
 import { createDocTsPages } from '@lukekaalim/act-doc-ts/doc';
 import { createSampleDocPages } from '../sample-lib/docs';
+import { createDocApp } from '@lukekaalim/act-doc/application';
+import { DocAppRenderer } from '@lukekaalim/act-doc/render';
 
 const origin = createRelativeURLFactory();
 
@@ -274,11 +273,6 @@ const DemoPage = () => {
   ])
 }
 
-const blogs = [
-  import('./blogs/0.md?raw'),
-  import('./blogs/1.md?raw'),
-]
-
 const BlogPage = () => {
   const { document } = useStore();
   return h('div', {}, [
@@ -301,11 +295,23 @@ const packagePages = pageStore.prefix('/packages/@lukekaalim')
   .add('/act-router', NotFound)
   .add('/act-icons', NotFound)
 
-const setup = intializeApplication([createTypeDocPlugin()])
+const setup = intializeApplication([])
 
 createPages(packagePages.prefix('/act-doc'))
 createDocTsPages(packagePages.prefix('/act-doc-ts'))
-createSampleDocPages(packagePages.prefix('/sample'), setup.api)
+
+const doc = createDocApp([TypeDocPlugin]);
+createSampleDocPages(doc);
+
+pageStore.add('/packages/sample', () => h(DocAppRenderer, { doc }))
+pageStore.add('/packages/@lukekaalim/grimoire', () => h(DocAppRenderer, { doc }))
+
+doc.typedoc.addProjectJSON('@lukekaalim/grimoire', (await import('@lukekaalim/act-doc/typedoc.output.json')).default as any);
+doc.article.add(
+  'grimoire/readme',
+  (await import("@lukekaalim/act-doc/application/readme.md?raw")).default,
+  '/packages/@lukekaalim/grimoire'
+)
 
 const pages = RouterPage.map({
   '/': { component: DemoPage },

@@ -15,7 +15,7 @@
 .details {
   display: flex;
   gap: 20px;
-  _font-family: "Arvo";
+  font-family: "Arvo";
 }
 
 .date {
@@ -23,7 +23,7 @@
 
 .author {
   text-decoration: underline;
-  _font-family: "Arvo";
+  font-family: "Arvo";
 }
 
 .title {

@@ -4,6 +4,9 @@ import { createPageStore } from "@lukekaalim/act-doc/stores/page";
 import * as actDoc from './packages/act-doc';
 import { createDocTsPages } from "@lukekaalim/act-doc-ts/doc";
 import { createSampleDocPages } from "../sample-lib/docs";
+import { createDocApp } from "@lukekaalim/act-doc/application";
+import { TypeDocPlugin } from "@lukekaalim/act-doc-ts/plugin";
+import { DocAppRenderer } from "@lukekaalim/act-doc/render";
 
 export const pages = createPageStore();
 
@@ -19,4 +22,8 @@ const packagePages = pages.prefix('/packages/@lukekaalim')
 
 actDoc.createPages(packagePages.prefix('/act-doc'))
 createDocTsPages(packagePages.prefix('/act-doc-ts'))
-createSampleDocPages(packagePages.prefix('/sample'))
+
+const doc = createDocApp([TypeDocPlugin]);
+createSampleDocPages(doc);
+
+pages.add('/packages/sample', () => h(DocAppRenderer, { doc }))

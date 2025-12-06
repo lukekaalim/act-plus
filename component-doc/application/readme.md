@@ -1,22 +1,25 @@
-# DocSetup
+# Application
 
-The application instance is a collection
-of data representing some common properties
-of your traversible documentation website.
+To manage the entire documentation website, there is
+a parent object called the `DocApp`.
 
-It includes details such as a lookup map
-for resolving references to URLs, a list of
-MDX components.
+<TypeDoc project="@lukekaalim/grimoire" name="DocApp" />
+<TypeDoc project="@lukekaalim/grimoire" name="CoreAPI" />
+<TypeDoc project="@lukekaalim/grimoire" name="PluginAPI" />
 
 ## Creation
 
 You can create an instance with the
-`createDocSetup` function.
+`createDocApp` function.
+
+<TypeDoc project="@lukekaalim/grimoire" name="createDocApp" />
 
 ## Rendering
 
 The `DocRenderer` accepts a DocSetup instance
 as a prop.
+
+<TypeDoc project="@lukekaalim/grimoire" name="DocAppRenderer" />
 
 ## Example Setup
 
@@ -61,17 +64,22 @@ You can extend the DocApp system
 
 ```ts
 
-type TypeDocAPI = {
-  addJSONProject(key: string): void,
-}
+const MyPlugin = {
+  key: 'my_plugin',
+  api(core) {
+    // register a new component to be displayed in MDX articles
+    core.components.add('NoiseMaker', () => h('audio', { src: 'my-audio' }))
 
-declare module "@lukekaalim/grimore" {
-  interface DocAppExtensions {
-    typedoc: TypeDocAPI
+    return {
+      doThing() {
+        console.log('A thing is done!');
+      }
+    }
   }
 }
 
-doc.typedoc.addJSONProject("", "");
-doc.typedoc.addProject();
+const doc = createDocApp([MyPlugin]);
+
+doc.my_plugin.doThing();
 
 ```
