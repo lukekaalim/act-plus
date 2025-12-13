@@ -1,25 +1,30 @@
 import { Component, h } from "@lukekaalim/act";
-import { defaultMdxComponentMap } from "../article/MDXContext";
-import { DemoStore, DemoSubject } from "../../lib/demo";
 
 import classes from './Demo.module.css'
+import { MDXComponent, useDocApp } from "../../application";
 
-
-export type DemoProps = {
-  subject: DemoSubject,
-}
-
-export const Demo: Component<DemoProps> = ({ subject }) => {
-  return h('div', { className: classes.container }, [
-    h(subject)
-  ]);
+export const DefaultDemoFrame: Component = ({ children }) => {
+  return [
+    'Example:',
+    h('div', { className: classes.container }, [
+      children
+    ])
+  ];
 };
 
-defaultMdxComponentMap.set('Demo', ({ attributes }) => {
-  const subjectName = attributes['subject'] as string;
-  const subject = DemoStore.global.subjects.get(subjectName);
-  if (!subject)
-    return `Demo of name "${subjectName}" not found`;
+export const DemoMDX: MDXComponent = ({ attributes }) => {
+  const frameKey = attributes["frame"];
+  const demoKey = attributes["demo"];
 
-  return h(Demo, { subject });
-})
+  if (!demoKey)
+    throw new Error(`DemoMDX missing "demo" attribute`);
+
+  const doc = useDocApp([]);
+  const demo = doc.demos.demos.find(d => d.key === demoKey);
+  if (!demo)
+    throw new Error(`DemoMDX can't find demo "${demoKey}"`);
+  
+  const frame = doc.demos.frames.find(f => f.key === frameKey) || doc.demos.defaultFrame;
+
+  return h(frame.component, {}, h(demo.component));
+}

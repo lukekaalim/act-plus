@@ -6,6 +6,10 @@ as it's export, as a sample project for parsing doc-ts.
 <TypeDoc project="sample-lib" name="my_export" />
 <TypeDoc project="sample-lib" name="My_Type" />
 
-## Debug
+## Type Debug
 
 <TypeDocDebug />
+
+## Core Debug
+
+<CoreDebug />

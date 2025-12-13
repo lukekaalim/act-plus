@@ -6,6 +6,8 @@ import { AnyPluginArray, createPlugin, PluginAPI, PluginKeyArray } from "./Plugi
  * The DocApp type represents a collection of data that describes a
  * documentation website. It collects things such as:
  * 
+ *  {@link DocApp|This is the original text}
+ * 
  *  - Routing
  *  - Demo Components
  *  - Markdown Articles
@@ -16,7 +18,7 @@ import { AnyPluginArray, createPlugin, PluginAPI, PluginKeyArray } from "./Plugi
  * `createDocApp` function.
  * 
  */
-export type DocApp<Plugins extends AnyPluginArray> = PluginAPI<Plugins> & CoreAPI;
+export type DocApp<Plugins extends AnyPluginArray = []> = PluginAPI<Plugins> & CoreAPI;
 
 /**
  * Create a new DocApp object.
@@ -42,17 +44,21 @@ export const DocAppContext = createContext<DocApp<AnyPluginArray> | null>(null);
 
 /**
  * Get an instance of the DocApp used in the application.
- * @param requiredPluginKeys 
- * @returns 
+ * @param requiredPlugins A list of plugins that this DocApp instance _requires_
+ * for this hook to function. A runtime check is performed on the context-provided
+ * DocApp instance to validate that the requested plugins are actually present (via their Key property).
+ * 
+ * @returns The context-shared DocApp instance used across the application. If required plugins
+ * were provided, the plugin types are added to the return interface.
  */
-export const useDocApp = <Plugins extends AnyPluginArray>(requiredPluginKeys: PluginKeyArray<Plugins> = ([] as any)): DocApp<Plugins> => {
+export const useDocApp = <Plugins extends AnyPluginArray>(requiredPlugins: Plugins): DocApp<Plugins> => {
   const doc = useContext(DocAppContext);
   if (!doc)
     throw new Error(`Missing AppDoc context`);
 
   const docKeys = Object.keys(doc);
 
-  if (requiredPluginKeys.every(requiredKey => docKeys.includes(requiredKey)))
+  if (requiredPlugins.every(requiredPlugin => docKeys.includes(requiredPlugin.key)))
     return doc as DocApp<Plugins>;
 
   throw new Error()

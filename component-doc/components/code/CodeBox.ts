@@ -35,7 +35,7 @@ export const hljsClassNames = {
   type: 'hljs-type',
   builtIn: 'hljs-built_in',
   selectorAttr: 'hljs-selector-attr',
-  selectorPsudo: 'hljs-selector-pseudo',
+  selectorPseudo: 'hljs-selector-pseudo',
   addition: 'hljs-addition',
   templateTag: 'hljs-template-tag',
   templateVariable: 'hljs-template-variable',
@@ -60,6 +60,7 @@ export const hljs = Object.fromEntries(
     })
 ) as Record<HLJSClassName, Component>;
 
+
 export type CodeBoxProps = {
   lineStart?: number,
   lines: Node[],
@@ -79,10 +80,12 @@ export const CodeBox: Component<CodeBoxProps> = ({ lines, lineStart = 0 }) => {
   useEffect(() => {
     if (!ref.current)
       return;
-    const lineCount = ref.current.textContent.match(/\n/g);
+    const lineCount = !!ref.current.textContent && (ref.current.textContent.match(/\n/g));
+    
     if (lineCount)
       setLineGuess(lineCount.length + 1);
   }, [lines.length])
+
 
   if (lines.length < 2) {
     return h('code', { className: classes.codeBox }, h('table', {}, [

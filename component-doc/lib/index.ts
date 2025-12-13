@@ -3,3 +3,6 @@ export * from './tag';
 export * from './errors';
 export * from './navtree';
 export * from './demo';
+
+
+export * from './highlighting';

@@ -1,8 +1,12 @@
-import { Component, h, Node } from "@lukekaalim/act";
+import { Component, h, Node, useEffect, useRef, useState } from "@lukekaalim/act";
 import { parser } from "@lukekaalim/act-markdown";
 import { Root } from "mdast";
 import { Article } from "../components/article/Article";
-import { MarkdownArticle, StaticMarkdownArticle } from "../components";
+import { MarkdownArticle, SidePanelContainer, StaticMarkdownArticle } from "../components";
+import { CoreDebug } from "../components/debug/CoreDebug";
+import { DefaultDemoFrame, DemoMDX } from "../components/demo/Demo";
+import { VerticalNavMenu, VerticalNavMenu2 } from "../components/vertical_nav_menu/VerticalNavMenu";
+import { buildNavTreeFromDOM, createNavTreeBuilder, NavTree2 } from "../lib";
 
 /**
  * The CoreAPI is a list of API objects that contain
@@ -62,8 +66,13 @@ export type ComponentsAPI = {
  */
 export type ReferenceAPI = {
   references: Reference[],
+  indirect_references: IndirectReference[],
 
-  add(key: string, path: string, fragment?: string): Reference,
+  add(key: ReferenceKey, path: string, fragment?: string): Reference,
+  addIndirect(source: ReferenceKey, destination: ReferenceKey, fragment?: string): IndirectReference,
+
+  resolveKey(key: ReferenceKey): null | ReferenceLocation,
+  resolveRouteLink(key: ReferenceKey): null | URL,
 };
 
 export type ReferenceKey = string;
@@ -72,6 +81,12 @@ export type Reference = {
   key: ReferenceKey,
   location: ReferenceLocation,
 };
+export type IndirectReference = {
+  source: ReferenceKey,
+  destination: ReferenceKey,
+
+  fragment?: string,
+}
 
 /**
  * An Article is a kind of rich text document. Is specifically
@@ -83,8 +98,7 @@ export type ArticleAPI = {
   /**
    * Add some markdown content as an Article.
    * @param key 
-   * @param markdownContent 
-   * @param path 
+   * @param markdownContent
    */
   add(key: string, markdownContent: string, path?: string): Article,
   addRawRoot(key: string, root: Root, path?: string): Article,
@@ -95,7 +109,6 @@ export type ArticlePreprocessor = (article: Article) => void;
 export type ArticleKey = string;
 export type Article = {
   key: ArticleKey,
-  path?: string,
 
   content: Root,
 }
@@ -105,10 +118,18 @@ export type Demo = {
   frame?: string,
   component: Component<{}>
 };
+export type DemoFrame = {
+  key: string,
+  component: Component<{}>
+}
 export type DemoAPI = {
   demos: Demo[],
+  frames: DemoFrame[],
+  defaultFrame: DemoFrame,
 
   add(key: string, component: Component<{}>, frame?: string): Demo,
+  addFrame(key: string, frameComponent: Component<{}>): DemoFrame,
+  setDefaultFrame(frame: DemoFrame): void,
 };
 
 export const createCoreAPI = (): CoreAPI => {
@@ -117,7 +138,9 @@ export const createCoreAPI = (): CoreAPI => {
   const components: MDXComponentEntry[] = [];
   const routes: Route[] = [];
   const demos: Demo[] = [];
+  const demo_frames: DemoFrame[] = [];
   const references: Reference[] = [];
+  const indirect_references: IndirectReference[] = []
 
   const core: CoreAPI = {
     route: {
@@ -130,10 +153,44 @@ export const createCoreAPI = (): CoreAPI => {
     },
     reference: {
       references,
+      indirect_references,
       add(key, path, fragment) {
         const reference = { key, location: { path, fragment } };
         references.push(reference);
         return reference;
+      },
+      addIndirect(source, destination, fragment) {
+        const indirect_reference = { source, destination, fragment };
+        indirect_references.push(indirect_reference);
+        return indirect_reference;
+      },
+      resolveKey(key) {
+        const direct_reference = core.reference.references.find(ref => ref.key === key);
+        if (direct_reference)
+          return direct_reference.location;
+        const indirect_reference = core.reference.indirect_references.find(ref => ref.source === key);
+        if (indirect_reference) {
+          const resolvedReference = core.reference.resolveKey(indirect_reference.destination);
+          if (!resolvedReference)
+            return null;
+
+          if (indirect_reference.fragment)
+            return { path: resolvedReference.path, fragment: indirect_reference.fragment };
+          return resolvedReference;
+        }
+        return null;
+      },
+      resolveRouteLink(key) {
+        const location = core.reference.resolveKey(key)
+        if (!location)
+          return null;
+        if (!core.route.routes.find(route => route.path !== location.path))
+          return null;
+        const url = new URL(document.location.href);
+        url.pathname = location.path;
+        if (location.fragment)
+          url.hash = location.fragment;
+        return url;
       },
     },
     article: {
@@ -151,8 +208,30 @@ export const createCoreAPI = (): CoreAPI => {
         for (const preprocessor of article_preprocessors)
           preprocessor(article);
 
-        if (article.path)
-          core.route.add(article.path, h(StaticMarkdownArticle, { root: content }))
+
+        if (article.path) {
+
+          const Component = () => {
+            const ref = useRef<HTMLElement | null>(null)
+            const [tree, setTree] = useState<NavTree2 | null>(null);
+
+            useEffect(() => {
+              const builder = createNavTreeBuilder();
+              buildNavTreeFromDOM(builder, ref.current as HTMLElement);
+              builder.trim();
+              setTree(builder.tree);
+            }, []);
+
+            const node = h(SidePanelContainer, {
+              left: null,
+              right: tree && h(VerticalNavMenu2, { tree }),
+            }, h(StaticMarkdownArticle, { root: content }))
+  
+            return h('div', { ref }, node);
+          }
+          core.route.add(article.path, h(Component))
+          core.reference.add(`article:${article.key}`, article.path)
+        }
 
         articles.push(article);
         return article;
@@ -160,10 +239,20 @@ export const createCoreAPI = (): CoreAPI => {
     },
     demos: {
       demos,
+      frames: demo_frames,
+      defaultFrame: { key: 'default', component: DefaultDemoFrame },
       add(key, component, frame) {
         const demo = { key, component, frame };
         demos.push(demo);
         return demo;
+      },
+      addFrame(key, frameComponent) {
+        const frame = { key, component: frameComponent };
+        demo_frames.push(frame);
+        return frame;
+      },
+      setDefaultFrame(newFrame) {
+        core.demos.defaultFrame = newFrame;
       },
     },
     component: {
@@ -176,9 +265,8 @@ export const createCoreAPI = (): CoreAPI => {
     }
   }
 
-  core.article.addArticlePreprocessor((article) => {
-
-  });
+  core.component.add('CoreDebug', CoreDebug);
+  core.component.add('Demo', DemoMDX);
 
   return core;
 }

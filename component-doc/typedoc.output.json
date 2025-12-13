@@ -14,7 +14,7 @@
 			"flags": {},
 			"children": [
 				{
-					"id": 133,
+					"id": 164,
 					"name": "AnyPluginArray",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -24,7 +24,7 @@
 							"fileName": "application/Plugin.ts",
 							"line": 10,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L10"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L10"
 						}
 					],
 					"type": {
@@ -37,7 +37,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 113,
+								"target": 144,
 								"typeArguments": [
 									{
 										"type": "intrinsic",
@@ -57,14 +57,14 @@
 					}
 				},
 				{
-					"id": 91,
+					"id": 108,
 					"name": "Article",
 					"variant": "declaration",
 					"kind": 2097152,
 					"flags": {},
 					"children": [
 						{
-							"id": 95,
+							"id": 111,
 							"name": "content",
 							"variant": "declaration",
 							"kind": 1024,
@@ -72,9 +72,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 100,
+									"line": 113,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L100"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L113"
 								}
 							],
 							"type": {
@@ -89,7 +89,7 @@
 							}
 						},
 						{
-							"id": 93,
+							"id": 110,
 							"name": "key",
 							"variant": "declaration",
 							"kind": 1024,
@@ -97,37 +97,16 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 97,
+									"line": 111,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L97"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L111"
 								}
 							],
 							"type": {
 								"type": "reference",
-								"target": 90,
+								"target": 107,
 								"name": "ArticleKey",
 								"package": "@lukekaalim/act-doc"
-							}
-						},
-						{
-							"id": 94,
-							"name": "path",
-							"variant": "declaration",
-							"kind": 1024,
-							"flags": {
-								"isOptional": true
-							},
-							"sources": [
-								{
-									"fileName": "application/Core.ts",
-									"line": 98,
-									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L98"
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "string"
 							}
 						}
 					],
@@ -135,23 +114,22 @@
 						{
 							"title": "Properties",
 							"children": [
-								95,
-								93,
-								94
+								111,
+								110
 							]
 						}
 					],
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 96,
+							"line": 110,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L96"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L110"
 						}
 					]
 				},
 				{
-					"id": 70,
+					"id": 87,
 					"name": "ArticleAPI",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -166,7 +144,7 @@
 					},
 					"children": [
 						{
-							"id": 72,
+							"id": 89,
 							"name": "articles",
 							"variant": "declaration",
 							"kind": 1024,
@@ -174,23 +152,23 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 81,
+									"line": 96,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L81"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L96"
 								}
 							],
 							"type": {
 								"type": "array",
 								"elementType": {
 									"type": "reference",
-									"target": 91,
+									"target": 108,
 									"name": "Article",
 									"package": "@lukekaalim/act-doc"
 								}
 							}
 						},
 						{
-							"id": 73,
+							"id": 90,
 							"name": "add",
 							"variant": "declaration",
 							"kind": 2048,
@@ -198,14 +176,14 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 89,
+									"line": 103,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L89"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L103"
 								}
 							],
 							"signatures": [
 								{
-									"id": 74,
+									"id": 91,
 									"name": "add",
 									"variant": "signature",
 									"kind": 4096,
@@ -221,14 +199,14 @@
 									"sources": [
 										{
 											"fileName": "application/Core.ts",
-											"line": 89,
+											"line": 103,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L89"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L103"
 										}
 									],
 									"parameters": [
 										{
-											"id": 75,
+											"id": 92,
 											"name": "key",
 											"variant": "param",
 											"kind": 32768,
@@ -239,7 +217,7 @@
 											}
 										},
 										{
-											"id": 76,
+											"id": 93,
 											"name": "markdownContent",
 											"variant": "param",
 											"kind": 32768,
@@ -250,7 +228,7 @@
 											}
 										},
 										{
-											"id": 77,
+											"id": 94,
 											"name": "path",
 											"variant": "param",
 											"kind": 32768,
@@ -265,7 +243,7 @@
 									],
 									"type": {
 										"type": "reference",
-										"target": 91,
+										"target": 108,
 										"name": "Article",
 										"package": "@lukekaalim/act-doc"
 									}
@@ -273,7 +251,7 @@
 							]
 						},
 						{
-							"id": 83,
+							"id": 100,
 							"name": "addArticlePreprocessor",
 							"variant": "declaration",
 							"kind": 2048,
@@ -281,14 +259,14 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 92,
+									"line": 106,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L92"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L106"
 								}
 							],
 							"signatures": [
 								{
-									"id": 84,
+									"id": 101,
 									"name": "addArticlePreprocessor",
 									"variant": "signature",
 									"kind": 4096,
@@ -296,21 +274,21 @@
 									"sources": [
 										{
 											"fileName": "application/Core.ts",
-											"line": 92,
+											"line": 106,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L92"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L106"
 										}
 									],
 									"parameters": [
 										{
-											"id": 85,
+											"id": 102,
 											"name": "preprocessor",
 											"variant": "param",
 											"kind": 32768,
 											"flags": {},
 											"type": {
 												"type": "reference",
-												"target": 86,
+												"target": 103,
 												"name": "ArticlePreprocessor",
 												"package": "@lukekaalim/act-doc"
 											}
@@ -324,7 +302,7 @@
 							]
 						},
 						{
-							"id": 78,
+							"id": 95,
 							"name": "addRawRoot",
 							"variant": "declaration",
 							"kind": 2048,
@@ -332,14 +310,14 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 90,
+									"line": 104,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L90"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L104"
 								}
 							],
 							"signatures": [
 								{
-									"id": 79,
+									"id": 96,
 									"name": "addRawRoot",
 									"variant": "signature",
 									"kind": 4096,
@@ -347,14 +325,14 @@
 									"sources": [
 										{
 											"fileName": "application/Core.ts",
-											"line": 90,
+											"line": 104,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L90"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L104"
 										}
 									],
 									"parameters": [
 										{
-											"id": 80,
+											"id": 97,
 											"name": "key",
 											"variant": "param",
 											"kind": 32768,
@@ -365,7 +343,7 @@
 											}
 										},
 										{
-											"id": 81,
+											"id": 98,
 											"name": "root",
 											"variant": "param",
 											"kind": 32768,
@@ -382,7 +360,7 @@
 											}
 										},
 										{
-											"id": 82,
+											"id": 99,
 											"name": "path",
 											"variant": "param",
 											"kind": 32768,
@@ -397,7 +375,7 @@
 									],
 									"type": {
 										"type": "reference",
-										"target": 91,
+										"target": 108,
 										"name": "Article",
 										"package": "@lukekaalim/act-doc"
 									}
@@ -409,29 +387,29 @@
 						{
 							"title": "Properties",
 							"children": [
-								72
+								89
 							]
 						},
 						{
 							"title": "Methods",
 							"children": [
-								73,
-								83,
-								78
+								90,
+								100,
+								95
 							]
 						}
 					],
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 80,
+							"line": 95,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L80"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L95"
 						}
 					]
 				},
 				{
-					"id": 90,
+					"id": 107,
 					"name": "ArticleKey",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -439,9 +417,9 @@
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 95,
+							"line": 109,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L95"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L109"
 						}
 					],
 					"type": {
@@ -450,7 +428,7 @@
 					}
 				},
 				{
-					"id": 86,
+					"id": 103,
 					"name": "ArticlePreprocessor",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -458,15 +436,15 @@
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 94,
+							"line": 108,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L94"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L108"
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 87,
+							"id": 104,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
@@ -474,28 +452,28 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 94,
+									"line": 108,
 									"character": 34,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L94"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L108"
 								}
 							],
 							"signatures": [
 								{
-									"id": 88,
+									"id": 105,
 									"name": "__type",
 									"variant": "signature",
 									"kind": 4096,
 									"flags": {},
 									"parameters": [
 										{
-											"id": 89,
+											"id": 106,
 											"name": "article",
 											"variant": "param",
 											"kind": 32768,
 											"flags": {},
 											"type": {
 												"type": "reference",
-												"target": 91,
+												"target": 108,
 												"name": "Article",
 												"package": "@lukekaalim/act-doc"
 											}
@@ -534,9 +512,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 49,
+									"line": 53,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L49"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L53"
 								}
 							],
 							"type": {
@@ -558,9 +536,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 51,
+									"line": 55,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L51"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L55"
 								}
 							],
 							"signatures": [
@@ -573,9 +551,9 @@
 									"sources": [
 										{
 											"fileName": "application/Core.ts",
-											"line": 51,
+											"line": 55,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L51"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L55"
 										}
 									],
 									"parameters": [
@@ -622,9 +600,9 @@
 																	"sources": [
 																		{
 																			"fileName": "application/Core.ts",
-																			"line": 51,
+																			"line": 55,
 																			"character": 43,
-																			"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L51"
+																			"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L55"
 																		}
 																	],
 																	"type": {
@@ -669,9 +647,9 @@
 															"sources": [
 																{
 																	"fileName": "application/Core.ts",
-																	"line": 51,
+																	"line": 55,
 																	"character": 41,
-																	"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L51"
+																	"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L55"
 																}
 															]
 														}
@@ -709,9 +687,9 @@
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 48,
+							"line": 52,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L48"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L52"
 						}
 					]
 				},
@@ -739,14 +717,14 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 17,
+									"line": 21,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L17"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L21"
 								}
 							],
 							"type": {
 								"type": "reference",
-								"target": 70,
+								"target": 87,
 								"name": "ArticleAPI",
 								"package": "@lukekaalim/act-doc"
 							}
@@ -760,9 +738,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 16,
+									"line": 20,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L16"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L20"
 								}
 							],
 							"type": {
@@ -781,14 +759,14 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 19,
+									"line": 23,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L19"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L23"
 								}
 							],
 							"type": {
 								"type": "reference",
-								"target": 102,
+								"target": 123,
 								"name": "DemoAPI",
 								"package": "@lukekaalim/act-doc"
 							}
@@ -802,9 +780,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 18,
+									"line": 22,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L18"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L22"
 								}
 							],
 							"type": {
@@ -823,9 +801,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 15,
+									"line": 19,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L15"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L19"
 								}
 							],
 							"type": {
@@ -851,21 +829,21 @@
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 14,
+							"line": 18,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L14"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L18"
 						}
 					]
 				},
 				{
-					"id": 96,
+					"id": 112,
 					"name": "Demo",
 					"variant": "declaration",
 					"kind": 2097152,
 					"flags": {},
 					"children": [
 						{
-							"id": 100,
+							"id": 116,
 							"name": "component",
 							"variant": "declaration",
 							"kind": 1024,
@@ -873,9 +851,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 106,
+									"line": 119,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L106"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L119"
 								}
 							],
 							"type": {
@@ -889,7 +867,7 @@
 									{
 										"type": "reflection",
 										"declaration": {
-											"id": 101,
+											"id": 117,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
@@ -897,9 +875,9 @@
 											"sources": [
 												{
 													"fileName": "application/Core.ts",
-													"line": 106,
+													"line": 119,
 													"character": 23,
-													"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L106"
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L119"
 												}
 											]
 										}
@@ -910,7 +888,7 @@
 							}
 						},
 						{
-							"id": 99,
+							"id": 115,
 							"name": "frame",
 							"variant": "declaration",
 							"kind": 1024,
@@ -920,9 +898,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 105,
+									"line": 118,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L105"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L118"
 								}
 							],
 							"type": {
@@ -931,7 +909,7 @@
 							}
 						},
 						{
-							"id": 98,
+							"id": 114,
 							"name": "key",
 							"variant": "declaration",
 							"kind": 1024,
@@ -939,9 +917,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 104,
+									"line": 117,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L104"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L117"
 								}
 							],
 							"type": {
@@ -954,30 +932,51 @@
 						{
 							"title": "Properties",
 							"children": [
-								100,
-								99,
-								98
+								116,
+								115,
+								114
 							]
 						}
 					],
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 103,
+							"line": 116,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L103"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L116"
 						}
 					]
 				},
 				{
-					"id": 102,
+					"id": 123,
 					"name": "DemoAPI",
 					"variant": "declaration",
 					"kind": 2097152,
 					"flags": {},
 					"children": [
 						{
-							"id": 104,
+							"id": 127,
+							"name": "defaultFrame",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 128,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L128"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 118,
+								"name": "DemoFrame",
+								"package": "@lukekaalim/act-doc"
+							}
+						},
+						{
+							"id": 125,
 							"name": "demos",
 							"variant": "declaration",
 							"kind": 1024,
@@ -985,23 +984,47 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 109,
+									"line": 126,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L109"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L126"
 								}
 							],
 							"type": {
 								"type": "array",
 								"elementType": {
 									"type": "reference",
-									"target": 96,
+									"target": 112,
 									"name": "Demo",
 									"package": "@lukekaalim/act-doc"
 								}
 							}
 						},
 						{
-							"id": 105,
+							"id": 126,
+							"name": "frames",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 127,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L127"
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "reference",
+									"target": 118,
+									"name": "DemoFrame",
+									"package": "@lukekaalim/act-doc"
+								}
+							}
+						},
+						{
+							"id": 128,
 							"name": "add",
 							"variant": "declaration",
 							"kind": 2048,
@@ -1009,14 +1032,14 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 111,
+									"line": 130,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L111"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L130"
 								}
 							],
 							"signatures": [
 								{
-									"id": 106,
+									"id": 129,
 									"name": "add",
 									"variant": "signature",
 									"kind": 4096,
@@ -1024,14 +1047,14 @@
 									"sources": [
 										{
 											"fileName": "application/Core.ts",
-											"line": 111,
+											"line": 130,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L111"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L130"
 										}
 									],
 									"parameters": [
 										{
-											"id": 107,
+											"id": 130,
 											"name": "key",
 											"variant": "param",
 											"kind": 32768,
@@ -1042,7 +1065,7 @@
 											}
 										},
 										{
-											"id": 108,
+											"id": 131,
 											"name": "component",
 											"variant": "param",
 											"kind": 32768,
@@ -1058,7 +1081,7 @@
 													{
 														"type": "reflection",
 														"declaration": {
-															"id": 109,
+															"id": 132,
 															"name": "__type",
 															"variant": "declaration",
 															"kind": 65536,
@@ -1071,7 +1094,7 @@
 											}
 										},
 										{
-											"id": 110,
+											"id": 133,
 											"name": "frame",
 											"variant": "param",
 											"kind": 32768,
@@ -1086,9 +1109,140 @@
 									],
 									"type": {
 										"type": "reference",
-										"target": 96,
+										"target": 112,
 										"name": "Demo",
 										"package": "@lukekaalim/act-doc"
+									}
+								}
+							]
+						},
+						{
+							"id": 134,
+							"name": "addFrame",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 131,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L131"
+								}
+							],
+							"signatures": [
+								{
+									"id": 135,
+									"name": "addFrame",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "application/Core.ts",
+											"line": 131,
+											"character": 2,
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L131"
+										}
+									],
+									"parameters": [
+										{
+											"id": 136,
+											"name": "key",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 137,
+											"name": "frameComponent",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "reference",
+												"target": {
+													"packageName": "@lukekaalim/act",
+													"packagePath": "component.ts",
+													"qualifiedName": "Component"
+												},
+												"typeArguments": [
+													{
+														"type": "reflection",
+														"declaration": {
+															"id": 138,
+															"name": "__type",
+															"variant": "declaration",
+															"kind": 65536,
+															"flags": {}
+														}
+													}
+												],
+												"name": "Component",
+												"package": "@lukekaalim/act"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 118,
+										"name": "DemoFrame",
+										"package": "@lukekaalim/act-doc"
+									}
+								}
+							]
+						},
+						{
+							"id": 139,
+							"name": "setDefaultFrame",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 132,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L132"
+								}
+							],
+							"signatures": [
+								{
+									"id": 140,
+									"name": "setDefaultFrame",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "application/Core.ts",
+											"line": 132,
+											"character": 2,
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L132"
+										}
+									],
+									"parameters": [
+										{
+											"id": 141,
+											"name": "frame",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "reference",
+												"target": 118,
+												"name": "DemoFrame",
+												"package": "@lukekaalim/act-doc"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
 									}
 								}
 							]
@@ -1098,22 +1252,116 @@
 						{
 							"title": "Properties",
 							"children": [
-								104
+								127,
+								125,
+								126
 							]
 						},
 						{
 							"title": "Methods",
 							"children": [
-								105
+								128,
+								134,
+								139
 							]
 						}
 					],
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 108,
+							"line": 125,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L108"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L125"
+						}
+					]
+				},
+				{
+					"id": 118,
+					"name": "DemoFrame",
+					"variant": "declaration",
+					"kind": 2097152,
+					"flags": {},
+					"children": [
+						{
+							"id": 121,
+							"name": "component",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 123,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L123"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"packageName": "@lukekaalim/act",
+									"packagePath": "component.ts",
+									"qualifiedName": "Component"
+								},
+								"typeArguments": [
+									{
+										"type": "reflection",
+										"declaration": {
+											"id": 122,
+											"name": "__type",
+											"variant": "declaration",
+											"kind": 65536,
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "application/Core.ts",
+													"line": 123,
+													"character": 23,
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L123"
+												}
+											]
+										}
+									}
+								],
+								"name": "Component",
+								"package": "@lukekaalim/act"
+							}
+						},
+						{
+							"id": 120,
+							"name": "key",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 122,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L122"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"children": [
+								121,
+								120
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "application/Core.ts",
+							"line": 121,
+							"character": 12,
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L121"
 						}
 					]
 				},
@@ -1127,7 +1375,18 @@
 						"summary": [
 							{
 								"kind": "text",
-								"text": "The DocApp type represents a collection of data that describes a\ndocumentation website. It collects things such as:\n\n - Routing\n - Demo Components\n - Markdown Articles\n - Reference Lookups\n - Custom Display Components\n\nYou can create a new instance of this object by called the\n"
+								"text": "The DocApp type represents a collection of data that describes a\ndocumentation website. It collects things such as:\n\n "
+							},
+							{
+								"kind": "inline-tag",
+								"tag": "@link",
+								"text": "This is the original text",
+								"target": 7,
+								"tsLinkText": "This is the original text"
+							},
+							{
+								"kind": "text",
+								"text": "\n\n - Routing\n - Demo Components\n - Markdown Articles\n - Reference Lookups\n - Custom Display Components\n\nYou can create a new instance of this object by called the\n"
 							},
 							{
 								"kind": "code",
@@ -1142,9 +1401,9 @@
 					"sources": [
 						{
 							"fileName": "application/App.ts",
-							"line": 19,
+							"line": 21,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/App.ts#L19"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L21"
 						}
 					],
 					"typeParameters": [
@@ -1156,9 +1415,12 @@
 							"flags": {},
 							"type": {
 								"type": "reference",
-								"target": 133,
+								"target": 164,
 								"name": "AnyPluginArray",
 								"package": "@lukekaalim/act-doc"
+							},
+							"default": {
+								"type": "tuple"
 							}
 						}
 					],
@@ -1167,7 +1429,7 @@
 						"types": [
 							{
 								"type": "reference",
-								"target": 134,
+								"target": 165,
 								"typeArguments": [
 									{
 										"type": "reference",
@@ -1190,6 +1452,96 @@
 					}
 				},
 				{
+					"id": 82,
+					"name": "IndirectReference",
+					"variant": "declaration",
+					"kind": 2097152,
+					"flags": {},
+					"children": [
+						{
+							"id": 85,
+							"name": "destination",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 86,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L86"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 73,
+								"name": "ReferenceKey",
+								"package": "@lukekaalim/act-doc"
+							}
+						},
+						{
+							"id": 86,
+							"name": "fragment",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 88,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L88"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 84,
+							"name": "source",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 85,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L85"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 73,
+								"name": "ReferenceKey",
+								"package": "@lukekaalim/act-doc"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"children": [
+								85,
+								86,
+								84
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "application/Core.ts",
+							"line": 84,
+							"character": 12,
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L84"
+						}
+					]
+				},
+				{
 					"id": 36,
 					"name": "MDXComponent",
 					"variant": "declaration",
@@ -1198,9 +1550,9 @@
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 37,
+							"line": 41,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L37"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L41"
 						}
 					],
 					"type": {
@@ -1229,9 +1581,9 @@
 											"sources": [
 												{
 													"fileName": "application/Core.ts",
-													"line": 37,
+													"line": 41,
 													"character": 39,
-													"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L37"
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L41"
 												}
 											],
 											"type": {
@@ -1276,9 +1628,9 @@
 									"sources": [
 										{
 											"fileName": "application/Core.ts",
-											"line": 37,
+											"line": 41,
 											"character": 37,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L37"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L41"
 										}
 									]
 								}
@@ -1304,9 +1656,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 41,
+									"line": 45,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L41"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L45"
 								}
 							],
 							"type": {
@@ -1327,9 +1679,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 40,
+									"line": 44,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L40"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L44"
 								}
 							],
 							"type": {
@@ -1346,9 +1698,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 39,
+									"line": 43,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L39"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L43"
 								}
 							],
 							"type": {
@@ -1370,14 +1722,14 @@
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 38,
+							"line": 42,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L38"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L42"
 						}
 					]
 				},
 				{
-					"id": 134,
+					"id": 165,
 					"name": "PluginAPI",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -1387,19 +1739,19 @@
 							"fileName": "application/Plugin.ts",
 							"line": 12,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L12"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L12"
 						}
 					],
 					"typeParameters": [
 						{
-							"id": 135,
+							"id": 166,
 							"name": "Plugins",
 							"variant": "typeParam",
 							"kind": 131072,
 							"flags": {},
 							"type": {
 								"type": "reference",
-								"target": 133,
+								"target": 164,
 								"name": "AnyPluginArray",
 								"package": "@lukekaalim/act-doc"
 							}
@@ -1416,7 +1768,7 @@
 							},
 							"objectType": {
 								"type": "reference",
-								"target": 135,
+								"target": 166,
 								"name": "Plugins",
 								"package": "@lukekaalim/act-doc",
 								"refersToTypeParameter": true
@@ -1473,14 +1825,14 @@
 					}
 				},
 				{
-					"id": 113,
+					"id": 144,
 					"name": "PluginI",
 					"variant": "declaration",
 					"kind": 2097152,
 					"flags": {},
 					"children": [
 						{
-							"id": 116,
+							"id": 147,
 							"name": "api",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1490,13 +1842,13 @@
 									"fileName": "application/Plugin.ts",
 									"line": 3,
 									"character": 59,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L3"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L3"
 								}
 							],
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 117,
+									"id": 148,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
@@ -1506,19 +1858,19 @@
 											"fileName": "application/Plugin.ts",
 											"line": 3,
 											"character": 64,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L3"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L3"
 										}
 									],
 									"signatures": [
 										{
-											"id": 118,
+											"id": 149,
 											"name": "__type",
 											"variant": "signature",
 											"kind": 4096,
 											"flags": {},
 											"parameters": [
 												{
-													"id": 119,
+													"id": 150,
 													"name": "core",
 													"variant": "param",
 													"kind": 32768,
@@ -1533,7 +1885,7 @@
 											],
 											"type": {
 												"type": "reference",
-												"target": 121,
+												"target": 152,
 												"name": "API",
 												"package": "@lukekaalim/act-doc",
 												"refersToTypeParameter": true
@@ -1544,7 +1896,7 @@
 							}
 						},
 						{
-							"id": 115,
+							"id": 146,
 							"name": "key",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1554,12 +1906,12 @@
 									"fileName": "application/Plugin.ts",
 									"line": 3,
 									"character": 49,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L3"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L3"
 								}
 							],
 							"type": {
 								"type": "reference",
-								"target": 120,
+								"target": 151,
 								"name": "Key",
 								"package": "@lukekaalim/act-doc",
 								"refersToTypeParameter": true
@@ -1570,8 +1922,8 @@
 						{
 							"title": "Properties",
 							"children": [
-								116,
-								115
+								147,
+								146
 							]
 						}
 					],
@@ -1580,12 +1932,12 @@
 							"fileName": "application/Plugin.ts",
 							"line": 3,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L3"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L3"
 						}
 					],
 					"typeParameters": [
 						{
-							"id": 120,
+							"id": 151,
 							"name": "Key",
 							"variant": "typeParam",
 							"kind": 131072,
@@ -1596,7 +1948,7 @@
 							}
 						},
 						{
-							"id": 121,
+							"id": 152,
 							"name": "API",
 							"variant": "typeParam",
 							"kind": 131072,
@@ -1605,7 +1957,7 @@
 					]
 				},
 				{
-					"id": 122,
+					"id": 153,
 					"name": "PluginIAPI",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -1615,19 +1967,19 @@
 							"fileName": "application/Plugin.ts",
 							"line": 4,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L4"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L4"
 						}
 					],
 					"typeParameters": [
 						{
-							"id": 123,
+							"id": 154,
 							"name": "Plugin",
 							"variant": "typeParam",
 							"kind": 131072,
 							"flags": {},
 							"type": {
 								"type": "reference",
-								"target": 113,
+								"target": 144,
 								"typeArguments": [
 									{
 										"type": "intrinsic",
@@ -1659,7 +2011,7 @@
 								},
 								"objectType": {
 									"type": "reference",
-									"target": 123,
+									"target": 154,
 									"name": "Plugin",
 									"package": "@lukekaalim/act-doc",
 									"refersToTypeParameter": true
@@ -1671,7 +2023,7 @@
 					}
 				},
 				{
-					"id": 136,
+					"id": 167,
 					"name": "PluginKeyArray",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -1681,19 +2033,19 @@
 							"fileName": "application/Plugin.ts",
 							"line": 16,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L16"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L16"
 						}
 					],
 					"typeParameters": [
 						{
-							"id": 137,
+							"id": 168,
 							"name": "Plugins",
 							"variant": "typeParam",
 							"kind": 131072,
 							"flags": {},
 							"type": {
 								"type": "reference",
-								"target": 133,
+								"target": 164,
 								"name": "AnyPluginArray",
 								"package": "@lukekaalim/act-doc"
 							}
@@ -1707,7 +2059,7 @@
 							"operator": "keyof",
 							"target": {
 								"type": "reference",
-								"target": 137,
+								"target": 168,
 								"name": "Plugins",
 								"package": "@lukekaalim/act-doc",
 								"refersToTypeParameter": true
@@ -1734,7 +2086,7 @@
 								},
 								"objectType": {
 									"type": "reference",
-									"target": 137,
+									"target": 168,
 									"name": "Plugins",
 									"package": "@lukekaalim/act-doc",
 									"refersToTypeParameter": true
@@ -1744,14 +2096,14 @@
 					}
 				},
 				{
-					"id": 66,
+					"id": 78,
 					"name": "Reference",
 					"variant": "declaration",
 					"kind": 2097152,
 					"flags": {},
 					"children": [
 						{
-							"id": 68,
+							"id": 80,
 							"name": "key",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1759,20 +2111,20 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 72,
+									"line": 81,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L72"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L81"
 								}
 							],
 							"type": {
 								"type": "reference",
-								"target": 61,
+								"target": 73,
 								"name": "ReferenceKey",
 								"package": "@lukekaalim/act-doc"
 							}
 						},
 						{
-							"id": 69,
+							"id": 81,
 							"name": "location",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1780,14 +2132,14 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 73,
+									"line": 82,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L73"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L82"
 								}
 							],
 							"type": {
 								"type": "reference",
-								"target": 62,
+								"target": 74,
 								"name": "ReferenceLocation",
 								"package": "@lukekaalim/act-doc"
 							}
@@ -1797,17 +2149,17 @@
 						{
 							"title": "Properties",
 							"children": [
-								68,
-								69
+								80,
+								81
 							]
 						}
 					],
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 71,
+							"line": 80,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L71"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L80"
 						}
 					]
 				},
@@ -1827,6 +2179,30 @@
 					},
 					"children": [
 						{
+							"id": 56,
+							"name": "indirect_references",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 69,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L69"
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "reference",
+									"target": 82,
+									"name": "IndirectReference",
+									"package": "@lukekaalim/act-doc"
+								}
+							}
+						},
+						{
 							"id": 55,
 							"name": "references",
 							"variant": "declaration",
@@ -1835,23 +2211,23 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 64,
+									"line": 68,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L64"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L68"
 								}
 							],
 							"type": {
 								"type": "array",
 								"elementType": {
 									"type": "reference",
-									"target": 66,
+									"target": 78,
 									"name": "Reference",
 									"package": "@lukekaalim/act-doc"
 								}
 							}
 						},
 						{
-							"id": 56,
+							"id": 57,
 							"name": "add",
 							"variant": "declaration",
 							"kind": 2048,
@@ -1859,14 +2235,14 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 66,
+									"line": 71,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L66"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L71"
 								}
 							],
 							"signatures": [
 								{
-									"id": 57,
+									"id": 58,
 									"name": "add",
 									"variant": "signature",
 									"kind": 4096,
@@ -1874,14 +2250,14 @@
 									"sources": [
 										{
 											"fileName": "application/Core.ts",
-											"line": 66,
+											"line": 71,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L66"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L71"
 										}
 									],
 									"parameters": [
 										{
-											"id": 58,
+											"id": 59,
 											"name": "key",
 											"variant": "param",
 											"kind": 32768,
@@ -1892,7 +2268,7 @@
 											}
 										},
 										{
-											"id": 59,
+											"id": 60,
 											"name": "path",
 											"variant": "param",
 											"kind": 32768,
@@ -1903,7 +2279,7 @@
 											}
 										},
 										{
-											"id": 60,
+											"id": 61,
 											"name": "fragment",
 											"variant": "param",
 											"kind": 32768,
@@ -1918,9 +2294,208 @@
 									],
 									"type": {
 										"type": "reference",
-										"target": 66,
+										"target": 78,
 										"name": "Reference",
 										"package": "@lukekaalim/act-doc"
+									}
+								}
+							]
+						},
+						{
+							"id": 62,
+							"name": "addIndirect",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 72,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L72"
+								}
+							],
+							"signatures": [
+								{
+									"id": 63,
+									"name": "addIndirect",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "application/Core.ts",
+											"line": 72,
+											"character": 2,
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L72"
+										}
+									],
+									"parameters": [
+										{
+											"id": 64,
+											"name": "source",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 65,
+											"name": "destination",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 66,
+											"name": "fragment",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 82,
+										"name": "IndirectReference",
+										"package": "@lukekaalim/act-doc"
+									}
+								}
+							]
+						},
+						{
+							"id": 67,
+							"name": "resolveKey",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 74,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L74"
+								}
+							],
+							"signatures": [
+								{
+									"id": 68,
+									"name": "resolveKey",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "application/Core.ts",
+											"line": 74,
+											"character": 2,
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L74"
+										}
+									],
+									"parameters": [
+										{
+											"id": 69,
+											"name": "key",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"target": 74,
+												"name": "ReferenceLocation",
+												"package": "@lukekaalim/act-doc"
+											},
+											{
+												"type": "literal",
+												"value": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": 70,
+							"name": "resolveRouteLink",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "application/Core.ts",
+									"line": 75,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L75"
+								}
+							],
+							"signatures": [
+								{
+									"id": 71,
+									"name": "resolveRouteLink",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "application/Core.ts",
+											"line": 75,
+											"character": 2,
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L75"
+										}
+									],
+									"parameters": [
+										{
+											"id": 72,
+											"name": "key",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"target": {
+													"packageName": "typescript",
+													"packagePath": "lib/lib.dom.d.ts",
+													"qualifiedName": "URL"
+												},
+												"name": "URL",
+												"package": "typescript"
+											},
+											{
+												"type": "literal",
+												"value": null
+											}
+										]
 									}
 								}
 							]
@@ -1930,27 +2505,31 @@
 						{
 							"title": "Properties",
 							"children": [
+								56,
 								55
 							]
 						},
 						{
 							"title": "Methods",
 							"children": [
-								56
+								57,
+								62,
+								67,
+								70
 							]
 						}
 					],
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 63,
+							"line": 67,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L63"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L67"
 						}
 					]
 				},
 				{
-					"id": 61,
+					"id": 73,
 					"name": "ReferenceKey",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -1958,9 +2537,9 @@
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 69,
+							"line": 78,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L69"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L78"
 						}
 					],
 					"type": {
@@ -1969,14 +2548,14 @@
 					}
 				},
 				{
-					"id": 62,
+					"id": 74,
 					"name": "ReferenceLocation",
 					"variant": "declaration",
 					"kind": 2097152,
 					"flags": {},
 					"children": [
 						{
-							"id": 65,
+							"id": 77,
 							"name": "fragment",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1986,9 +2565,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 70,
+									"line": 79,
 									"character": 48,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L70"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L79"
 								}
 							],
 							"type": {
@@ -1997,7 +2576,7 @@
 							}
 						},
 						{
-							"id": 64,
+							"id": 76,
 							"name": "path",
 							"variant": "declaration",
 							"kind": 1024,
@@ -2005,9 +2584,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 70,
+									"line": 79,
 									"character": 34,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L70"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L79"
 								}
 							],
 							"type": {
@@ -2020,17 +2599,17 @@
 						{
 							"title": "Properties",
 							"children": [
-								65,
-								64
+								77,
+								76
 							]
 						}
 					],
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 70,
+							"line": 79,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L70"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L79"
 						}
 					]
 				},
@@ -2050,9 +2629,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 34,
+									"line": 38,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L34"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L38"
 								}
 							],
 							"type": {
@@ -2075,9 +2654,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 33,
+									"line": 37,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L33"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L37"
 								}
 							],
 							"type": {
@@ -2098,9 +2677,9 @@
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 32,
+							"line": 36,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L32"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L36"
 						}
 					]
 				},
@@ -2128,9 +2707,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 27,
+									"line": 31,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L27"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L31"
 								}
 							],
 							"type": {
@@ -2152,9 +2731,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 29,
+									"line": 33,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L29"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L33"
 								}
 							],
 							"signatures": [
@@ -2167,9 +2746,9 @@
 									"sources": [
 										{
 											"fileName": "application/Core.ts",
-											"line": 29,
+											"line": 33,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L29"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L33"
 										}
 									],
 									"parameters": [
@@ -2229,9 +2808,9 @@
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 26,
+							"line": 30,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L26"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L30"
 						}
 					]
 				},
@@ -2246,9 +2825,9 @@
 					"sources": [
 						{
 							"fileName": "application/App.ts",
-							"line": 41,
+							"line": 43,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/App.ts#L41"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L43"
 						}
 					],
 					"type": {
@@ -2268,7 +2847,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"target": 133,
+												"target": 164,
 												"name": "AnyPluginArray",
 												"package": "@lukekaalim/act-doc"
 											}
@@ -2289,7 +2868,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 111,
+					"id": 142,
 					"name": "createCoreAPI",
 					"variant": "declaration",
 					"kind": 64,
@@ -2297,14 +2876,14 @@
 					"sources": [
 						{
 							"fileName": "application/Core.ts",
-							"line": 114,
+							"line": 135,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L114"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L135"
 						}
 					],
 					"signatures": [
 						{
-							"id": 112,
+							"id": 143,
 							"name": "createCoreAPI",
 							"variant": "signature",
 							"kind": 4096,
@@ -2312,9 +2891,9 @@
 							"sources": [
 								{
 									"fileName": "application/Core.ts",
-									"line": 114,
+									"line": 135,
 									"character": 29,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Core.ts#L114"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L135"
 								}
 							],
 							"type": {
@@ -2335,9 +2914,9 @@
 					"sources": [
 						{
 							"fileName": "application/App.ts",
-							"line": 27,
+							"line": 29,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/App.ts#L27"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L29"
 						}
 					],
 					"signatures": [
@@ -2364,9 +2943,9 @@
 							"sources": [
 								{
 									"fileName": "application/App.ts",
-									"line": 27,
+									"line": 29,
 									"character": 28,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/App.ts#L27"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L29"
 								}
 							],
 							"typeParameters": [
@@ -2378,7 +2957,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"target": 133,
+										"target": 164,
 										"name": "AnyPluginArray",
 										"package": "@lukekaalim/act-doc"
 									}
@@ -2428,7 +3007,7 @@
 					]
 				},
 				{
-					"id": 124,
+					"id": 155,
 					"name": "createPlugin",
 					"variant": "declaration",
 					"kind": 64,
@@ -2438,12 +3017,12 @@
 							"fileName": "application/Plugin.ts",
 							"line": 6,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L6"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L6"
 						}
 					],
 					"signatures": [
 						{
-							"id": 125,
+							"id": 156,
 							"name": "createPlugin",
 							"variant": "signature",
 							"kind": 4096,
@@ -2453,12 +3032,12 @@
 									"fileName": "application/Plugin.ts",
 									"line": 6,
 									"character": 28,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L6"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L6"
 								}
 							],
 							"typeParameters": [
 								{
-									"id": 126,
+									"id": 157,
 									"name": "Key",
 									"variant": "typeParam",
 									"kind": 131072,
@@ -2469,7 +3048,7 @@
 									}
 								},
 								{
-									"id": 127,
+									"id": 158,
 									"name": "API",
 									"variant": "typeParam",
 									"kind": 131072,
@@ -2478,21 +3057,21 @@
 							],
 							"parameters": [
 								{
-									"id": 128,
+									"id": 159,
 									"name": "key",
 									"variant": "param",
 									"kind": 32768,
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"target": 126,
+										"target": 157,
 										"name": "Key",
 										"package": "@lukekaalim/act-doc",
 										"refersToTypeParameter": true
 									}
 								},
 								{
-									"id": 129,
+									"id": 160,
 									"name": "api",
 									"variant": "param",
 									"kind": 32768,
@@ -2500,7 +3079,7 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 130,
+											"id": 161,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
@@ -2510,12 +3089,12 @@
 													"fileName": "application/Plugin.ts",
 													"line": 6,
 													"character": 69,
-													"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L6"
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L6"
 												}
 											],
 											"signatures": [
 												{
-													"id": 131,
+													"id": 162,
 													"name": "__type",
 													"variant": "signature",
 													"kind": 4096,
@@ -2525,12 +3104,12 @@
 															"fileName": "application/Plugin.ts",
 															"line": 6,
 															"character": 69,
-															"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/Plugin.ts#L6"
+															"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L6"
 														}
 													],
 													"parameters": [
 														{
-															"id": 132,
+															"id": 163,
 															"name": "core",
 															"variant": "param",
 															"kind": 32768,
@@ -2545,7 +3124,7 @@
 													],
 													"type": {
 														"type": "reference",
-														"target": 127,
+														"target": 158,
 														"name": "API",
 														"package": "@lukekaalim/act-doc",
 														"refersToTypeParameter": true
@@ -2558,18 +3137,18 @@
 							],
 							"type": {
 								"type": "reference",
-								"target": 113,
+								"target": 144,
 								"typeArguments": [
 									{
 										"type": "reference",
-										"target": 126,
+										"target": 157,
 										"name": "Key",
 										"package": "@lukekaalim/act-doc",
 										"refersToTypeParameter": true
 									},
 									{
 										"type": "reference",
-										"target": 127,
+										"target": 158,
 										"name": "API",
 										"package": "@lukekaalim/act-doc",
 										"refersToTypeParameter": true
@@ -2590,9 +3169,9 @@
 					"sources": [
 						{
 							"fileName": "application/App.ts",
-							"line": 48,
+							"line": 54,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/App.ts#L48"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L54"
 						}
 					],
 					"signatures": [
@@ -2612,16 +3191,21 @@
 								"blockTags": [
 									{
 										"tag": "@returns",
-										"content": []
+										"content": [
+											{
+												"kind": "text",
+												"text": "The context-shared DocApp instance used across the application. If required plugins\nwere provided, the plugin types are added to the return interface."
+											}
+										]
 									}
 								]
 							},
 							"sources": [
 								{
 									"fileName": "application/App.ts",
-									"line": 48,
+									"line": 54,
 									"character": 25,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/c02dde4ee870882a1c435ff3e672d02aed996a5e/component-doc/application/App.ts#L48"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L54"
 								}
 							],
 							"typeParameters": [
@@ -2633,7 +3217,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"target": 133,
+										"target": 164,
 										"name": "AnyPluginArray",
 										"package": "@lukekaalim/act-doc"
 									}
@@ -2642,26 +3226,25 @@
 							"parameters": [
 								{
 									"id": 17,
-									"name": "requiredPluginKeys",
+									"name": "requiredPlugins",
 									"variant": "param",
 									"kind": 32768,
 									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "A list of plugins that this DocApp instance _requires_\nfor this hook to function. A runtime check is performed on the context-provided\nDocApp instance to validate that the requested plugins are actually present (via their Key property)."
+											}
+										]
+									},
 									"type": {
 										"type": "reference",
-										"target": 136,
-										"typeArguments": [
-											{
-												"type": "reference",
-												"target": 16,
-												"name": "Plugins",
-												"package": "@lukekaalim/act-doc",
-												"refersToTypeParameter": true
-											}
-										],
-										"name": "PluginKeyArray",
-										"package": "@lukekaalim/act-doc"
-									},
-									"defaultValue": "..."
+										"target": 16,
+										"name": "Plugins",
+										"package": "@lukekaalim/act-doc",
+										"refersToTypeParameter": true
+									}
 								}
 							],
 							"type": {
@@ -2687,26 +3270,28 @@
 				{
 					"title": "Type Aliases",
 					"children": [
-						133,
-						91,
-						70,
-						90,
-						86,
+						164,
+						108,
+						87,
+						107,
+						103,
 						44,
 						18,
-						96,
-						102,
+						112,
+						123,
+						118,
 						7,
+						82,
 						36,
 						39,
-						134,
-						113,
-						122,
-						136,
-						66,
+						165,
+						144,
+						153,
+						167,
+						78,
 						53,
-						61,
-						62,
+						73,
+						74,
 						32,
 						25
 					]
@@ -2720,9 +3305,9 @@
 				{
 					"title": "Functions",
 					"children": [
-						111,
+						142,
 						9,
-						124,
+						155,
 						14
 					]
 				}
@@ -2731,7 +3316,8 @@
 				{
 					"fileName": "application/index.ts",
 					"line": 1,
-					"character": 0
+					"character": 0,
+					"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/index.ts#L1"
 				}
 			]
 		},
@@ -2758,8 +3344,9 @@
 							"sources": [
 								{
 									"fileName": "render.ts",
-									"line": 7,
-									"character": 2
+									"line": 8,
+									"character": 2,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/render.ts#L8"
 								}
 							],
 							"type": {
@@ -2768,7 +3355,7 @@
 								"typeArguments": [
 									{
 										"type": "reference",
-										"target": 133,
+										"target": 164,
 										"name": "AnyPluginArray",
 										"package": "@lukekaalim/act-doc"
 									}
@@ -2789,8 +3376,9 @@
 					"sources": [
 						{
 							"fileName": "render.ts",
-							"line": 6,
-							"character": 12
+							"line": 7,
+							"character": 12,
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/render.ts#L7"
 						}
 					]
 				},
@@ -2805,8 +3393,9 @@
 					"sources": [
 						{
 							"fileName": "render.ts",
-							"line": 10,
-							"character": 13
+							"line": 11,
+							"character": 13,
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/render.ts#L11"
 						}
 					],
 					"type": {
@@ -2848,7 +3437,8 @@
 				{
 					"fileName": "render.ts",
 					"line": 1,
-					"character": 0
+					"character": 0,
+					"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/render.ts#L1"
 				}
 			]
 		}
@@ -2956,7 +3546,7 @@
 		"17": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/App.ts",
-			"qualifiedName": "requiredPluginKeys"
+			"qualifiedName": "requiredPlugins"
 		},
 		"18": {
 			"packageName": "@lukekaalim/act-doc",
@@ -3121,7 +3711,7 @@
 		"56": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.add"
+			"qualifiedName": "__type.indirect_references"
 		},
 		"57": {
 			"packageName": "@lukekaalim/act-doc",
@@ -3131,364 +3721,509 @@
 		"58": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "key"
+			"qualifiedName": "__type.add"
 		},
 		"59": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "path"
+			"qualifiedName": "key"
 		},
 		"60": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "fragment"
+			"qualifiedName": "path"
 		},
 		"61": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "ReferenceKey"
+			"qualifiedName": "fragment"
 		},
 		"62": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "ReferenceLocation"
+			"qualifiedName": "__type.addIndirect"
+		},
+		"63": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.addIndirect"
 		},
 		"64": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.path"
+			"qualifiedName": "source"
 		},
 		"65": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.fragment"
+			"qualifiedName": "destination"
 		},
 		"66": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "Reference"
+			"qualifiedName": "fragment"
+		},
+		"67": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.resolveKey"
 		},
 		"68": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.key"
+			"qualifiedName": "__type.resolveKey"
 		},
 		"69": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.location"
+			"qualifiedName": "key"
 		},
 		"70": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "ArticleAPI"
+			"qualifiedName": "__type.resolveRouteLink"
+		},
+		"71": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.resolveRouteLink"
 		},
 		"72": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.articles"
+			"qualifiedName": "key"
 		},
 		"73": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.add"
+			"qualifiedName": "ReferenceKey"
 		},
 		"74": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.add"
-		},
-		"75": {
-			"packageName": "@lukekaalim/act-doc",
-			"packagePath": "application/Core.ts",
-			"qualifiedName": "key"
+			"qualifiedName": "ReferenceLocation"
 		},
 		"76": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "markdownContent"
+			"qualifiedName": "__type.path"
 		},
 		"77": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "path"
+			"qualifiedName": "__type.fragment"
 		},
 		"78": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.addRawRoot"
-		},
-		"79": {
-			"packageName": "@lukekaalim/act-doc",
-			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.addRawRoot"
+			"qualifiedName": "Reference"
 		},
 		"80": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "key"
+			"qualifiedName": "__type.key"
 		},
 		"81": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "root"
+			"qualifiedName": "__type.location"
 		},
 		"82": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "path"
-		},
-		"83": {
-			"packageName": "@lukekaalim/act-doc",
-			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.addArticlePreprocessor"
+			"qualifiedName": "IndirectReference"
 		},
 		"84": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.addArticlePreprocessor"
+			"qualifiedName": "__type.source"
 		},
 		"85": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "preprocessor"
+			"qualifiedName": "__type.destination"
 		},
 		"86": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "ArticlePreprocessor"
+			"qualifiedName": "__type.fragment"
 		},
 		"87": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type"
-		},
-		"88": {
-			"packageName": "@lukekaalim/act-doc",
-			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "ArticleAPI"
 		},
 		"89": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "article"
+			"qualifiedName": "__type.articles"
 		},
 		"90": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "ArticleKey"
+			"qualifiedName": "__type.add"
 		},
 		"91": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "Article"
+			"qualifiedName": "__type.add"
+		},
+		"92": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "key"
 		},
 		"93": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.key"
+			"qualifiedName": "markdownContent"
 		},
 		"94": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.path"
+			"qualifiedName": "path"
 		},
 		"95": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.content"
+			"qualifiedName": "__type.addRawRoot"
 		},
 		"96": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "Demo"
+			"qualifiedName": "__type.addRawRoot"
+		},
+		"97": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "key"
 		},
 		"98": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.key"
+			"qualifiedName": "root"
 		},
 		"99": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.frame"
+			"qualifiedName": "path"
 		},
 		"100": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.component"
+			"qualifiedName": "__type.addArticlePreprocessor"
 		},
 		"101": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "__type.addArticlePreprocessor"
 		},
 		"102": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "DemoAPI"
+			"qualifiedName": "preprocessor"
+		},
+		"103": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "ArticlePreprocessor"
 		},
 		"104": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.demos"
+			"qualifiedName": "__type"
 		},
 		"105": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.add"
+			"qualifiedName": "__type"
 		},
 		"106": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "__type.add"
+			"qualifiedName": "article"
 		},
 		"107": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "key"
+			"qualifiedName": "ArticleKey"
 		},
 		"108": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "component"
-		},
-		"109": {
-			"packageName": "@lukekaalim/act-doc",
-			"packagePath": "",
-			"qualifiedName": "__type"
+			"qualifiedName": "Article"
 		},
 		"110": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "frame"
+			"qualifiedName": "__type.key"
 		},
 		"111": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "createCoreAPI"
+			"qualifiedName": "__type.content"
 		},
 		"112": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Core.ts",
-			"qualifiedName": "createCoreAPI"
+			"qualifiedName": "Demo"
 		},
-		"113": {
+		"114": {
 			"packageName": "@lukekaalim/act-doc",
-			"packagePath": "application/Plugin.ts",
-			"qualifiedName": "PluginI"
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.key"
 		},
 		"115": {
 			"packageName": "@lukekaalim/act-doc",
-			"packagePath": "application/Plugin.ts",
-			"qualifiedName": "__type.key"
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.frame"
 		},
 		"116": {
 			"packageName": "@lukekaalim/act-doc",
-			"packagePath": "application/Plugin.ts",
-			"qualifiedName": "__type.api"
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.component"
 		},
 		"117": {
 			"packageName": "@lukekaalim/act-doc",
-			"packagePath": "application/Plugin.ts",
+			"packagePath": "application/Core.ts",
 			"qualifiedName": "__type"
 		},
 		"118": {
 			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "DemoFrame"
+		},
+		"120": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.key"
+		},
+		"121": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.component"
+		},
+		"122": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type"
+		},
+		"123": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "DemoAPI"
+		},
+		"125": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.demos"
+		},
+		"126": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.frames"
+		},
+		"127": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.defaultFrame"
+		},
+		"128": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.add"
+		},
+		"129": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.add"
+		},
+		"130": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "key"
+		},
+		"131": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "component"
+		},
+		"132": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "",
+			"qualifiedName": "__type"
+		},
+		"133": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "frame"
+		},
+		"134": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.addFrame"
+		},
+		"135": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.addFrame"
+		},
+		"136": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "key"
+		},
+		"137": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "frameComponent"
+		},
+		"138": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "",
+			"qualifiedName": "__type"
+		},
+		"139": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.setDefaultFrame"
+		},
+		"140": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "__type.setDefaultFrame"
+		},
+		"141": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "frame"
+		},
+		"142": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "createCoreAPI"
+		},
+		"143": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Core.ts",
+			"qualifiedName": "createCoreAPI"
+		},
+		"144": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Plugin.ts",
+			"qualifiedName": "PluginI"
+		},
+		"146": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Plugin.ts",
+			"qualifiedName": "__type.key"
+		},
+		"147": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Plugin.ts",
+			"qualifiedName": "__type.api"
+		},
+		"148": {
+			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "__type"
 		},
-		"119": {
+		"149": {
+			"packageName": "@lukekaalim/act-doc",
+			"packagePath": "application/Plugin.ts",
+			"qualifiedName": "__type"
+		},
+		"150": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "core"
 		},
-		"120": {
+		"151": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "Key"
 		},
-		"121": {
+		"152": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "API"
 		},
-		"122": {
+		"153": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "PluginIAPI"
 		},
-		"123": {
+		"154": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "Plugin"
 		},
-		"124": {
+		"155": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "createPlugin"
 		},
-		"125": {
+		"156": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "createPlugin"
 		},
-		"126": {
+		"157": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "Key"
 		},
-		"127": {
+		"158": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "API"
 		},
-		"128": {
+		"159": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "key"
 		},
-		"129": {
+		"160": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "api"
 		},
-		"130": {
+		"161": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "__type"
 		},
-		"131": {
+		"162": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "__type"
 		},
-		"132": {
+		"163": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "core"
 		},
-		"133": {
+		"164": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "AnyPluginArray"
 		},
-		"134": {
+		"165": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "PluginAPI"
 		},
-		"135": {
+		"166": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "Plugins"
 		},
-		"136": {
+		"167": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "PluginKeyArray"
 		},
-		"137": {
+		"168": {
 			"packageName": "@lukekaalim/act-doc",
 			"packagePath": "application/Plugin.ts",
 			"qualifiedName": "Plugins"

@@ -8,4 +8,4 @@ export * from './article/MarkdownArticle';
 export * from './sidenav';
 
 export * from './code';
-export * from './demo';
+//export * from './demo';

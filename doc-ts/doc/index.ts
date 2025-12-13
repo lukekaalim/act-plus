@@ -1,34 +1,33 @@
+import { DocApp } from "@lukekaalim/act-doc";
+import { TypeDocPlugin } from "../plugin";
+
+import docIndex from './index.md?raw';
+import { Comment, CommentTag, DeclarationReflection, IntrinsicType, ParameterReflection, ReflectionKind, SignatureReflection } from "typedoc/browser";
+import { DeclarationReflectionRenderer } from "../Reflection";
 import { h } from "@lukekaalim/act";
-import { MarkdownArticle, PageStore } from "@lukekaalim/act-doc";
-import { DocTsRegistry } from "@lukekaalim/act-doc-ts";
-import { parser } from "@lukekaalim/act-markdown";
 
-const markdown = {
-  index: await import('./index.md?raw').then(m => m.default)
+
+export const buildDocs = async (doc: DocApp<[TypeDocPlugin]>) => {
+  doc.article.add('typedoc.index', docIndex, '/packages/@lukekaalim/grimoire-ts');
+
+  const myFunctionDeclaration = new DeclarationReflection('MyFunction', ReflectionKind.Function);
+  const mySignatureReflection = new SignatureReflection('MyFunction', ReflectionKind.CallSignature, myFunctionDeclaration);
+  myFunctionDeclaration.addChild(mySignatureReflection);
+
+  myFunctionDeclaration.comment = new Comment([
+    { kind: "text", text: "My function is very cool!" },
+  ], [
+    new CommentTag('@alpha', []),
+    new CommentTag('@public', [])
+  ])
+
+  const param = new ParameterReflection("my_param", ReflectionKind.Parameter, mySignatureReflection);
+  param.type = new IntrinsicType("number");
+
+  mySignatureReflection.parameters = [param];
+  mySignatureReflection.type = new IntrinsicType("string");
+
+  doc.demos.add('typedoc-myfunction-def', () => {
+    return h(DeclarationReflectionRenderer, { declaration: myFunctionDeclaration })
+  })
 }
-const code = {
-  analysis: await import('../analysis.ts?raw').then(m => m.default),
-  DocTs: await import('../DocTs.ts?raw').then(m => m.default),
-  fragment: await import('../fragment.ts?raw').then(m => m.default),
-  registry: await import('../registry.ts?raw').then(m => m.default),
-  syntax: await import('../syntax.ts?raw').then(m => m.default)
-}
-
-DocTsRegistry.global.addReference('global', 'Map',
-  `https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map`);
-DocTsRegistry.global.addReference('ts', 'SourceFile',
-  `https://github.com/search?q=repo%3Amicrosoft/TypeScript%20SourceFile&type=code`);
-DocTsRegistry.global.addReference('global', 'DocComment',
-  `https://typedoc.org/documents/Doc_Comments.html`);
-
-export const createDocTsPages = (pages: PageStore) => {
-  for (const [name, sourceCode] of Object.entries(code)) {
-    DocTsRegistry.global.loadCode(`@lukekaalim/act-doc-ts`, sourceCode, `${name}.ts`);
-  }
-  DocTsRegistry.global.loadArticleReferences(
-    new URL(pages.fullPath('/'), location.href),
-    parser.parse(markdown.index)
-  )
-
-  pages.add('/', () => h(MarkdownArticle, { content: markdown.index }))
-};

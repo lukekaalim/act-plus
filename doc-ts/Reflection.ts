@@ -1,26 +1,43 @@
 import { Component, h, useMemo } from '@lukekaalim/act';
-import { CodeBox, renderMarkdown, StaticMarkdownArticle } from '@lukekaalim/act-doc';
-import { Markdown, parser } from '@lukekaalim/act-markdown';
-import { Comment, CommentDisplayPart, DeclarationReflection } from 'typedoc';
-import { renderTypeSyntax, TypeRenderer } from './TypeRenderer';
+import { renderMarkdown } from '@lukekaalim/act-doc';
+import { parser } from '@lukekaalim/act-markdown';
+import { Comment, CommentDisplayPart, DeclarationReflection, ReflectionKind } from 'typedoc/browser';
+import { useDocApp } from '@lukekaalim/act-doc/application';
+import { TypeDocPlugin } from './plugin';
+import { DeclarationPreviewRenderer } from './DeclarationPreview';
 
 export type DeclarationReflectionRendererProps = {
-  declarationReflection: DeclarationReflection,
+  declaration?: DeclarationReflection,
+
+  declarations?: DeclarationReflection[],
+
   headingLevel?: number
 }
 
 export const DeclarationReflectionRenderer: Component<DeclarationReflectionRendererProps> = ({
-  declarationReflection,
-  headingLevel = 2
+  declaration,
+  declarations,
+  headingLevel = 3
 }) => {
-  const lines = useMemo(() => declarationReflection.type && renderTypeSyntax(declarationReflection.type), []);
-  const id = declarationReflection.project.name + '.' + declarationReflection.getFullName();
+  const doc = useDocApp([TypeDocPlugin]);
 
-  return [
-    h(`h${headingLevel}`, { id }, h('a', { href: `#${id}` }, declarationReflection.name)),
-    !!lines && h(CodeBox, { lines }),
-    !!declarationReflection.comment && h(CommentRenderer, { comment: declarationReflection.comment })
-  ];
+  if (declarations) {
+
+  }
+  if (declaration) {
+    const id = declaration.project.name + '.' + declaration.getFullName();
+  
+    return [
+      h(`h${headingLevel}`, { id, style: { 'margin-bottom': 0 } },
+        h('a', { href: `#${id}` },
+          declaration.name)),
+      h('i', {}, ReflectionKind[declaration.kind]),
+      h(DeclarationPreviewRenderer, { declaration }),
+      !!declaration.comment && h(CommentRenderer, { comment: declaration.comment })
+    ];
+  }
+
+  throw new Error();
 };
 
 type CommentRendererProps = {
@@ -29,30 +46,25 @@ type CommentRendererProps = {
 
 const CommentRenderer = ({ comment }: CommentRendererProps) => {
   return [
-    h('p', {}, [
-      comment.summary.map(part => h(CommentDisplayPartRenderer, { part })),
-    ]),
+    renderMarkdown(parser.parse(processCommentParts(comment.summary))),
     comment.blockTags.map(block =>
       h('p', { style: { margin: '8px 0' }}, [
         h('strong', {}, block.tag), ' ',
-        block.content.map(part => h(CommentDisplayPartRenderer, { part }))
+        renderMarkdown(parser.parse(processCommentParts(block.content)))
       ])),
   ]
 }
 
-type CommentDisplayPartRendererProps = {
-  part: CommentDisplayPart
+const processCommentParts = (parts: CommentDisplayPart[]) => {
+  return parts.map(part => {
+    switch (part.kind) {
+      case 'code':
+      case 'text':
+        return part.text;
+      case 'inline-tag':
+        return `<InlineTag>${part.text}</InlineTag>`;
+      case 'relative-link':
+        return `<RelativeLink>${part.text}</RelativeLink>`;
+    }
+  }).join("")
 }
-
-const CommentDisplayPartRenderer = ({ part }: CommentDisplayPartRendererProps) => {
-  switch (part.kind) {
-    case 'code':
-      return renderMarkdown(parser.parse(part.text))
-    case 'text':
-      return renderMarkdown(parser.parse(part.text))
-    case 'inline-tag':
-      return h('a', {}, [part.tag, part.text]);
-    case 'relative-link':
-      return h('a', {  }, part.text)
-  }
-};

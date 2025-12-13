@@ -2,6 +2,7 @@
   "$schema": "https://typedoc.org/schema.json",
 
   "json": "typedoc.output.json",
+  "html": "html",
   
   "entryPoints": ["application/index.ts", "render.ts"]
 }

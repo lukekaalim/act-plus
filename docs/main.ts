@@ -22,10 +22,10 @@ import { tags } from './tags';
 import { Article } from '@lukekaalim/act-doc/components/article/Article';
 import { TypeDocPlugin } from '@lukekaalim/act-doc-ts/plugin';
 import { createPages } from './packages/act-doc';
-import { createDocTsPages } from '@lukekaalim/act-doc-ts/doc';
 import { createSampleDocPages } from '../sample-lib/docs';
 import { createDocApp } from '@lukekaalim/act-doc/application';
 import { DocAppRenderer } from '@lukekaalim/act-doc/render';
+import { buildDocs } from '@lukekaalim/act-doc-ts/doc';
 
 const origin = createRelativeURLFactory();
 
@@ -298,13 +298,14 @@ const packagePages = pageStore.prefix('/packages/@lukekaalim')
 const setup = intializeApplication([])
 
 createPages(packagePages.prefix('/act-doc'))
-createDocTsPages(packagePages.prefix('/act-doc-ts'))
+
 
 const doc = createDocApp([TypeDocPlugin]);
 createSampleDocPages(doc);
+buildDocs(doc);
 
-pageStore.add('/packages/sample', () => h(DocAppRenderer, { doc }))
-pageStore.add('/packages/@lukekaalim/grimoire', () => h(DocAppRenderer, { doc }))
+//pageStore.add('/packages/sample', () => h(DocAppRenderer, { doc }))
+//pageStore.add('/packages/@lukekaalim/grimoire', () => h(DocAppRenderer, { doc }))
 
 doc.typedoc.addProjectJSON('@lukekaalim/grimoire', (await import('@lukekaalim/act-doc/typedoc.output.json')).default as any);
 doc.article.add(
@@ -312,6 +313,11 @@ doc.article.add(
   (await import("@lukekaalim/act-doc/application/readme.md?raw")).default,
   '/packages/@lukekaalim/grimoire'
 )
+
+for (const route of doc.route.routes) {
+  console.log('Adding', route.path)
+  pageStore.add(route.path, () => h(DocAppRenderer, { doc }))
+}
 
 const pages = RouterPage.map({
   '/': { component: DemoPage },

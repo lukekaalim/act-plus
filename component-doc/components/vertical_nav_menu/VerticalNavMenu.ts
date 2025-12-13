@@ -1,6 +1,6 @@
-import { Component, h, Node } from "@lukekaalim/act";
+import { Component, h, Node, useMemo } from "@lukekaalim/act";
 import classNames from './VerticalNavMenu.module.css';
-import { NavTree } from "../../lib";
+import { NavLeaf, NavTree, NavTree2 } from "../../lib";
 
 export type VerticalNavMenuProps = {
   tree: NavTree,
@@ -27,6 +27,35 @@ export const VerticalNavMenu: Component<VerticalNavMenuProps> = ({ tree }) => {
     }),
   ]);
 }
+
+export type VerticalNavMenu2Props = {
+  tree: NavTree2,
+};
+
+export const VerticalNavMenu2: Component<VerticalNavMenu2Props> = ({ tree }) => {
+  const renderLeaf = (leaf: NavLeaf): Node => {
+    const children = leaf.children.map(childId => tree.leaves[childId]);
+
+    if (leaf.content)
+      return h('div', {}, [
+        h(VerticalNavMenuLink, { content: leaf.content, href: leaf.location?.href || '' }),
+        children.length > 0 && h(VerticalNavMenuList, {
+          entries: children.map(renderLeaf)
+        }),
+      ]);
+
+    return h('div', {}, [
+      children.length > 0 && h(VerticalNavMenuList, {
+        entries: children.map(renderLeaf)
+      }),
+    ]);
+  }
+
+  return tree.roots.map(root => {
+    const leaf = tree.leaves[root];
+    return renderLeaf(leaf);
+  });
+};
 
 export type VerticalNavMenuListProps = {
   entries: Node[],

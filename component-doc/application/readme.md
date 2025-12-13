@@ -60,26 +60,4 @@ render(h(DocRenderer, { doc }));
 
 ## Writing a Plugin
 
-You can extend the DocApp system
-
-```ts
-
-const MyPlugin = {
-  key: 'my_plugin',
-  api(core) {
-    // register a new component to be displayed in MDX articles
-    core.components.add('NoiseMaker', () => h('audio', { src: 'my-audio' }))
-
-    return {
-      doThing() {
-        console.log('A thing is done!');
-      }
-    }
-  }
-}
-
-const doc = createDocApp([MyPlugin]);
-
-doc.my_plugin.doThing();
-
-```
+<TypeDoc project="@lukekaalim/grimoire" name="createPlugin" />

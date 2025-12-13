@@ -13,15 +13,23 @@ import { SyntaxHighlightingCodeBox } from "../code";
 import { useAppSetup } from "../../plugin/AppSetup";
 import { useDocApp } from "../../application";
 
+export const markdownClasses = {
+  heading: classes.heading,
+  code: classes.mkCode,
+  inlineCode: classes.inlineCode,
+  paragraph: classes.paragraph,
+  blockquote: articleClasses.blockQuote
+}
+
 export const renderMarkdown = createMdastRenderer({
-  classNames: {
-    heading: classes.heading,
-    code: classes.mkCode,
-    inlineCode: classes.inlineCode,
-    paragraph: classes.paragraph,
-    blockquote: articleClasses.blockQuote
-  },
+  classNames: markdownClasses,
   components: {
+    InlineTag({ children, attributes }) {
+      return h('strong', {}, children);
+    },
+    RelativeLink({ children }) {
+      return h('strong', {}, children);
+    }
   }
 });
 
@@ -46,7 +54,7 @@ export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ m
   const mdx = useMdxContext()
   const setup = useAppSetup();
 
-  const app = useDocApp();
+  const app = useDocApp([]);
 
   const renderer = useMemo(() => createMdastRenderer({
     classNames: {
