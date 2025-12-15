@@ -7,37 +7,30 @@ import { TypeDocPlugin } from './plugin';
 import { DeclarationPreviewRenderer } from './DeclarationPreview';
 
 export type DeclarationReflectionRendererProps = {
-  declaration?: DeclarationReflection,
+  declaration: DeclarationReflection,
 
-  declarations?: DeclarationReflection[],
+  extraDeclarations?: DeclarationReflection[],
 
   headingLevel?: number
 }
 
 export const DeclarationReflectionRenderer: Component<DeclarationReflectionRendererProps> = ({
   declaration,
-  declarations,
+  extraDeclarations,
   headingLevel = 3
 }) => {
   const doc = useDocApp([TypeDocPlugin]);
 
-  if (declarations) {
+  const id = declaration.project.name + '.' + declaration.getFullName();
 
-  }
-  if (declaration) {
-    const id = declaration.project.name + '.' + declaration.getFullName();
-  
-    return [
-      h(`h${headingLevel}`, { id, style: { 'margin-bottom': 0 } },
-        h('a', { href: `#${id}` },
-          declaration.name)),
-      h('i', {}, ReflectionKind[declaration.kind]),
-      h(DeclarationPreviewRenderer, { declaration }),
-      !!declaration.comment && h(CommentRenderer, { comment: declaration.comment })
-    ];
-  }
-
-  throw new Error();
+  return [
+    h(`h${headingLevel}`, { id, style: { 'margin-bottom': 0 } },
+      h('a', { href: `#${id}` },
+        declaration.name)),
+    h('i', {}, ReflectionKind[declaration.kind]),
+    h(DeclarationPreviewRenderer, { declaration, extraDeclarations }),
+    !!declaration.comment && h(CommentRenderer, { comment: declaration.comment })
+  ];
 };
 
 type CommentRendererProps = {

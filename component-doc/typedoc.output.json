@@ -24,7 +24,7 @@
 							"fileName": "application/Plugin.ts",
 							"line": 10,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L10"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L10"
 						}
 					],
 					"type": {
@@ -74,7 +74,7 @@
 									"fileName": "application/Core.ts",
 									"line": 113,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L113"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L113"
 								}
 							],
 							"type": {
@@ -99,7 +99,7 @@
 									"fileName": "application/Core.ts",
 									"line": 111,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L111"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L111"
 								}
 							],
 							"type": {
@@ -124,7 +124,7 @@
 							"fileName": "application/Core.ts",
 							"line": 110,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L110"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L110"
 						}
 					]
 				},
@@ -154,7 +154,7 @@
 									"fileName": "application/Core.ts",
 									"line": 96,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L96"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L96"
 								}
 							],
 							"type": {
@@ -178,7 +178,7 @@
 									"fileName": "application/Core.ts",
 									"line": 103,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L103"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L103"
 								}
 							],
 							"signatures": [
@@ -201,7 +201,7 @@
 											"fileName": "application/Core.ts",
 											"line": 103,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L103"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L103"
 										}
 									],
 									"parameters": [
@@ -261,7 +261,7 @@
 									"fileName": "application/Core.ts",
 									"line": 106,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L106"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L106"
 								}
 							],
 							"signatures": [
@@ -276,7 +276,7 @@
 											"fileName": "application/Core.ts",
 											"line": 106,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L106"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L106"
 										}
 									],
 									"parameters": [
@@ -312,7 +312,7 @@
 									"fileName": "application/Core.ts",
 									"line": 104,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L104"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L104"
 								}
 							],
 							"signatures": [
@@ -327,7 +327,7 @@
 											"fileName": "application/Core.ts",
 											"line": 104,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L104"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L104"
 										}
 									],
 									"parameters": [
@@ -404,7 +404,7 @@
 							"fileName": "application/Core.ts",
 							"line": 95,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L95"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L95"
 						}
 					]
 				},
@@ -419,7 +419,7 @@
 							"fileName": "application/Core.ts",
 							"line": 109,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L109"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L109"
 						}
 					],
 					"type": {
@@ -438,7 +438,7 @@
 							"fileName": "application/Core.ts",
 							"line": 108,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L108"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L108"
 						}
 					],
 					"type": {
@@ -454,7 +454,7 @@
 									"fileName": "application/Core.ts",
 									"line": 108,
 									"character": 34,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L108"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L108"
 								}
 							],
 							"signatures": [
@@ -514,7 +514,7 @@
 									"fileName": "application/Core.ts",
 									"line": 53,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L53"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L53"
 								}
 							],
 							"type": {
@@ -538,7 +538,7 @@
 									"fileName": "application/Core.ts",
 									"line": 55,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L55"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L55"
 								}
 							],
 							"signatures": [
@@ -553,7 +553,7 @@
 											"fileName": "application/Core.ts",
 											"line": 55,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L55"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L55"
 										}
 									],
 									"parameters": [
@@ -602,7 +602,7 @@
 																			"fileName": "application/Core.ts",
 																			"line": 55,
 																			"character": 43,
-																			"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L55"
+																			"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L55"
 																		}
 																	],
 																	"type": {
@@ -649,7 +649,7 @@
 																	"fileName": "application/Core.ts",
 																	"line": 55,
 																	"character": 41,
-																	"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L55"
+																	"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L55"
 																}
 															]
 														}
@@ -689,7 +689,7 @@
 							"fileName": "application/Core.ts",
 							"line": 52,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L52"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L52"
 						}
 					]
 				},
@@ -719,7 +719,7 @@
 									"fileName": "application/Core.ts",
 									"line": 21,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L21"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L21"
 								}
 							],
 							"type": {
@@ -740,7 +740,7 @@
 									"fileName": "application/Core.ts",
 									"line": 20,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L20"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L20"
 								}
 							],
 							"type": {
@@ -761,7 +761,7 @@
 									"fileName": "application/Core.ts",
 									"line": 23,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L23"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L23"
 								}
 							],
 							"type": {
@@ -782,7 +782,7 @@
 									"fileName": "application/Core.ts",
 									"line": 22,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L22"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L22"
 								}
 							],
 							"type": {
@@ -803,7 +803,7 @@
 									"fileName": "application/Core.ts",
 									"line": 19,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L19"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L19"
 								}
 							],
 							"type": {
@@ -831,7 +831,7 @@
 							"fileName": "application/Core.ts",
 							"line": 18,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L18"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L18"
 						}
 					]
 				},
@@ -853,7 +853,7 @@
 									"fileName": "application/Core.ts",
 									"line": 119,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L119"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L119"
 								}
 							],
 							"type": {
@@ -877,7 +877,7 @@
 													"fileName": "application/Core.ts",
 													"line": 119,
 													"character": 23,
-													"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L119"
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L119"
 												}
 											]
 										}
@@ -900,7 +900,7 @@
 									"fileName": "application/Core.ts",
 									"line": 118,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L118"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L118"
 								}
 							],
 							"type": {
@@ -919,7 +919,7 @@
 									"fileName": "application/Core.ts",
 									"line": 117,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L117"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L117"
 								}
 							],
 							"type": {
@@ -943,7 +943,7 @@
 							"fileName": "application/Core.ts",
 							"line": 116,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L116"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L116"
 						}
 					]
 				},
@@ -965,7 +965,7 @@
 									"fileName": "application/Core.ts",
 									"line": 128,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L128"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L128"
 								}
 							],
 							"type": {
@@ -986,7 +986,7 @@
 									"fileName": "application/Core.ts",
 									"line": 126,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L126"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L126"
 								}
 							],
 							"type": {
@@ -1010,7 +1010,7 @@
 									"fileName": "application/Core.ts",
 									"line": 127,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L127"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L127"
 								}
 							],
 							"type": {
@@ -1034,7 +1034,7 @@
 									"fileName": "application/Core.ts",
 									"line": 130,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L130"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L130"
 								}
 							],
 							"signatures": [
@@ -1049,7 +1049,7 @@
 											"fileName": "application/Core.ts",
 											"line": 130,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L130"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L130"
 										}
 									],
 									"parameters": [
@@ -1127,7 +1127,7 @@
 									"fileName": "application/Core.ts",
 									"line": 131,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L131"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L131"
 								}
 							],
 							"signatures": [
@@ -1142,7 +1142,7 @@
 											"fileName": "application/Core.ts",
 											"line": 131,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L131"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L131"
 										}
 									],
 									"parameters": [
@@ -1207,7 +1207,7 @@
 									"fileName": "application/Core.ts",
 									"line": 132,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L132"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L132"
 								}
 							],
 							"signatures": [
@@ -1222,7 +1222,7 @@
 											"fileName": "application/Core.ts",
 											"line": 132,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L132"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L132"
 										}
 									],
 									"parameters": [
@@ -1271,7 +1271,7 @@
 							"fileName": "application/Core.ts",
 							"line": 125,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L125"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L125"
 						}
 					]
 				},
@@ -1293,7 +1293,7 @@
 									"fileName": "application/Core.ts",
 									"line": 123,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L123"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L123"
 								}
 							],
 							"type": {
@@ -1317,7 +1317,7 @@
 													"fileName": "application/Core.ts",
 													"line": 123,
 													"character": 23,
-													"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L123"
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L123"
 												}
 											]
 										}
@@ -1338,7 +1338,7 @@
 									"fileName": "application/Core.ts",
 									"line": 122,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L122"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L122"
 								}
 							],
 							"type": {
@@ -1361,7 +1361,7 @@
 							"fileName": "application/Core.ts",
 							"line": 121,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L121"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L121"
 						}
 					]
 				},
@@ -1403,7 +1403,7 @@
 							"fileName": "application/App.ts",
 							"line": 21,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L21"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/App.ts#L21"
 						}
 					],
 					"typeParameters": [
@@ -1469,7 +1469,7 @@
 									"fileName": "application/Core.ts",
 									"line": 86,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L86"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L86"
 								}
 							],
 							"type": {
@@ -1492,7 +1492,7 @@
 									"fileName": "application/Core.ts",
 									"line": 88,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L88"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L88"
 								}
 							],
 							"type": {
@@ -1511,7 +1511,7 @@
 									"fileName": "application/Core.ts",
 									"line": 85,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L85"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L85"
 								}
 							],
 							"type": {
@@ -1537,7 +1537,7 @@
 							"fileName": "application/Core.ts",
 							"line": 84,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L84"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L84"
 						}
 					]
 				},
@@ -1552,7 +1552,7 @@
 							"fileName": "application/Core.ts",
 							"line": 41,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L41"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L41"
 						}
 					],
 					"type": {
@@ -1583,7 +1583,7 @@
 													"fileName": "application/Core.ts",
 													"line": 41,
 													"character": 39,
-													"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L41"
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L41"
 												}
 											],
 											"type": {
@@ -1630,7 +1630,7 @@
 											"fileName": "application/Core.ts",
 											"line": 41,
 											"character": 37,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L41"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L41"
 										}
 									]
 								}
@@ -1658,7 +1658,7 @@
 									"fileName": "application/Core.ts",
 									"line": 45,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L45"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L45"
 								}
 							],
 							"type": {
@@ -1681,7 +1681,7 @@
 									"fileName": "application/Core.ts",
 									"line": 44,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L44"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L44"
 								}
 							],
 							"type": {
@@ -1700,7 +1700,7 @@
 									"fileName": "application/Core.ts",
 									"line": 43,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L43"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L43"
 								}
 							],
 							"type": {
@@ -1724,7 +1724,7 @@
 							"fileName": "application/Core.ts",
 							"line": 42,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L42"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L42"
 						}
 					]
 				},
@@ -1734,12 +1734,31 @@
 					"variant": "declaration",
 					"kind": 2097152,
 					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Every plugin included in a DocApp can create an API object, which is\nattached to the PluginAPI object on via it's \"key\" property."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@example",
+								"content": [
+									{
+										"kind": "code",
+										"text": "```ts\nconst MyPlugin = createPlugin(\"sample\", () => ({ hello: () => \"world\" }));\nconst doc = createDocApp([MyPlugin]);\n\ndoc.sample.hello() // == \"world\"\n```"
+									}
+								]
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "application/Plugin.ts",
-							"line": 12,
+							"line": 25,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L12"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L25"
 						}
 					],
 					"typeParameters": [
@@ -1842,7 +1861,7 @@
 									"fileName": "application/Plugin.ts",
 									"line": 3,
 									"character": 59,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L3"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L3"
 								}
 							],
 							"type": {
@@ -1858,7 +1877,7 @@
 											"fileName": "application/Plugin.ts",
 											"line": 3,
 											"character": 64,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L3"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L3"
 										}
 									],
 									"signatures": [
@@ -1906,7 +1925,7 @@
 									"fileName": "application/Plugin.ts",
 									"line": 3,
 									"character": 49,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L3"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L3"
 								}
 							],
 							"type": {
@@ -1932,7 +1951,7 @@
 							"fileName": "application/Plugin.ts",
 							"line": 3,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L3"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L3"
 						}
 					],
 					"typeParameters": [
@@ -1967,7 +1986,7 @@
 							"fileName": "application/Plugin.ts",
 							"line": 4,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L4"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L4"
 						}
 					],
 					"typeParameters": [
@@ -2031,9 +2050,9 @@
 					"sources": [
 						{
 							"fileName": "application/Plugin.ts",
-							"line": 16,
+							"line": 29,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L16"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L29"
 						}
 					],
 					"typeParameters": [
@@ -2113,7 +2132,7 @@
 									"fileName": "application/Core.ts",
 									"line": 81,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L81"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L81"
 								}
 							],
 							"type": {
@@ -2134,7 +2153,7 @@
 									"fileName": "application/Core.ts",
 									"line": 82,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L82"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L82"
 								}
 							],
 							"type": {
@@ -2159,7 +2178,7 @@
 							"fileName": "application/Core.ts",
 							"line": 80,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L80"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L80"
 						}
 					]
 				},
@@ -2189,7 +2208,7 @@
 									"fileName": "application/Core.ts",
 									"line": 69,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L69"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L69"
 								}
 							],
 							"type": {
@@ -2213,7 +2232,7 @@
 									"fileName": "application/Core.ts",
 									"line": 68,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L68"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L68"
 								}
 							],
 							"type": {
@@ -2237,7 +2256,7 @@
 									"fileName": "application/Core.ts",
 									"line": 71,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L71"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L71"
 								}
 							],
 							"signatures": [
@@ -2252,7 +2271,7 @@
 											"fileName": "application/Core.ts",
 											"line": 71,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L71"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L71"
 										}
 									],
 									"parameters": [
@@ -2312,7 +2331,7 @@
 									"fileName": "application/Core.ts",
 									"line": 72,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L72"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L72"
 								}
 							],
 							"signatures": [
@@ -2327,7 +2346,7 @@
 											"fileName": "application/Core.ts",
 											"line": 72,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L72"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L72"
 										}
 									],
 									"parameters": [
@@ -2387,7 +2406,7 @@
 									"fileName": "application/Core.ts",
 									"line": 74,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L74"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L74"
 								}
 							],
 							"signatures": [
@@ -2402,7 +2421,7 @@
 											"fileName": "application/Core.ts",
 											"line": 74,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L74"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L74"
 										}
 									],
 									"parameters": [
@@ -2447,7 +2466,7 @@
 									"fileName": "application/Core.ts",
 									"line": 75,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L75"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L75"
 								}
 							],
 							"signatures": [
@@ -2462,7 +2481,7 @@
 											"fileName": "application/Core.ts",
 											"line": 75,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L75"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L75"
 										}
 									],
 									"parameters": [
@@ -2524,7 +2543,7 @@
 							"fileName": "application/Core.ts",
 							"line": 67,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L67"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L67"
 						}
 					]
 				},
@@ -2539,7 +2558,7 @@
 							"fileName": "application/Core.ts",
 							"line": 78,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L78"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L78"
 						}
 					],
 					"type": {
@@ -2567,7 +2586,7 @@
 									"fileName": "application/Core.ts",
 									"line": 79,
 									"character": 48,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L79"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L79"
 								}
 							],
 							"type": {
@@ -2586,7 +2605,7 @@
 									"fileName": "application/Core.ts",
 									"line": 79,
 									"character": 34,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L79"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L79"
 								}
 							],
 							"type": {
@@ -2609,7 +2628,7 @@
 							"fileName": "application/Core.ts",
 							"line": 79,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L79"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L79"
 						}
 					]
 				},
@@ -2631,7 +2650,7 @@
 									"fileName": "application/Core.ts",
 									"line": 38,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L38"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L38"
 								}
 							],
 							"type": {
@@ -2656,7 +2675,7 @@
 									"fileName": "application/Core.ts",
 									"line": 37,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L37"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L37"
 								}
 							],
 							"type": {
@@ -2679,7 +2698,7 @@
 							"fileName": "application/Core.ts",
 							"line": 36,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L36"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L36"
 						}
 					]
 				},
@@ -2709,7 +2728,7 @@
 									"fileName": "application/Core.ts",
 									"line": 31,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L31"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L31"
 								}
 							],
 							"type": {
@@ -2733,7 +2752,7 @@
 									"fileName": "application/Core.ts",
 									"line": 33,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L33"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L33"
 								}
 							],
 							"signatures": [
@@ -2748,7 +2767,7 @@
 											"fileName": "application/Core.ts",
 											"line": 33,
 											"character": 2,
-											"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L33"
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L33"
 										}
 									],
 									"parameters": [
@@ -2810,7 +2829,7 @@
 							"fileName": "application/Core.ts",
 							"line": 30,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L30"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L30"
 						}
 					]
 				},
@@ -2827,7 +2846,7 @@
 							"fileName": "application/App.ts",
 							"line": 43,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L43"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/App.ts#L43"
 						}
 					],
 					"type": {
@@ -2878,7 +2897,7 @@
 							"fileName": "application/Core.ts",
 							"line": 135,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L135"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L135"
 						}
 					],
 					"signatures": [
@@ -2893,7 +2912,7 @@
 									"fileName": "application/Core.ts",
 									"line": 135,
 									"character": 29,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Core.ts#L135"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Core.ts#L135"
 								}
 							],
 							"type": {
@@ -2916,7 +2935,7 @@
 							"fileName": "application/App.ts",
 							"line": 29,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L29"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/App.ts#L29"
 						}
 					],
 					"signatures": [
@@ -2945,7 +2964,7 @@
 									"fileName": "application/App.ts",
 									"line": 29,
 									"character": 28,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L29"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/App.ts#L29"
 								}
 							],
 							"typeParameters": [
@@ -3017,7 +3036,7 @@
 							"fileName": "application/Plugin.ts",
 							"line": 6,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L6"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L6"
 						}
 					],
 					"signatures": [
@@ -3032,7 +3051,7 @@
 									"fileName": "application/Plugin.ts",
 									"line": 6,
 									"character": 28,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L6"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L6"
 								}
 							],
 							"typeParameters": [
@@ -3089,7 +3108,7 @@
 													"fileName": "application/Plugin.ts",
 													"line": 6,
 													"character": 69,
-													"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L6"
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L6"
 												}
 											],
 											"signatures": [
@@ -3104,7 +3123,7 @@
 															"fileName": "application/Plugin.ts",
 															"line": 6,
 															"character": 69,
-															"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/Plugin.ts#L6"
+															"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/Plugin.ts#L6"
 														}
 													],
 													"parameters": [
@@ -3171,7 +3190,7 @@
 							"fileName": "application/App.ts",
 							"line": 54,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L54"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/App.ts#L54"
 						}
 					],
 					"signatures": [
@@ -3205,7 +3224,7 @@
 									"fileName": "application/App.ts",
 									"line": 54,
 									"character": 25,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/App.ts#L54"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/App.ts#L54"
 								}
 							],
 							"typeParameters": [
@@ -3317,7 +3336,7 @@
 					"fileName": "application/index.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/application/index.ts#L1"
+					"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/application/index.ts#L1"
 				}
 			]
 		},
@@ -3346,7 +3365,7 @@
 									"fileName": "render.ts",
 									"line": 8,
 									"character": 2,
-									"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/render.ts#L8"
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/render.ts#L8"
 								}
 							],
 							"type": {
@@ -3378,7 +3397,7 @@
 							"fileName": "render.ts",
 							"line": 7,
 							"character": 12,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/render.ts#L7"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/render.ts#L7"
 						}
 					]
 				},
@@ -3395,7 +3414,7 @@
 							"fileName": "render.ts",
 							"line": 11,
 							"character": 13,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/render.ts#L11"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/render.ts#L11"
 						}
 					],
 					"type": {
@@ -3438,7 +3457,7 @@
 					"fileName": "render.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/lukekaalim/act-compdoc/blob/69fbab3f283e3aa9195d9c1a24a0504df80a12c6/component-doc/render.ts#L1"
+					"url": "https://github.com/lukekaalim/act-compdoc/blob/66dfdd6bd4984ab09b179cbb87301abc84539e68/component-doc/render.ts#L1"
 				}
 			]
 		}
@@ -4233,7 +4252,7 @@
 		"entries": {
 			"1": "application/index.ts",
 			"2": "render.ts",
-			"3": "README.md",
+			"3": "readme.md",
 			"4": ""
 		},
 		"reflections": {

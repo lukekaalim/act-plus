@@ -11,7 +11,7 @@
     "doc-ts"
   ],
   "devDependencies": {
-    "@changesets/cli": "^2.29.6",
+    "@changesets/cli": "^2.29.8",
     "@types/node": "^22.10.5",
     "vite": "^7.2.4"
   },

@@ -1,9 +1,8 @@
-import { DocPlugin, useAppAPI, useAppSetup } from "@lukekaalim/act-doc";
 import { DeclarationReflectionRenderer } from "./Reflection";
 import { Deserializer, ConsoleLogger, ProjectReflection, JSONOutput, FileRegistry, DeclarationReflection, Reflection, ReflectionKind, SomeReflection, ContainerReflection, DocumentReflection, SomeType } from "typedoc/browser";
-import { h, useContext } from "@lukekaalim/act";
-import { ArticlePreprocessor, CoreAPI, MDXComponent, MDXComponentEntry } from "@lukekaalim/act-doc/application/Core";
-import { DocApp, PluginAPI, PluginIAPI, useDocApp } from "@lukekaalim/act-doc/application";
+import { h } from "@lukekaalim/act";
+import { ArticlePreprocessor, CoreAPI, MDXComponent } from "@lukekaalim/act-doc/application/Core";
+import { PluginIAPI, useDocApp } from "@lukekaalim/act-doc/application";
 import { visit } from "unist-util-visit";
 import { buildMdxAttributes } from "@lukekaalim/act-markdown";
 
@@ -37,12 +36,19 @@ const TypeDoc: MDXComponent = ({ attributes }) => {
 
   const projectName = attributes["project"];
   const reflectionName = attributes["name"];
+  const extraDeclarationsNames = (attributes["extras"] || '').split(" ");
 
   try {
     if (typeof projectName !== 'string' || typeof reflectionName !== 'string')
       throw new Error(`Missing attribute "project" or "name"`);
     const declaration = getDeclaration(api.typedoc, projectName, reflectionName);
-    return h(DeclarationReflectionRenderer, { declaration })
+    const extraDeclarations = extraDeclarationsNames.map(name => {
+      try {
+        return getDeclaration(api.typedoc, projectName, name)
+      } catch { return null }
+    }).filter(x => !!x);
+
+    return h(DeclarationReflectionRenderer, { declaration, extraDeclarations })
   } catch (error) {
     return h('div', {}, (error as Error).message);
   }

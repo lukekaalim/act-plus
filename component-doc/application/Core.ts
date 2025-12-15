@@ -1,4 +1,4 @@
-import { Component, h, Node, useEffect, useRef, useState } from "@lukekaalim/act";
+import { Component, h, Node, useEffect, useMemo, useRef, useState } from "@lukekaalim/act";
 import { parser } from "@lukekaalim/act-markdown";
 import { Root } from "mdast";
 import { Article } from "../components/article/Article";
@@ -6,7 +6,7 @@ import { MarkdownArticle, SidePanelContainer, StaticMarkdownArticle } from "../c
 import { CoreDebug } from "../components/debug/CoreDebug";
 import { DefaultDemoFrame, DemoMDX } from "../components/demo/Demo";
 import { VerticalNavMenu, VerticalNavMenu2 } from "../components/vertical_nav_menu/VerticalNavMenu";
-import { buildNavTreeFromDOM, createNavTreeBuilder, NavTree2 } from "../lib";
+import { buildNavTreeFromDOM, createNavTreeBuilder, NavLeaf, NavTree2 } from "../lib";
 
 /**
  * The CoreAPI is a list of API objects that contain
@@ -31,6 +31,7 @@ export type RoutesAPI = {
   routes: Route[],
 
   add(path: string, content: Node): Route,
+  getNavTree(): NavTree2,
 }
 
 export type Route = {
@@ -150,6 +151,42 @@ export const createCoreAPI = (): CoreAPI => {
         routes.push(route);
         return route;
       },
+      getNavTree() {
+        const root: NavLeaf = { id: '/', parent: null, children: [] };
+        const tree: NavTree2 = { leaves: { [root.id]: root }, roots: [root.id] };
+        
+        for (const route of core.route.routes) {
+          const segments = route.path.split('/').filter(Boolean);
+          let leaf = root;
+          console.log(route, segments);
+          for (let i = 0; i < segments.length; i++) {
+            const segment = segments[i];
+            const pathSoFar = segments.slice(0, i + 1).join('/');
+            // for each segment, find/create the appropriate
+            // leaf/root
+            const nextLeaf = leaf.children.find(childId => {
+              return childId === pathSoFar;
+            })
+            if (!nextLeaf) {
+              const parent = leaf;
+              leaf = { id: pathSoFar, children: [], parent: leaf.id }
+              tree.leaves[leaf.id] = leaf;
+              parent.children.push(leaf.id);
+              console.log('Creating new Leaf', pathSoFar)
+            } else {
+              leaf = tree.leaves[nextLeaf];
+            }
+          }
+          console.log(`Leaf ${leaf.id} is route ${route.path}`)
+          leaf.content = route.content;
+          leaf.location = new URL(document.location.href);
+          leaf.location.pathname = route.path;
+          leaf.location.hash = "";
+          leaf.location.search = "";
+        }
+        console.log({ tree })
+        return tree;
+      },
     },
     reference: {
       references,
@@ -210,7 +247,6 @@ export const createCoreAPI = (): CoreAPI => {
 
 
         if (article.path) {
-
           const Component = () => {
             const ref = useRef<HTMLElement | null>(null)
             const [tree, setTree] = useState<NavTree2 | null>(null);
@@ -222,8 +258,10 @@ export const createCoreAPI = (): CoreAPI => {
               setTree(builder.tree);
             }, []);
 
+            const routeTree = useMemo(() => core.route.getNavTree(), [])
+
             const node = h(SidePanelContainer, {
-              left: null,
+              left: routeTree && h(VerticalNavMenu2, { tree: routeTree }),
               right: tree && h(VerticalNavMenu2, { tree }),
             }, h(StaticMarkdownArticle, { root: content }))
   

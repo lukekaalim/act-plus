@@ -1,52 +1,41 @@
 import { Component, h, useMemo } from "@lukekaalim/act"
 import { CodeBox, createHLJSBuilder, HLJSBuilder } from "@lukekaalim/act-doc";
-import { DeclarationReference, DeclarationReflection, ParameterReflection, ReflectionKind, SignatureReflection, TypeParameterReflection } from "typedoc/browser"
+import { DeclarationReflection, ParameterReflection, ReflectionKind, SignatureReflection, TypeParameterReflection } from "typedoc/browser"
 import { renderTypeSyntax2 } from "./TypeRenderer";
 import { DocApp, useDocApp } from "@lukekaalim/act-doc/application";
 import { TypeDocPlugin } from "./plugin";
 
 export type DeclarationPreviewRendererProps = {
   declaration: DeclarationReflection,
+
+  extraDeclarations?: DeclarationReflection[]
 }
 
-export const DeclarationPreviewRenderer: Component<DeclarationPreviewRendererProps> = ({ declaration }) => {
+export const DeclarationPreviewRenderer: Component<DeclarationPreviewRendererProps> = ({
+  declaration, extraDeclarations = []
+}) => {
   const doc = useDocApp([TypeDocPlugin]);
 
   const lines = useMemo(() => {
-    if (declaration.type) {
-      const builder = createHLJSBuilder();
-      
-      switch (declaration.kind) {
-        case ReflectionKind.TypeAlias:
-          builder
-            .keyword('type ')
-            .type(declaration.name)
-            .text(' = ')
-          break;
-        case ReflectionKind.Variable:
-          builder
-            .keyword('let ')
-            .type(declaration.name)
-            .text(': ')
-          break;
-      }
+    const builder = createHLJSBuilder();
 
-      
-      renderTypeSyntax2(builder, doc, declaration.type);
-      builder.text(';')
-
-      return builder.output();
+    createDeclarationPreviewSyntax(doc, builder, declaration);
+    for (const extraDeclaration of extraDeclarations) {
+      builder.newLine().newLine();
+      createDeclarationPreviewSyntax(doc, builder, extraDeclaration);
     }
 
-    const syntax = createHLJSBuilder();
-    createDeclarationPreviewSyntax(doc, syntax, declaration);
-    return syntax.output();
-  }, [doc, declaration]);
+    return builder.output();
+  }, [doc, declaration, extraDeclarations]);
 
   return h(CodeBox, { lines });
 }
 
-export const createDeclarationPreviewSyntax = (doc: DocApp<[TypeDocPlugin]>, syntax: HLJSBuilder, declaration: DeclarationReflection) => {
+export const createDeclarationPreviewSyntax = (
+  doc: DocApp<[TypeDocPlugin]>,
+  syntax: HLJSBuilder,
+  declaration: DeclarationReflection
+) => {
   const buildProperties = (properties: DeclarationReflection[]) => {
     for (let i = 0; i < properties.length; i++) {
       const property = properties[i];
@@ -152,6 +141,27 @@ export const createDeclarationPreviewSyntax = (doc: DocApp<[TypeDocPlugin]>, syn
       syntax.text(': ');
       renderTypeSyntax2(syntax, doc, signature.type);
     }
+  }
+
+  if (declaration.type) {
+    switch (declaration.kind) {
+      case ReflectionKind.TypeAlias:
+        syntax
+          .keyword('type ')
+          .type(declaration.name)
+          .text(' = ')
+        break;
+      case ReflectionKind.Variable:
+        syntax
+          .keyword('let ')
+          .type(declaration.name)
+          .text(': ')
+        break;
+    }
+    
+    renderTypeSyntax2(syntax, doc, declaration.type);
+    syntax.text(';')
+    return
   }
 
   if (declaration.kind === ReflectionKind.TypeAlias) {

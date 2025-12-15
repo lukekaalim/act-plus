@@ -19,7 +19,7 @@ You can create an instance with the
 The `DocRenderer` accepts a DocSetup instance
 as a prop.
 
-<TypeDoc project="@lukekaalim/grimoire" name="DocAppRenderer" />
+<TypeDoc project="@lukekaalim/grimoire" name="DocAppRenderer" extras="DocAppRendererProps" />
 
 ## Example Setup
 
