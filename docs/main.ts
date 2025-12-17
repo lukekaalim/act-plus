@@ -239,14 +239,28 @@ doc.route.add('/', h(DemoPage))
 
 // each one get's it's own chunk
 const { buildGrimoireDocs } = await import('@lukekaalim/grimoire/docs')
+console.info('Loaded grimoire', performance.now())
 const { buildGrimoireTSDocs } = await import('@lukekaalim/grimoire-ts/doc')
-const { createSampleDocPages } = await import('sample-lib/docs')
+console.info('Loaded grimoire-ts', performance.now())
 const { buildIconDocs } = await import('@lukekaalim/act-icons/docs')
+console.info('Loaded act-icons', performance.now())
+const { buildCurveDocs } = await import('@lukekaalim/act-curve/docs')
+console.info('Loaded act-curve', performance.now())
+const { buildGraphitDocs } = await import('@lukekaalim/act-graphit/mod.doc.ts')
+console.info('Loaded act-graphit', performance.now())
+const { buildMarkdownDocs } = await import('@lukekaalim/act-markdown/doc.ts')
+console.info('Loaded act-graphit', performance.now())
+
+const { createSampleDocPages } = await import('sample-lib/docs')
+console.info('Loaded sample', performance.now())
 
 buildGrimoireDocs(doc);
 buildGrimoireTSDocs(doc);
 createSampleDocPages(doc);
 buildIconDocs(doc);
+buildCurveDocs(doc);
+buildGraphitDocs(doc);
+buildMarkdownDocs(doc)
 
 const main = () => {
   const style = {

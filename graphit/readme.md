@@ -4,30 +4,19 @@ An Act-based graphing component library.
 
 ## Components
 
-### CartesianSpace
+<TypeDoc project="@lukekaalim/act-graphit" name="CartesianSpace" />
+Move around the space by clicking and dragging
+<Demo demo="CartesianSpaceDemo" />
 
-```ts
-import { CartesianSpace } from '@lukekaalim/act-graphit';
-```
 
-<CartesianSpaceDemo />
+<TypeDoc project="@lukekaalim/act-graphit" name="LinePath" />
 
-Place a 2D grid plotting out X and Y.
-
-### LinePath
-
-```ts
-import { LinePath } from '@lukekaalim/act-graphit';
-```
-
-<LinePathDemo />
+Here we draw a circle and a sine wave.
+<Demo demo="LinePathDemo" />
 
 Draw a PolyLine using a progress function and a resolution.
 
-Here we draw a circle and a sine wave.
+## Comments
 
-
-## Directions
-
-Graphs have a positive-y = up display instead of the traditional
-DOM positive-y = down.
+> Graphs have a `positive-y = up` display instead of the traditional
+> DOM `positive-y = down`.

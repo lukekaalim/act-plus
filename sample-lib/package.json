@@ -4,6 +4,9 @@
   
   "license": "ISC",
   "author": "Luke Kaalim",
+  
   "type": "module",
-  "main": "./main.ts"
+  "main": "./main.ts",
+
+  "private": true
 }

@@ -49,7 +49,13 @@ export const DemoMDX: MDXComponent = ({ attributes }) => {
   const doc = useDocApp([]);
   const demo = doc.demos.demos.find(d => d.key === demoKey);
   if (!demo)
-    return `DemoMDX can't find demo "${demoKey}"`;
+    return h('div', { style: {
+      background: 'red',
+      border: '4px solid pink',
+      'border-radius': '4px',
+      padding: '8px',
+      color: 'white',
+    }}, `❕ DemoMDX can't find demo "${demoKey}"`);
   
   const frame = doc.demos.frames.find(f => f.key === frameKey) || doc.demos.defaultFrame;
 

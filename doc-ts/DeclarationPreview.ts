@@ -137,7 +137,7 @@ const renderParameters = (
   syntax: HLJSBuilder,
   doc: DocApp<[TypeDocPlugin]>,
 ) => {
-  const multiline = parameters.length > 1 || forceMultiline;
+  const multiline = parameters.length > 2 || forceMultiline;
 
   syntax.text('(')
   if (multiline)

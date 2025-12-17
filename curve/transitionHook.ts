@@ -87,8 +87,8 @@ export const createTransitionAPI = <T extends TransitionType>(
     },
     get(state) {
       return [
-        ...state.currentKeys.map(key => state.entries.get(key)) as T["ValueState"][],
         ...state.removedStates,
+        ...state.currentKeys.map(key => state.entries.get(key)) as T["ValueState"][],
       ];
     },
     update(state, nextValues) {

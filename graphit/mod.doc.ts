@@ -1,15 +1,21 @@
-import { h, useState } from "@lukekaalim/act";
-import { MarkdownArticle } from "@lukekaalim/grimoire";
+import { Component, h, useState } from "@lukekaalim/act";
+import { DocApp, MarkdownArticle } from "@lukekaalim/grimoire";
 import { MarkdownComponent } from "@lukekaalim/act-markdown";
 import { CartesianSpace } from "./CartesianSpace";
 import { LinePath } from "./LinePath";
+import { TypeDocPlugin } from "@lukekaalim/grimoire-ts";
 
-const CartesianSpaceDemo: MarkdownComponent = () => {
+import readmeMd from './readme.md?raw';
+import projectJSON from 'typedoc:index.ts';
+
+const CartesianSpaceDemo: Component = () => {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
 
   return [
-    h('div', {}, [
+    h('div', { style: {
+      display: 'flex'
+    }}, [
       h('input', { 
         type: 'range',
         min: 0,
@@ -26,14 +32,16 @@ const CartesianSpaceDemo: MarkdownComponent = () => {
       }),
     ]),
     h('div', { style: {
-      height: '400px'
+      height: '400px',
+      display: 'flex'
     }}, h(CartesianSpace, { offset: { x, y } }),)
   ];
 }
 
 const LinePathDemo = () => {
   return h('div', { style: {
-    height: '400px'
+    height: '400px',
+    display: 'flex',
   }}, h(CartesianSpace, { offset: { x: 0, y: 0 } }, [
     h(LinePath, {
       stroke: 'red',
@@ -69,3 +77,12 @@ export default h(MarkdownArticle, {
   //  }
   //}
 })
+
+export const buildGraphitDocs = (doc: DocApp<[TypeDocPlugin]>) => {
+  doc.typedoc.addProjectJSON('@lukekaalim/act-graphit', projectJSON);
+
+  doc.article.add('graphit.readme', readmeMd, '/packages/@lukekaalim/act-graphit')
+
+  doc.demos.add('CartesianSpaceDemo', CartesianSpaceDemo)
+  doc.demos.add('LinePathDemo', LinePathDemo)
+}

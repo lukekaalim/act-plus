@@ -13,6 +13,13 @@ export type DeclarationReflectionRendererProps = {
   headingLevel?: number
 }
 
+/**
+ * Render a DeclarationReflection into a HTML section
+ * with a heading, type preview, summary and other
+ * comment boxes.
+ * @param param0 
+ * @returns 
+ */
 export const DeclarationReflectionRenderer: Component<DeclarationReflectionRendererProps> = ({
   declaration,
   extraDeclarations,

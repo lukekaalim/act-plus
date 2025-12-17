@@ -20,6 +20,10 @@ export const buildGrimoireTSDocs = (doc: DocApp<[TypeDocPlugin]>) => {
   doc.article.add('ts.api', apiMd, '/packages/@lukekaalim/grimoire-ts/api');
   doc.article.add('ts.guide', guideMd, '/packages/@lukekaalim/grimoire-ts/guides');
 
+  doc.reference.addExternal(`ts:typedoc.DeclarationReflection`, new URL('https://typedoc.org/api/classes/Models.DeclarationReflection.html'));
+  doc.reference.addExternal(`ts:typedoc.ProjectReflection`, new URL('https://typedoc.org/api/classes/Models.ProjectReflection.html'));
+  doc.reference.addExternal(`ts:typedoc.ReferenceType`, new URL('https://typedoc.org/api/classes/Models.ReferenceType.html'));
+
 
   const myFunctionDeclaration = new DeclarationReflection('MyFunction', ReflectionKind.Function);
   const mySignatureReflection = new SignatureReflection('MyFunction', ReflectionKind.CallSignature, myFunctionDeclaration);

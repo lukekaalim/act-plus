@@ -9,6 +9,5 @@ import { TypeDocPlugin } from "@lukekaalim/grimoire-ts";
 export const createSampleDocPages = (doc: DocApp<[TypeDocPlugin]>) => {
   doc.typedoc.addProjectJSON('sample-lib', projectJSON as any);
 
-  doc.article.add('sample_readme', readmeText, '/packages/sample');
-  doc.article.add('sample_readme.2', `# This is a second page \n <TypeDocDebug />`, '/packages/second_page');
+  doc.article.add('sample_readme', readmeText, '/sample');
 };

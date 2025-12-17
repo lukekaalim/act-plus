@@ -2,6 +2,8 @@
 
 An animation library for @lukekaalim/act
 
+<Demo demo="CurveDemo" />
+
 ## Guide
 
 ### Interpolation
@@ -13,18 +15,25 @@ The `lerp` function will return an interpolated value
 from two inputs, based on a `t`/progress values
 from zero to one.
 
-<LerpDemo />
+<Demo demo="Lerp" />
 
 ### Vectors
 
 This library contains a few vector types
 (`Vector1D`/`Vector2D`/`Vector3D`).
 
+
+<TypeDoc project="@lukekaalim/act-curve" name="Vector1D" />
+<TypeDoc project="@lukekaalim/act-curve" name="Vector2D" />
+<TypeDoc project="@lukekaalim/act-curve" name="Vector3D" />
+
 It also defines a interpolation function
 for each type, as well as some basic math
 operations.
 
-<VectorInterpolateDemo />
+<TypeDoc project="@lukekaalim/act-curve" name="VectorAPI" />
+
+<Demo demo="VectorInterpolate" />
 
 Each vector type has a different set 
 of functions, but each group of function
@@ -33,7 +42,7 @@ letting you define functions that can work
 across different vector types as long as the
 specific VectorAPI is passed as an argument.
 
-<VectorAPIDemo />
+<Demo demo="VectorAPI" />
 
 ### Curves
 
@@ -47,7 +56,7 @@ middle.
 Much like a linear interpolation, we can get the result
 of a point moving across the curve.
 
-<BezierCurveDemo />
+<Demo demo="BezierCurve" />
 
 ### Animation
 
@@ -57,4 +66,4 @@ the curve can let us control momentum more,
 we can define the start and end speed of the
 animation.
 
-<CurveAnimationDemo />
+<Demo demo="CurveAnimation" />

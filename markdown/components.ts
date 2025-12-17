@@ -24,14 +24,14 @@ export type MarkdownRendererOptions = {
   classNames?: { [key in (MdastNode["type"] | 'checkbox')]?: string },
   styles?: { [key in (MdastNode["type"] | 'checkbox')]?: Record<string, unknown> },
 }
-export type MdastRenderer = ReturnType<typeof createMdastRenderer>;
+export type MdastRenderer = (node: MdastNode) => Node
 
 export const getHeadingId = (heading: Heading) => {
   const id = kebabCase(toString(heading) || '');
   return id;
 }
 
-export const createMdastRenderer = (options: MarkdownRendererOptions = {}) => {
+export const createMdastRenderer = (options: MarkdownRendererOptions = {}): MdastRenderer => {
   const mdastToNode = (node: MdastNode): Node => {
     const className = (options.classNames || {})[node.type] || '';
     const style = (options.styles || {})[node.type] || {};

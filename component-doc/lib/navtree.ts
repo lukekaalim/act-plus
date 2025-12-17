@@ -116,7 +116,7 @@ export type NavLeaf = {
   parent: null | NavLeafID,
   children: NavLeafID[],
 
-  content?: null | string,
+  content?: null | Node,
   location?: URL,
 };
 
@@ -223,4 +223,34 @@ export const buildNavTreeFromDOM = (builder: NavTreeBuilder, element: Element) =
     for (const child of element.children) {
       buildNavTreeFromDOM(builder, child);
     }
+}
+
+/**
+ * Combine intermediate leaves that have no location or more than one child.
+ * @param tree 
+ */
+export const simplifyTree = (tree: NavTree2) => {
+  tree.roots.forEach(root => visitLeaves(tree, root, leaf => {
+    if (!leaf.parent)
+      return;
+
+    const parent = tree.leaves[leaf.parent];
+    if (parent.children.length === 1 && !parent.location && !leaf.location) {
+      // I am an only child
+      parent.children = leaf.children;
+      parent.content = [parent.content || null, '/', leaf.content || null];
+      for (const child of leaf.children.map(id => tree.leaves[id]))
+        child.parent = parent.id;
+
+      // kinda cursed but ok
+      delete tree.leaves[leaf.id];
+    }
+  }))
+}
+
+const visitLeaves = (tree: NavTree2, leafId: NavLeafID, callback: (leaf: NavLeaf) => void) => {
+  const leaf = tree.leaves[leafId];
+  callback(leaf);
+  for (const child of leaf.children)
+    visitLeaves(tree, child, callback);
 }

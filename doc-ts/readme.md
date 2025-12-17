@@ -19,3 +19,13 @@ doc.typedoc.loadProjectJson('MyProject', projectJSON);
 
 render(h(DocAppRenderer, { doc }), document.body)
 ```
+
+## Todo
+
+I sure love writing these lists. I just wish I loved
+filling when with checkboxes as much too.
+
+  - [ ] TypeDoc
+    - [ ] should probably have "type" prop instead of "name" for consitency.
+    - [ ] should maybe be renamed to "Reflection" to match TypeDoc ?
+    - [ ] should have option to select kind of reflection: "Type" or "Variable" (since names can conflict)

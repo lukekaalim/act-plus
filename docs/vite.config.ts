@@ -27,6 +27,7 @@ const plugin: Plugin = {
 
       const app = await td.Application.bootstrapWithPlugins({
         entryPoints: [pathWithoutPrefix],
+        sort: ['source-order']
       });
 
       const project = await app.convert();

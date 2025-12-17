@@ -78,7 +78,7 @@ export const createVectorAPI = <T>(ComponentsAPI: VectorComponentsAPI<T>) => {
 export type Vector1D = {
   x: number
 }
-export const Vector1D = createVectorAPI({
+export const Vector1D = createVectorAPI<Vector1D>({
   create: value => ({
     x: value,
   }),

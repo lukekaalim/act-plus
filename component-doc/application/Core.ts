@@ -6,7 +6,7 @@ import { MarkdownArticle, SidePanelContainer, StaticMarkdownArticle } from "../c
 import { CoreDebug } from "../components/debug/CoreDebug";
 import { DefaultDemoFrame, DemoMDX } from "../components/demo/Demo";
 import { VerticalNavMenu, VerticalNavMenu2 } from "../components/vertical_nav_menu/VerticalNavMenu";
-import { buildNavTreeFromDOM, createNavTreeBuilder, NavLeaf, NavTree2 } from "../lib";
+import { buildNavTreeFromDOM, createNavTreeBuilder, NavLeaf, NavTree2, simplifyTree } from "../lib";
 
 /**
  * The CoreAPI is a list of API objects that contain
@@ -70,6 +70,7 @@ export type ReferenceAPI = {
   indirect_references: IndirectReference[],
 
   add(key: ReferenceKey, path: string, fragment?: string): Reference,
+  addExternal(key: ReferenceKey, url: URL): Reference,
   addIndirect(source: ReferenceKey, destination: ReferenceKey, fragment?: string): IndirectReference,
 
   resolveKey(key: ReferenceKey): null | ReferenceLocation,
@@ -77,7 +78,7 @@ export type ReferenceAPI = {
 };
 
 export type ReferenceKey = string;
-export type ReferenceLocation = { path: string, fragment?: string };
+export type ReferenceLocation = { path: string, fragment?: string, origin?: string };
 export type Reference = {
   key: ReferenceKey,
   location: ReferenceLocation,
@@ -170,6 +171,7 @@ export const createCoreAPI = (): CoreAPI => {
             if (!nextLeaf) {
               const parent = leaf;
               leaf = { id: pathSoFar, content: segment, children: [], parent: leaf.id }
+
               tree.leaves[leaf.id] = leaf;
               parent.children.push(leaf.id);
             } else {
@@ -182,6 +184,8 @@ export const createCoreAPI = (): CoreAPI => {
           leaf.location.hash = "";
           leaf.location.search = "";
         }
+        simplifyTree(tree);
+
         return tree;
       },
     },
@@ -190,6 +194,12 @@ export const createCoreAPI = (): CoreAPI => {
       indirect_references,
       add(key, path, fragment) {
         const reference = { key, location: { path, fragment } };
+        references.push(reference);
+        return reference;
+      },
+      addExternal(key, url) {
+        const { pathname, hash, origin } = url;
+        const reference: Reference = { key, location: { path: pathname, fragment: hash, origin } };
         references.push(reference);
         return reference;
       },
@@ -202,6 +212,7 @@ export const createCoreAPI = (): CoreAPI => {
         const direct_reference = core.reference.references.find(ref => ref.key === key);
         if (direct_reference)
           return direct_reference.location;
+
         const indirect_reference = core.reference.indirect_references.find(ref => ref.source === key);
         if (indirect_reference) {
           const resolvedReference = core.reference.resolveKey(indirect_reference.destination);
@@ -218,8 +229,20 @@ export const createCoreAPI = (): CoreAPI => {
         const location = core.reference.resolveKey(key)
         if (!location)
           return null;
+
+        // if is external
+        if (location.origin) {
+          const url = new URL(location.origin);
+          url.pathname = location.path;
+          console.log(location.path)
+          if (location.fragment)
+            url.hash = location.fragment;
+          return url;
+        }
+
         if (!core.route.routes.find(route => route.path !== location.path))
           return null;
+
         const url = new URL(document.location.href);
         url.pathname = location.path;
         if (location.fragment)

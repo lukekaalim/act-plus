@@ -15,10 +15,8 @@ npm install @lukekaalim/act-markdown
 And then use the [`Markdown`](#freesh-avocadoo) component
 to render the text.
 
-[somewhere](https://www.anunknownlocation.com)
-
-```ts
-import { Markdown } from '@lukekaalim/act-markdown`;
+```tsx
+import { Markdown } from '@lukekaalim/act-markdown';
 
 const myMarkdownText = `
 # Heading
@@ -34,13 +32,15 @@ const MyApp = () => {
 ## Features
 
 Support for the following features builtin:
-  - [ ] Directives
   - [x] MDX support
   - [x] Github-flavored markdown
   - [ ] Frontmatter
 
-## Exports
+## API
 
-### Markdown
+<TypeDoc project="@lukekaalim/act-markdown" name="createMdastRenderer" extras="MarkdownRendererOptions" />
+<TypeDoc project="@lukekaalim/act-markdown" name="MdastRenderer" />
 
-The component!
+<TypeDoc project="@lukekaalim/act-markdown" name="Markdown" />
+<TypeDoc project="@lukekaalim/act-markdown" name="useRemarkParser" />
+<TypeDoc project="@lukekaalim/act-markdown" name="parser" />

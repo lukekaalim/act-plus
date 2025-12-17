@@ -37,7 +37,8 @@ export const createAnimationAPI = <T>(CurveAPI: CurveAPI<T>) => {
           const point = CurveAPI.curve4(a, b, c, d, progress);
           onFrame(point);
     
-          id = requestAnimationFrame(callback);
+          if (progress < 1)
+            id = requestAnimationFrame(callback);
         };
         let id = requestAnimationFrame(callback);
         return () => {

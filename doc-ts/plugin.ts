@@ -145,6 +145,12 @@ export const TypeDocPlugin = {
         projects.set(name, project);
       },
       getLinkForType(type: ReferenceType) {
+        // Externally defined type, maybe
+        if (type.package) {
+          const exteral = core.reference.resolveRouteLink(`ts:${type.package}.${type.qualifiedName}`);
+          if (exteral)
+            return exteral;
+        }
         for (const [projectName, project] of projects.entries()) {
           for (const reflection of flattenDeclarations(project)) {
             if (reflection.isDeclaration() && reflection.getFullName() === type.qualifiedName) {

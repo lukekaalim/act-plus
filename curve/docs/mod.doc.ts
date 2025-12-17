@@ -1,8 +1,8 @@
 import { h, useRef, useState } from "@lukekaalim/act";
 import { hs, HTML, SVG } from "@lukekaalim/act-web";
 
-import { CartesianSpace } from "../graphit/CartesianSpace";
-import { LinePath } from "../graphit/LinePath";
+import { CartesianSpace } from "@lukekaalim/act-graphit/CartesianSpace";
+import { LinePath } from "@lukekaalim/act-graphit/LinePath";
 import { EditablePoint } from "@lukekaalim/act-graphit/EditablePoint";
 import { Vector } from "@lukekaalim/act-graphit/vector";
 import {
@@ -13,8 +13,8 @@ import {
   useSpan,
   //useBezierAnimation,
   //curve3, curve4, lerp
-} from "./mod";
-import classes from './docs/index.module.css';
+} from "../mod";
+import classes from './index.module.css';
 
 type Vector2 = { x: number, y: number };
 const Vector2 = {
@@ -190,7 +190,7 @@ const AnimDemo = () => {
   ])
 }
 
-export default () => {
+export const CurveDemo = () => {
   
   const [progress, setProgress] = useState(50);
 
