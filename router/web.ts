@@ -141,14 +141,6 @@ export type WebLinkProps = {
 
 
 export const WebLink: Component<WebLinkProps> = ({ link, children, ...props }) => {
-  const router = useRouterContext();
-  
-  const onClick = (e: MouseEvent) => {
-    if (link.location.origin !== router.location.origin)
-      return;
-    e.preventDefault();
-    router.navigate(link.location);
-  }
 
-  return h('a', { ...props, href: link.location.href, onClick }, link.display)
+  return h('a', { ...props, href: link.location.href }, link.display)
 }

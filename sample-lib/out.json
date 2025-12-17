@@ -32,7 +32,7 @@
 							"fileName": "main.ts",
 							"line": 21,
 							"character": 40,
-							"url": "https://github.com/lukekaalim/act-compdoc/blob/45ccfb629086a77412a8a5baa99647975b978eff/sample-lib/main.ts#L21"
+							"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L21"
 						}
 					],
 					"type": {
@@ -66,7 +66,7 @@
 					"fileName": "main.ts",
 					"line": 21,
 					"character": 12,
-					"url": "https://github.com/lukekaalim/act-compdoc/blob/45ccfb629086a77412a8a5baa99647975b978eff/sample-lib/main.ts#L21"
+					"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L21"
 				}
 			],
 			"typeParameters": [
@@ -82,6 +82,367 @@
 					}
 				}
 			]
+		},
+		{
+			"id": 6,
+			"name": "MyComplexType",
+			"variant": "declaration",
+			"kind": 2097152,
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "main.ts",
+					"line": 23,
+					"character": 12,
+					"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L23"
+				}
+			],
+			"type": {
+				"type": "union",
+				"types": [
+					{
+						"type": "reflection",
+						"declaration": {
+							"id": 7,
+							"name": "__type",
+							"variant": "declaration",
+							"kind": 65536,
+							"flags": {},
+							"children": [
+								{
+									"id": 8,
+									"name": "property",
+									"variant": "declaration",
+									"kind": 1024,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "main.ts",
+											"line": 24,
+											"character": 6,
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L24"
+										}
+									],
+									"type": {
+										"type": "literal",
+										"value": "literal-value"
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Properties",
+									"children": [
+										8
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "main.ts",
+									"line": 24,
+									"character": 4,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L24"
+								}
+							]
+						}
+					},
+					{
+						"type": "reflection",
+						"declaration": {
+							"id": 9,
+							"name": "__type",
+							"variant": "declaration",
+							"kind": 65536,
+							"flags": {},
+							"children": [
+								{
+									"id": 10,
+									"name": "method",
+									"variant": "declaration",
+									"kind": 2048,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "main.ts",
+											"line": 25,
+											"character": 6,
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L25"
+										}
+									],
+									"signatures": [
+										{
+											"id": 11,
+											"name": "method",
+											"variant": "signature",
+											"kind": 4096,
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "main.ts",
+													"line": 25,
+													"character": 6,
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L25"
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "void"
+											}
+										}
+									]
+								}
+							],
+							"groups": [
+								{
+									"title": "Methods",
+									"children": [
+										10
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "main.ts",
+									"line": 25,
+									"character": 4,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L25"
+								}
+							]
+						}
+					},
+					{
+						"type": "intersection",
+						"types": [
+							{
+								"type": "reflection",
+								"declaration": {
+									"id": 12,
+									"name": "__type",
+									"variant": "declaration",
+									"kind": 65536,
+									"flags": {},
+									"children": [
+										{
+											"id": 13,
+											"name": "compound",
+											"variant": "declaration",
+											"kind": 1024,
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "main.ts",
+													"line": 26,
+													"character": 7,
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L26"
+												}
+											],
+											"type": {
+												"type": "literal",
+												"value": "object"
+											}
+										}
+									],
+									"groups": [
+										{
+											"title": "Properties",
+											"children": [
+												13
+											]
+										}
+									],
+									"sources": [
+										{
+											"fileName": "main.ts",
+											"line": 26,
+											"character": 5,
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L26"
+										}
+									]
+								}
+							},
+							{
+								"type": "reflection",
+								"declaration": {
+									"id": 14,
+									"name": "__type",
+									"variant": "declaration",
+									"kind": 65536,
+									"flags": {},
+									"children": [
+										{
+											"id": 15,
+											"name": "other",
+											"variant": "declaration",
+											"kind": 1024,
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "main.ts",
+													"line": 26,
+													"character": 32,
+													"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L26"
+												}
+											],
+											"type": {
+												"type": "literal",
+												"value": "prop"
+											}
+										}
+									],
+									"groups": [
+										{
+											"title": "Properties",
+											"children": [
+												15
+											]
+										}
+									],
+									"sources": [
+										{
+											"fileName": "main.ts",
+											"line": 26,
+											"character": 30,
+											"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L26"
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"type": "reflection",
+						"declaration": {
+							"id": 16,
+							"name": "__type",
+							"variant": "declaration",
+							"kind": 65536,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "main.ts",
+									"line": 27,
+									"character": 5,
+									"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L27"
+								}
+							],
+							"signatures": [
+								{
+									"id": 17,
+									"name": "__type",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"parameters": [
+										{
+											"id": 18,
+											"name": "functionParam",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 19,
+											"name": "{ extracted }",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "reflection",
+												"declaration": {
+													"id": 20,
+													"name": "__type",
+													"variant": "declaration",
+													"kind": 65536,
+													"flags": {},
+													"children": [
+														{
+															"id": 21,
+															"name": "extracted",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "main.ts",
+																	"line": 27,
+																	"character": 46,
+																	"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L27"
+																}
+															],
+															"type": {
+																"type": "literal",
+																"value": "Property"
+															}
+														}
+													],
+													"groups": [
+														{
+															"title": "Properties",
+															"children": [
+																21
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "main.ts",
+															"line": 27,
+															"character": 44,
+															"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L27"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "literal",
+										"value": "Inline function!"
+									}
+								}
+							]
+						}
+					},
+					{
+						"type": "literal",
+						"value": 100
+					},
+					{
+						"type": "literal",
+						"value": false
+					},
+					{
+						"type": "literal",
+						"value": null
+					},
+					{
+						"type": "mapped",
+						"parameter": "key",
+						"parameterType": {
+							"type": "union",
+							"types": [
+								{
+									"type": "literal",
+									"value": "A"
+								},
+								{
+									"type": "literal",
+									"value": "B"
+								}
+							]
+						},
+						"templateType": {
+							"type": "literal",
+							"value": true
+						}
+					}
+				]
+			}
 		},
 		{
 			"id": 1,
@@ -143,7 +504,7 @@
 					"fileName": "main.ts",
 					"line": 15,
 					"character": 13,
-					"url": "https://github.com/lukekaalim/act-compdoc/blob/45ccfb629086a77412a8a5baa99647975b978eff/sample-lib/main.ts#L15"
+					"url": "https://github.com/lukekaalim/act-compdoc/blob/e069e83a11b2d543a5a38ddfbf63795c27e9c62b/sample-lib/main.ts#L15"
 				}
 			],
 			"type": {
@@ -157,7 +518,8 @@
 		{
 			"title": "Type Aliases",
 			"children": [
-				2
+				2,
+				6
 			]
 		},
 		{
@@ -171,7 +533,7 @@
 	"readme": [
 		{
 			"kind": "text",
-			"text": "# Sample Libary\n\nThis is a sample library that exposes a single variable\nas it's export, as a sample project for parsing doc-ts.\n\n<TypeDoc project=\"sample-lib\" name=\"my_export\" />\n<TypeDoc project=\"sample-lib\" name=\"My_Type\" />"
+			"text": "# Sample Libary\n\nThis is a sample library that exposes a single variable\nas it's export, as a sample project for parsing doc-ts.\n\n<TypeDoc project=\"sample-lib\" name=\"my_export\" />\n<TypeDoc project=\"sample-lib\" name=\"My_Type\" />\n<TypeDoc project=\"sample-lib\" name=\"MyComplexType\" />\n\n## Type Debug\n\n<TypeDocDebug />\n\n## Core Debug\n\n<CoreDebug />"
 		}
 	],
 	"symbolIdMap": {
@@ -199,6 +561,81 @@
 			"packageName": "sample-lib",
 			"packagePath": "main.ts",
 			"qualifiedName": "T"
+		},
+		"6": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "MyComplexType"
+		},
+		"7": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type"
+		},
+		"8": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type.property"
+		},
+		"9": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type"
+		},
+		"10": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type.method"
+		},
+		"11": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type.method"
+		},
+		"12": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type"
+		},
+		"13": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type.compound"
+		},
+		"14": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type"
+		},
+		"15": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type.other"
+		},
+		"16": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type"
+		},
+		"17": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type"
+		},
+		"18": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "functionParam"
+		},
+		"20": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type"
+		},
+		"21": {
+			"packageName": "sample-lib",
+			"packagePath": "main.ts",
+			"qualifiedName": "__type.extracted"
 		}
 	},
 	"files": {

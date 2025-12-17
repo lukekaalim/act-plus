@@ -1,7 +1,7 @@
-# @lukekaalim/act-doc
+# @lukekaalim/grimoire
 
 ```sh
-npm i @lukekaalim/act-doc
+npm i @lukekaalim/grimoire
 ```
 
 _really_ barebones documentation component library for [@lukekaalim/act](https://act.luke.kaal.im).
@@ -22,15 +22,4 @@ your tool of choice!
   - [ ] Actually published on npm
   - [ ] Hosting something (on github pages maybe?)
 
-## A Demo!
-
-<PrismaticComponent />
-
-## Subprojects
-
-There are a few general-purpose packages
-that are also maintained here, for convinence:
-
-  - [@lukekaalim/act-markdown](/markdown)
-  - [@lukekaalim/act-icons](/icons)
-  - [@lukekaalim/act-curve](https://www.example.com)
+<Demo demo="Prismatic" />

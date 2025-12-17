@@ -1,5 +1,5 @@
 import { h, useState } from "@lukekaalim/act";
-import { MarkdownArticle } from "@lukekaalim/act-doc";
+import { MarkdownArticle } from "@lukekaalim/grimoire";
 import { MarkdownComponent } from "@lukekaalim/act-markdown";
 import { CartesianSpace } from "./CartesianSpace";
 import { LinePath } from "./LinePath";

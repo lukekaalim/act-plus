@@ -19,3 +19,13 @@ export const my_export: string = "A cool Export";
  * This is a cool type that is also exported
  */
 export type My_Type<T extends true> = { prop: string | T };
+
+export type MyComplexType =
+  | { property: "literal-value" }
+  | { method(): void }
+  | ({ compound: "object" } & { other: "prop" })
+  | ((functionParam: string, { extracted }: { extracted: "Property" }) => "Inline function!")
+  | 100
+  | false
+  | null
+  | { [key in "A" | "B"]: true }

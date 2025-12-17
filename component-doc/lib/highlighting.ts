@@ -51,20 +51,42 @@ export const classMap = {
 } as const;
 export type HLJSClassKey = keyof typeof classMap;
 
-type HLJSElementBuilderFuncMap = { [key in HLJSClassKey]: (text: string) => HLJSBuilder }
+export type HLJSElementBuilderFuncMap = { [key in HLJSClassKey]: (text: string) => HLJSBuilder }
 
 /**
- * Utility object for creating HLJS-style element trees.
+ * Core API for composing syntax-highlighted text.
  * 
- * Use these functions to annotate and highlight syntax.
+ * @example
+ * ```ts
+ * const builder = createHLJSBuilder();
+ * 
+ * builder.function('MyFunction').text('() {')
+ *  .newLine().keyword('return').space().number('100')
+ * 
+ * render(builder.output());
+ * ```
  */
-export type HLJSBuilder = {
+export type HLJSBuilderAPI = {
   newLine(indent?: number): HLJSBuilder,
+
   text(text: string): HLJSBuilder,
-  node(node: Node): HLJSBuilder,
   space(): HLJSBuilder,
+
+  node(node: Node): HLJSBuilder,
+
   output(): Node[],
-} & HLJSElementBuilderFuncMap;
+}
+
+/**
+ * Utility object for composing HLJS-style element trees.
+ * Call either a HLJS classname as a function, or some of the
+ * utility methods on {@link HLJSBuilderAPI}.
+ * 
+ * Once you are done, call the {@link HLJSBuilderAPI.output} function
+ * to retrieve an array of lines of syntax highlighted code in
+ * {@link Node|Nodes}
+ */
+export type HLJSBuilder = HLJSBuilderAPI & HLJSElementBuilderFuncMap;
 
 export const createHLJSBuilder = (): HLJSBuilder => {
   const lines: Node[][] = [];
@@ -110,10 +132,3 @@ export const createHLJSBuilder = (): HLJSBuilder => {
 
   return builder;
 }
-
-const a  = createHLJSBuilder();
-
-a.titleClass('Hello')
-a.text('World');
-
-a.output;

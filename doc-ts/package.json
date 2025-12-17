@@ -1,5 +1,5 @@
 {
-  "name": "@lukekaalim/act-doc-ts",
+  "name": "@lukekaalim/grimoire-ts",
   "version": "0.0.0",
   "main": "index.ts",
   "dependencies": {

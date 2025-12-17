@@ -30,31 +30,30 @@ export const VerticalNavMenu: Component<VerticalNavMenuProps> = ({ tree }) => {
 
 export type VerticalNavMenu2Props = {
   tree: NavTree2,
+  rightAligned?: boolean,
 };
 
-export const VerticalNavMenu2: Component<VerticalNavMenu2Props> = ({ tree }) => {
+export const VerticalNavMenu2: Component<VerticalNavMenu2Props> = ({ tree, rightAligned = false }) => {
   const renderLeaf = (leaf: NavLeaf): Node => {
     const children = leaf.children.map(childId => tree.leaves[childId]);
 
     if (leaf.content)
-      return h('div', {}, [
+      return [    
         h(VerticalNavMenuLink, { content: leaf.content, href: leaf.location?.href || '' }),
         children.length > 0 && h(VerticalNavMenuList, {
           entries: children.map(renderLeaf)
         }),
-      ]);
+      ]
 
-    return h('div', {}, [
-      children.length > 0 && h(VerticalNavMenuList, {
-        entries: children.map(renderLeaf)
-      }),
-    ]);
+    return children.length > 0 && h(VerticalNavMenuList, {
+      entries: children.map(renderLeaf)
+    });
   }
 
-  return tree.roots.map(root => {
+  return h('div', { className: rightAligned && classNames.rightAligned }, tree.roots.map(root => {
     const leaf = tree.leaves[root];
     return renderLeaf(leaf);
-  });
+  }));
 };
 
 export type VerticalNavMenuListProps = {

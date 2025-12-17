@@ -94,6 +94,9 @@ export const createTransitionAPI = <T extends TransitionType>(
     update(state, nextValues) {
       const nextKeys = nextValues.map(config.calculateKey);
       const diff = calculateDiff(state.currentKeys, nextKeys);
+
+      console.log('DIFF CALC', state.currentKeys, nextKeys, nextValues, diff)
+
       for (const newValueIndex of diff.newValueIndicies) {
         const key = nextKeys[newValueIndex];
         const value = nextValues[newValueIndex];
@@ -112,6 +115,7 @@ export const createTransitionAPI = <T extends TransitionType>(
         state.entries.set(key, config.moveState(prevState, nextIndex, value))
       }
       for (const removedIndex of diff.removedValueIndicies) {
+        console.log({ removedIndex })
         const key = state.currentKeys[removedIndex];
         const prevState = state.entries.get(key) as T["ValueState"];
         state.entries.delete(key);
@@ -120,6 +124,7 @@ export const createTransitionAPI = <T extends TransitionType>(
       state.currentKeys = nextKeys;
       state.currentValues = nextValues;
       state.removedStates = state.removedStates.filter(config.stateFilter);
+      console.log('Updated State', state);
     },
   }
 }

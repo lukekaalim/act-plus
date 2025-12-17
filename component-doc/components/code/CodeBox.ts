@@ -82,9 +82,13 @@ export const CodeBox: Component<CodeBoxProps> = ({ lines, lineStart = 0 }) => {
       return;
     const lineCount = !!ref.current.textContent && (ref.current.textContent.match(/\n/g));
     
-    if (lineCount)
-      setLineGuess(lineCount.length + 1);
+    if (lineCount) {
+      console.log('Set Line Guess');
+      setTimeout(() => setLineGuess(lineCount.length), 1);
+      ;
+    }
   }, [lines.length])
+  console.log("Rendering COdeBox")
 
 
   if (lines.length < 2) {

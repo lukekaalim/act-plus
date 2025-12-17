@@ -3,5 +3,5 @@ export * from './components';
 export * from './lib';
 export * from './stores';
 
-export * from './plugin';
 export * from './application';
+export * from './render';

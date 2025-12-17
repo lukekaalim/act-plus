@@ -2,7 +2,13 @@
 
 Tiny icon library.
 
+```bash
+npm install @lukekaalim/act-icons
+```
+
 ## SVGRepo
+
+<TypeDoc project="@lukekaalim/act-icons" name="SVGRepo" extras="SVGRepoProps" />
 
 Link `img` elements to URLs from [SVGRepo](https://www.svgrepo.com/).
 

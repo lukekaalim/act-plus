@@ -1,8 +1,7 @@
 import { DeclarationReflectionRenderer } from "./Reflection";
-import { Deserializer, ConsoleLogger, ProjectReflection, JSONOutput, FileRegistry, DeclarationReflection, Reflection, ReflectionKind, SomeReflection, ContainerReflection, DocumentReflection, SomeType } from "typedoc/browser";
+import { Deserializer, ConsoleLogger, ProjectReflection, JSONOutput, FileRegistry, DeclarationReflection, Reflection, ReflectionKind, SomeReflection, ContainerReflection, DocumentReflection, SomeType, ReferenceType } from "typedoc/browser";
 import { h } from "@lukekaalim/act";
-import { ArticlePreprocessor, CoreAPI, MDXComponent } from "@lukekaalim/act-doc/application/Core";
-import { PluginIAPI, useDocApp } from "@lukekaalim/act-doc/application";
+import { ArticlePreprocessor, CoreAPI, MDXComponent, PluginIAPI, useDocApp } from "@lukekaalim/grimoire";
 import { visit } from "unist-util-visit";
 import { buildMdxAttributes } from "@lukekaalim/act-markdown";
 
@@ -24,7 +23,7 @@ const getDeclaration = (typedoc: PluginIAPI<TypeDocPlugin>, projectName: string,
   if (!project)
     throw new Error(`No project with "${projectName}" found`);
 
-  const declaration = findReflectionByName(project, reflectionName);
+  const declaration = project.getChildByName(reflectionName);
   if (!(declaration instanceof DeclarationReflection))
     throw new Error(`No reflection with "${reflectionName}" found in project "${projectName}"`);
 
@@ -78,10 +77,10 @@ const TypeDocDebug: MDXComponent = ({ attributes }) => {
   const projectEntries = [...api.typedoc.projects.entries()];
 
   return [
-    h('h3', {}, 'Projects'),
+    h('h3', { id: `TypeDebugProject` }, 'Projects'),
     h('ol', {}, projectEntries.map(([name, project]) => h('li', {}, name))),
-    projectEntries.map(([name, project]) => [
-      h('h3', {}, name),
+    projectEntries.map(([projectName, project]) => [
+      h('h3', { id: `TypeDebug:Project:${projectName}` }, projectName),
       h('table', { style: { 'border-collapse': 'collapse', display: 'block', 'overflow': 'auto', 'font-size': '14px' }}, [
         h('tr', {}, [
           h('th', {}, 'Name'),
@@ -89,7 +88,7 @@ const TypeDocDebug: MDXComponent = ({ attributes }) => {
           h('th', {}, 'Reference'),
         ]),
         flattenDeclarations(project).map(reflection => {
-          const key = `ts:${name}.${reflection.name}`;
+          const key = `ts:${projectName}.${reflection.getFullName()}`;
           const location = api.reference.resolveKey(key);
           const link = location && `${location.path}#${location.fragment}`;
 
@@ -115,8 +114,14 @@ const createArticlePreprocessor = (core: CoreAPI, typedoc: PluginIAPI<TypeDocPlu
         const declaration = getDeclaration(typedoc, attributes["project"], attributes["name"]);
         const id = declaration.project.name + '.' + declaration.getFullName();
 
-        core.reference.addIndirect(`ts:${attributes["project"]}.${attributes["name"]}`, `article:${article.key}`, id);
-      } catch {}
+        const key = `ts:${attributes["project"]}.${attributes["name"]}`;
+
+        console.info(`Adding indirect for ${key}`);
+
+        core.reference.addIndirect(key, `article:${article.key}`, id);
+      } catch (error) {
+        console.error(error);
+      }
     })
   }
 };
@@ -135,14 +140,14 @@ export const TypeDocPlugin = {
       getProject(name: string): null | ProjectReflection {
         return projects.get(name) || null;
       },
-      addProjectJSON(name: string, json: JSONOutput.ProjectReflection): void {
-        const project = deserializer.reviveProject(name, json, { projectRoot: "/", registry: new FileRegistry() });
+      addProjectJSON(name: string, json: unknown): void {
+        const project = deserializer.reviveProject(name, json as JSONOutput.ProjectReflection, { projectRoot: "/", registry: new FileRegistry() });
         projects.set(name, project);
       },
-      getLinkForType(type: SomeType) {
+      getLinkForType(type: ReferenceType) {
         for (const [projectName, project] of projects.entries()) {
           for (const reflection of flattenDeclarations(project)) {
-            if (reflection.isDeclaration() && reflection.type === type) {
+            if (reflection.isDeclaration() && reflection.getFullName() === type.qualifiedName) {
               return core.reference.resolveRouteLink(`ts:${projectName}.${reflection.name}`)
             }
           }

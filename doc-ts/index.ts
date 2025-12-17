@@ -1,5 +1,4 @@
-export * from './DocTs';
-
-export * from './analysis';
-export * from './syntax';
-export * from './registry';
+export * from './plugin';
+export * from './Reflection';
+export * from './TypeRenderer';
+export * from './DeclarationPreview';

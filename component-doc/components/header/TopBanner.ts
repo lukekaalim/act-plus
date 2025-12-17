@@ -26,3 +26,4 @@ export const TopBanner: Component<TopBannerProps> = ({
     endContext && h('div', { className: classes.endContent }, endContext)
   ])
 };
+

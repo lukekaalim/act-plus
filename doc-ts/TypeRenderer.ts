@@ -1,13 +1,42 @@
 import { Component, h, Node } from "@lukekaalim/act";
-import { CoreAPI, DocApp, useDocApp } from "@lukekaalim/act-doc/application";
-import { hljs, HLJSBuilder } from "@lukekaalim/act-doc"
+import { CoreAPI, DocApp, useDocApp, hljs, HLJSBuilder } from "@lukekaalim/grimoire";
+
 import { ReflectionKind, SomeType, Type, TypeParameterReflection } from "typedoc/browser";
 import { TypeDocPlugin } from "./plugin";
-import { createDeclarationPreviewSyntax } from "./DeclarationPreview";
+import { createDeclarationPreviewSyntax, renderReflectionContent } from "./DeclarationPreview";
 
 export const renderTypeSyntax2 = (syntax: HLJSBuilder, doc: DocApp<[TypeDocPlugin]>, type: SomeType) => {
   const recurse = (type: SomeType) => renderTypeSyntax2(syntax, doc, type);
   switch (type.type) {
+    case 'query':
+      syntax.keyword('typeof ')
+      renderTypeSyntax2(syntax, doc, type.queryType);
+      return;
+    case 'typeOperator':
+      syntax.keyword(type.operator).space();
+      renderTypeSyntax2(syntax, doc, type.target);
+      return;
+    case 'union':
+      const multiLine = type.types.length > 2;
+        if (multiLine)
+          syntax.newLine(1)
+
+      for (let i = 0; i < type.types.length; i++) {
+        if (multiLine)
+          syntax.text('| ')
+
+        recurse(type.types[i]);
+
+        if (i !== type.types.length - 1) {
+          if (multiLine)
+            syntax.newLine();
+          else
+            syntax.text(' | ')
+        }
+      }
+      if (multiLine)
+        syntax.newLine(-1)
+      return;
     case 'mapped':
       syntax
         .text('{')
@@ -57,17 +86,11 @@ export const renderTypeSyntax2 = (syntax: HLJSBuilder, doc: DocApp<[TypeDocPlugi
         case 'undefined':
           return syntax.builtIn('undefined');
         default:
-          return;
+          return syntax.comment(`<UnsupportedLiteral type="${type.value}">`);
       }
     case 'reflection':
-      if (type.declaration.type) {
-        recurse(type.declaration.type);
-        return;
-      } else {
-        createDeclarationPreviewSyntax(doc, syntax, type.declaration);
-        return;
-      }
-      //return syntax.titleClass(type.declaration.getFullName());
+      renderReflectionContent(type.declaration, syntax, doc);
+      return;
     case 'tuple':
       syntax.text('[');
       for (let i  = 0; i < type.elements.length; i++) {
@@ -79,8 +102,14 @@ export const renderTypeSyntax2 = (syntax: HLJSBuilder, doc: DocApp<[TypeDocPlugi
       syntax.text(']');
       return;
     case 'reference':
-      //const url = doc.typedoc.getLinkForType(type);
-      syntax.titleClass(type.name);
+      const url = doc.typedoc.getLinkForType(type);
+      console.log(type.name, type, url)
+      if (url)
+        syntax.node(
+          h(hljs.titleClass, {},
+            h('a', { href: url.href, style: { color: 'inherit' } }, type.name)));
+      else
+        syntax.titleClass(type.name);
 
       //lastLine.push(h(hljs.titleClass, {}, h('a', { href: "https://example.com", style: { color: 'inherit' } }, type.name)));
 
@@ -94,6 +123,10 @@ export const renderTypeSyntax2 = (syntax: HLJSBuilder, doc: DocApp<[TypeDocPlugi
         }
         syntax.text('>')
       }
+      return;
+    case 'array':
+      recurse(type.elementType);
+      syntax.text('[]');
       return;
     case 'intersection':
       for (let i = 0; i < type.types.length; i++) {

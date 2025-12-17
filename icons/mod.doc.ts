@@ -1,5 +1,5 @@
 import { h, useEffect, useRef } from "@lukekaalim/act";
-import { MarkdownArticle } from "@lukekaalim/act-doc";
+import { MarkdownArticle } from "@lukekaalim/grimoire";
 import md from './readme.md?raw';
 import { SVGRepo } from "./mod";
 import { MarkdownComponent } from "@lukekaalim/act-markdown";

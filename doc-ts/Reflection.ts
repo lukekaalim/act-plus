@@ -1,8 +1,7 @@
 import { Component, h, useMemo } from '@lukekaalim/act';
-import { renderMarkdown } from '@lukekaalim/act-doc';
 import { parser } from '@lukekaalim/act-markdown';
 import { Comment, CommentDisplayPart, DeclarationReflection, ReflectionKind } from 'typedoc/browser';
-import { useDocApp } from '@lukekaalim/act-doc/application';
+import { useDocApp, renderMarkdown } from '@lukekaalim/grimoire';
 import { TypeDocPlugin } from './plugin';
 import { DeclarationPreviewRenderer } from './DeclarationPreview';
 
@@ -22,6 +21,8 @@ export const DeclarationReflectionRenderer: Component<DeclarationReflectionRende
   const doc = useDocApp([TypeDocPlugin]);
 
   const id = declaration.project.name + '.' + declaration.getFullName();
+
+   console.log({ declaration })
 
   return [
     h(`h${headingLevel}`, { id, style: { 'margin-bottom': 0 } },

@@ -1,14 +1,26 @@
-import { DocApp } from "@lukekaalim/act-doc";
-import { TypeDocPlugin } from "../plugin";
+import { DocApp } from "@lukekaalim/grimoire";
+import { TypeDocPlugin } from "@lukekaalim/grimoire-ts";
 
-import docIndex from './index.md?raw';
-import { Comment, CommentTag, DeclarationReflection, IntrinsicType, ParameterReflection, ReflectionKind, SignatureReflection } from "typedoc/browser";
+import readmeMd from '../readme.md?raw';
+import apiMd from './api.md?raw';
+import guideMd from './guides.md?raw';
+import projectJSON from 'typedoc:../index.ts';
+
+import {
+  Comment, CommentTag, DeclarationReflection, IntrinsicType,
+  ParameterReflection, ReflectionKind, SignatureReflection
+} from "typedoc/browser";
 import { DeclarationReflectionRenderer } from "../Reflection";
 import { h } from "@lukekaalim/act";
 
+export const buildGrimoireTSDocs = (doc: DocApp<[TypeDocPlugin]>) => {
+  console.log(`Adding @lukekaalim/grimoire-ts`)
+  doc.typedoc.addProjectJSON('@lukekaalim/grimoire-ts', projectJSON);
 
-export const buildDocs = async (doc: DocApp<[TypeDocPlugin]>) => {
-  doc.article.add('typedoc.index', docIndex, '/packages/@lukekaalim/grimoire-ts');
+  doc.article.add('ts.readme', readmeMd, '/packages/@lukekaalim/grimoire-ts');
+  doc.article.add('ts.api', apiMd, '/packages/@lukekaalim/grimoire-ts/api');
+  doc.article.add('ts.guide', guideMd, '/packages/@lukekaalim/grimoire-ts/guides');
+
 
   const myFunctionDeclaration = new DeclarationReflection('MyFunction', ReflectionKind.Function);
   const mySignatureReflection = new SignatureReflection('MyFunction', ReflectionKind.CallSignature, myFunctionDeclaration);
@@ -28,6 +40,9 @@ export const buildDocs = async (doc: DocApp<[TypeDocPlugin]>) => {
   mySignatureReflection.type = new IntrinsicType("string");
 
   doc.demos.add('typedoc-myfunction-def', () => {
-    return h(DeclarationReflectionRenderer, { declaration: myFunctionDeclaration })
+    return [
+      h('h1', {}, 'My Super Cool API'),
+      h(DeclarationReflectionRenderer, { declaration: myFunctionDeclaration })
+    ]
   })
 }

@@ -31,10 +31,10 @@ export type ArticleProps = {
 };
 
 export const Article: Component<ArticleProps> = ({ children, meta, hiddenTagKeys }) => {
-  const { tags } = useStore();
+
   return [
     h('article', { className: classes.container }, [
-      !!meta && h(ArticleMetadata, { meta, tagStore: tags, hiddenTagKeys }),
+      !!meta && h(ArticleMetadata, { meta, hiddenTagKeys }),
       children,
     ])
   ]
@@ -42,13 +42,13 @@ export const Article: Component<ArticleProps> = ({ children, meta, hiddenTagKeys
 
 
 export type ArticleMetadataProps = {
-  tagStore: TagStore,
+  tagStore?: TagStore,
   meta: DocumentMetadata,
 
   hiddenTagKeys?: string[],
 }
 
-export const ArticleMetadata: Component<ArticleMetadataProps> = ({ meta: { title, published, author, description, tagKeys = [] }, tagStore, hiddenTagKeys = [] }) =>  {
+export const ArticleMetadata: Component<ArticleMetadataProps> = ({ meta: { title, published, author, description, tagKeys = [] }, tagStore = new Map(), hiddenTagKeys = [] }) =>  {
   const tags = tagKeys
     .map(tagStore.get)
     .filter((x): x is Tag => !!x)

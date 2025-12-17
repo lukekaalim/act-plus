@@ -10,7 +10,6 @@ import { useStore } from "../../contexts/stores";
 import { useMdxContext } from "./MDXContext";
 import { Code, Root } from "mdast";
 import { SyntaxHighlightingCodeBox } from "../code";
-import { useAppSetup } from "../../plugin/AppSetup";
 import { useDocApp } from "../../application";
 
 export const markdownClasses = {
@@ -37,6 +36,9 @@ export type MarkdownArticleProps = {
   content: string
 };
 
+/**
+ * Given some markdown text as a string, convert it into a markdown article.
+ */
 export const MarkdownArticle: Component<MarkdownArticleProps> = ({ content, children }) => {
   return h(StaticMarkdownArticle, { markdown: content }, children);
 };
@@ -51,9 +53,6 @@ export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ m
   const stringRoot = useRemarkParser(markdown || '');
   const finalRoot = root || stringRoot;
 
-  const mdx = useMdxContext()
-  const setup = useAppSetup();
-
   const app = useDocApp([]);
 
   const renderer = useMemo(() => createMdastRenderer({
@@ -65,7 +64,7 @@ export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ m
       blockquote: articleClasses.blockQuote,
       image: articleClasses.image,
     },
-    components: Object.fromEntries([...mdx.globalComponentMap.entries(), ...setup.MDXComponents, ...app.component.components.map(c => [c.name, c.component])]),
+    components: Object.fromEntries([...app.component.components.map(c => [c.name, c.component])]),
     overrides: {
       code: ({ node }: OverrideComponentProps) => {
         const codeNode = node as Code;
@@ -75,11 +74,9 @@ export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ m
         });
       }
     }
-  }), [mdx]);
+  }), []);
 
   const nodes = useMemo(() => renderer(finalRoot), [markdown, renderer]);
-
-  const { tags } = useStore()
 
   if (finalRoot.children[0] && finalRoot.children[0].type === 'yaml') {
     const child = finalRoot.children[0];
@@ -88,7 +85,6 @@ export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ m
     return h(Article, {}, [
       h(ArticleMetadata, {
         hiddenTagKeys: [],
-        tagStore: tags,
         meta: {
           title: frontmatter.title,
           published: frontmatter.date,

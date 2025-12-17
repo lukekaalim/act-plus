@@ -219,7 +219,8 @@ export const buildNavTreeFromDOM = (builder: NavTreeBuilder, element: Element) =
       builder.add(element.id, depth, element.textContent || '', url);
     }
   }
-  for (const child of element.children) {
-    buildNavTreeFromDOM(builder, child);
-  }
+  if (!element.hasAttribute('data-ignore-navtree'))
+    for (const child of element.children) {
+      buildNavTreeFromDOM(builder, child);
+    }
 }

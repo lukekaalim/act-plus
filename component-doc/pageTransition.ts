@@ -2,17 +2,18 @@ import { Bezier4Animation, createTransitionAPI, Vector1D, Animation1D } from "@l
 import { DocPage, renderDocPageContent } from './DocPage';
 import { Component, createId, h, OpaqueID, useMemo, useRef } from "@lukekaalim/act";
 import classes from './PageTransition.module.css';
+import { RouterPage } from "@lukekaalim/act-router";
 
 type PageTransitionState = {
   id: OpaqueID<'page-id'>,
-  page: DocPage,
+  page: RouterPage,
   animation: Bezier4Animation<Vector1D>,
 }
 
 const DURATION = 500;
 
 export const SimpleTransition1D = createTransitionAPI<{
-  Value: DocPage,
+  Value: RouterPage,
   Key: string,
   ValueState: PageTransitionState
 }>({
@@ -65,10 +66,11 @@ export const SimpleTransition1D = createTransitionAPI<{
   },
 });
 
-export const usePageTransition = (currentPage: DocPage): PageTransitionState[] => {
+export const usePageTransition = (currentPage: RouterPage): PageTransitionState[] => {
   const stateRef = useRef(SimpleTransition1D.start());
 
   return useMemo(() => {
+    console.log('THE STATE', stateRef.current)
     SimpleTransition1D.update(stateRef.current, [currentPage]);
 
     return SimpleTransition1D.get(stateRef.current);
@@ -86,5 +88,5 @@ export const PageTransitionDriver: Component<{ state: PageTransitionState }> = (
   })
 
   return h('div', { ref, className: classes.pageTransitionDriver },
-    renderDocPageContent(state.page.content))
+    h(state.page.component, { onReady() {} }))
 }

@@ -5,7 +5,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "moduleResolution": "bundler",
-    "types": ["vite/client", "@types/node"],
+    "types": ["vite/client", "@types/node", "./globals.ts"],
     "skipLibCheck": true,
     "noEmit": true
   }

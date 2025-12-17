@@ -119,9 +119,10 @@ export type Demo = {
   frame?: string,
   component: Component<{}>
 };
+export type DemoFrameComponent = Component<{ demo: Demo }>;
 export type DemoFrame = {
   key: string,
-  component: Component<{}>
+  component: DemoFrameComponent,
 }
 export type DemoAPI = {
   demos: Demo[],
@@ -129,7 +130,7 @@ export type DemoAPI = {
   defaultFrame: DemoFrame,
 
   add(key: string, component: Component<{}>, frame?: string): Demo,
-  addFrame(key: string, frameComponent: Component<{}>): DemoFrame,
+  addFrame(key: string, frameComponent: DemoFrameComponent): DemoFrame,
   setDefaultFrame(frame: DemoFrame): void,
 };
 
@@ -158,7 +159,6 @@ export const createCoreAPI = (): CoreAPI => {
         for (const route of core.route.routes) {
           const segments = route.path.split('/').filter(Boolean);
           let leaf = root;
-          console.log(route, segments);
           for (let i = 0; i < segments.length; i++) {
             const segment = segments[i];
             const pathSoFar = segments.slice(0, i + 1).join('/');
@@ -169,22 +169,19 @@ export const createCoreAPI = (): CoreAPI => {
             })
             if (!nextLeaf) {
               const parent = leaf;
-              leaf = { id: pathSoFar, children: [], parent: leaf.id }
+              leaf = { id: pathSoFar, content: segment, children: [], parent: leaf.id }
               tree.leaves[leaf.id] = leaf;
               parent.children.push(leaf.id);
-              console.log('Creating new Leaf', pathSoFar)
             } else {
               leaf = tree.leaves[nextLeaf];
             }
           }
-          console.log(`Leaf ${leaf.id} is route ${route.path}`)
-          leaf.content = route.content;
+          leaf.content = segments[segments.length - 1] || 'Home';
           leaf.location = new URL(document.location.href);
           leaf.location.pathname = route.path;
           leaf.location.hash = "";
           leaf.location.search = "";
         }
-        console.log({ tree })
         return tree;
       },
     },
@@ -262,7 +259,7 @@ export const createCoreAPI = (): CoreAPI => {
 
             const node = h(SidePanelContainer, {
               left: routeTree && h(VerticalNavMenu2, { tree: routeTree }),
-              right: tree && h(VerticalNavMenu2, { tree }),
+              right: tree && h(VerticalNavMenu2, { tree, rightAligned: true }),
             }, h(StaticMarkdownArticle, { root: content }))
   
             return h('div', { ref }, node);

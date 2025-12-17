@@ -1,7 +1,6 @@
 import { Component, h, useRef, useState } from '@lukekaalim/act';
 import { render } from '@lukekaalim/act-web';
 
-
 import {
   useRouter,
   useDOMIntegration,
@@ -11,33 +10,19 @@ import {
   createRelativeURLFactory,
   WebLink,
 } from '@lukekaalim/act-router';
-import { AppSetupContext, createPageStore, Grid3, Hero, intializeApplication, TopBanner } from '@lukekaalim/act-doc';
+import { createPageStore, Grid3, Hero, TopBanner, createDocApp, DocAppRenderer, BannerLink, IconTextBannerLogo } from '@lukekaalim/grimoire';
 
-import { documents } from "./markdown";
+import { TypeDocPlugin } from '@lukekaalim/grimoire-ts';
+import { SVGRepo } from '@lukekaalim/act-icons';
 
 import iconPlusURL from './media/icon-plus.png';
-import { SVGRepo } from '@lukekaalim/act-icons';
-import { storeContext, useStore } from '@lukekaalim/act-doc/contexts/stores';
-import { tags } from './tags';
-import { Article } from '@lukekaalim/act-doc/components/article/Article';
-import { TypeDocPlugin } from '@lukekaalim/act-doc-ts/plugin';
-import { createPages } from './packages/act-doc';
-import { createSampleDocPages } from '../sample-lib/docs';
-import { createDocApp } from '@lukekaalim/act-doc/application';
-import { DocAppRenderer } from '@lukekaalim/act-doc/render';
-import { buildDocs } from '@lukekaalim/act-doc-ts/doc';
 
 const origin = createRelativeURLFactory();
 
-const Nav = () => {
-  return h('nav', {}, pages.map(page => {
-    return h('li', { }, h('a', { href: page.path }, page.display))
-  }));
-}
 
 const Home = () => {
   return [
-    h(Nav),
+    //h(Nav),
     h('h1', {}, 'Home Page'),
     h('p', {}, [
       'This is the content of the home page. ',
@@ -47,7 +32,7 @@ const Home = () => {
 }
 const About = () => {
   return [
-    h(Nav),
+    //h(Nav),
     h('h1', {}, 'About Page'),
     h('p', {}, [
       'This lets you learn more about this project',
@@ -56,7 +41,7 @@ const About = () => {
 }
 const ListPage = () => {
   return [
-    h(Nav),
+    //h(Nav),
     h('h1', {}, 'List Page'),
     h('ol', {}, [
       h('li', {}, h('a', { href: '#first' }, 'First')),
@@ -87,7 +72,7 @@ const Search = () => {
   }
 
   return [
-    h(Nav),
+    //h(Nav),
     h('h1', {}, 'Search'),
     h('form', { onSubmit }, [
       h('input', {
@@ -97,42 +82,16 @@ const Search = () => {
       })
     ]),
     h('p', {}, `Searched for: "${resultQuery}"`),
-    h('ul', {}, pages.filter(page => page.path.includes(resultQuery)).map(page => {
-      return h('li', {}, h('a', { href: page.path }, page.display))
-    }) )
+    //h('ul', {}, pages.filter(page => page.path.includes(resultQuery)).map(page => {
+    //  return h('li', {}, h('a', { href: page.path }, page.display))
+    //}) )
   ]
-}
-
-const IconTextBannerLogo = () => {
-  return [
-    h('img', {
-      src: iconPlusURL,
-      style: { 'border-radius': '8px', background: 'white', margin: '8px' }
-    }),
-    h('h1', { style: {
-      'font-size': '18px',
-      'white-space': 'pre',
-      'margin': 'auto',
-      'padding': '0 8px',
-      color: 'white'
-    } }, '@lukekaalim/act-plus')
-  ]
-}
-const BannerLink: Component = ({ children }) => {
-  return h('span', { style: {
-      'display': 'flex',
-      'font-size': '18px',
-      'white-space': 'pre',
-      'margin': 'auto',
-      'padding': '0 8px',
-      color: 'white'
-    } }, children)
 }
 
 const banner = h(TopBanner, {
   logoLink: {
     location: origin.createURL('/'),
-    display: h(IconTextBannerLogo),
+    display: h(IconTextBannerLogo, { iconURL: iconPlusURL, name: `@lukekaalim/act-plus` }),
   },
   topLevelLinks: [
     {
@@ -140,7 +99,7 @@ const banner = h(TopBanner, {
       display: h(BannerLink, {}, 'About')
     },
     {
-      location: origin.createURL('/demo', {}, 'packages'),
+      location: origin.createURL('/', {}, 'packages'),
       display: h(BannerLink, {}, 'Packages')
     },
     {
@@ -187,7 +146,7 @@ const DemoPage = () => {
         h(WebLink, {
           style: { color: 'rgb(57, 120, 238)', 'text-decoration-color': 'rgb(57, 120, 238)' },
           link: { display: h('h2', {}, '@lukekaalim/act-plus'),
-            location: new URL('https://github.com/lukekaalim/act-compdoc')
+            location: new URL('https://github.com/lukekaalim/grimoire')
           }
         }),
         h('p', {},
@@ -206,25 +165,25 @@ const DemoPage = () => {
       cards: [
         {
           id: 'doc',
-          destination: origin.createURL('/packages/@lukekaalim/act-doc'),
+          destination: origin.createURL('/packages/@lukekaalim/grimoire'),
           content: [
-            h('h3', {}, '@lukekaalim/act-doc'),
+            h('h3', {}, '@lukekaalim/grimoire'),
             h('p', {}, 'A component library for building developer documentation websites in act!'),
           ]
         },
         {
           id: 'tsdoc',
-          destination: origin.createURL('/packages/@lukekaalim/act-doc-ts'),
+          destination: origin.createURL('/packages/@lukekaalim/grimoire-ts'),
           content: [
-            h('h3', {}, '@lukekaalim/act-doc-ts'),
+            h('h3', {}, '@lukekaalim/grimoire-ts'),
             h('p', {}, 'Components for building typescript docs using the Typescript Compiler API, and the tsdoc tool'),
           ],
         },
         {
           id: 'httpdoc',
-          destination: origin.createURL('/packages/@lukekaalim/act-httpdoc'),
+          destination: origin.createURL('/packages/@lukekaalim/grimoire-http'),
           content: [
-            h('h3', {}, '@lukekaalim/act-httpdoc'),
+            h('h3', {}, '@lukekaalim/grimoire-http'),
             h('p', {}, 'Components for building openapi/swagger, blueprint, JsonSchema (or other HTTP API specification tools)'),
           ],
         },
@@ -273,79 +232,21 @@ const DemoPage = () => {
   ])
 }
 
-const BlogPage = () => {
-  const { document } = useStore();
-  return h('div', {}, [
-    h('div', {}, [
-      document.getByTag('blog', tags).map(blog =>
-        h(Article, { meta: blog.meta, hiddenTagKeys: ['blog'] }, blog.content)),
-    ])
-  ]);
-}
-
 export const pageStore = createPageStore();
 
-const NotFound = () => h('h1', {}, `Page not found`)
-
-const packagePages = pageStore.prefix('/packages/@lukekaalim')
-  .add('/act-httpdoc', NotFound)
-  .add('/act-graphit', NotFound)
-  .add('/act-curve', NotFound)
-  .add('/act-markdown', NotFound)
-  .add('/act-router', NotFound)
-  .add('/act-icons', NotFound)
-
-const setup = intializeApplication([])
-
-createPages(packagePages.prefix('/act-doc'))
-
-
 const doc = createDocApp([TypeDocPlugin]);
+doc.route.add('/', h(DemoPage))
+
+// each one get's it's own chunk
+const { buildGrimoireDocs } = await import('@lukekaalim/grimoire/docs')
+const { buildGrimoireTSDocs } = await import('@lukekaalim/grimoire-ts/doc')
+const { createSampleDocPages } = await import('sample-lib/docs')
+const { buildIconDocs } = await import('@lukekaalim/act-icons/docs')
+
+buildGrimoireDocs(doc);
+buildGrimoireTSDocs(doc);
 createSampleDocPages(doc);
-buildDocs(doc);
-
-//pageStore.add('/packages/sample', () => h(DocAppRenderer, { doc }))
-//pageStore.add('/packages/@lukekaalim/grimoire', () => h(DocAppRenderer, { doc }))
-
-doc.typedoc.addProjectJSON('@lukekaalim/grimoire', (await import('@lukekaalim/act-doc/typedoc.output.json')).default as any);
-doc.article.add(
-  'grimoire/readme',
-  (await import("@lukekaalim/act-doc/application/readme.md?raw")).default,
-  '/packages/@lukekaalim/grimoire'
-)
-
-for (const route of doc.route.routes) {
-  console.log('Adding', route.path)
-  pageStore.add(route.path, () => h(DocAppRenderer, { doc }))
-}
-
-const pages = RouterPage.map({
-  '/': { component: DemoPage },
-  '/about': { component: About },
-  '/list': { component: ListPage },
-  '/demo': { component: DemoPage },
-  '/blog': { component: BlogPage },
-  '/search': { component: Search }
-})
-pages.push(...pageStore.pages);
-
-const ExampleApp = () => {
-  const ref = useRef<HTMLElement | null>(null);
-  const router = useRouter({
-    initialLocation: new URL(document.location.href),
-    pages,
-  });
-  useDOMIntegration(router);
-
-  return h(AppSetupContext.Provider, { value: setup }, h(RouterContext.Provider, { value: router },
-    h(storeContext.Provider, { value: { tags, page: pageStore, document: documents } },
-      [
-        banner,
-        h(router.page.component, { onReady() { console.log('Page ready'); }, })
-      ]
-    )
-  ));
-};
+buildIconDocs(doc);
 
 const main = () => {
   const style = {
@@ -353,7 +254,7 @@ const main = () => {
     display: 'flex',
     'flex-direction': 'column',
   };
-  render(h('div', { style }, h(ExampleApp)), document.body);
+  render(h('div', { style }, [banner, h(DocAppRenderer, { doc })]), document.body);
 };
 
 main();

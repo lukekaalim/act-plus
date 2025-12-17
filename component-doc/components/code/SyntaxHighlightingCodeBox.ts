@@ -10,7 +10,10 @@ export type SyntaxHighlightingCodeBoxProps = {
 
 const lowlight = createLowlight(common);
 
-const renderLowlightNodes = (node: Nodes): Node => {
+/**
+ * Convert LowLight nodes into {@link @lukekaalim/act} Nodes
+ */
+export const renderLowlightNodes = (node: Nodes): Node => {
   switch (node.type) {
     case 'element':
       return h(node.tagName, { className: (node.properties.className as string[]).join(' ') },
