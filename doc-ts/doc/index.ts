@@ -14,7 +14,6 @@ import { DeclarationReflectionRenderer } from "../Reflection";
 import { h } from "@lukekaalim/act";
 
 export const buildGrimoireTSDocs = (doc: DocApp<[TypeDocPlugin]>) => {
-  console.log(`Adding @lukekaalim/grimoire-ts`)
   doc.typedoc.addProjectJSON('@lukekaalim/grimoire-ts', projectJSON);
 
   doc.article.add('ts.readme', readmeMd, '/packages/@lukekaalim/grimoire-ts');

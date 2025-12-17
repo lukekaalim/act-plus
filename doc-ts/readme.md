@@ -5,6 +5,17 @@ TypeDoc JSON outputs, and allows you to reference them inside
 your documentation - essentially allowing you to use your typescript
 project as a source of documentation itself.
 
-## Reflection
+```bash
+npm i -D @lukekaalim/grimoire-ts
+```
 
-## Syntax Builder
+```ts
+import { TypeDocPlugin } from '@lukekaalim/grimoire-ts';
+import projectJSON from 'typedoc:../src/index.ts';
+
+const doc = createDocApp([TypeDocPlugin])
+
+doc.typedoc.loadProjectJson('MyProject', projectJSON);
+
+render(h(DocAppRenderer, { doc }), document.body)
+```

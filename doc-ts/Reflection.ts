@@ -22,8 +22,6 @@ export const DeclarationReflectionRenderer: Component<DeclarationReflectionRende
 
   const id = declaration.project.name + '.' + declaration.getFullName();
 
-   console.log({ declaration })
-
   return [
     h(`h${headingLevel}`, { id, style: { 'margin-bottom': 0 } },
       h('a', { href: `#${id}` },

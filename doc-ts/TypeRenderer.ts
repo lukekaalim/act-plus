@@ -103,7 +103,6 @@ export const renderTypeSyntax2 = (syntax: HLJSBuilder, doc: DocApp<[TypeDocPlugi
       return;
     case 'reference':
       const url = doc.typedoc.getLinkForType(type);
-      console.log(type.name, type, url)
       if (url)
         syntax.node(
           h(hljs.titleClass, {},

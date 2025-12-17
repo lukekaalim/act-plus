@@ -1,3 +1,8 @@
+# Guides
+
+Check out [Quickstart]($Quickstart) to get your hands on
+some type-aware documentation!
+
 ## Quickstart
 
 First, make sure your project has some annotations so
