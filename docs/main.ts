@@ -10,7 +10,7 @@ import {
   createRelativeURLFactory,
   WebLink,
 } from '@lukekaalim/act-router';
-import { createPageStore, Grid3, Hero, TopBanner, createDocApp, DocAppRenderer, BannerLink, IconTextBannerLogo } from '@lukekaalim/grimoire';
+import {  Grid3, Hero, TopBanner, createDocApp, DocAppRenderer, BannerLink, IconTextBannerLogo } from '@lukekaalim/grimoire';
 
 import { TypeDocPlugin } from '@lukekaalim/grimoire-ts';
 import { SVGRepo } from '@lukekaalim/act-icons';
@@ -231,8 +231,6 @@ const DemoPage = () => {
     }),
   ])
 }
-
-export const pageStore = createPageStore();
 
 const doc = createDocApp([TypeDocPlugin]);
 doc.route.add('/', h(DemoPage))

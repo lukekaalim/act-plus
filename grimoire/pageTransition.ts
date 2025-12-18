@@ -1,5 +1,4 @@
 import { Bezier4Animation, createTransitionAPI, Vector1D, Animation1D } from "@lukekaalim/act-curve";
-import { DocPage, renderDocPageContent } from './DocPage';
 import { Component, createId, h, OpaqueID, useEffect, useMemo, useRef, useState } from "@lukekaalim/act";
 import classes from './PageTransition.module.css';
 import { RouterPage } from "@lukekaalim/act-router";

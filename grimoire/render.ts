@@ -1,7 +1,6 @@
-import { Component, h, useEffect, useMemo } from "@lukekaalim/act"
+import { Component, h, useMemo } from "@lukekaalim/act"
 import { DocApp, DocAppContext } from "./application/App"
 import { AnyPluginArray } from "./application/Plugin"
-import { useRootNavigationController } from "./NavigationController"
 import { useDOMIntegration, useRouter } from "@lukekaalim/act-router"
 import { PageTransitionDriver, usePageTransition } from "./pageTransition"
 

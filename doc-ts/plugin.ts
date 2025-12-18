@@ -1,5 +1,10 @@
 import { DeclarationReflectionRenderer } from "./Reflection";
-import { Deserializer, ConsoleLogger, ProjectReflection, JSONOutput, FileRegistry, DeclarationReflection, Reflection, ReflectionKind, SomeReflection, ContainerReflection, DocumentReflection, SomeType, ReferenceType } from "typedoc/browser";
+import {
+  Deserializer, ConsoleLogger, ProjectReflection,
+  JSONOutput, FileRegistry, DeclarationReflection,
+  Reflection, ReflectionKind, SomeReflection,
+  ContainerReflection, DocumentReflection, ReferenceType
+} from "typedoc/browser";
 import { h } from "@lukekaalim/act";
 import { ArticlePreprocessor, CoreAPI, MDXComponent, PluginIAPI, useDocApp } from "@lukekaalim/grimoire";
 import { visit } from "unist-util-visit";

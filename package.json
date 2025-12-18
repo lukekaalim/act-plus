@@ -8,7 +8,7 @@
     "icons",
     "router",
     "sample-lib",
-    "component-doc",
+    "grimoire",
     "doc-ts"
   ],
   "devDependencies": {

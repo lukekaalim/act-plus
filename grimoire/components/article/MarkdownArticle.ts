@@ -6,8 +6,6 @@ import { Article, ArticleMetadata } from "./Article";
 
 import classes from './MarkdownArticle.module.css';
 import articleClasses from './Article.module.css';
-import { useStore } from "../../contexts/stores";
-import { useMdxContext } from "./MDXContext";
 import { Code, Root } from "mdast";
 import { SyntaxHighlightingCodeBox } from "../code";
 import { useDocApp } from "../../application";
