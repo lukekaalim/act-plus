@@ -3,3 +3,5 @@ export * from './Defs';
 
 export * from './CartesianSpace';
 export * from './LinePath';
+
+export * from './structures';

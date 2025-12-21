@@ -1,4 +1,4 @@
-import { Component, h, useMemo } from "@lukekaalim/act"
+import { Component, h, useMemo, useRef } from "@lukekaalim/act"
 import { DocApp, DocAppContext } from "./application/App"
 import { AnyPluginArray } from "./application/Plugin"
 import { useDOMIntegration, useRouter } from "@lukekaalim/act-router"
@@ -9,6 +9,7 @@ export type DocAppRendererProps = {
 }
 
 export const DocAppRenderer: Component<DocAppRendererProps> = ({ doc }) => {
+  const ref = useRef<HTMLElement | null>(null)
   const pages = useMemo(() => {
     return doc.route.routes.map(page => ({ path: page.path, display: null, component: () => page.content }));
   }, [doc]);
@@ -21,6 +22,6 @@ export const DocAppRenderer: Component<DocAppRendererProps> = ({ doc }) => {
   const pageStates = usePageTransition(router.page);
 
   return h(DocAppContext.Provider, { value: doc },
-    h('div', { style: { position: 'relative' } },
+    h('div', { ref, style: { position: 'relative' } },
       pageStates.map(state => h(PageTransitionDriver, { state, key: state.id }))));
 }

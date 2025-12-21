@@ -48,7 +48,7 @@ export const useDOMAnchorIntercept = (
     return () => {
       el.removeEventListener('click', onClick);
     }
-  }, [])
+  }, [rootElement])
 };
 
 
@@ -57,11 +57,14 @@ export const useDOMAnchorIntercept = (
  * and scroll to it.
  * @param router 
  */
-export const useDOMHashScroll = (router: Router) => {
+export const useDOMHashScroll = (router: Router, rootElement: Ref<HTMLElement | null>) => {
   const focus = (location: URL) => {
     const hash = location.hash;
     if (!hash)
-      return;
+      if (rootElement.current)
+          return rootElement.current.scrollTo({ top: 0 });
+        else
+          return;
     const elementId = hash.slice(1);
     const element = document.getElementById(elementId);
     if (!element)
@@ -71,7 +74,7 @@ export const useDOMHashScroll = (router: Router) => {
 
   useEffect(() => {
     focus(router.location);
-  }, [router.location.hash]);
+  }, [router.location.pathname, router.location.hash]);
 
   useRouterEvents(router, useMemo(() => event => {
       switch (event.type) {
@@ -126,7 +129,7 @@ export const useDOMIntegration = (
     rootElement = { current: document.body }
   }: RouterDOMIntegrationConfig = {}
 ) => {
-  useDOMHashScroll(router);
+  useDOMHashScroll(router, rootElement);
   useDOMHistoryPush(router, history, origin);
   useDOMAnchorIntercept(router, rootElement, origin);
 }

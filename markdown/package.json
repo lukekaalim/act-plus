@@ -4,7 +4,7 @@
   "main": "mod.ts",
   "dependencies": {
     "@lukekaalim/act": "^3.2.1",
-    "@lukekaalim/act-web": "^3.2.1",
+    "@lukekaalim/act-web": "^3.4.0-alpha.2",
     "change-case": "^5.4.4",
     "mdast-util-to-string": "^4.0.0",
     "remark-directive": "^3.0.0",

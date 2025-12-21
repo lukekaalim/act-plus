@@ -1,7 +1,7 @@
 import { Component, h, useMemo } from '@lukekaalim/act';
 import { parser } from '@lukekaalim/act-markdown';
 import { Comment, CommentDisplayPart, DeclarationReflection, ReflectionKind } from 'typedoc/browser';
-import { useDocApp, renderMarkdown } from '@lukekaalim/grimoire';
+import { useDocApp, renderMarkdown, useGrimoireMdastRenderer } from '@lukekaalim/grimoire';
 import { TypeDocPlugin } from './plugin';
 import { DeclarationPreviewRenderer } from './DeclarationPreview';
 
@@ -44,12 +44,14 @@ type CommentRendererProps = {
 }
 
 const CommentRenderer = ({ comment }: CommentRendererProps) => {
+  const renderer = useGrimoireMdastRenderer()
+
   return [
-    renderMarkdown(parser.parse(processCommentParts(comment.summary))),
+    renderer(parser.parse(processCommentParts(comment.summary))),
     comment.blockTags.map(block =>
       h('p', { style: { margin: '8px 0' }}, [
         h('strong', {}, block.tag), ' ',
-        renderMarkdown(parser.parse(processCommentParts(block.content)))
+        renderer(parser.parse(processCommentParts(block.content)))
       ])),
   ]
 }

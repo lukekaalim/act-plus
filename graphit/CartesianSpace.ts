@@ -11,9 +11,10 @@ import { useDrag } from "./useDrag";
 
 export type CartesianSpaceProps = {
   offset?: Vector<2>,
+  style?: unknown,
 }
 
-export const CartesianSpace: Component<CartesianSpaceProps> = ({ children, offset = Vector(2).create() }) => {
+export const CartesianSpace: Component<CartesianSpaceProps> = ({ children, offset = Vector(2).create(), style }) => {
   const ref = useRef<SVGSVGElement | null>(null);
 
   const size = useElementSize(ref);
@@ -31,7 +32,7 @@ export const CartesianSpace: Component<CartesianSpaceProps> = ({ children, offse
 
   const combinedOffset = Vector(2).add(dragOffset, offset);
 
-  return h(SVG, {}, h('svg', { ref, class: [classes.cartesianSpace, dragging && classes.dragging].join(' ') }, [
+  return h(SVG, {}, h('svg', { ref, class: [classes.cartesianSpace, dragging && classes.dragging].join(' '), style }, [
     h(Grid, { offset: combinedOffset, strokeWidth: 1, scale: { x: 50, y: 50 } }),
     //h(Grid, { offset: combinedOffset, scale: Vector(2).scalar.add(Vector(2).create(), 50), stroke: 'grey' }),
     h(Axis, { axis: { x: 1, y: 0 }, size, offset: combinedOffset.y }),

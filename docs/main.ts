@@ -235,30 +235,33 @@ const DemoPage = () => {
 const doc = createDocApp([TypeDocPlugin]);
 doc.route.add('/', h(DemoPage))
 
+const wait = (time: number) => new Promise(resolve => setTimeout(resolve, time));
+
 // each one get's it's own chunk
 const { buildGrimoireDocs } = await import('@lukekaalim/grimoire/docs')
-console.info('Loaded grimoire', performance.now())
 const { buildGrimoireTSDocs } = await import('@lukekaalim/grimoire-ts/doc')
-console.info('Loaded grimoire-ts', performance.now())
 const { buildIconDocs } = await import('@lukekaalim/act-icons/docs')
-console.info('Loaded act-icons', performance.now())
 const { buildCurveDocs } = await import('@lukekaalim/act-curve/docs')
-console.info('Loaded act-curve', performance.now())
 const { buildGraphitDocs } = await import('@lukekaalim/act-graphit/mod.doc.ts')
-console.info('Loaded act-graphit', performance.now())
 const { buildMarkdownDocs } = await import('@lukekaalim/act-markdown/doc.ts')
-console.info('Loaded act-graphit', performance.now())
 
 const { createSampleDocPages } = await import('sample-lib/docs')
 console.info('Loaded sample', performance.now())
 
 buildGrimoireDocs(doc);
+await wait(100);
 buildGrimoireTSDocs(doc);
+await wait(100);
 createSampleDocPages(doc);
+await wait(100);
 buildIconDocs(doc);
+await wait(100);
 buildCurveDocs(doc);
+await wait(100);
 buildGraphitDocs(doc);
+await wait(100);
 buildMarkdownDocs(doc)
+await wait(100);
 
 const main = () => {
   const style = {

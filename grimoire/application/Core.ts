@@ -2,7 +2,7 @@ import { Component, h, Node, useEffect, useMemo, useRef, useState } from "@lukek
 import { parser } from "@lukekaalim/act-markdown";
 import { Root } from "mdast";
 import { Article } from "../components/article/Article";
-import { MarkdownArticle, SidePanelContainer, StaticMarkdownArticle } from "../components";
+import { InlineErrorBox, MarkdownArticle, SidePanelContainer, StaticMarkdownArticle } from "../components";
 import { CoreDebug } from "../components/debug/CoreDebug";
 import { DefaultDemoFrame, DemoMDX } from "../components/demo/Demo";
 import { VerticalNavMenu, VerticalNavMenu2 } from "../components/vertical_nav_menu/VerticalNavMenu";
@@ -325,6 +325,19 @@ export const createCoreAPI = (): CoreAPI => {
 
   core.component.add('CoreDebug', CoreDebug);
   core.component.add('Demo', DemoMDX);
+  core.component.add('Reference', ({ attributes, children }) => {
+    const key = attributes['key'];
+
+    if (!key)
+      return h(InlineErrorBox, {}, `Missing key prop`)
+
+    const url = core.reference.resolveRouteLink(key)
+
+    if (!url)
+      return h(InlineErrorBox, {}, `Ket "${key}" not found in references`);
+
+    return h('a', { href: url.href }, children);
+  });
 
   return core;
 }

@@ -12,6 +12,7 @@ export type VectorComponentsAPI<T> = {
 }
 
 export type VectorScalarAPI<T> = {
+  length(vector: T): number,
   add(left: T, right: number): T,
   multiply(left: T, right: number): T,
 }
@@ -36,6 +37,14 @@ export const createVectorScalarAPI = <T>(
   unaryOperation: (left: T, operation: (left: number) => number) => T,
 ): VectorScalarAPI<T> => {
   return {
+    length(vector) {
+      let sum = 0;
+      unaryOperation(vector, left => {
+        sum += Math.pow(left, 2);
+        return 0;
+      })
+      return Math.sqrt(sum);
+    },
     add(left, right) {
       return unaryOperation(left, left => left + right)
     },

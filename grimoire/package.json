@@ -5,7 +5,7 @@
   "dependencies": {
     "@lukekaalim/act": "^3.2.1",
     "@lukekaalim/act-icons": "^1.0.0",
-    "@lukekaalim/act-web": "^3.2.1",
+    "@lukekaalim/act-web": "^3.4.0-alpha.2",
     "@sindresorhus/string-hash": "^2.0.0",
     "@types/mdast": "^4.0.4",
     "change-case": "^5.4.4",

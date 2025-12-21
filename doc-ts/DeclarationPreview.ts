@@ -45,6 +45,28 @@ const renderDeclaration = (declaration: DeclarationReflection, syntax: HLJSBuild
         .type(declaration.name)
         .text(': ')
       break;
+    case ReflectionKind.Class:
+      syntax
+        .keyword('class ')
+        .type(declaration.name)
+
+      if (declaration.typeParameters) {
+        renderTypeParameters(declaration.typeParameters, syntax, doc)
+      }
+
+      syntax.space()
+
+      if (declaration.extendedTypes) {
+        syntax.keyword('extends ');
+        for (let i = 0; i < declaration.extendedTypes.length; i++) {
+          renderTypeSyntax2(syntax, doc, declaration.extendedTypes[i]);
+          if (i !== declaration.extendedTypes.length - 1)
+            syntax.text(', ')
+          else 
+            syntax.space()
+        }
+      }
+      break;
     case ReflectionKind.Function:
       syntax.keyword('function ').titleClass(declaration.name)
       break;

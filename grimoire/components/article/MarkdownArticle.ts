@@ -15,7 +15,8 @@ export const markdownClasses = {
   code: classes.mkCode,
   inlineCode: classes.inlineCode,
   paragraph: classes.paragraph,
-  blockquote: articleClasses.blockQuote
+  blockquote: articleClasses.blockQuote,
+  headingAnchor: classes.headingAnchor
 }
 
 export const renderMarkdown = createMdastRenderer({
