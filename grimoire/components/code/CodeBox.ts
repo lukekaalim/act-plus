@@ -80,10 +80,11 @@ export const CodeBox: Component<CodeBoxProps> = ({ lines, lineStart = 0 }) => {
   useEffect(() => {
     if (!ref.current)
       return;
-    const lineCount = !!ref.current.textContent && (ref.current.textContent.match(/\n/g));
+    const text = ref.current.textContent.trim();
+    const lineCount = (text.match(/\n/g));
     
     if (lineCount) {
-      setTimeout(() => setLineGuess(lineCount.length), 1);
+      setTimeout(() => setLineGuess(lineCount.length + 1), 1);
 
     }
   }, [lines.length])

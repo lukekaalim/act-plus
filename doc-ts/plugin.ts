@@ -6,7 +6,7 @@ import {
   ContainerReflection, DocumentReflection, ReferenceType
 } from "typedoc/browser";
 import { h } from "@lukekaalim/act";
-import { ArticlePreprocessor, CoreAPI, MDXComponent, PluginIAPI, useDocApp } from "@lukekaalim/grimoire";
+import { ArticlePreprocessor, CoreAPI, InlineErrorBox, MDXComponent, PluginIAPI, useDocApp } from "@lukekaalim/grimoire";
 import { visit } from "unist-util-visit";
 import { buildMdxAttributes } from "@lukekaalim/act-markdown";
 
@@ -54,7 +54,7 @@ const TypeDoc: MDXComponent = ({ attributes }) => {
 
     return h(DeclarationReflectionRenderer, { declaration, extraDeclarations })
   } catch (error) {
-    return h('div', {}, (error as Error).message);
+    return h(InlineErrorBox, {}, (error as Error).message);
   }
 }
 

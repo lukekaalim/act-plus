@@ -1,0 +1,20 @@
+.inlineErrorBox {
+  border-radius: 4px;
+  padding: 8px;
+  color: white;
+
+  margin: 4px 0;
+}
+
+.inlineErrorBox.warning {
+  background: rgb(255, 119, 0);
+  border: 4px solid rgb(255, 240, 192);
+}
+.inlineErrorBox.error {
+  background: red;
+  border: 4px solid pink;
+}
+.inlineErrorBox.info {
+  background: rgb(2, 117, 96);
+  border: 4px solid rgb(192, 255, 219);
+}

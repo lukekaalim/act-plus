@@ -1,20 +1,44 @@
 .list {
-  list-style: none;
+  list-style: circle;
 
   margin: 0;
   padding: 0;
   padding-left: 1em;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .rightAligned {
-  text-align: right;
-  margin-right: 1em;
-  padding: 0em;
-
-  border-right: 2px solid black
+  
 }
 
 .rightAligned .list {
-  padding-left: 0em;
-  padding-right: 1em;
+  
+}
+
+.navMenuRoot {
+  display: flex;
+  flex-direction: column;
+
+  margin: 16px;
+}
+
+.link {
+  color: var(--primary-color, rgb(72, 170, 124));
+  transition: background 0.2s, color 0.2s;
+  padding: 4px;
+  border-radius: 4px;
+}
+.link:visited {
+  color: var(--primary-color, rgb(57, 120, 238));
+}
+.link:hover {
+  background-color: rgba(127, 127, 127, 0.248);
+}
+
+.entry {
+  display: flex;
+
+  flex-direction: column;
 }

@@ -23,3 +23,8 @@
 <TypeDoc project="@lukekaalim/grimoire" name="CodeBox" extras="CodeBoxProps" />
 
 <Demo demo="CodeBox" />
+
+
+<TypeDoc project="@lukekaalim/grimoire" name="VerticalNavMenu2" extras="VerticalNavMenu2Props" />
+
+<Demo demo="VerticalNavMenu" />

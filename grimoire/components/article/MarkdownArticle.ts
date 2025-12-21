@@ -1,12 +1,12 @@
 import { Component, h, useMemo } from "@lukekaalim/act";
-import { createMdastRenderer, OverrideComponentProps, useRemarkParser } from "@lukekaalim/act-markdown";
+import { createMdastRenderer, getHeadingId, OverrideComponentProps, useRemarkParser } from "@lukekaalim/act-markdown";
 
 import * as YAML from 'yaml';
 import { Article, ArticleMetadata } from "./Article";
 
 import classes from './MarkdownArticle.module.css';
 import articleClasses from './Article.module.css';
-import { Code, Root } from "mdast";
+import { Code, Heading, Root } from "mdast";
 import { SyntaxHighlightingCodeBox } from "../code";
 import { useDocApp } from "../../application";
 
@@ -64,6 +64,18 @@ export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ m
     },
     components: Object.fromEntries([...app.component.components.map(c => [c.name, c.component])]),
     overrides: {
+      heading: ({ node, renderer, className }) => {
+        const headingNode = node as Heading;
+        const id = getHeadingId(headingNode);
+        const url = new URL(document.location.href);
+        url.hash = id;
+        return h(`h${headingNode.depth}`, { className, id }, [
+          h('a', { href: url.href, className: classes.headingAnchor }, [
+            ''
+          ]),
+          ' ',
+          headingNode.children.map(renderer)]);
+      },
       code: ({ node }: OverrideComponentProps) => {
         const codeNode = node as Code;
         return h(SyntaxHighlightingCodeBox, {

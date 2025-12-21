@@ -34,3 +34,16 @@
 .heading {
   
 }
+
+.headingAnchor {
+  opacity: 0;
+  transition: opacity 0.2s;
+
+  position: absolute;
+  transform: translateX(calc(-100% - 16px));
+  font-size: 16px;
+}
+
+.heading:hover .headingAnchor {
+  opacity: 1;
+}

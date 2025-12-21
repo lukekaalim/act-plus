@@ -62,4 +62,4 @@ relationship with parent and child routes, as well as different
 headings on a page where subheadings are considered children
 of their overarching headings.
 
-<TypeDoc project="@lukekaalim/grimoire" name="NavTree2" />
+<TypeDoc project="@lukekaalim/grimoire" name="NavTree2" extras="NavLeaf NavLeafID" />

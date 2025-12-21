@@ -37,20 +37,21 @@ export const VerticalNavMenu2: Component<VerticalNavMenu2Props> = ({ tree, right
   const renderLeaf = (leaf: NavLeaf): Node => {
     const children = leaf.children.map(childId => tree.leaves[childId]);
 
-    if (leaf.content)
-      return [    
+    if (leaf.content) {
+      return [
         h(VerticalNavMenuLink, { content: leaf.content, href: leaf.location?.href || '' }),
         children.length > 0 && h(VerticalNavMenuList, {
           entries: children.map(renderLeaf)
         }),
       ]
+    }
 
     return children.length > 0 && h(VerticalNavMenuList, {
       entries: children.map(renderLeaf)
     });
   }
 
-  return h('div', { className: rightAligned && classNames.rightAligned }, tree.roots.map(root => {
+  return h('div', { classList: [classNames.navMenuRoot, rightAligned && classNames.rightAligned] }, tree.roots.map(root => {
     const leaf = tree.leaves[root];
     return renderLeaf(leaf);
   }));
@@ -62,7 +63,7 @@ export type VerticalNavMenuListProps = {
 
 export const VerticalNavMenuList: Component<VerticalNavMenuListProps> = ({ entries }) => {
   return h('ol', { className: classNames.list },
-    entries.map(entry => h('li', {}, entry))
+    entries.map(entry => h('li', { className: classNames.entry }, entry))
   );
 }
 
@@ -73,6 +74,6 @@ export type VerticalNavMenuLinkProps = {
 
 export const VerticalNavMenuLink: Component<VerticalNavMenuLinkProps> = ({ content, href }) => {
   if (href)
-    return h('a', { href }, content);
-  return content;
+    return h('a', { href, className: classNames.link }, content);
+  return h('span', { className: classNames.emptyLink }, content);
 }

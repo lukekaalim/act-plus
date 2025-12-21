@@ -9,4 +9,6 @@ export * from './sidenav';
 
 export * from './code';
 export * from './demo';
+export * from './debug';
+export * from './vertical_nav_menu';
 //export * from './demo';

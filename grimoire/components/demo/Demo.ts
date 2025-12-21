@@ -3,6 +3,7 @@ import { SVG } from '@lukekaalim/act-web';
 
 import classes from './Demo.module.css'
 import { DemoFrameComponent, MDXComponent, useDocApp } from "../../application";
+import { InlineErrorBox } from "../debug/ErrorBox";
 
 
 export const DefaultDemoFrame: DemoFrameComponent = ({ children, demo }) => {
@@ -28,6 +29,7 @@ export const DefaultDemoFrame: DemoFrameComponent = ({ children, demo }) => {
       h('div', { style: {
         'z-index': 1, position: 'relative',
         margin: '0 -1em',
+        resize: 'both',
         overflow: 'hidden',
         background: 'white', padding: '1em',
         'box-shadow': '#4846773d 0px 0px 8px 8px',
@@ -49,13 +51,7 @@ export const DemoMDX: MDXComponent = ({ attributes }) => {
   const doc = useDocApp([]);
   const demo = doc.demos.demos.find(d => d.key === demoKey);
   if (!demo)
-    return h('div', { style: {
-      background: 'red',
-      border: '4px solid pink',
-      'border-radius': '4px',
-      padding: '8px',
-      color: 'white',
-    }}, `❕ DemoMDX can't find demo "${demoKey}"`);
+    return h(InlineErrorBox, {}, `❕ DemoMDX can't find demo "${demoKey}"`);
   
   const frame = doc.demos.frames.find(f => f.key === frameKey) || doc.demos.defaultFrame;
 

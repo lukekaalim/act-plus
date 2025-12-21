@@ -10,7 +10,7 @@ import typedoc from 'typedoc:../index.ts';
 
 import adventureIconURL from './adventure-icon.svg';
 
-import { PrismaticComponent } from "./demos";
+import { PrismaticComponent, VerticalNavMenuDemo } from "./demos";
 import { h } from "@lukekaalim/act";
 
 export const buildGrimoireDocs = (doc: DocApp<[TypeDocPlugin]>) => {
@@ -39,7 +39,10 @@ export const buildGrimoireDocs = (doc: DocApp<[TypeDocPlugin]>) => {
   doc.demos.add('MarkdownArticle', () => h(MarkdownArticle, {
     content: `# I am a Sample Markdown Article\nWith different kinds of **text**!`
   }))
-  doc.demos.add('CodeBox', () => h(SyntaxHighlightingCodeBox, { code: `export const buildGrimoireDocs = ${buildGrimoireDocs.toString()}` }))
-
+  const code = `
+    export const buildGrimoireDocs = ${buildGrimoireDocs.toString()}
+  `.trim();
+  doc.demos.add('CodeBox', () => h(SyntaxHighlightingCodeBox, { code, language: 'typescript' }))
   doc.demos.add('Prismatic', () => h(PrismaticComponent));
+  doc.demos.add('VerticalNavMenu', () => h(VerticalNavMenuDemo))
 }
