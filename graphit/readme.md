@@ -4,7 +4,7 @@ An Act-based graphing component library.
 
 ## Components
 
-<TypeDoc project="@lukekaalim/act-graphit" name="CartesianSpace" />
+<TypeDoc project="@lukekaalim/act-graphit" name="CartesianSpace" extras="CartesianSpaceProps" />
 Move around the space by clicking and dragging
 <Demo demo="CartesianSpaceDemo" />
 

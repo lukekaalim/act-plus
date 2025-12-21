@@ -124,6 +124,14 @@ const createArticlePreprocessor = (core: CoreAPI, typedoc: PluginIAPI<TypeDocPlu
         console.info(`Adding indirect for ${key}`);
 
         core.reference.addIndirect(key, `article:${article.key}`, id);
+        if (attributes['extras']) {
+          const extras = attributes['extras'].split(' ');
+          for (const extra of extras) {
+            const extraKey = `ts:${attributes["project"]}.${extra}`;
+            console.info(`Adding indirect for extra ${key}`);
+            core.reference.addIndirect(extraKey, key, id);
+          }
+        }
       } catch (error) {
         console.error(error);
       }
