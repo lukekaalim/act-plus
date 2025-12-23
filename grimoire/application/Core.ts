@@ -1,12 +1,12 @@
-import { Component, h, Node, useEffect, useMemo, useRef, useState } from "@lukekaalim/act";
+import { Component, h, Node } from "@lukekaalim/act";
 import { parser } from "@lukekaalim/act-markdown";
 import { Root } from "mdast";
 import { Article } from "../components/article/Article";
-import { InlineErrorBox, MarkdownArticle, SidePanelContainer, StaticMarkdownArticle } from "../components";
+import { InlineErrorBox  } from "../components";
 import { CoreDebug } from "../components/debug/CoreDebug";
 import { DefaultDemoFrame, DemoMDX } from "../components/demo/Demo";
-import { VerticalNavMenu, VerticalNavMenu2 } from "../components/vertical_nav_menu/VerticalNavMenu";
-import { buildNavTreeFromDOM, createNavTreeBuilder, NavLeaf, NavTree2, simplifyTree } from "../lib";
+import { NavLeaf, NavTree2, simplifyTree } from "../lib";
+import { ArticlePage } from "../components/page";
 
 /**
  * The CoreAPI is a list of API objects that contain
@@ -267,27 +267,7 @@ export const createCoreAPI = (): CoreAPI => {
 
 
         if (article.path) {
-          const Component = () => {
-            const ref = useRef<HTMLElement | null>(null)
-            const [tree, setTree] = useState<NavTree2 | null>(null);
-
-            useEffect(() => {
-              const builder = createNavTreeBuilder();
-              buildNavTreeFromDOM(builder, ref.current as HTMLElement);
-              builder.trim();
-              setTree(builder.tree);
-            }, []);
-
-            const routeTree = useMemo(() => core.route.getNavTree(), [])
-
-            const node = h(SidePanelContainer, {
-              left: routeTree && h(VerticalNavMenu2, { tree: routeTree }),
-              right: tree && h(VerticalNavMenu2, { tree, rightAligned: true }),
-            }, h(StaticMarkdownArticle, { root: content }))
-  
-            return h('div', { ref }, node);
-          }
-          core.route.add(article.path, h(Component))
+          core.route.add(article.path, h(ArticlePage, { articleKey: article.key }))
           core.reference.add(`article:${article.key}`, article.path)
         }
 

@@ -246,7 +246,6 @@ const { buildGraphitDocs } = await import('@lukekaalim/act-graphit/mod.doc.ts')
 const { buildMarkdownDocs } = await import('@lukekaalim/act-markdown/doc.ts')
 
 const { createSampleDocPages } = await import('sample-lib/docs')
-console.info('Loaded sample', performance.now())
 
 buildGrimoireDocs(doc);
 await wait(100);

@@ -3,7 +3,7 @@ import { getSpanProgress } from "./time";
 import { Bezier4Animation } from "./animation";
 import { Animation1D, Vector1D } from "./vectors";
 
-const kick = 50;
+const kick = 0;
 
 export const useAnimatedValue = (initial: number, duration: number) => {
   const [anim, setAnim] = useState<Bezier4Animation<Vector1D>>({

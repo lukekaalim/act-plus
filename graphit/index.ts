@@ -5,3 +5,4 @@ export * from './CartesianSpace';
 export * from './LinePath';
 
 export * from './structures';
+export * from './vector';

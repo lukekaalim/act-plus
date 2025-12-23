@@ -1,4 +1,4 @@
-import { Component, h, useMemo, useRef, useState } from "@lukekaalim/act"
+import { Component, h, Node, useMemo, useRef, useState } from "@lukekaalim/act"
 import { SVG } from "@lukekaalim/act-web"
 import { useElementSize } from "./useElementSize";
 import { Axis } from "./Axis";
@@ -12,33 +12,50 @@ import { useDrag } from "./useDrag";
 export type CartesianSpaceProps = {
   offset?: Vector<2>,
   style?: unknown,
+  overlay?: Node,
+  initialPosition?: Vector<2>,
+  onDragComplete?: (position: Vector<2>) => void,
 }
 
-export const CartesianSpace: Component<CartesianSpaceProps> = ({ children, offset = Vector(2).create(), style }) => {
+export const CartesianSpace: Component<CartesianSpaceProps> = ({
+  children, offset = Vector(2).create(), style, overlay,
+  onDragComplete, initialPosition,
+  ...props
+}) => {
   const ref = useRef<SVGSVGElement | null>(null);
 
   const size = useElementSize(ref);
 
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [dragOffset, setDragOffset] = useState(initialPosition || { x: 0, y: 0 });
+  
   const onDrag = useMemo(() => {
-    return (delta: Vector<2>) => setDragOffset(prev => Vector(2).add(prev, delta))
-  }, [])
+    return (delta: Vector<2>) => setDragOffset(prev => {
+      const newPosition = Vector(2).add(prev, delta);
+      onDragComplete && onDragComplete(newPosition)
+      return newPosition;
+    })
+  }, [onDragComplete])
   const dragging = useDrag(ref, onDrag, event => {
     if (event.target instanceof HTMLElement)
-      if (event.target.tagName === 'BUTTON')
-        return false;
+      switch (event.target.tagName) {
+        case 'BUTTON':
+        case 'INPUT':
+        case 'A':
+          return false;
+      }
     return true;
   })
 
   const combinedOffset = Vector(2).add(dragOffset, offset);
 
-  return h(SVG, {}, h('svg', { ref, class: [classes.cartesianSpace, dragging && classes.dragging].join(' '), style }, [
+  return h(SVG, {}, h('svg', { ...props, ref, class: [classes.cartesianSpace, dragging && classes.dragging].join(' '), style }, [
     h(Grid, { offset: combinedOffset, strokeWidth: 1, scale: { x: 50, y: 50 } }),
     //h(Grid, { offset: combinedOffset, scale: Vector(2).scalar.add(Vector(2).create(), 50), stroke: 'grey' }),
     h(Axis, { axis: { x: 1, y: 0 }, size, offset: combinedOffset.y }),
     h(Axis, { axis: { x: 0, y: 1 }, size, offset: combinedOffset.x }),
     h('g', { transform: `translate(${combinedOffset.x} ${combinedOffset.y})` }, [
       children,
-    ])
+    ]),
+    overlay || null,
   ]))
 }

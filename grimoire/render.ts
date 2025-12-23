@@ -11,7 +11,11 @@ export type DocAppRendererProps = {
 export const DocAppRenderer: Component<DocAppRendererProps> = ({ doc }) => {
   const ref = useRef<HTMLElement | null>(null)
   const pages = useMemo(() => {
-    return doc.route.routes.map(page => ({ path: page.path, display: null, component: () => page.content }));
+    return doc.route.routes.map(page => {
+      const MyPageComponent = () => page.content;
+
+      return { path: page.path, display: null, component: MyPageComponent }
+    });
   }, [doc]);
 
   const router = useRouter({
@@ -22,6 +26,6 @@ export const DocAppRenderer: Component<DocAppRendererProps> = ({ doc }) => {
   const pageStates = usePageTransition(router.page);
 
   return h(DocAppContext.Provider, { value: doc },
-    h('div', { ref, style: { position: 'relative' } },
+    h('div', { ref, style: { position: 'relative', flex: 1 } },
       pageStates.map(state => h(PageTransitionDriver, { state, key: state.id }))));
 }

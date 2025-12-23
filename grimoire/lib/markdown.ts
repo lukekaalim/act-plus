@@ -1,5 +1,5 @@
 import { h, useMemo } from "@lukekaalim/act";
-import { useDocApp } from "../application";
+import { MDXComponent, MDXComponentEntry, useDocApp } from "../application";
 import { createMdastRenderer, getHeadingId, MarkdownComponent, MdastRenderer, OverrideComponentProps } from "@lukekaalim/act-markdown";
 import { markdownClasses, SyntaxHighlightingCodeBox } from '@lukekaalim/grimoire'
 import { Code, Heading } from "mdast";
@@ -9,13 +9,16 @@ import { Code, Heading } from "mdast";
  * to load the extra defined components there.
  * @returns an MDAST renderer - a function that accepts MDAST nodes and returns ACT nodes
  */
-export const useGrimoireMdastRenderer = (): MdastRenderer => {
+export const useGrimoireMdastRenderer = (extraComponents?: MDXComponentEntry[]): MdastRenderer => {
   const doc = useDocApp([]);
 
   const render = useMemo(() => {
+    const componentEntries = [...doc.component.components, ...(extraComponents || [])];
+    const components = Object.fromEntries(componentEntries.map(c => [c.name, c.component as MarkdownComponent]))
+
     return createMdastRenderer({
       classNames: markdownClasses,
-      components: Object.fromEntries([...doc.component.components.map(c => [c.name, c.component])]),
+      components,
       overrides: {
         heading: ({ node, renderer, className }) => {
           const headingNode = node as Heading;
@@ -38,7 +41,7 @@ export const useGrimoireMdastRenderer = (): MdastRenderer => {
         }
       }
     })
-  }, [doc]);
+  }, [doc, extraComponents]);
 
   return render;
 };
