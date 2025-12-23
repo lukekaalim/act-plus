@@ -28,7 +28,7 @@ export const SimpleTransition1D = createTransitionAPI<{
         span: { start: now, end: now + DURATION },
         points: [
           Vector1D.create(-1),
-          Vector1D.create(-1),
+          Vector1D.create(0),
           Vector1D.create(0),
           Vector1D.create(0)
         ]
@@ -45,7 +45,7 @@ export const SimpleTransition1D = createTransitionAPI<{
       id: prevState.id,
       page: prevState.page,
       animation: {
-        span: { start: now, end: now + DURATION },
+        span: { start: now, end: now + (DURATION * 0.75) },
         points: [
           animState.point,
           Vector1D.add(animState.point, animState.velocity),
@@ -96,11 +96,12 @@ export const PageTransitionDriver: Component<{ state: PageTransitionState, direc
 
   Animation1D.Bezier4.useAnimation(state.animation, point => {
     const el = (ref.current as HTMLDivElement);
-    //el.style.opacity = (1 + point.x).toString();
+    el.style.opacity = Math.abs(1 - point.x).toString();
+
     if (direction === 'forward')
-      el.style.transform = `translate(${-point.x * 100}%, 0px)`;
+      el.style.transform = `translate(${-point.x * 50}%, 0px)`;
     else
-      el.style.transform = `translate(${-point.x * -100}%, 0px)`;
+      el.style.transform = `translate(${-point.x * -50}%, 0px)`;
 
     el.style.pointerEvents = point.x === 0 ? 'all' : 'none'
   })
