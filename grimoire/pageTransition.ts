@@ -91,14 +91,16 @@ export const usePageTransition = (currentPage: RouterPage): PageTransitionState[
   return states;
 }
 
-export const PageTransitionDriver: Component<{ state: PageTransitionState }> = ({ state, key }) => {
+export const PageTransitionDriver: Component<{ state: PageTransitionState, direction: 'forward' | 'backward' }> = ({ state, key, direction }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   Animation1D.Bezier4.useAnimation(state.animation, point => {
     const el = (ref.current as HTMLDivElement);
     //el.style.opacity = (1 + point.x).toString();
-
-    el.style.transform = `translate(${-point.x * 100}%, 0px)`;
+    if (direction === 'forward')
+      el.style.transform = `translate(${-point.x * 100}%, 0px)`;
+    else
+      el.style.transform = `translate(${-point.x * -100}%, 0px)`;
 
     el.style.pointerEvents = point.x === 0 ? 'all' : 'none'
   })

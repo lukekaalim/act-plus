@@ -1,6 +1,8 @@
 import { Component, createContext, h, Node, StateSetter, Updater, useContext, useEffect, useMemo, useRef, useState } from "@lukekaalim/act";
 import { hs, HTML, render, SVG } from "@lukekaalim/act-web";
 
+import { throttle } from 'lodash-es';
+
 import { CartesianSpace } from "@lukekaalim/act-graphit/CartesianSpace";
 import { LinePath } from "@lukekaalim/act-graphit/LinePath";
 import { EditablePoint } from "@lukekaalim/act-graphit/EditablePoint";
@@ -18,6 +20,10 @@ import {
 import classes from './index.module.css';
 import { MDXComponentEntry, StaticMarkdownArticle, useGrimoireMdastRenderer } from "@lukekaalim/grimoire";
 import { parser } from "@lukekaalim/act-markdown";
+
+import ghostURL from './assets/ghost.png';
+import firetruckURL from './assets/firetruck.png';
+import ballURL from './assets/ball.png';
 
 type Vector2 = { x: number, y: number };
 const Vector2 = {
@@ -137,6 +143,7 @@ const segments = await Promise.all([
   import('./interactive/0.intro.md?raw'),
   import('./interactive/1.animation_as_curves.md?raw'),
   import('./interactive/2.bezier_dimensions.md?raw'),
+  import('./interactive/3.curves_driving_values.md?raw'),
 ].map(p => p.then(r => parser.parse(r.default))))
 
 const Curve3Demo = ({ progress, y }: { progress: number, y: number }) => {
@@ -147,10 +154,10 @@ const Curve3Demo = ({ progress, y }: { progress: number, y: number }) => {
   const circleVec = Curve2D.curve3(start, mid, end, progress/100);
 
   return h(GraphContainer, { position: { x: 0, y }, size: { x: 300, y: 300 }, documentation: h(DocAside, { segmentIndex: 1 }) }, [
-    h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint(p) {
+    h(LinePath, { resolution: 25, strokeWidth: 2, stroke: 'purple', calcPoint: useMemo(() => (p: number) => {
       let v = Curve2D.curve3(start, mid, end, p);
       return v;
-    }, }),
+    }, [start, mid, end]), }),
     h('line', {
       x1: lerp(start.x, mid.x, progress/100),
       y1: lerp(start.y, mid.y, progress/100),
@@ -175,6 +182,72 @@ const Curve3Demo = ({ progress, y }: { progress: number, y: number }) => {
   ])
 }
 
+const DrivingValuesDemo: Component<{ progress: number, y: number }> = ({ progress, y }) => {
+  
+  const calcGhostPoint = useMemo(() => (progress: number) => {
+    return {
+      x: Animation1D.CurveAPI.curve4({ x: 0 }, { x: 0 }, { x: 0 }, { x: 100 }, progress).x,
+      y: progress * 100
+    }
+  }, [])
+  const calcTruckPoint = useMemo(() => (progress: number) => {
+    return {
+      x: Animation1D.CurveAPI.curve4({ x: 0 }, { x: 0 }, { x: 100 }, { x: 100 }, progress).x,
+      y: progress * 100
+    }
+  }, [])
+  const calcBall = useMemo(() => (progress: number) => {
+    return {
+      x: Animation1D.CurveAPI.curve4({ x: 100 }, { x: 0 }, { x: 0 }, { x: 100 }, progress).x,
+      y: progress * 100
+    }
+  }, [])
+
+  const ghostPoint = calcGhostPoint(progress / 100).x / 100;
+  const truckPoint = calcTruckPoint(progress / 100).x / 100;
+  const ballPoint = calcBall(progress / 100).x / 100;
+
+  return [
+    h('foreignObject', { x: 0, y: y - 50, height: 500, width: 800 }, h(HTML, {}, h(DocAside, { segmentIndex: 3 }))),
+    h(GraphContainer, { position: { x: -200, y: y + 250 }, size: { x: 100, y: 100 } }, [
+      h(LinePath, { calcPoint: calcGhostPoint }),
+      h('image', { x: (ghostPoint * 100) - 15, y: progress - 15, width: 30, height: 30, href: ghostURL })
+    ]),
+    h('image', {
+      x: -100, y: y + 200 + (ghostPoint * 100),
+      width: 200, height: 200,
+      
+      opacity: 1 - (ghostPoint),
+      href: ghostURL
+    }),
+    h(GraphContainer, { position: { x: 200, y: y + 250 }, size: { x: 100, y: 100 } }, [
+      h(LinePath, { calcPoint: calcTruckPoint }),
+      h('image', { x: (truckPoint * 100) - 15, y: progress - 15, width: 30, height: 30, href: firetruckURL })
+    ]),
+    h('image', {
+      x: 300 + (truckPoint * 300), y: y + 200,
+      width: 200, height: 200,
+      
+      href: firetruckURL
+    }),
+    h(GraphContainer, { position: { x: 800, y: y + 250 }, size: { x: 100, y: 100 } }, [
+      h(LinePath, { calcPoint: calcBall }),
+      h('image', { x: (ballPoint * 100) - 15, y: progress - 15, width: 30, height: 30, href: ballURL })
+    ]),
+    h('image', {
+      x: 950, y: y + 200 + (ballPoint * 150),
+      width: 75, height: 75,
+      style: {
+        'transform-origin': 'center',
+        'transform-box': 'fill-box',
+      },
+      transform: `rotate(${progress * 3.6})`,
+      
+      href: ballURL
+    }),
+  ]
+}
+
 const Curve1DDemo: Component<{ progress: number, y: number }> = ({ progress, y }) => {
   const [a, setA] = useState(Vector2.new(0, 50));
   const [b, setB] = useState(Vector2.new(100, 50));
@@ -182,13 +255,18 @@ const Curve1DDemo: Component<{ progress: number, y: number }> = ({ progress, y }
   const [d, setD] = useState(Vector2.new(300, 50));
 
   const point = Animation1D.CurveAPI.curve4(a, b, c, d, progress / 100);
-  const calcSpeedPoint = (progress: number): Vector<2> => {
+  const calcSpeedPoint = useMemo(() => (progress: number): Vector<2> => {
     return { y: progress * 300, x: Animation1D.CurveAPI.curve4(a, b, c, d, progress).x }
-  };
+  }, [a, b, c, d]);
 
   const documentation = h(DocAside, { segmentIndex: 2 })
 
-  return h(GraphContainer, { documentation, docSide: 'left', size: { x: 300, y: 300 }, position: { x: 600, y }}, [
+  const axesLabels = {
+    y: 'Time',
+    x: 'Position'
+  }
+
+  return h(GraphContainer, { documentation, docSide: 'left', size: { x: 300, y: 300 }, position: { x: 600, y }, axesLabels }, [
     h(LinePath, { calcPoint: calcSpeedPoint }),
     h(EditablePoint, { point: { x: a.x, y: 50 }, onPointEdit: setA }, h('text', {}, a.x)),
     h(EditablePoint, { point: { x: b.x, y: 50 }, onPointEdit: setB }, h('text', {}, b.x)),
@@ -244,9 +322,11 @@ const AnimDemo = () => {
 const GraphContainer: Component<{
   size: Vector<2>, position: Vector<2>, documentation?: Node,
   showAxes?: boolean,
+  axesLabels?: { x: Node, y: Node },
   docSide?: 'right' | 'left'
 }> = ({
   size, children, position, documentation,
+  axesLabels,
   showAxes = true,
   docSide = "right",
 }) => {
@@ -254,11 +334,12 @@ const GraphContainer: Component<{
     showAxes && [
       h('line', { x1: 0, x2: 0, y1: 0, y2: size.y, stroke: 'red' }),
       h('line', { x1: 0, x2: size.x, y1: 0, y2: 0, stroke: 'blue' }),
-      h('text', { fill: 'red' }),
-      h('text', { fill: 'blue' }),
+      h('rect', { x: -4, y: -4, width: 8, height: 8, fill: 'black' }),
+      !!axesLabels && h('text', { fill: 'red', transform: `rotate(-90)`, y: -15, x: -75 }, axesLabels.y),
+      !!axesLabels && h('text', { fill: 'blue', y: -15 }, axesLabels.x),
     ],
     children,
-    h('foreignObject', { x: docSide === "right" ? (size.x + 150) : (-600 - 150), y: 0, width: 600, height: 600 },
+    !!documentation && h('foreignObject', { x: docSide === "right" ? (size.x + 150) : (-600 - 150), y: 0, width: 600, height: 600 },
       h(HTML, {}, documentation)),
   ])
 };
@@ -380,12 +461,17 @@ export const CurveDemo = ({ offset }: { offset?: Vector2 }) => {
       y: event.clientY - rect.top
     }); 
   }
-  const onDragComplete = useMemo(() => (newPoint: Vector<2>) => {
-    //const location = new URL(document.location.href);
-    //location.searchParams.set(`x`, (-newPoint.x).toFixed());
-    //location.searchParams.set(`y`, (-newPoint.y).toFixed());
 
-    //history.replaceState(null, '', location.href);
+  const bouncer = useRef(() => throttle((newPoint: Vector<2>) => {
+    const location = new URL(document.location.href);
+    location.searchParams.set(`x`, (-newPoint.x).toFixed());
+    location.searchParams.set(`y`, (-newPoint.y).toFixed());
+
+    history.replaceState(null, '', location.href);
+  }, 1000))
+
+  const onDragComplete = useMemo(() => (newPoint: Vector<2>) => {
+    bouncer.current(newPoint);
   }, []);
   
   const initialPosition = useMemo(() => {
@@ -400,16 +486,18 @@ export const CurveDemo = ({ offset }: { offset?: Vector2 }) => {
   return h('div', { className: classes.fullpageSVG }, h(PlaybackContext.Provider, { value: playState }, [
    
     h(DemoProgressControls),
+    
 
-    h(CartesianSpace, { onDragComplete, initialPosition, offset: offset || { x: 100, y: 100 }, onPointerMove, overlay: [
+    h(CartesianSpace, { onDragComplete, initialPosition, offset: offset || { x: 100, y: 100 }, onPointerMove, overlay: useMemo(() => [
       h('text', { x: mousePos.x, y: mousePos.y, style: { 'pointer-events': 'none' } },
         [mousePos.x.toFixed(), 'px, ', mousePos.y.toFixed(), 'px'])
-    ] } as any, h('g', {}, [
+    ], [mousePos.x, mousePos.y]) } as any, useMemo(() => h('g', {}, [
       h('foreignObject', { x: 8, y: 0, width: 800, height: 400 },
         h(HTML, {}, h(DocAside, { segmentIndex: 0 }))),
       h(Curve3Demo, { progress, y: 450 }),
       h(Curve1DDemo, { progress, y: 1100 }),
-      h(AnimDemo)
-    ]))
+      h(AnimDemo),
+      h(DrivingValuesDemo, { progress, y: 1750 }),
+    ]), [progress]))
   ]));
 };

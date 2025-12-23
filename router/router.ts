@@ -9,6 +9,7 @@ export type Router = {
   pages: RouterPage[],
 
   page: RouterPage,
+  direction: 'forward' | 'backward',
   location: URL,
 
   navigate(location: URL): void,
@@ -39,8 +40,10 @@ const findPage = (pages: RouterPage[], location: URL) => {
 export const useRouter = ({ initialLocation, pages, specialPages }: RouterConfig): Router => {
   const [location, setLocation] = useState(initialLocation);
   const [emitter] = useState(() => createEventEmitter<RouterEvent>());
+  const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
 
   const navigate = (nextLocation: URL) => {
+    setDirection('forward');
     setLocation(prevLocation => {
       if (isURLEqual(prevLocation, nextLocation)) {
         console.info(`Refocusing on: "${nextLocation}"`)
@@ -57,6 +60,7 @@ export const useRouter = ({ initialLocation, pages, specialPages }: RouterConfig
     });
   };
   const replace = (nextLocation: URL) => {
+    setDirection('backward');
     setLocation(nextLocation)
   }
 
@@ -66,6 +70,7 @@ export const useRouter = ({ initialLocation, pages, specialPages }: RouterConfig
     subscribe: emitter.subscribe,
 
     page,
+    direction,
     location,
     pages,
     navigate,

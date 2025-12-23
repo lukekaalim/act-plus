@@ -27,5 +27,5 @@ export const DocAppRenderer: Component<DocAppRendererProps> = ({ doc }) => {
 
   return h(DocAppContext.Provider, { value: doc },
     h('div', { ref, style: { position: 'relative', flex: 1 } },
-      pageStates.map(state => h(PageTransitionDriver, { state, key: state.id }))));
+      pageStates.map(state => h(PageTransitionDriver, { state, key: state.id, direction: router.direction }))));
 }
