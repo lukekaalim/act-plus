@@ -6,10 +6,18 @@ import { lerp } from "./math"
  * An API that lets you perform operations on the components of a vector
  */
 export type VectorComponentsAPI<T> = {
-  create: (initial: number) => T,
+  create: (operation: (key: keyof T) => number) => T,
   unary: (left: T, operation: (left: number) => number) => T,
   binary: (left: T, right: T, operation: (left: number, right: number) => number) => T,
+
+  components: (vector: T) => number[],
+
+  nary: <
+    Args extends ReadonlyArray<T>,
+    Output
+  >(operation: (...args: { [K in keyof Args]: number }) => Output, ...args: Args) => { [K in keyof T]: Output },
 }
+
 
 export type VectorScalarAPI<T> = {
   length(vector: T): number,
@@ -59,9 +67,9 @@ export const createVectorAPI = <T>(ComponentsAPI: VectorComponentsAPI<T>) => {
     ScalarAPI: createVectorScalarAPI(ComponentsAPI.unary),
     ComponentsAPI,
 
-    ZERO: ComponentsAPI.create(0),
-    ONE: ComponentsAPI.create(1),
-    create: ComponentsAPI.create,
+    ZERO: ComponentsAPI.create(() => 0),
+    ONE: ComponentsAPI.create(() => 1),
+    create: (number) => ComponentsAPI.create(() => number),
 
     interpolate(start, end, progress) {
       return ComponentsAPI.binary(start, end, (l, r) => lerp(l, r, progress))
@@ -89,7 +97,7 @@ export type Vector1D = {
 }
 export const Vector1D = createVectorAPI<Vector1D>({
   create: value => ({
-    x: value,
+    x: value('x'),
   }),
   unary: (left, operation) => ({
     x: operation(left.x)
@@ -97,6 +105,10 @@ export const Vector1D = createVectorAPI<Vector1D>({
   binary: (left, right, operation) => ({
     x: operation(left.x, right.x)
   }),
+  nary: (operation, ...args) => ({
+    x: operation(...args.map(a => a.x) as any)
+  }),
+  components: v => [v.x]
 });
 
 export type Vector2D = {
@@ -105,8 +117,8 @@ export type Vector2D = {
 }
 export const Vector2D = createVectorAPI<Vector2D>({
   create: value => ({
-    x: value,
-    y: value,
+    x: value('x'),
+    y: value('y'),
   }),
   unary: (left, operation) => ({
     x: operation(left.x),
@@ -116,6 +128,11 @@ export const Vector2D = createVectorAPI<Vector2D>({
     x: operation(left.x, right.x),
     y: operation(left.y, right.y),
   }),
+  nary: (operation, ...args) => ({
+    x: operation(...args.map(a => a.x) as any),
+    y: operation(...args.map(a => a.y) as any)
+  }),
+  components: v => [v.x, v.y]
 });
 
 export type Vector3D = {
@@ -125,9 +142,9 @@ export type Vector3D = {
 }
 export const Vector3D = createVectorAPI<Vector3D>({
   create: value => ({
-    x: value,
-    y: value,
-    z: value,
+    x: value('x'),
+    y: value(`y`),
+    z: value(`z`),
   }),
   unary: (left, operation) => ({
     x: operation(left.x),
@@ -139,6 +156,12 @@ export const Vector3D = createVectorAPI<Vector3D>({
     y: operation(left.y, right.y),
     z: operation(left.z, right.z),
   }),
+  nary: (operation, ...args) => ({
+    x: operation(...args.map(a => a.x) as any),
+    y: operation(...args.map(a => a.y) as any),
+    z: operation(...args.map(a => a.z) as any)
+  }),
+  components: v => [v.x, v.y, v.z]
 });
 
 export type Vector4D = {

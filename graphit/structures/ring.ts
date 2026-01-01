@@ -58,4 +58,16 @@ export class Ring<T> {
   values() {
     return this.map(x => x);
   }
+  item(itemIndex: number) {
+    const { index, size, backend: { length: capacity }} = this;
+    const mappedIndex = (itemIndex + 1 + index + capacity - size) % capacity;
+    
+    return this.backend[mappedIndex];
+  }
+  head() {
+    return this.item(this.index - 1);
+  }
+  tail() {
+    return this.item(0);
+  }
 }

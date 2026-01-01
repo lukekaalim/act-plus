@@ -9,6 +9,8 @@ import { EditablePoint } from "@lukekaalim/act-graphit/EditablePoint";
 import { Vector } from "@lukekaalim/act-graphit/vector";
 import {
   Animation1D,
+  Animation2D,
+  bezier,
   Curve2D,
   lerp,
   useAnimatedValue,
@@ -24,6 +26,8 @@ import { parser } from "@lukekaalim/act-markdown";
 import ghostURL from './assets/ghost.png';
 import firetruckURL from './assets/firetruck.png';
 import ballURL from './assets/ball.png';
+import { Circle, Line, UnitSize, ZeroBasedAxes } from "@lukekaalim/act-graphit";
+import { CubicBezier2DConstructionLines, PointText2D, useCubicBezier2DMidpoints } from "./utils";
 
 type Vector2 = { x: number, y: number };
 const Vector2 = {
@@ -498,6 +502,113 @@ export const CurveDemo = ({ offset }: { offset?: Vector2 }) => {
       h(Curve1DDemo, { progress, y: 1100 }),
       h(AnimDemo),
       h(DrivingValuesDemo, { progress, y: 1750 }),
+      h(DerivitiveDemo, { progress, y: 2400 })
     ]), [progress]))
   ]));
 };
+
+const DerivitiveDemo: Component<{ progress: number, y: number }> = ({
+  progress,
+  y
+}) => {
+  const [a, setA] = useState<Vector<2>>({ x: -50, y: -50 });
+  const [b, setB] = useState<Vector<2>>({ x: 50, y: -50 });
+  const [c, setC] = useState<Vector<2>>({ x: -50, y: 50 });
+  const [d, setD] = useState<Vector<2>>({ x: 100, y: 50 });
+
+  //const position = bezier.cubic["2D"].position(a, b, c, d, progress);
+
+  const calcPositionPoint = useMemo(() => (progress: number) => {
+    //return Animation2D.CurveAPI.curve4(a, b, c, d, progress);
+    //return Vector2D.ComponentsAPI.nary((a, b) => lerp(a, b, progress), a, b);
+    return bezier.cubic["2D"].position(a, b, c, d, progress);
+    //return { x: progress * 400, y: bezier.cubic["2D"].polynomial(progress).p0 * 400 };
+  }, [a, b, c, d])
+  const calcAccelerationPoint = useMemo(() => (progress: number) => {
+    //return { x: progress * 400, y: bezier.cubic["2D"].polynomial(progress).p1 * 400 };
+    //return Vector2D.ComponentsAPI.nary((a, b) => lerp(a, b, progress), c, d);
+    return Vector2D.ScalarAPI.multiply(bezier.cubic["2D"].acceleration(a, b, c, d, progress), 0.1)
+  }, [a, b, c, d])
+  const calcVelocityPoint = useMemo(() => (progress: number) => {
+    //return { x: progress * 400, y: bezier.cubic["2D"].polynomial(progress).p2 * 400 };
+    //return Vector2D.ComponentsAPI.nary((a, b) => lerp(a, b, progress), b, c);
+    return Vector2D.ScalarAPI.multiply(bezier.cubic["2D"].velocity(a, b, c, d, progress), 0.3)
+  }, [a, b, c, d])
+  const calcP3 = useMemo(() => (progress: number) => {
+    return { x: progress * 400, y: bezier.cubic["2D"].polynomial(progress).p3 * 400 };
+    return Vector2D.ComponentsAPI.nary((a, b) => lerp(a, b, progress), b, c);
+    return bezier.cubic["2D"].velocity(a, b, c, d, progress)
+  }, [a, b, c, d]);
+
+  const [calcVelocityX, calcVelocityY] = useMemo(() => {
+    return [
+      (progress: number) => ({
+        x: progress * 100,
+        y: bezier.cubic["2D"].velocity(a, b, c, d, progress).x / 3,
+      }),
+      (progress: number) => ({
+        x: progress * 100,
+        y: bezier.cubic["2D"].velocity(a, b, c, d, progress).y / 3,
+      }),
+    ]
+  }, [a, b, c, d]);
+  
+
+  const position = calcPositionPoint(progress / 100);
+  const velocity = calcVelocityPoint(progress / 100);
+  const acceleration = calcAccelerationPoint(progress / 100);
+
+  const { ab, bc, cd, abc, bcd } = useCubicBezier2DMidpoints(a, b, c, d, progress / 100);
+
+  return [
+    h(ZeroBasedAxes, {
+      size: { x: 100, y: 100 },
+      position: { x: 0, y: y + 50 },
+    }, [
+      h(LinePath, { calcPoint: calcPositionPoint, strokeWidth: 3 }),
+      h('circle', { cx: position.x, cy: position.y, r: 5, fill: 'white', stroke: 'black' }),
+      h('line', {
+        x1:position.x,
+        y1: position.y,
+        
+        x2: position.x + (velocity.x / 3),
+        y2: position.y + (velocity.y / 3),
+        stroke: 'red',
+      }),
+      //h(LinePath, { calcPoint: calcVelocityPoint, strokeWidth: 2 }),
+      //h(LinePath, { calcPoint: calcAccelerationPoint, strokeWidth: 1 }),
+      //h(LinePath, { calcPoint: calcP3, strokeWidth: 4 }),
+      h(EditablePoint, { point: a, onPointEdit: setA }, h(PointText2D, { point: a })),
+      h(EditablePoint, { point: b, onPointEdit: setB }, h(PointText2D, { point: b })),
+      h(EditablePoint, { point: c, onPointEdit: setC }, h(PointText2D, { point: c })),
+      h(EditablePoint, { point: d, onPointEdit: setD }, h(PointText2D, { point: d })),
+
+      h(Circle, { center: ab, radius: 4, fill: 'green' }),
+      h(Circle, { center: bc, radius: 4, fill: 'green' }),
+      h(Circle, { center: cd, radius: 4, fill: 'green' }),
+
+      h(Circle, { center: abc, radius: 3, fill: 'red' }),
+      h(Circle, { center: bcd, radius: 3, fill: 'red' }),
+
+      h(CubicBezier2DConstructionLines, {
+        bezierPoints: [a, b, c, d],
+        progress: progress / 100,
+      })
+    ]),
+    h(ZeroBasedAxes, {
+      size: { x: 100, y: 100 },
+      position: { x: 250, y: y + 50 }
+    }, [
+      h(LinePath, { calcPoint: calcVelocityPoint, strokeWidth: 3, stroke: 'purple' }),
+      h(Line, { start: { x: 0, y: 0 }, end: velocity }),
+      h(Circle, { center: velocity, radius: 5, fill: 'white' }),
+    ]),
+    h(ZeroBasedAxes, {
+      size: { x: 100, y: 100 },
+      position: { x: 500, y: y + 50 }
+    }, [
+      h(LinePath, { calcPoint: calcAccelerationPoint, strokeWidth: 2 }),
+      h(Circle, { center: acceleration, radius: 5, fill: 'white' }),
+    ]),
+  ]
+}

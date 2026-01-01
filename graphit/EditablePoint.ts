@@ -1,4 +1,4 @@
-import { Component, h, useEffect, useMemo, useRef } from "@lukekaalim/act"
+import { Component, h, Node, useEffect, useMemo, useRef } from "@lukekaalim/act"
 import { Vector } from "./vector"
 import { HTML } from "@lukekaalim/act-web"
 import { useDrag } from "./useDrag"
@@ -61,6 +61,24 @@ export const EditablePoint: Component<EditablePointProps> = ({
       { 'pointer-events': 'none' }, fill: 'none', stroke: 'black', 'stroke-dasharray': 4 }),
     h('circle', { cx: point.x, cy: point.y, r: 15, ref, fill: 'none', stroke: 'none' }),
     h('circle', { cx: point.x, cy: point.y, r: 6, style: { 'pointer-events': 'none' } }),
-    children && h('g', { transform: `translate(${point.x + 15} ${point.y - 15})` }, children)
+    isEmptyNode(children) && h('g', { transform: `translate(${point.x + 15} ${point.y - 15})` }, children)
   ]
+}
+
+const isEmptyNode = (node: Node) => {
+  switch (typeof node) {
+    case 'object':
+      if (Array.isArray(node))
+        return node.length > 0;
+      return true;
+    default:
+      return true;
+    case 'boolean':
+      return node;
+    case 'string':
+    case 'number':
+      return !!node;
+    case 'undefined':
+      return false;
+  }
 }

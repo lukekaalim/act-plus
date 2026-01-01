@@ -15,6 +15,8 @@ export type Vector<D extends Dimension> = {
   [key in Dimension.Name[VectorDimensions[D]]]: number
 };
 
+export type AnyVector = Vector<1> | Vector<2> | Vector<3> | Vector<4> | Vector<5>;
+
 export type VectorOps<D extends Dimension> = {
   create(): Vector<D>,
   operate(vector: Vector<D>, op: (value: number, field: Dimension.Name[VectorDimensions[D]]) => number): Vector<D>,

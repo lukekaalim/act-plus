@@ -6,3 +6,5 @@ export * from './animation';
 
 export * from './useAnimatedValue';
 export * from './transitionHook';
+
+export * from './bezier';

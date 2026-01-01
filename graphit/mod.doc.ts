@@ -11,6 +11,8 @@ import structuresMd from './structures.md?raw';
 import projectJSON from 'typedoc:index.ts';
 import { Ring } from "./structures";
 import { Vector2D } from "@lukekaalim/act-curve";
+import { Circle } from "./elements";
+import { Vector } from "./vector";
 
 const CartesianSpaceDemo: Component = () => {
   const [x, setX] = useState(0);
@@ -120,6 +122,9 @@ export const buildGraphitDocs = (doc: DocApp<[TypeDocPlugin]>) => {
     const ringRef = useRef(new Ring<Vector2D>(128))
     const [points, setPoints] = useState('')
 
+    const [start, setStart] = useState<Vector<2>>(Vector2D.ZERO);
+    const [end, setEnd] = useState<Vector<2>>(Vector2D.ZERO);
+
     const [offset, setOffset] = useState(Vector2D.ZERO);
 
     useEffect(() => {
@@ -137,7 +142,8 @@ export const buildGraphitDocs = (doc: DocApp<[TypeDocPlugin]>) => {
 
         ringRef.current.push({ x: position.x, y: position.y });
         setOffset(Vector2D.add(Vector2D.subtract(Vector2D.ZERO, position), { x: 256, y: 256 }));
-
+        setStart(ringRef.current.head());
+        setEnd(ringRef.current.tail());
         setPoints(
           Array.from(ringRef.current.map(point => `${point.x.toFixed(0)},${point.y.toFixed(0)}`))
             .join(' ')
@@ -149,7 +155,9 @@ export const buildGraphitDocs = (doc: DocApp<[TypeDocPlugin]>) => {
 
 
     return h(CartesianSpace, { style: { width: '100%', height: '512px' }, offset }, [
-      h('polyline', { points, fill: 'none', stroke: 'black', 'stroke-width': '2px' })
+      h('polyline', { points, fill: 'none', stroke: 'black', 'stroke-width': '2px' }),
+      //h(Circle, { center: start, radius: 5 }),
+      //h(Circle, { center: end, radius: 5 }),
     ])
   });
 }
