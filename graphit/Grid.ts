@@ -1,4 +1,4 @@
-import { Component, createId, h, ReadonlyRef, useMemo, useState } from "@lukekaalim/act";
+import { Component, createId, h, ReadonlyRef, Ref, useMemo, useState } from "@lukekaalim/act";
 import { Vector } from "./vector";
 
 export type GridProps = {
@@ -7,7 +7,11 @@ export type GridProps = {
 
   stroke?: string,
   strokeWidth?: number,
-  ref?: ReadonlyRef<SVGRectElement>
+
+  ref?: ReadonlyRef<SVGRectElement>,
+  refs?: {
+    pattern?: Ref<null | SVGPatternElement>
+  }
 };
 
 export const Grid: Component<GridProps> = ({
@@ -16,6 +20,7 @@ export const Grid: Component<GridProps> = ({
   stroke = "grey",
   strokeWidth = 1,
   ref = {},
+  refs = {}
 }) => {
   const [gridId] = useState(createId());
 
@@ -27,7 +32,8 @@ export const Grid: Component<GridProps> = ({
         height: `${scale.y}px`,
         x: offset.x,
         y: offset.y,
-        patternUnits: 'userSpaceOnUse'
+        patternUnits: 'userSpaceOnUse',
+        ref: refs.pattern || {},
       }, [
         h('path', {
           d: `M ${scale.x} 0 L 0 0 0 ${scale.y}`,

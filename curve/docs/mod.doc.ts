@@ -3,7 +3,7 @@ import { hs, HTML, render, SVG } from "@lukekaalim/act-web";
 
 import { throttle } from 'lodash-es';
 
-import { CartesianSpace } from "@lukekaalim/act-graphit/CartesianSpace";
+import { CartesianSpace, CartesianSpaceController } from "@lukekaalim/act-graphit/CartesianSpace";
 import { LinePath } from "@lukekaalim/act-graphit/LinePath";
 import { EditablePoint } from "@lukekaalim/act-graphit/EditablePoint";
 import { Vector } from "@lukekaalim/act-graphit/vector";
@@ -26,8 +26,9 @@ import { parser } from "@lukekaalim/act-markdown";
 import ghostURL from './assets/ghost.png';
 import firetruckURL from './assets/firetruck.png';
 import ballURL from './assets/ball.png';
-import { Circle, Line, UnitSize, ZeroBasedAxes } from "@lukekaalim/act-graphit";
+import { assertRefs, Circle, Line, UnitSize, ZeroBasedAxes } from "@lukekaalim/act-graphit";
 import { CubicBezier2DConstructionLines, PointText2D, useCubicBezier2DMidpoints } from "./utils";
+import { LayoutNode } from "./layout";
 
 type Vector2 = { x: number, y: number };
 const Vector2 = {
@@ -150,7 +151,7 @@ const segments = await Promise.all([
   import('./interactive/3.curves_driving_values.md?raw'),
 ].map(p => p.then(r => parser.parse(r.default))))
 
-const Curve3Demo = ({ progress, y }: { progress: number, y: number }) => {
+export const Curve3Demo = ({ progress, y }: { progress: number, y: number }) => {
   const [start, setStart] = useState(Vector2.new(50, 50));
   const [mid, setMid] = useState(Vector2.new(150, 150));
   const [end, setEnd] = useState(Vector2.new(250, 50));
@@ -185,6 +186,7 @@ const Curve3Demo = ({ progress, y }: { progress: number, y: number }) => {
     h(EditablePoint, { point: end, onPointEdit: setEnd }, h('text', {}, `${end.x}, ${end.y}`)),
   ])
 }
+Curve3Demo.layout = LayoutNode.rect('Curve3Demo', { x: 600, y: 300 })
 
 const DrivingValuesDemo: Component<{ progress: number, y: number }> = ({ progress, y }) => {
   
@@ -195,8 +197,10 @@ const DrivingValuesDemo: Component<{ progress: number, y: number }> = ({ progres
     }
   }, [])
   const calcTruckPoint = useMemo(() => (progress: number) => {
+    const x1 = Animation1D.CurveAPI.curve4({ x: 0 }, { x: 0 }, { x: 100 }, { x: 100 }, progress).x / 100
+    const x2 = Animation1D.CurveAPI.curve4({ x: 0 }, { x: 0 }, { x: 100 }, { x: 100 }, x1).x / 100
     return {
-      x: Animation1D.CurveAPI.curve4({ x: 0 }, { x: 0 }, { x: 100 }, { x: 100 }, progress).x,
+      x: Animation1D.CurveAPI.curve4({ x: 0 }, { x: 0 }, { x: 100 }, { x: 100 }, x2).x,
       y: progress * 100
     }
   }, [])
@@ -438,7 +442,7 @@ const extraComponents: MDXComponentEntry[] = [
 const DocAside: Component<{ segmentIndex: number }> = ({ segmentIndex }) => {
   const renderer = useGrimoireMdastRenderer(extraComponents);
 
-  return useMemo(() => h('article', { style: {
+  return useMemo(() => h('section', { style: {
     background: 'white',
     padding: '16px',
     margin: '8px',
@@ -453,8 +457,10 @@ export const CurveDemo = ({ offset }: { offset?: Vector2 }) => {
   const { progress, setProgress } = playState;
 
   const [mousePos, setMousePos] = useState(Vector2D.ZERO);
+  const [spaceOffset, setSpaceOffset] = useState(Vector2D.ZERO);
 
   const onPointerMove = (event: PointerEvent) => {
+    const { controller } = assertRefs({ controller: controllerRef })
     if (!(event.currentTarget instanceof SVGSVGElement))
       return;
 
@@ -464,6 +470,10 @@ export const CurveDemo = ({ offset }: { offset?: Vector2 }) => {
       x: event.clientX - rect.left,
       y: event.clientY - rect.top
     }); 
+    setSpaceOffset({
+      x: controller.position.x,
+      y: controller.position.y,
+    })
   }
 
   const bouncer = useRef(() => throttle((newPoint: Vector<2>) => {
@@ -486,18 +496,26 @@ export const CurveDemo = ({ offset }: { offset?: Vector2 }) => {
     }
   }, []);
 
+  const controllerRef = useRef<null | CartesianSpaceController>(null);
 
   return h('div', { className: classes.fullpageSVG }, h(PlaybackContext.Provider, { value: playState }, [
    
     h(DemoProgressControls),
-    
-
-    h(CartesianSpace, { onDragComplete, initialPosition, offset: offset || { x: 100, y: 100 }, onPointerMove, overlay: useMemo(() => [
+    h(CartesianSpace, {
+      refs: { controller: controllerRef },
+      onDragComplete,
+      initialPosition,
+      offset: offset || { x: 100, y: 100 },
+      onPointerMove,
+      overlay: useMemo(() => [
       h('text', { x: mousePos.x, y: mousePos.y, style: { 'pointer-events': 'none' } },
-        [mousePos.x.toFixed(), 'px, ', mousePos.y.toFixed(), 'px'])
+        [(mousePos.x - spaceOffset.x).toFixed(), 'x, ',( mousePos.y - spaceOffset.y).toFixed(), 'y'])
     ], [mousePos.x, mousePos.y]) } as any, useMemo(() => h('g', {}, [
+
       h('foreignObject', { x: 8, y: 0, width: 800, height: 400 },
         h(HTML, {}, h(DocAside, { segmentIndex: 0 }))),
+
+
       h(Curve3Demo, { progress, y: 450 }),
       h(Curve1DDemo, { progress, y: 1100 }),
       h(AnimDemo),
@@ -506,6 +524,12 @@ export const CurveDemo = ({ offset }: { offset?: Vector2 }) => {
     ]), [progress]))
   ]));
 };
+
+const layout = LayoutNode.list('root', 'vertical', 'center', [
+  LayoutNode.rect('heading', { x: 800, y: 400 }),
+  Curve3Demo.layout,
+  Curve3Demo.layout,
+]);
 
 const DerivitiveDemo: Component<{ progress: number, y: number }> = ({
   progress,

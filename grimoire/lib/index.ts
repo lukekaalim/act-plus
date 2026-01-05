@@ -7,3 +7,4 @@ export * from './demo';
 
 export * from './highlighting';
 export * from './markdown';
+export * from './animation';

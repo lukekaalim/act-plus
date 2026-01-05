@@ -6,7 +6,7 @@ import { lerp } from "./math"
  * An API that lets you perform operations on the components of a vector
  */
 export type VectorComponentsAPI<T> = {
-  create: (operation: (key: keyof T) => number) => T,
+  create: (operation: (key: keyof T, index: number) => number) => T,
   unary: (left: T, operation: (left: number) => number) => T,
   binary: (left: T, right: T, operation: (left: number, right: number) => number) => T,
 
@@ -29,7 +29,7 @@ export type VectorAPI<T> = {
   ZERO: T,
   ONE: T,
 
-  create: (initial: number) => T,
+  create: (...args: number[]) => T,
   interpolate(start: T, end: T, progress: number): T,
 
   add(left: T, right: T): T,
@@ -38,7 +38,10 @@ export type VectorAPI<T> = {
   divide(left: T, right: T): T,
 
   ComponentsAPI: VectorComponentsAPI<T>,
-  ScalarAPI: VectorScalarAPI<T>
+  ScalarAPI: VectorScalarAPI<T>,
+
+  components: VectorComponentsAPI<T>,
+  scalar: VectorScalarAPI<T>,
 }
 
 export const createVectorScalarAPI = <T>(
@@ -63,13 +66,19 @@ export const createVectorScalarAPI = <T>(
 }
 
 export const createVectorAPI = <T>(ComponentsAPI: VectorComponentsAPI<T>) => {
+  const scalar = createVectorScalarAPI(ComponentsAPI.unary);
+  const components = ComponentsAPI;
+
   const VectorAPI: VectorAPI<T> = {
     ScalarAPI: createVectorScalarAPI(ComponentsAPI.unary),
     ComponentsAPI,
 
+    components,
+    scalar,
+
     ZERO: ComponentsAPI.create(() => 0),
     ONE: ComponentsAPI.create(() => 1),
-    create: (number) => ComponentsAPI.create(() => number),
+    create: (...args) => ComponentsAPI.create((_, index) => args[index]),
 
     interpolate(start, end, progress) {
       return ComponentsAPI.binary(start, end, (l, r) => lerp(l, r, progress))
@@ -97,7 +106,7 @@ export type Vector1D = {
 }
 export const Vector1D = createVectorAPI<Vector1D>({
   create: value => ({
-    x: value('x'),
+    x: value('x', 0),
   }),
   unary: (left, operation) => ({
     x: operation(left.x)
@@ -117,8 +126,8 @@ export type Vector2D = {
 }
 export const Vector2D = createVectorAPI<Vector2D>({
   create: value => ({
-    x: value('x'),
-    y: value('y'),
+    x: value('x', 0),
+    y: value('y', 1),
   }),
   unary: (left, operation) => ({
     x: operation(left.x),
@@ -142,9 +151,9 @@ export type Vector3D = {
 }
 export const Vector3D = createVectorAPI<Vector3D>({
   create: value => ({
-    x: value('x'),
-    y: value(`y`),
-    z: value(`z`),
+    x: value('x', 0),
+    y: value(`y`, 1),
+    z: value(`z`, 2),
   }),
   unary: (left, operation) => ({
     x: operation(left.x),
@@ -170,6 +179,13 @@ export type Vector4D = {
   z: number,
   w: number,
 }
+
+// I think this is cute - but do I really need this...?
+export type Vector<D extends 1 | 2 | 3 | 4> =
+  | (D extends 1 ? Vector1D : never)
+  | (D extends 2 ? Vector2D : never)
+  | (D extends 3 ? Vector3D : never)
+  | (D extends 4 ? Vector4D : never)
 
 export const Curve1D = createCurveAPI(Vector1D);
 export const Animation1D = createAnimationAPI(Curve1D);

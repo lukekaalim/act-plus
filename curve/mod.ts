@@ -8,3 +8,4 @@ export * from './useAnimatedValue';
 export * from './transitionHook';
 
 export * from './bezier';
+export * from './heartbeat';

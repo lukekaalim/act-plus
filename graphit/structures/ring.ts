@@ -46,14 +46,14 @@ export class Ring<T> {
       this.size++;
   }
 
-  *map<Output>(transformer: (item: T) => Output): Generator<Output, null, Output> {
+  *map<Output>(transformer: (item: T) => Output): Generator<Output, void, void> {
     const { index, size, backend: { length: capacity }} = this;
     const startIndex = (index + capacity - size) % capacity;
 
     for (let i  = 0; i < this.size; i++) {
       yield transformer(this.backend[(startIndex + i) % this.backend.length])
     }
-    return null;
+    return;
   }
   values() {
     return this.map(x => x);

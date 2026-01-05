@@ -237,30 +237,42 @@ doc.route.add('/', h(DemoPage))
 
 const wait = (time: number) => new Promise(resolve => setTimeout(resolve, time));
 
-// each one get's it's own chunk
-const { buildGrimoireDocs } = await import('@lukekaalim/grimoire/docs')
-const { buildGrimoireTSDocs } = await import('@lukekaalim/grimoire-ts/doc')
-const { buildIconDocs } = await import('@lukekaalim/act-icons/docs')
-const { buildCurveDocs } = await import('@lukekaalim/act-curve/docs')
-const { buildGraphitDocs } = await import('@lukekaalim/act-graphit/mod.doc.ts')
-const { buildMarkdownDocs } = await import('@lukekaalim/act-markdown/doc.ts')
+type UnionToIntersection<U> = 
+  (U extends any ? (x: U)=>void : never) extends ((x: infer I)=>void) ? I : never
+const allDocs = await Promise.all([
+  import('@lukekaalim/grimoire/docs'),
+  import('@lukekaalim/grimoire-ts/doc'),
+  import('@lukekaalim/act-icons/docs'),
+  import('@lukekaalim/act-curve/docs'),
+  import('@lukekaalim/act-graphit/mod.doc.ts'),
+  import('@lukekaalim/act-markdown/doc.ts'),
+  import('sample-lib/docs'),
+])
+const {
+  buildCurveDocs,
+  buildGraphitDocs,
+  buildGrimoireDocs,
+  buildGrimoireTSDocs,
+  buildIconDocs,
+  buildMarkdownDocs,
+  createSampleDocPages,
+} = allDocs.reduce((left, right) => ({ ...left, ...right }), {}) as UnionToIntersection<(typeof allDocs)[number]>;
 
-const { createSampleDocPages } = await import('sample-lib/docs')
 
 buildGrimoireDocs(doc);
-await wait(100);
+await wait(10);
 buildGrimoireTSDocs(doc);
-await wait(100);
+await wait(10);
 createSampleDocPages(doc);
-await wait(100);
+await wait(10);
 buildIconDocs(doc);
-await wait(100);
+await wait(10);
 buildCurveDocs(doc);
-await wait(100);
+await wait(10);
 buildGraphitDocs(doc);
-await wait(100);
+await wait(10);
 buildMarkdownDocs(doc)
-await wait(100);
+await wait(10);
 
 const main = () => {
   const style = {

@@ -13,6 +13,7 @@
     "@lukekaalim/act-router": "*",
     "@lukekaalim/act-web": "^3.4.0-alpha.2",
     "@lukekaalim/grimoire": "*",
-    "@lukekaalim/grimoire-ts": "*"
+    "@lukekaalim/grimoire-ts": "*",
+    "rxjs": "^7.8.2"
   }
 }

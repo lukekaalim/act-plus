@@ -7,6 +7,7 @@ export const useDrag = (
   shouldStartDrag: (event: PointerEvent) => boolean = () => true,
 ) => {
   const [dragging, setDragging] = useState(false);
+  
   useEffect(() => {
     const el = ref.current as HTMLElement;
     if (!el)
