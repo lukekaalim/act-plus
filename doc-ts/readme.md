@@ -1,9 +1,15 @@
 # @lukekaalim/grimoire-ts
 
-A plugin for [grimoire](/packages/@lukekaalim/grimoire) that adds support for reading
+***Let your code document itself!***
+
+This is a plugin for [grimoire](/packages/@lukekaalim/grimoire) that
+lets your documentation reference functions,
+types, aliases, classes, and interfaces from your own code - annotated
+with **TSDOC** for full control!
+
+Functionally, it adds support for reading
 TypeDoc JSON outputs, and allows you to reference them inside
-your documentation - essentially allowing you to use your typescript
-project as a source of documentation itself.
+your documentation.
 
 ```bash
 npm i -D @lukekaalim/grimoire-ts

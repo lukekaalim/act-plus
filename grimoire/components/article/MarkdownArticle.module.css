@@ -19,16 +19,18 @@
   color: white;
   font-family: monospace;
   font-size: 16px;
-  padding: 2px 8px;
+  padding: 0 8px;
   border-radius: 8px;
 
   user-select: all;
+  white-space: nowrap;
 }
 
 .paragraph {
   margin: 1em auto;
 
   _font-family: "Arvo";
+  line-height: 24px;
 }
 
 .heading {

@@ -21,6 +21,12 @@ export const assertRefs = <T extends AssertRefsExtends>(
 
   return values as AssertRefsReturn<T>;
 }
+export const assertSVGParent = <T extends SVGElement>(el: T): SVGSVGElement => {
+  const parent = el.ownerSVGElement;
+  if (!parent)
+    throw new Error();
+  return parent; 
+}
 
 export const ResizingSpace: Component = ({ children }) => {
   const gRef = useRef<null | SVGGElement>(null);

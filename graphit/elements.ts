@@ -51,7 +51,7 @@ export const Line: Component<LineProps> = (props) => {
 }
 
 export type CircleProps = (
-  | { cx: number, cy: number, r: number, }
+  | { cx?: number, cy?: number, r?: number, }
   | { center: Vector<2>, radius: number }
 ) & SVGCoreProps<SVGCircleElement>
 
@@ -71,7 +71,7 @@ export const Circle: Component<CircleProps> = (props) => {
 }
 
 export type RectProps = (
-  | { x: number, y: number, width: number, height: number }
+  | { x?: number, y?: number, width?: number, height?: number }
   | { position: Vector<2>, size: Vector<2> }
 ) & SVGCoreProps<SVGRectElement>
 

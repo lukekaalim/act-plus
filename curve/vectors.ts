@@ -76,8 +76,8 @@ export const createVectorAPI = <T>(ComponentsAPI: VectorComponentsAPI<T>) => {
     components,
     scalar,
 
-    ZERO: ComponentsAPI.create(() => 0),
-    ONE: ComponentsAPI.create(() => 1),
+    ZERO: Object.freeze(ComponentsAPI.create(() => 0)),
+    ONE: Object.freeze(ComponentsAPI.create(() => 1)),
     create: (...args) => ComponentsAPI.create((_, index) => args[index]),
 
     interpolate(start, end, progress) {

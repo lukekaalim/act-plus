@@ -17,7 +17,7 @@ export type Router = {
    * A special version of Navigate that doesn't trigger a "navigate" event -
    * useful for "going back" in history
    * */
-  replace(location: URL): void
+  replace(location: URL, direction?: 'forward' | 'backward'): void
 
   subscribe: EventEmitter<RouterEvent>["subscribe"],
 };
@@ -59,8 +59,8 @@ export const useRouter = ({ initialLocation, pages, specialPages }: RouterConfig
       return nextLocation;
     });
   };
-  const replace = (nextLocation: URL) => {
-    setDirection('backward');
+  const replace = (nextLocation: URL, direction: 'forward' | 'backward' = 'backward') => {
+    setDirection(direction);
     setLocation(nextLocation)
   }
 

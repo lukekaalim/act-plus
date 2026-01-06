@@ -7,12 +7,15 @@ import { Animation1D, Animation2D, Curve2D, useAnimatedValue } from "@lukekaalim
 export type EditablePointProps = {
   point: Vector<2>,
   onPointEdit?: (updater: (prev: Vector<2>) => Vector<2>) => void,
+
+  fill?: string,
 }
 
 export const EditablePoint: Component<EditablePointProps> = ({
   point,
   onPointEdit = () => {},
-  children
+  children,
+  fill = 'black'
 }) => {
   const ref = useRef<SVGCircleElement | null>(null);
   const dottedRef = useRef<SVGCircleElement | null>(null);
@@ -60,7 +63,7 @@ export const EditablePoint: Component<EditablePointProps> = ({
     h('circle', { cx: point.x, cy: point.y, ref: dottedRef, style:
       { 'pointer-events': 'none' }, fill: 'none', stroke: 'black', 'stroke-dasharray': 4 }),
     h('circle', { cx: point.x, cy: point.y, r: 15, ref, fill: 'none', stroke: 'none' }),
-    h('circle', { cx: point.x, cy: point.y, r: 6, style: { 'pointer-events': 'none' } }),
+    h('circle', { cx: point.x, cy: point.y, r: 6, fill, style: { 'pointer-events': 'none' } }),
     isEmptyNode(children) && h('g', { transform: `translate(${point.x + 15} ${point.y - 15})` }, children)
   ]
 }

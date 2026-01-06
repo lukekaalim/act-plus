@@ -1,4 +1,4 @@
-import { Component, h, Ref, useEffect, useMemo } from '@lukekaalim/act';
+import { Component, h, Ref, useEffect, useMemo, useState } from '@lukekaalim/act';
 import { Router } from "./router";
 import { useRouterEvents } from './events';
 import { Link } from './link';
@@ -95,19 +95,26 @@ export const useDOMHashScroll = (router: Router, rootElement: Ref<HTMLElement | 
  * @param origin 
  */
 export const useDOMHistoryPush = (router: Router, history: History, origin: string) => {
+  const [state, setState] = useState(history.state as number || 0);
+
   useRouterEvents(router, useMemo(() => event => {
       switch (event.type) {
         case 'navigate':
-          history.pushState(null, '', event.location);
+          setState(state + 1)
+          history.pushState(state + 1, '', event.location);
           break;
       }
-  }, []));
+  }, [state]));
 
   useEffect(() => {
     window.addEventListener('popstate', event => {
-      router.replace(new URL(window.location.href))
+      setState(event.state);
+      const direction = (event.state || 0) < state ? 'backward' : 'forward';
+      router.replace(new URL(window.location.href), direction)
     })
-  }, [])
+  }, [state])
+
+  console.log({ state }, history.state)
 }
 
 export type RouterDOMIntegrationConfig = {

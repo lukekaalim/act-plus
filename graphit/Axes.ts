@@ -1,4 +1,4 @@
-import { Component, Deps, h, useEffect, useRef, useState } from "@lukekaalim/act"
+import { Component, Deps, h, Node, useEffect, useRef, useState } from "@lukekaalim/act"
 import { Vector } from "./vector"
 import { Group, Line, Rect } from "./elements"
 import { Vector2D } from "@lukekaalim/act-curve"
@@ -7,11 +7,15 @@ import { assertRefs } from "./ResizingSpace"
 export type PositiveAxesProps = {
   size: Vector<2>,
   position: Vector<2>,
+  axes?: { x: Node, y: Node }
 }
 
-export const PositiveAxes: Component<PositiveAxesProps> = ({ size, position, children }) => {
+export const PositiveAxes: Component<PositiveAxesProps> = ({ size, position, children, axes }) => {
   return [
-
+    !!axes && h(Group, { position }, [
+      h('text', { fill: 'red', x: 0, y: -30 }, axes.x),
+      h('text', { fill: 'blue', x: 0, y: -30, transform: `rotate(-90)`, 'text-anchor': 'end' }, axes.y),
+    ]),
     h(Line, {
       start: { x: position.x, y: position.y },
       end: { x: size.x + position.x, y: position.y },

@@ -1,18 +1,21 @@
 import { Vector } from "@lukekaalim/act-graphit";
 import { Vector2D } from "../vectors";
 
+type Direction = 'horizontal' | 'vertical';
+type Alignment = 'start' | 'end' | 'center';
+
 export type LayoutNode = (
   | { type: 'rect', size: Vector<2> }
-  | { type: 'list', direction: 'horizontal' | 'vertical', contents: LayoutNode[], align: 'start' | 'end' | 'center' }
+  | { type: 'list', direction: Direction, contents: LayoutNode[], align: Alignment }
 ) & { id: string }
 export const LayoutNode = {
   rect(id: string, 
     size: Vector<2>): LayoutNode {
     return { id, type: 'rect', size }
   },
-  list(id: string, direction: 'horizontal' | 'vertical', align: 'start' | 'end' | 'center', contents: LayoutNode[]): LayoutNode {
+  list(id: string, direction: Direction, align: Alignment, contents: LayoutNode[]): LayoutNode {
     return { id, type: 'list', direction, contents, align };
-  }
+  },
 }
 
 type LayoutOutput = { position: Vector<2>, size: Vector<2> };

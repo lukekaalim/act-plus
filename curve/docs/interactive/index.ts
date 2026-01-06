@@ -4,9 +4,12 @@ import { parser } from "@lukekaalim/act-markdown";
 import { Root } from 'mdast';
 import { Component, h, Node, useEffect, useRef, useState } from "@lukekaalim/act";
 import { HTML } from "@lukekaalim/act-web";
-import { Rect, Vector } from "@lukekaalim/act-graphit";
+import { assertRefs, Rect, Vector } from "@lukekaalim/act-graphit";
 import { Curve1DDemo } from "./Curve1DDemo";
 import { ProgressAnim } from "./progress";
+import { LerpDemo } from "./LerpDemo";
+
+import "./svg.css";
 
 export type InteractiveDemo = Component<{
   position: Vector<2>,
@@ -22,10 +25,35 @@ const sections = await Promise.all([
   import('./4.position_velocity_acceleration.md?raw'),
   import('./lerp_to_curve.md?raw'),
   import('./transitioning_curves.md?raw'),
+  import('./lerp_aside.md?raw'),
 ].map(p => p.then(module => parser.parse(module.default))))
 
+const ProgressBar = () => {
+  const ref = useRef<HTMLInputElement | null>(null);
+  const numberRef = useRef<HTMLInputElement | null>(null);
+
+  ProgressAnim.useCallback(({ setCallback }) => {
+    const { input, number } = assertRefs({ input: ref, number: numberRef });
+
+    setCallback(({ progress }) => {
+      input.valueAsNumber = progress * 100;
+      number.valueAsNumber = Math.round(progress * 100) / 100;
+    });
+  }, []);
+
+  return [
+    h('label', {}, [
+      h('i', {}, 'Progress (t) '),
+      h('input', { ref: numberRef, type: 'number', disabled: true })
+    ]),
+    h('input', { ref, type: 'range', min: 0, max: 100, style: { width: '100%' }, disabled: true })
+  ]
+};
+
 const Aside = ({ root, position, size }: { root: Root, position: Vector<2>, size: Vector<2> }) => {
-  const renderer = useGrimoireMdastRenderer();
+  const renderer = useGrimoireMdastRenderer([
+    { name: 'ProgressBar', component: ProgressBar }
+  ]);
 
   const style = {
     background: 'white',
@@ -44,8 +72,16 @@ const Aside = ({ root, position, size }: { root: Root, position: Vector<2>, size
 const layout_map = calcNodeLayouts(LayoutNode.list('root', 'vertical', 'center', [
   LayoutNode.rect('0', { x: 800, y: 400 }),
   LayoutNode.rect('spacer', { x: 0, y: 100 }),
-  LayoutNode.list('1.container', 'horizontal', 'start', [
-    LayoutNode.rect('1', { x: 800, y: 600 }),
+  LayoutNode.list('', 'horizontal', 'center', [
+    LayoutNode.rect('lerp.demo', { x: 300, y: 300 }),
+    LayoutNode.rect('spacer', { x: 150, y: 0 }),
+    LayoutNode.rect('6', { x: 650, y: 800 }),
+    LayoutNode.rect('spacer', { x: 150, y: 0 }),
+    LayoutNode.rect('8', { x: 650, y: 800 }),
+  ]),
+  LayoutNode.rect('spacer', { x: 0, y: 100 }),
+  LayoutNode.list('', 'horizontal', 'start', [
+    LayoutNode.rect('1', { x: 800, y: 800 }),
     LayoutNode.rect('spacer', { x: 50, y: 0 }),
     LayoutNode.rect('1.demo', { x: 300, y: 300 }),
   ]),
@@ -56,9 +92,8 @@ const layout_map = calcNodeLayouts(LayoutNode.list('root', 'vertical', 'center',
   LayoutNode.rect('spacer', { x: 0, y: 100 }),
   LayoutNode.rect('4', { x: 800, y: 400 }),
   LayoutNode.rect('spacer', { x: 0, y: 100 }),
-  LayoutNode.rect('5', { x: 800, y: 400 }),
   LayoutNode.rect('spacer', { x: 0, y: 100 }),
-  LayoutNode.rect('6', { x: 800, y: 400 }),
+  LayoutNode.rect('5', { x: 800, y: 400 }),
   LayoutNode.rect('spacer', { x: 0, y: 100 }),
   LayoutNode.rect('7', { x: 800, y: 400 }),
 ]), { x: 50, y: 50 });
@@ -68,6 +103,7 @@ const all_content: Record<string, InteractiveDemo> = {
 
   '1': ({ position, size }) => h(Aside, { root: sections[1], position, size }),
   '1.demo': Curve1DDemo,
+  'lerp.demo': LerpDemo,
 
   '2': ({ position, size }) => h(Aside, { root: sections[2], position, size }),
   '3': ({ position, size }) => h(Aside, { root: sections[3], position, size }),
@@ -75,6 +111,7 @@ const all_content: Record<string, InteractiveDemo> = {
   '5': ({ position, size }) => h(Aside, { root: sections[5], position, size }),
   '6': ({ position, size }) => h(Aside, { root: sections[6], position, size }),
   '7': ({ position, size }) => h(Aside, { root: sections[7], position, size }),
+  '8': ({ position, size }) => h(Aside, { root: sections[8], position, size }),
 }
 
 export const InteractiveGuide = () => {

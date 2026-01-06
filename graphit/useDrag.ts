@@ -18,6 +18,8 @@ export const useDrag = (
         return;
       if (!shouldStartDrag(event))
         return;
+      if (event.button > 1)
+        return;
       event.preventDefault();
       setDragging(true);
       dragging = true;
@@ -26,6 +28,7 @@ export const useDrag = (
     const onPointerMove = (event: PointerEvent) => {
       if (!dragging || event.defaultPrevented)
         return;
+
       event.preventDefault();
       onElementMove({ x: event.movementX, y: event.movementY });
     };
@@ -35,13 +38,22 @@ export const useDrag = (
       dragging = false;
       el.releasePointerCapture(event.pointerId);
     };
+    const onWheel = (event: WheelEvent) => {
+      if (event.defaultPrevented)
+        return;
+      event.preventDefault();
+      onElementMove({ x: -event.deltaX, y: -event.deltaY });
+    }
+
     el.addEventListener('pointerdown', onPointerDown);
     el.addEventListener('pointermove', onPointerMove);
     el.addEventListener('pointerup', onPointerUp);
+    el.addEventListener('wheel', onWheel);
     return () => {
       el.removeEventListener('pointerdown', onPointerDown);
       el.removeEventListener('pointermove', onPointerMove);
       el.removeEventListener('pointerup', onPointerUp);
+      el.addEventListener('wheel', onWheel);
     }
   }, [onElementMove]);
 

@@ -71,8 +71,8 @@ export const CartesianSpace: Component<CartesianSpaceProps> = ({
 
   const controller = useMemo(() => {
     const controller = {
-      position: Vector2D.ZERO,
-      size: Vector2D.ZERO,
+      position: { ...Vector2D.ZERO },
+      size: { ...Vector2D.ZERO },
       update() {
         const { pattern, group, svg, xAxis, yAxis } = assertRefs({
           pattern: patternRef, group: groupRef, svg: ref, xAxis: XAxisRef, yAxis: YAxisRef

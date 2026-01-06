@@ -33,7 +33,7 @@ export const Curve1DDemo: InteractiveDemo = ({ position, size }) => {
 
       textX.value = point.x + 15;
 
-      text.textContent = point.x.toFixed();
+      text.textContent = (point.x / 300).toFixed(2);
       tXTText.textContent = (progress * 100).toFixed() + '%'
 
       tXYTextX.value = point.x + 15;
@@ -53,12 +53,15 @@ export const Curve1DDemo: InteractiveDemo = ({ position, size }) => {
     return { y: progress * 300, x: Animation1D.CurveAPI.curve4(a, b, c, d, progress).x }
   }, [a, b, c, d]);
 
-  const axesLabels = {
+  const axes = {
     y: 'Time',
     x: 'Position'
   }
 
-  return h(PositiveAxes, { position, size }, [
+  const PADDING_PX = 50;
+  const paddedPosition = Vector2D.scalar.add(position, PADDING_PX);
+
+  return h(PositiveAxes, { position: paddedPosition, size, axes }, [
     h(LinePath, { calcPoint: calcSpeedPoint }),
     h(Circle, {
       ref: tXRef,
@@ -80,11 +83,11 @@ export const Curve1DDemo: InteractiveDemo = ({ position, size }) => {
       ref: textRef,
       x: point.x + 15,
       y: 100 - 15,
-    }, `${point.x.toFixed()}`),
+    }),
     h('text', { ref: tXYTextRef, }),
-    h(EditablePoint, { point: { x: a.x, y: 0 }, onPointEdit: setA }, h('text', {}, a.x)),
-    h(EditablePoint, { point: { x: b.x, y: 0 }, onPointEdit: setB }, h('text', {}, b.x)),
-    h(EditablePoint, { point: { x: c.x, y: 0 }, onPointEdit: setC }, h('text', {}, c.x)),
-    h(EditablePoint, { point: { x: d.x, y: 0 }, onPointEdit: setD }, h('text', {}, d.x)),
+    h(EditablePoint, { point: { x: a.x, y: 0 }, onPointEdit: setA }, h('text', {}, (a.x / 300).toFixed(2))),
+    h(EditablePoint, { point: { x: b.x, y: 0 }, onPointEdit: setB }, h('text', {}, (b.x / 300).toFixed(2))),
+    h(EditablePoint, { point: { x: c.x, y: 0 }, onPointEdit: setC }, h('text', {}, (c.x / 300).toFixed(2))),
+    h(EditablePoint, { point: { x: d.x, y: 0 }, onPointEdit: setD }, h('text', {}, (d.x / 300).toFixed(2))),
   ])
 }
