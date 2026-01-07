@@ -11,3 +11,5 @@ export * from './structures';
 export * from './vector';
 
 export * from './elements';
+
+export * from './useDrag';

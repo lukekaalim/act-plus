@@ -29,15 +29,29 @@ export const DeclarationReflectionRenderer: Component<DeclarationReflectionRende
 
   const id = declaration.project.name + '.' + declaration.getFullName();
 
+  const comment = getDeclarationComment(declaration);
+
   return [
     h(`h${headingLevel}`, { id, style: { 'margin-bottom': 0 } },
       h('a', { href: `#${id}` },
         declaration.name)),
     h('i', {}, ReflectionKind[declaration.kind]),
     h(DeclarationPreviewRenderer, { declaration, extraDeclarations }),
-    !!declaration.comment && h(CommentRenderer, { comment: declaration.comment })
+    !!comment && h(CommentRenderer, { comment })
   ];
 };
+
+const getDeclarationComment = (declaration: DeclarationReflection): null | Comment => {
+  if (declaration.comment)
+    return declaration.comment;
+  if (declaration.signatures) {
+    const sig = declaration.signatures.find(s => s.comment);
+    if (sig && sig.comment)
+      return sig.comment;
+  }
+
+  return null;
+}
 
 type CommentRendererProps = {
   comment: Comment,

@@ -132,7 +132,11 @@ const renderProperties = (properties: DeclarationReflection[], syntax: HLJSBuild
     }
     else if (property.type) {
       syntax.titleClass(property.name)
-      syntax.text(': ')
+
+      if (property.flags.isOptional)
+        syntax.text('?: ')
+      else
+        syntax.text(': ')
         
       renderTypeSyntax2(syntax, doc, property.type);
       if (i !== properties.length - 1) {
@@ -174,7 +178,7 @@ const renderParameters = (
       renderTypeSyntax2(syntax, doc, parameter.type);
     }
     if (i !== parameters.length - 1) {
-      syntax.text(',')
+      syntax.text(', ')
       if (multiline)
         syntax.newLine()
     }

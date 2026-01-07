@@ -16,6 +16,12 @@ Here we draw a circle and a sine wave.
 
 Draw a PolyLine using a progress function and a resolution.
 
+## Utils
+
+<TypeDoc project="@lukekaalim/act-graphit" name="subscribeMap" />
+
+<TypeDoc project="@lukekaalim/act-graphit" name="useDrag" />
+
 ## Comments
 
 > Graphs have a `positive-y = up` display instead of the traditional
