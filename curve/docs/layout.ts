@@ -18,7 +18,7 @@ export const LayoutNode = {
   },
 }
 
-type LayoutOutput = { position: Vector<2>, size: Vector<2> };
+export type LayoutOutput = { position: Vector<2>, size: Vector<2> };
 
 const calcNodeSizes = (node: LayoutNode): Vector<2> => {
   switch (node.type) {

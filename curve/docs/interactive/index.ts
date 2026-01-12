@@ -2,7 +2,7 @@ import { useGrimoireMdastRenderer } from "@lukekaalim/grimoire";
 import { calcNodeLayouts, LayoutNode } from "../layout";
 import { parser } from "@lukekaalim/act-markdown";
 import { Root } from 'mdast';
-import { Component, h, Node, useEffect, useRef, useState } from "@lukekaalim/act";
+import { Component, h, Node, useEffect, useMemo, useRef, useState } from "@lukekaalim/act";
 import { HTML } from "@lukekaalim/act-web";
 import { assertRefs, Rect, Vector } from "@lukekaalim/act-graphit";
 import { Curve1DDemo } from "./Curve1DDemo";
@@ -10,6 +10,9 @@ import { ProgressAnim } from "./progress";
 import { LerpDemo } from "./LerpDemo";
 
 import "./svg.css";
+import { ContinueDemo } from "./ContinueDemo";
+import { throttle } from "lodash-es";
+import { ButtonCounter } from "./ButtonCounter";
 
 export type InteractiveDemo = Component<{
   position: Vector<2>,
@@ -26,6 +29,7 @@ const sections = await Promise.all([
   import('./lerp_to_curve.md?raw'),
   import('./transitioning_curves.md?raw'),
   import('./lerp_aside.md?raw'),
+  import('./lerping_in_curve.md?raw'),
 ].map(p => p.then(module => parser.parse(module.default))))
 
 const ProgressBar = () => {
@@ -69,8 +73,10 @@ const Aside = ({ root, position, size }: { root: Root, position: Vector<2>, size
   }, h(HTML, {}, h('section', { style } , renderer(root))))
 }
 
-const layout_map = calcNodeLayouts(LayoutNode.list('root', 'vertical', 'center', [
+const layout_map = calcNodeLayouts(LayoutNode.list('', 'vertical', 'start', [
   LayoutNode.rect('0', { x: 800, y: 400 }),
+  LayoutNode.rect('spacer', { x: 0, y: 100 }),
+  LayoutNode.rect('counter.demo', { x: 300, y: 300 }),
   LayoutNode.rect('spacer', { x: 0, y: 100 }),
   LayoutNode.list('', 'horizontal', 'center', [
     LayoutNode.rect('lerp.demo', { x: 300, y: 300 }),
@@ -78,15 +84,21 @@ const layout_map = calcNodeLayouts(LayoutNode.list('root', 'vertical', 'center',
     LayoutNode.rect('6', { x: 650, y: 800 }),
     LayoutNode.rect('spacer', { x: 150, y: 0 }),
     LayoutNode.rect('8', { x: 650, y: 800 }),
+    LayoutNode.rect('spacer', { x: 150, y: 0 }),
+    LayoutNode.rect('9', { x: 650, y: 800 }),
   ]),
   LayoutNode.rect('spacer', { x: 0, y: 100 }),
   LayoutNode.list('', 'horizontal', 'start', [
     LayoutNode.rect('1', { x: 800, y: 800 }),
     LayoutNode.rect('spacer', { x: 50, y: 0 }),
-    LayoutNode.rect('1.demo', { x: 300, y: 300 }),
+    LayoutNode.rect('1.demo', { x: 400, y: 400 }),
   ]),
   LayoutNode.rect('spacer', { x: 0, y: 100 }),
-  LayoutNode.rect('2', { x: 800, y: 400 }),
+  LayoutNode.list('', 'horizontal', 'start', [
+    LayoutNode.rect('2', { x: 800, y: 400 }),
+    LayoutNode.rect('', { x: 100, y: 0 }),
+    LayoutNode.rect('continue.demo', { x: 300, y: 350 }),
+  ]),
   LayoutNode.rect('spacer', { x: 0, y: 100 }),
   LayoutNode.rect('3', { x: 800, y: 400 }),
   LayoutNode.rect('spacer', { x: 0, y: 100 }),
@@ -104,6 +116,8 @@ const all_content: Record<string, InteractiveDemo> = {
   '1': ({ position, size }) => h(Aside, { root: sections[1], position, size }),
   '1.demo': Curve1DDemo,
   'lerp.demo': LerpDemo,
+  'continue.demo': ContinueDemo,
+  'counter.demo': ButtonCounter,
 
   '2': ({ position, size }) => h(Aside, { root: sections[2], position, size }),
   '3': ({ position, size }) => h(Aside, { root: sections[3], position, size }),
@@ -112,6 +126,7 @@ const all_content: Record<string, InteractiveDemo> = {
   '6': ({ position, size }) => h(Aside, { root: sections[6], position, size }),
   '7': ({ position, size }) => h(Aside, { root: sections[7], position, size }),
   '8': ({ position, size }) => h(Aside, { root: sections[8], position, size }),
+  '9': ({ position, size }) => h(Aside, { root: sections[9], position, size }),
 }
 
 export const InteractiveGuide = () => {
@@ -126,8 +141,6 @@ export const InteractiveGuide = () => {
     return () => clearInterval(id);
   }, [])
 
-
-
   return h(ProgressAnim.Provider, { controller: progressController }, [
 
     [...layout_map.keys()].map(key => {
@@ -136,7 +149,7 @@ export const InteractiveGuide = () => {
         return null;
       const { position, size } = placement;
 
-      return null;
+      //return null;
 
       return h(Rect, { position, size, stroke: 'red', strokeDashArray: [4], fill: 'none' })
     }),

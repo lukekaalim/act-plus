@@ -1,10 +1,11 @@
 import { DocApp, FullSizePage } from "@lukekaalim/grimoire";
 import { TypeDocPlugin } from "@lukekaalim/grimoire-ts";
+import { throttle } from 'lodash-es';
 
 import reflection from 'typedoc:../mod.ts';
 import readmeMd from '../readme.md?raw';
 import { CurveDemo } from "./mod.doc";
-import { h, useMemo } from "@lukekaalim/act";
+import { h, useMemo, useRef } from "@lukekaalim/act";
 import { CartesianSpace, Rect, Vector } from "@lukekaalim/act-graphit";
 import { calcNodeLayouts, LayoutNode } from "./layout";
 import { Vector2D } from "../vectors";
@@ -16,7 +17,30 @@ export const buildCurveDocs = (doc: DocApp<[TypeDocPlugin]>) => {
   doc.article.add('curve.readme', readmeMd, '/packages/@lukekaalim/act-curve/api');
   doc.route.add('/packages/@lukekaalim/act-curve', h(FullSizePage, {}, h(CurveDemo, { offset: { x: 600, y: 100} })));
 
-  doc.route.add('/packages/@lukekaalim/act-curve/guide', h(FullSizePage, {}, h(CartesianSpace, {}, h(InteractiveGuide))));
+  doc.route.add('/packages/@lukekaalim/act-curve/guide', h(() => {
+    const bouncer = useRef(() => throttle((newPoint: Vector<2>) => {
+      const location = new URL(document.location.href);
+      location.searchParams.set(`x`, (-newPoint.x).toFixed());
+      location.searchParams.set(`y`, (-newPoint.y).toFixed());
+  
+      history.replaceState(null, '', location.href);
+    }, 1000))
+  
+    const onDragComplete = useMemo(() => (newPoint: Vector<2>) => {
+      console.log({ newPoint })
+      bouncer.current(newPoint);
+    }, []);
+    
+    const initialPosition = useMemo(() => {
+      const url = new URL(document.location.href);
+      return {
+        x: -Number(url.searchParams.get('x')) || 0,
+        y: -Number(url.searchParams.get('y')) || 0,
+      }
+    }, []);
+
+    return h(FullSizePage, {}, h(CartesianSpace, { initialPosition, onDragComplete }, h(InteractiveGuide)));
+  }));
 
   doc.demos.add('CurveDemo', () => h(CurveDemo, {}));
 
@@ -39,10 +63,31 @@ const layout = LayoutNode.list('root', 'vertical', 'center', [
 const LayoutTest = () => {
   const layouts = useMemo(() => {
     return calcNodeLayouts(layout, Vector2D.ZERO);
-
   }, []);
+
+  const bouncer = useRef(() => throttle((newPoint: Vector<2>) => {
+    const location = new URL(document.location.href);
+    location.searchParams.set(`x`, (-newPoint.x).toFixed());
+    location.searchParams.set(`y`, (-newPoint.y).toFixed());
+
+    history.replaceState(null, '', location.href);
+  }, 1000))
+
+  const onDragComplete = useMemo(() => (newPoint: Vector<2>) => {
+    console.log({ newPoint })
+    bouncer.current(newPoint);
+  }, []);
+  
+  const initialPosition = useMemo(() => {
+    const url = new URL(document.location.href);
+    return {
+      x: -Number(url.searchParams.get('x')) || 0,
+      y: -Number(url.searchParams.get('y')) || 0,
+    }
+  }, []);
+
   return h(FullSizePage, {}, [
-    h(CartesianSpace, {}, [ 
+    h(CartesianSpace, { onDragComplete, initialPosition }, [ 
       [...layouts.keys()].map(id => {
         const layout = layouts.get(id);
         if (!layout)

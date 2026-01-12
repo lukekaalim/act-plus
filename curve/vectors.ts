@@ -1,3 +1,4 @@
+import { AnyVector } from "@lukekaalim/act-graphit"
 import { createAnimationAPI } from "./animation"
 import { createCurveAPI } from "./curve"
 import { lerp } from "./math"
@@ -18,6 +19,11 @@ export type VectorComponentsAPI<T> = {
   >(operation: (...args: { [K in keyof Args]: number }) => Output, ...args: Args) => { [K in keyof T]: Output },
 }
 
+export type VectorComponentArgs<V extends AnyVector> =
+  | Vector1D extends V ? [x: number] : never
+  | Vector2D extends V ? [x: number, y: number] : never
+  | Vector3D extends V ? [x: number, y: number, z: number] : never
+
 
 export type VectorScalarAPI<T> = {
   length(vector: T): number,
@@ -31,6 +37,7 @@ export type VectorAPI<T> = {
 
   create: (...args: number[]) => T,
   interpolate(start: T, end: T, progress: number): T,
+  copy(left: T): T,
 
   add(left: T, right: T): T,
   subtract(left: T, right: T): T,
@@ -79,6 +86,9 @@ export const createVectorAPI = <T>(ComponentsAPI: VectorComponentsAPI<T>) => {
     ZERO: Object.freeze(ComponentsAPI.create(() => 0)),
     ONE: Object.freeze(ComponentsAPI.create(() => 1)),
     create: (...args) => ComponentsAPI.create((_, index) => args[index]),
+    copy(vector) {
+      return { ...vector }
+    },
 
     interpolate(start, end, progress) {
       return ComponentsAPI.binary(start, end, (l, r) => lerp(l, r, progress))

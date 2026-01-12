@@ -56,6 +56,12 @@ export const CartesianSpace: Component<CartesianSpaceProps> = ({
     }
   }, [onDragComplete])
 
+
+  const onFinishDrag = useMemo(() => () => {
+    if (onDragComplete)
+      onDragComplete(controller.position)
+  }, [onDragComplete])
+
   const patternRef = useRef<SVGPatternElement | null>(null);
   const groupRef = useRef<SVGGElement | null>(null);
   const XAxisRef = useRef<AxisController | null>(null);
@@ -71,7 +77,7 @@ export const CartesianSpace: Component<CartesianSpaceProps> = ({
 
   const controller = useMemo(() => {
     const controller = {
-      position: { ...Vector2D.ZERO },
+      position: { ...(initialPosition || Vector2D.ZERO) },
       size: { ...Vector2D.ZERO },
       update() {
         const { pattern, group, svg, xAxis, yAxis } = assertRefs({
@@ -107,7 +113,7 @@ export const CartesianSpace: Component<CartesianSpaceProps> = ({
           return false;
       }
     return true;
-  })
+  }, { onFinishDrag })
 
   //const combinedOffset = Vector(2).add(dragOffset, offset);
 

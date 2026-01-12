@@ -92,9 +92,29 @@ export const Rect: Component<RectProps> = (props) => {
 }
 
 export type GroupProps = {
-  position: Vector<2>,
-} & SVGCoreProps
+  position?: Vector<2>,
+} & SVGCoreProps<SVGGElement>
 
-export const Group: Component<GroupProps> = ({ position, children }) => {
-  return h('g', { transform: `translate(${position.x} ${position.y})` }, children)
+export const Group: Component<GroupProps> = ({ position,  children, ...extraProps }) => {
+  if (position)
+    return h('g', { transform: `translate(${position.x} ${position.y})`, ...extraProps }, children)
+
+  return h('g', { ...extraProps }, children)
+}
+
+
+export type ForeignObjectProps = (
+  | { position: Vector<2>, size: Vector<2> }
+  | { x: number, y: number, width: number, height: number }
+)
+
+export const ForeignObject: Component<ForeignObjectProps> = (props) => {
+  if ("position" in props) {
+    const { position, size, children } = props;
+    return h('foreignObject', { x: position.x, y: position.y, width: size.x, height: size.y }, children)
+  } else {
+    const { x, y, width, height, children } = props;
+    return h('foreignObject', { x, y, width, height }, children)
+  }
+
 }

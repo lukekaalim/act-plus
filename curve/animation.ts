@@ -1,33 +1,94 @@
-import { useEffect } from "@lukekaalim/act";
+import { Ref, useEffect, useRef } from "@lukekaalim/act";
 import { getSpanProgress, Span } from "./time"
 import { CurveAPI } from "./curve";
+import { AnyVector, Vector } from "@lukekaalim/act-graphit";
+import { Dimension } from "@lukekaalim/act-graphit/dimensions";
+import { bezier } from "./bezier";
+import { VectorAPI } from "./mod";
 
-export type Bezier4Animation<T> = {
+export type Bezier4Animation<V extends AnyVector> = {
   span: Span,
-  points: [start: T, startControl: T, endControl: T, end: T],
+  points: [start: V, startControl: V, endControl: V, end: V],
 }
 
-export type Bezier4AnimationState<T> = {
+export type Bezier4AnimationState<T extends AnyVector> = {
+  progress: number,
   point: T,
   velocity: T,
 }
 
-export type Bezier4AnimationAPI<T> = {
-  useAnimation(anim: Bezier4Animation<T>, onFrame: (point: T) => void): void,
+export type Anim<V extends AnyVector> = Bezier4Animation<V>;
 
-  calcState(anim: Bezier4Animation<T>, time: DOMHighResTimeStamp): Bezier4AnimationState<T>,
+export const Anim = {
+  createStatic<V extends AnyVector>(point: V): Anim<V> {
+    return {
+      span: { start: 0, end: 0 },
+      points: [point, point, point, point],
+    }
+  },
+  smooth<V extends AnyVector>(api: Bezier4AnimationAPI<V>, anim: Anim<V>, endPosition: V, duration: number): Anim<V> {
+    const now = performance.now();
+    const state = api.calcState(anim, now);
+
+    return {
+      span: { start: now, end: now + duration },
+      points: [
+        state.point,
+        api.CurveAPI.VectorAPI.add(state.point, api.CurveAPI.VectorAPI.ScalarAPI.multiply(state.velocity, 0.3)),
+        endPosition,
+        endPosition,
+      ],
+    }
+  },
+  kick<V extends AnyVector>(api: Bezier4AnimationAPI<V>, anim: Anim<V>, endPosition: V, duration: number): Anim<V> {
+    const now = performance.now();
+    const state = api.calcState(anim, now);
+
+    return {
+      span: { start: now, end: now + duration },
+      points: [
+        state.point,
+        endPosition,
+        endPosition,
+        endPosition,
+      ],
+    }
+  },
+  bounce<V extends AnyVector>(api: Bezier4AnimationAPI<V>, anim: Anim<V>, endPosition: V, duration: number): Anim<V> {
+    const now = performance.now();
+    const state = api.calcState(anim, now);
+
+    return {
+      span: { start: now, end: now + duration },
+      points: [
+        state.point,
+        endPosition,
+        endPosition,
+        endPosition,
+      ],
+    }
+  },
 }
 
-export type AnimationAPI<T> = {
+export type Bezier4AnimationAPI<V extends AnyVector> = {
+  CurveAPI: CurveAPI<V>,
+
+  useAnimation(anim: Bezier4Animation<V>, onFrame: (point: V) => void): void,
+
+  calcState(anim: Bezier4Animation<V>, time: DOMHighResTimeStamp): Bezier4AnimationState<V>,
+}
+
+export type AnimationAPI<T extends AnyVector> = {
   CurveAPI: CurveAPI<T>,
   Bezier4: Bezier4AnimationAPI<T>
 }
 
-export const createAnimationAPI = <T>(CurveAPI: CurveAPI<T>) => {
+export const createAnimationAPI = <T extends AnyVector>(CurveAPI: CurveAPI<T>) => {
   const { VectorAPI } = CurveAPI;
   const { ScalarAPI } = VectorAPI;
 
   const Bezier4: Bezier4AnimationAPI<T> = {
+    CurveAPI,
     useAnimation(anim, onFrame) {
       useEffect(() => {
         const callback = () => {
@@ -59,6 +120,7 @@ export const createAnimationAPI = <T>(CurveAPI: CurveAPI<T>) => {
       return {
         point,
         velocity,
+        progress,
       }
     }
   }

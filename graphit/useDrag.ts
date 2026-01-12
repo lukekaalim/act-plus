@@ -40,10 +40,15 @@ export const subscribeMap = (
   }
 };
 
+type DragOptions = {
+  onFinishDrag?: () => void
+}
+
 export const useDrag = (
   ref: ReadonlyRef<null | HTMLElement | SVGElement>,
   onElementMove: (positionDelta: Vector<2>) => void,
   shouldStartDrag: (event: PointerEvent) => boolean = () => true,
+  { onFinishDrag }: DragOptions = {}
 ) => {
   const [dragging, setDragging] = useState(false);
   
@@ -84,13 +89,17 @@ export const useDrag = (
         setDragging(false);
         dragging = false;
         el.releasePointerCapture(event.pointerId);
+        console.log('finish drag')
+
+        if (onFinishDrag)
+          onFinishDrag()
       },
     })
 
     return () => {
       sub.unsubscribe();
     }
-  }, [onElementMove]);
+  }, [onElementMove, onFinishDrag]);
 
   return dragging;
 }
