@@ -1,4 +1,5 @@
 {
+  "name": "act-plus-docs",
   "private": true,
   "devDependencies": {
     "@types/lodash-es": "^4.17.12",

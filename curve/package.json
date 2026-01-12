@@ -1,6 +1,7 @@
 {
   "name": "@lukekaalim/act-curve",
   "main": "mod.ts",
+  "version": "4.0.0",
   "devDependencies": {
     "@lukekaalim/act": "^3.2.0",
     "@lukekaalim/act-web": "^3.4.0-alpha.2"
