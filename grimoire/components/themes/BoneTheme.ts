@@ -5,6 +5,7 @@ import { VerticalNavMenu2 } from "../vertical_nav_menu";
 import { ThemeContext } from "../../lib";
 
 import classes from './BoneTheme.module.css';
+import "../code/themes/highlight.grayscale.css";
 
 export type BoneThemeProps = {
   doc: DocApp,
@@ -26,10 +27,11 @@ export const BoneTheme: Component<BoneThemeProps> = ({ doc }) => {
   const theme: ThemeContext = useMemo(() => ({
     VerticalNav() {
       return h(VerticalNavMenu2, { tree })
-    }
+    },
+    highlightJsTheme: {},
   }), []);
 
-  return h('section', { className: classes.boneTheme },
+  return h('section', { classList: [classes.boneTheme, 'grayscale'] },
     h(DocAppContext.Provider, { value: doc },
       h(ThemeContext.Provider, { value: theme },
         h(router.page.component, { onReady })

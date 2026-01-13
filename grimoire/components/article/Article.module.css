@@ -30,8 +30,6 @@
 
 .title {
   margin: 0;
-
-  _font-family: var(--fonts, "Arvo");
 }
 
 .description {

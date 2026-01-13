@@ -2,7 +2,7 @@ import { Component, h, Node, useEffect, useRef, useState } from '@lukekaalim/act
 import { common, createLowlight } from 'lowlight';
 import { Nodes } from 'hast';
 
-import 'highlight.js/styles/grayscale.css'
+// import gray from 'highlight.js/styles/grayscale.css'
 import classes from './CodeBox.module.css';
 
 /**
