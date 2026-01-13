@@ -1,7 +1,7 @@
 {
   "name": "@lukekaalim/grimoire",
   "main": "index.ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": {
     "@lukekaalim/act": "^3.2.1",
     "@lukekaalim/act-icons": "^1.0.0",

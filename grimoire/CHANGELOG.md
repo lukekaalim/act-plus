@@ -1,5 +1,11 @@
 # @lukekaalim/grimoire
 
+## 1.0.2
+
+### Patch Changes
+
+- 6d40300: Add missing markdown dep
+
 ## 1.0.1
 
 ### Patch Changes
