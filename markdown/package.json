@@ -1,6 +1,6 @@
 {
   "name": "@lukekaalim/act-markdown",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "mod.ts",
   "dependencies": {
     "@lukekaalim/act": "^3.2.1",

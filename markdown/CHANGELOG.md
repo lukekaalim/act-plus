@@ -1,5 +1,11 @@
 # @lukekaalim/act-markdown
 
+## 2.0.2
+
+### Patch Changes
+
+- 043ab51: Fix markdown lists without checkboxes not including elements beyond initial paragraph
+
 ## 2.0.1
 
 ### Patch Changes
