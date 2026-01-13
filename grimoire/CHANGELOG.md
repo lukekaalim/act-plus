@@ -1,5 +1,11 @@
 # @lukekaalim/grimoire
 
+## 2.0.1
+
+### Patch Changes
+
+- c252001: Fix issues with themeing codeboxes in Grimoire
+
 ## 2.0.0
 
 ### Major Changes
