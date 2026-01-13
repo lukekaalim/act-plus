@@ -1,5 +1,11 @@
 # @lukekaalim/grimoire
 
+## 2.0.2
+
+### Patch Changes
+
+- 7775df8: Fix images being too wide in markdown articles
+
 ## 2.0.1
 
 ### Patch Changes
