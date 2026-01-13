@@ -7,6 +7,7 @@ import { CoreDebug } from "../components/debug/CoreDebug";
 import { DefaultDemoFrame, DemoMDX } from "../components/demo/Demo";
 import { NavLeaf, NavTree2, simplifyTree } from "../lib";
 import { ArticlePage } from "../components/page";
+import { RouterPage, RouterPageComponent } from "@lukekaalim/act-router";
 
 /**
  * The CoreAPI is a list of API objects that contain
@@ -28,9 +29,9 @@ export type CoreAPI = {
  * for your application.
  */
 export type RoutesAPI = {
-  routes: Route[],
+  routes: RouterPage[],
 
-  add(path: string, content: Node): Route,
+  add(path: string, content: Node | RouterPageComponent): RouterPage,
   getNavTree(): NavTree2,
 }
 
@@ -139,7 +140,7 @@ export const createCoreAPI = (): CoreAPI => {
   const articles: Article[] = [];
   const article_preprocessors: ArticlePreprocessor[] = [];
   const components: MDXComponentEntry[] = [];
-  const routes: Route[] = [];
+  const routes: RouterPage[] = [];
   const demos: Demo[] = [];
   const demo_frames: DemoFrame[] = [];
   const references: Reference[] = [];
@@ -149,9 +150,15 @@ export const createCoreAPI = (): CoreAPI => {
     route: {
       routes,
       add(path, content) {
-        const route = { path, content };
-        routes.push(route);
-        return route;
+        if (typeof content === 'function') {
+          const page = { path, component: content };
+          routes.push(page);
+          return page;
+        } else {
+          const page = { path, component: () => content };
+          routes.push(page);
+          return page;
+        }
       },
       getNavTree() {
         const root: NavLeaf = { id: '/', parent: null, children: [] };

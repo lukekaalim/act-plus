@@ -46,7 +46,7 @@ export const DemoMDX: MDXComponent = ({ attributes }) => {
   const demoKey = attributes["demo"];
 
   if (!demoKey)
-    return `DemoMDX missing "demo" attribute`;
+    return h(InlineErrorBox, {}, `❕ DemoMDX missing "demo" attribute`);
 
   const doc = useDocApp([]);
   const demo = doc.demos.demos.find(d => d.key === demoKey);

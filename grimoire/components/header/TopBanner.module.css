@@ -1,8 +1,8 @@
 .container {
-  height: var(--top-bar-height, 54px);
 
   display: flex;
   flex-direction: row;
+  height: var(--top-bar-height, 54px);
   background-color: var(--primary-color, rgb(57, 120, 238));
   color: var(--primary-text-color, white);
 }
@@ -65,4 +65,23 @@
 .endContent {
   display: flex;
   flex: 0;
+}
+
+.topBannerContainer {
+  display: flex;
+  flex-direction: row;
+  
+  height: var(--top-bar-height, 54px);
+  background-color: var(--primary-color, rgb(57, 120, 238));
+  color: var(--primary-text-color, white);
+}
+
+.verticalLineSeparator {
+  width: 0px;
+  border-left: solid 2px var(--primary-highlight-color, white);
+  margin: 12px 0px;
+}
+
+.blankSeparator {
+  flex: 1;
 }

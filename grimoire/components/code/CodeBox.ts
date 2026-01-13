@@ -2,7 +2,7 @@ import { Component, h, Node, useEffect, useRef, useState } from '@lukekaalim/act
 import { common, createLowlight } from 'lowlight';
 import { Nodes } from 'hast';
 
-import 'highlight.js/styles/an-old-hope.css'
+import 'highlight.js/styles/grayscale.css'
 import classes from './CodeBox.module.css';
 
 /**
@@ -84,8 +84,7 @@ export const CodeBox: Component<CodeBoxProps> = ({ lines, lineStart = 0 }) => {
     const lineCount = (text.match(/\n/g));
     
     if (lineCount) {
-      setTimeout(() => setLineGuess(lineCount.length + 1), 1);
-
+      setLineGuess(lineCount.length + 1)
     }
   }, [lines.length])
 

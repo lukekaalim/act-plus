@@ -1,16 +1,12 @@
 import { Component, h } from "@lukekaalim/act"
+import classes from './BannerLink.module.css';
 
 export type BannerLinkProps = {
-
+  link: string | URL,
 };
 
-const BannerLink: Component<BannerLinkProps> = ({ children }) => {
-  return h('span', { style: {
-      'display': 'flex',
-      'font-size': '18px',
-      'white-space': 'pre',
-      'margin': 'auto',
-      'padding': '0 8px',
-      color: 'white'
-    } }, children)
+export const BannerLink: Component<BannerLinkProps> = ({ children, link }) => {
+  return h('div', { className: classes.bannerLink },
+    h('a', {  href: typeof link === 'string' ? link : link.href }, children)
+  )
 }

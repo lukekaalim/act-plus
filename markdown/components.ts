@@ -77,7 +77,8 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}): Mdas
       case 'link':
         return h('a', { ...props, href: node.url }, node.children.map(mdastToNode));
       case 'list':
-        return h('ul', { ...props }, node.children.map(mdastToNode));
+        const tagName = node.ordered ? 'ol' : 'ul';
+        return h(tagName, { ...props }, node.children.map(mdastToNode));
       case 'listItem':
         if (node.checked !== null) {
           const checkboxProps = {

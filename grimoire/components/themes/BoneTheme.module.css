@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+.boneTheme {
+  --primary-color: black;
+  --secondary-light-color: rgb(230, 230, 230);
+  --shadow-color: rgba(0, 0, 0, 0);
+  
+  --fonts: "Fira Code", monospace;
+
+  font-family: "Fira Code", monospace;
+
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+
+  height: 100%;
+  width: 100%;
+}

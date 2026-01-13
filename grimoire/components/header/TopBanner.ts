@@ -27,3 +27,23 @@ export const TopBanner: Component<TopBannerProps> = ({
   ])
 };
 
+export type TopBanner2Props = {
+  home?: Node,
+  nav?: Node[],
+
+  endContent?: Node,
+}
+
+export const TopBanner2: Component<TopBanner2Props> = ({ home, nav, endContent }) => {
+  return h('nav', { className: classes.topBannerContainer }, [
+    !!home && [
+      home,
+      !!(nav || endContent) && h('div', { className: classes.verticalLineSeparator })
+    ],
+    nav || null,
+    !!endContent && [
+      h('div', { className: classes.blankSeparator }),
+      endContent,
+    ],
+  ])
+}

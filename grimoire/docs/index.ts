@@ -5,6 +5,7 @@ import readmeMd from '../readme.md?raw';
 import coreMd from '../application/readme.md?raw';
 import componentsMd from '../components/components.md?raw';
 import utilitiesMd from '../lib/lib.md?raw';
+import guidesMd from './guides.md?raw';
 
 import typedoc from 'typedoc:../index.ts';
 
@@ -17,6 +18,7 @@ export const buildGrimoireDocs = (doc: DocApp<[TypeDocPlugin]>) => {
   doc.typedoc.addProjectJSON('@lukekaalim/grimoire', typedoc);
 
   doc.article.add('grimoire.readme', readmeMd, '/packages/@lukekaalim/grimoire');
+  doc.article.add('grimoire.guides', guidesMd, '/packages/@lukekaalim/grimoire/guides');
   doc.article.add('grimoire.componentsMd', componentsMd, '/packages/@lukekaalim/grimoire/components');
   doc.article.add('grimoire.core', coreMd, '/packages/@lukekaalim/grimoire/core');
   doc.article.add('grimoire.utils', utilitiesMd, '/packages/@lukekaalim/grimoire/utilities');
@@ -31,10 +33,10 @@ export const buildGrimoireDocs = (doc: DocApp<[TypeDocPlugin]>) => {
         h('span', {}, 'Adventure')],
       location: sampleURL},
     topLevelLinks: [
-      { display: h(BannerLink, {}, "First Nav Item"), location: sampleURL },
-      { display: h(BannerLink, {}, "Second Nav Item"), location: sampleURL },
+      { display: h(BannerLink, { link: "/" }, "First Nav Item"), location: sampleURL },
+      { display: h(BannerLink, { link: "/" }, "Second Nav Item"), location: sampleURL },
     ],
-    endContext: h(BannerLink, {}, "a final element")
+    endContext: h(BannerLink, { link: "/" }, "a final element")
   }));
   doc.demos.add('MarkdownArticle', () => h(MarkdownArticle, {
     content: `# I am a Sample Markdown Article\nWith different kinds of **text**!`

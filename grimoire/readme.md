@@ -4,7 +4,7 @@
 npm i @lukekaalim/grimoire
 ```
 
-_really_ barebones documentation component library for [@lukekaalim/act](https://act.luke.kaal.im).
+Documentation library for [@lukekaalim/act](https://act.luke.kaal.im)!
 
 Write some markdown, annotate with components, and bundle with
 your tool of choice!

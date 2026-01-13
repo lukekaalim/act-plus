@@ -10,7 +10,7 @@ import {
   createRelativeURLFactory,
   WebLink,
 } from '@lukekaalim/act-router';
-import {  Grid3, Hero, TopBanner, createDocApp, DocAppRenderer, BannerLink, IconTextBannerLogo } from '@lukekaalim/grimoire';
+import {  Grid3, Hero, TopBanner, createDocApp, SimpleTheme, BannerLink, IconTextBannerLogo, BoneTheme } from '@lukekaalim/grimoire';
 
 import { TypeDocPlugin } from '@lukekaalim/grimoire-ts';
 import { SVGRepo } from '@lukekaalim/act-icons';
@@ -92,23 +92,23 @@ const banner = h(TopBanner, {
   logoLink: {
     location: origin.createURL('/'),
     display: h(IconTextBannerLogo, { iconURL: iconPlusURL, name: `@lukekaalim/act-plus` }),
-  },
+  },/*
   topLevelLinks: [
     {
       location: origin.createURL('/about'),
-      display: h(BannerLink, {}, 'About')
+      //display: h(BannerLink, {}, 'About')
     },
     {
       location: origin.createURL('/', {}, 'packages'),
-      display: h(BannerLink, {}, 'Packages')
+      //display: h(BannerLink, {}, 'Packages')
     },
     {
       location: origin.createURL('/changelog'),
-      display: h(BannerLink, {}, 'Changelog')
+      //display: h(BannerLink, {}, 'Changelog')
     },
     {
       location: origin.createURL('/blog'),
-      display: h(BannerLink, {}, 'Blog')
+      //display: h(BannerLink, {}, 'Blog')
     },
     {
       location: new URL(`https://github.com/lukekaalim/act-compdoc`),
@@ -118,6 +118,7 @@ const banner = h(TopBanner, {
       ])
     },
   ],
+  */
   endContext: h('span', { style: {
     border: '2px solid white',
     'border-radius': '8px',
@@ -275,12 +276,14 @@ buildMarkdownDocs(doc)
 await wait(10);
 
 const main = () => {
-  const style = {
-    height: '100%',
-    display: 'flex',
-    'flex-direction': 'column',
-  };
-  render(h('div', { style }, [banner, h(DocAppRenderer, { doc })]), document.body);
+  const banner = {
+    home: h(BannerLink, { link: '/' },
+      h(IconTextBannerLogo, { iconURL: iconPlusURL, name: `@lukekaalim/act-plus`, style: { 'font-weight': 'bold' } })),
+    nav: [
+      h(BannerLink, { link: '/#packages' }, 'Packages'),
+    ]
+  }
+  render(h(SimpleTheme, { doc, banner }), document.body);
 };
 
 main();

@@ -17,7 +17,7 @@
 .details {
   display: flex;
   gap: 20px;
-  font-family: "Arvo";
+  font-family: var(--fonts, "Arvo");
 }
 
 .date {
@@ -25,13 +25,13 @@
 
 .author {
   text-decoration: underline;
-  font-family: "Arvo";
+  font-family: var(--fonts, "Arvo");
 }
 
 .title {
   margin: 0;
 
-  _font-family: "Arvo";
+  _font-family: var(--fonts, "Arvo");
 }
 
 .description {
@@ -45,9 +45,9 @@
   margin: 8px;
   padding: 24px 16px;
 
-  background-color: rgb(207, 241, 238);
+  background-color: var(--secondary-light-color, rgb(207, 241, 238));
   border-radius: 8px;
-  box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 4px 4px var(--shadow-color, (0, 0, 0, 0.15));
 }
 
 .blockQuote > p:first-child {

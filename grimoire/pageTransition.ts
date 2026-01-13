@@ -96,12 +96,15 @@ export const PageTransitionDriver: Component<{ state: PageTransitionState, direc
 
   Animation1D.Bezier4.useAnimation(state.animation, point => {
     const el = (ref.current as HTMLDivElement);
+
     el.style.opacity = (1 - Math.abs(point.x)).toString();
 
-    if (direction === 'forward')
-      el.style.transform = `translate(${-point.x * 50}%, 0px)`;
-    else
-      el.style.transform = `translate(${-point.x * -50}%, 0px)`;
+    if (point.x <= 0) {
+      if (direction === 'forward')
+        el.style.transform = `translate(${-point.x * 50}%, 0px)`;
+      else
+        el.style.transform = `translate(${-point.x * -50}%, 0px)`;
+    }
 
     el.style.pointerEvents = point.x === 0 ? 'all' : 'none'
   })
