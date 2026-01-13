@@ -94,7 +94,10 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}): Mdas
             node.children.slice(1).map(mdastToNode),
           ]);
         }
-        return h('li', { ...props }, (node.children[0] as Paragraph).children.map(mdastToNode));
+        return h('li', { ...props }, [
+          (node.children[0] as Paragraph).children.map(mdastToNode),
+          node.children.slice(1).map(mdastToNode),
+        ]);
       case 'table':
         return h('table', { ...props }, node.children.map(mdastToNode));
       case 'tableRow':
