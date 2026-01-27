@@ -9,11 +9,14 @@
     "router",
     "sample-lib",
     "grimoire",
-    "doc-ts"
+    "doc-ts",
+    "echo"
   ],
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
+    "@types/brace-expansion": "^1.1.2",
     "@types/node": "^22.10.5",
+    "nanoid": "^5.1.6",
     "vite": "^7.2.4"
   },
   "scripts": {

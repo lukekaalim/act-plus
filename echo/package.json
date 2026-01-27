@@ -1,0 +1,19 @@
+{
+  "name": "@lukekaalim/echo",
+  "version": "1.0.0",
+  "description": "Simple typescript-powered reflection utility library",
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "scripts": {
+    "build": "tsup-node index.ts"
+  },
+  "dependencies": {
+    "@microsoft/tsdoc": "^0.16.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

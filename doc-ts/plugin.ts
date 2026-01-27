@@ -40,7 +40,7 @@ const TypeDoc: MDXComponent = ({ attributes }) => {
 
   const projectName = attributes["project"];
   const reflectionName = attributes["name"];
-  const extraDeclarationsNames = (attributes["extras"] || '').split(" ");
+  const extraDeclarationsNames = (attributes["extras"] || '').split(" ").filter(Boolean);
 
   try {
     if (typeof projectName !== 'string' || typeof reflectionName !== 'string')

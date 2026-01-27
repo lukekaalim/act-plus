@@ -68,6 +68,7 @@ export type HLJSElementBuilderFuncMap = { [key in HLJSClassKey]: (text: string) 
  */
 export type HLJSBuilderAPI = {
   newLine(indent?: number): HLJSBuilder,
+  indent(indent: number): HLJSBuilder,
 
   text(text: string): HLJSBuilder,
   space(): HLJSBuilder,
@@ -106,6 +107,10 @@ export const createHLJSBuilder = (): HLJSBuilder => {
   
   const builder: HLJSBuilder =  {
     ...classAPI,
+    indent(indent) {
+      depth += indent;
+      return builder;
+    },
     newLine(indent = 0) {
       depth += indent;
       lines.push([]);

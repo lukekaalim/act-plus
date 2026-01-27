@@ -6,3 +6,11 @@ declare module "typedoc:*" {
   export default project;
 }
 
+declare module "echo:*" {
+  import { EchoModule } from '@lukekaalim/act';
+
+  const project: EchoModule;
+
+  export default project;
+}
+

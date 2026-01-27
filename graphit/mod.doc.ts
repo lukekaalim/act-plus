@@ -4,11 +4,11 @@ import { DocApp, MarkdownArticle, RAFBeat } from "@lukekaalim/grimoire";
 
 import { CartesianSpace, CartesianSpaceController } from "./CartesianSpace";
 import { LinePath } from "./LinePath";
-import { TypeDocPlugin } from "@lukekaalim/grimoire-ts";
+import { EchoPlugin, TypeDocPlugin } from "@lukekaalim/grimoire-ts";
 
 import readmeMd from './readme.md?raw';
 import structuresMd from './structures.md?raw';
-import projectJSON from 'typedoc:index.ts';
+import reflection from 'echo:@lukekaalim/act-graphit';
 import { Ring } from "./structures";
 import { Vector2D } from "@lukekaalim/act-curve";
 import { Circle } from "./elements";
@@ -85,8 +85,8 @@ export default h(MarkdownArticle, {
   //}
 })
 
-export const buildGraphitDocs = (doc: DocApp<[TypeDocPlugin]>) => {
-  doc.typedoc.addProjectJSON('@lukekaalim/act-graphit', projectJSON);
+export const buildGraphitDocs = (doc: DocApp<[EchoPlugin]>) => {
+  doc.echo.modules.set('@lukekaalim/act-graphit', reflection);
 
   doc.article.add('graphit.readme', readmeMd, '/packages/@lukekaalim/act-graphit')
   doc.article.add('graphit.structs', structuresMd, '/packages/@lukekaalim/act-graphit/structures');

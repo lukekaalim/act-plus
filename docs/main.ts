@@ -12,10 +12,11 @@ import {
 } from '@lukekaalim/act-router';
 import {  Grid3, Hero, TopBanner, createDocApp, SimpleTheme, BannerLink, IconTextBannerLogo, BoneTheme } from '@lukekaalim/grimoire';
 
-import { TypeDocPlugin } from '@lukekaalim/grimoire-ts';
+import { EchoPlugin, TypeDocPlugin } from '@lukekaalim/grimoire-ts';
 import { SVGRepo } from '@lukekaalim/act-icons';
 
 import iconPlusURL from './media/icon-plus.png';
+import { buildEchoDocs } from '../echo/docs';
 
 const origin = createRelativeURLFactory();
 
@@ -233,7 +234,7 @@ const DemoPage = () => {
   ])
 }
 
-const doc = createDocApp([TypeDocPlugin]);
+const doc = createDocApp([TypeDocPlugin, EchoPlugin]);
 doc.route.add('/', h(DemoPage))
 
 const wait = (time: number) => new Promise(resolve => setTimeout(resolve, time));
@@ -259,6 +260,7 @@ const {
   createSampleDocPages,
 } = allDocs.reduce((left, right) => ({ ...left, ...right }), {}) as UnionToIntersection<(typeof allDocs)[number]>;
 
+buildEchoDocs(doc);
 
 buildGrimoireDocs(doc);
 await wait(10);

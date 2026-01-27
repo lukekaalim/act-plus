@@ -1,8 +1,9 @@
 import { DocApp, FullSizePage } from "@lukekaalim/grimoire";
-import { TypeDocPlugin } from "@lukekaalim/grimoire-ts";
+import { EchoPlugin, TypeDocPlugin } from "@lukekaalim/grimoire-ts";
 import { throttle } from 'lodash-es';
 
-import reflection from 'typedoc:../mod.ts';
+import reflection from 'echo:@lukekaalim/act-curve';
+
 import readmeMd from '../readme.md?raw';
 import { CurveDemo } from "./mod.doc";
 import { h, useMemo, useRef } from "@lukekaalim/act";
@@ -11,8 +12,8 @@ import { calcNodeLayouts, LayoutNode } from "./layout";
 import { Vector2D } from "../vectors";
 import { InteractiveGuide } from "./interactive";
 
-export const buildCurveDocs = (doc: DocApp<[TypeDocPlugin]>) => {
-  doc.typedoc.addProjectJSON('@lukekaalim/act-curve', reflection);
+export const buildCurveDocs = (doc: DocApp<[TypeDocPlugin, EchoPlugin]>) => {
+  doc.echo.modules.set('@lukekaalim/act-curve', reflection);
 
   doc.article.add('curve.readme', readmeMd, '/packages/@lukekaalim/act-curve/api');
   doc.route.add('/packages/@lukekaalim/act-curve', h(FullSizePage, {}, h(CurveDemo, { offset: { x: 600, y: 100} })));

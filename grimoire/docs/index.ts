@@ -1,5 +1,5 @@
 import { BannerLink, CodeBox, DocApp, MarkdownArticle, renderLowlightNodes, SyntaxHighlightingCodeBox, TopBanner } from "@lukekaalim/grimoire";
-import { TypeDocPlugin } from "@lukekaalim/grimoire-ts";
+import { EchoPlugin, TypeDocPlugin } from "@lukekaalim/grimoire-ts";
 
 import readmeMd from '../readme.md?raw';
 import coreMd from '../application/readme.md?raw';
@@ -7,15 +7,15 @@ import componentsMd from '../components/components.md?raw';
 import utilitiesMd from '../lib/lib.md?raw';
 import guidesMd from './guides.md?raw';
 
-import typedoc from 'typedoc:../index.ts';
+import reflection from 'echo:@lukekaalim/grimoire';
 
 import adventureIconURL from './adventure-icon.svg';
 
 import { PrismaticComponent, VerticalNavMenuDemo } from "./demos";
 import { h } from "@lukekaalim/act";
 
-export const buildGrimoireDocs = (doc: DocApp<[TypeDocPlugin]>) => {
-  doc.typedoc.addProjectJSON('@lukekaalim/grimoire', typedoc);
+export const buildGrimoireDocs = (doc: DocApp<[EchoPlugin]>) => {
+  doc.echo.modules.set('@lukekaalim/grimoire', reflection);
 
   doc.article.add('grimoire.readme', readmeMd, '/packages/@lukekaalim/grimoire');
   doc.article.add('grimoire.guides', guidesMd, '/packages/@lukekaalim/grimoire/guides');

@@ -54,7 +54,7 @@ export type MDXComponentEntry = {
 export type ComponentsAPI = {
   components: MDXComponentEntry[],
 
-  add(name: string, component: Component<{ attributes: Record<string, string | void> }>): MDXComponentEntry,
+  add(name: string, component: MDXComponent): MDXComponentEntry,
 }
 
 /**
