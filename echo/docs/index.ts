@@ -9,6 +9,8 @@ import { EchoModule } from '@lukekaalim/echo';
 
 import reflection from 'echo:@lukekaalim/echo/index.ts';
 
+console.log({ reflection })
+
 export const buildEchoDocs = (doc: DocApp<[EchoPlugin]>) => {
   doc.echo.modules.set('@lukekaalim/echo', reflection)
 

@@ -222,6 +222,7 @@ const DemoPage = () => {
           ],
         },
         {
+          
           id: 'icons',
           destination: origin.createURL('/packages/@lukekaalim/act-icons'),
           content: [

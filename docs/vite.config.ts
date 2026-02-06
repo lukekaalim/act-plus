@@ -1,21 +1,23 @@
 import path from 'node:path';
 import { defineConfig, Plugin } from 'vite';
 import * as td from "typedoc";
-import { nanoid } from 'nanoid';
-
-import expand from 'brace-expansion';
-import { createEchoModuleBuilder, createEchoWatcher, EchoModule } from '@lukekaalim/echo';
 import ts from 'typescript';
+
+import type * as echo from '@lukekaalim/echo';
+
+import { tsImport } from 'tsx/esm/api'
 
 const TYPEDOC_PREFIX = 'typedoc:';
 const RESOLVED_TYPEDOC_ID_PREFIX = `\0${TYPEDOC_PREFIX}`
 
 const createEchoPlugin = async (): Promise<Plugin> => {
+  const { buildEchoModule, createEchoWatcher } = await tsImport('@lukekaalim/echo', import.meta.url) as typeof echo;
+
   const ECHO_PREFIX = `echo:`;
   const RESOLVED_ECHO_PREFIX = `\0echo:`;
   
   const watchedEntrypoints = new Set<string>();
-  const watcher: ts.WatchOfFilesAndCompilerOptions<ts.SemanticDiagnosticsBuilderProgram> = await createEchoWatcher([], () => {});
+  const { watcher, host } = await createEchoWatcher([], () => {});
 
   return {
     name: '@lukekaalim/echo-rollup',
@@ -37,6 +39,11 @@ const createEchoPlugin = async (): Promise<Plugin> => {
       return RESOLVED_ECHO_PREFIX + entrypoint.id;
     },
     closeWatcher() {
+      console.log('[closeWatcher] Closing Watcher')
+      watcher.close();
+    },
+    buildEnd() {
+      console.log('[buildEnd] Closing Watcher')
       watcher.close();
     },
     async load(id, options) {
@@ -54,16 +61,14 @@ const createEchoPlugin = async (): Promise<Plugin> => {
       
       const builder = watcher.getProgram();
       const program = builder.getProgram();
-      const checker = program.getTypeChecker();
 
       const source = program.getSourceFile(entrypoint);
       if (!source)
         return console.warn(`Can't find file: "${entrypoint}"`);
 
-      const echo = createEchoModuleBuilder(checker);
-      const mod = echo.createModule(source);
+      const mod = buildEchoModule(entrypoint, source, program, host);
 
-      console.log(`Returning build for ${entrypoint}`)
+      console.log(`Returning build for ${source.fileName}`)
 
       return `export default ${JSON.stringify(mod, null, 2)}`;
     }

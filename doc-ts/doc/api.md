@@ -1,5 +1,5 @@
 # API
 
-<TypeDoc project="@lukekaalim/grimoire-ts" name="TypeDocPlugin" />
+<Echo module="@lukekaalim/grimoire-ts" name="EchoPlugin" />
 
-<TypeDoc project="@lukekaalim/grimoire-ts" name="DeclarationReflectionRenderer" extras="DeclarationReflectionRendererProps" />
+<Echo module="@lukekaalim/grimoire-ts" name="DeclarationReflectionRenderer" extras="DeclarationReflectionRendererProps" />

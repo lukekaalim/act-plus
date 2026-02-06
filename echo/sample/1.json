@@ -1,0 +1,56 @@
+{
+  "name": "sample/1",
+  "references": [
+    {
+      "identifier": "ANestedType",
+      "filename": "@lukekaalim/echo/sample/2.ts",
+      "id": 2,
+      "type": "external"
+    },
+    {
+      "identifier": "TypeChecker",
+      "filename": "typescript",
+      "id": 1421,
+      "type": "external"
+    }
+  ],
+  "exports": [
+    {
+      "declares": {
+        "branches": [
+          {
+            "builtin": "number",
+            "id": 1,
+            "type": "builtin"
+          },
+          {
+            "target": {
+              "type": "external",
+              "id": 2
+            },
+            "typeParameters": [],
+            "id": 3,
+            "type": "reference"
+          },
+          {
+            "target": {
+              "type": "external",
+              "id": 1421
+            },
+            "typeParameters": [],
+            "id": 1733,
+            "type": "reference"
+          }
+        ],
+        "id": 1734,
+        "type": "union"
+      },
+      "parameters": [],
+      "doc": "/**\n * Hi! this is my export!\n * \n * @example\n * ```ts\n * import { MyExport } from './1.ts';\n * \n * ```\n */",
+      "identifier": "MyExport",
+      "id": 0,
+      "type": "type"
+    }
+  ],
+  "identifiers": {}
+}

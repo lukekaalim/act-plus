@@ -1,0 +1,902 @@
+{
+  "name": "index",
+  "references": [
+    {
+      "identifier": "EchoDeclaration.External",
+      "filename": "@lukekaalim/echo",
+      "id": 42,
+      "type": "external"
+    },
+    {
+      "identifier": "EchoDeclaration",
+      "filename": "@lukekaalim/echo",
+      "id": 55,
+      "type": "external"
+    },
+    {
+      "identifier": "Record",
+      "filename": "typescript/lib/lib.es5.d.ts",
+      "id": 1797,
+      "type": "external"
+    },
+    {
+      "identifier": "EchoDeclaration.ID",
+      "filename": "@lukekaalim/echo",
+      "id": 54,
+      "type": "external"
+    },
+    {
+      "identifier": "SourceFile",
+      "filename": "typescript",
+      "id": 1463,
+      "type": "external"
+    },
+    {
+      "identifier": "Program",
+      "filename": "typescript",
+      "id": 1477,
+      "type": "external"
+    },
+    {
+      "identifier": "ProgramHost",
+      "filename": "typescript",
+      "id": 1660,
+      "type": "external"
+    },
+    {
+      "identifier": "SemanticDiagnosticsBuilderProgram",
+      "filename": "typescript",
+      "id": 1653,
+      "type": "external"
+    },
+    {
+      "identifier": "TypeChecker",
+      "filename": "typescript",
+      "id": 1485,
+      "type": "external"
+    },
+    {
+      "identifier": "TSExportableDeclaration",
+      "filename": "@lukekaalim/echo",
+      "id": 56,
+      "type": "external"
+    },
+    {
+      "identifier": "Map",
+      "filename": "typescript/lib/lib.es2015.collection.d.ts",
+      "id": 1811,
+      "type": "external"
+    },
+    {
+      "identifier": "Symbol",
+      "filename": "typescript",
+      "id": 1497,
+      "type": "external"
+    },
+    {
+      "identifier": "Set",
+      "filename": "typescript/lib/lib.es2015.collection.d.ts",
+      "id": 1821,
+      "type": "external"
+    },
+    {
+      "identifier": "EchoDeclaration",
+      "filename": "@lukekaalim/echo",
+      "id": 55,
+      "type": "external"
+    },
+    {
+      "identifier": "ModuleBuildContext",
+      "filename": "@lukekaalim/echo",
+      "id": 19,
+      "type": "external"
+    },
+    {
+      "identifier": "Any",
+      "filename": "@lukekaalim/echo/reflections.ts",
+      "id": 1844,
+      "type": "external"
+    },
+    {
+      "identifier": "EchoDeclaration.Any",
+      "filename": "@lukekaalim/echo",
+      "id": 52,
+      "type": "external"
+    },
+    {
+      "identifier": "ExportDeclaration",
+      "filename": "typescript",
+      "id": 1392,
+      "type": "external"
+    },
+    {
+      "identifier": "VariableDeclaration",
+      "filename": "typescript",
+      "id": 1115,
+      "type": "external"
+    },
+    {
+      "identifier": "TypeAliasDeclaration",
+      "filename": "typescript",
+      "id": 1364,
+      "type": "external"
+    },
+    {
+      "identifier": "ClassDeclaration",
+      "filename": "typescript",
+      "id": 1357,
+      "type": "external"
+    },
+    {
+      "identifier": "ModuleDeclaration",
+      "filename": "typescript",
+      "id": 1369,
+      "type": "external"
+    },
+    {
+      "identifier": "InterfaceDeclaration",
+      "filename": "typescript",
+      "id": 1362,
+      "type": "external"
+    },
+    {
+      "identifier": "EnumDeclaration",
+      "filename": "typescript",
+      "id": 1366,
+      "type": "external"
+    },
+    {
+      "identifier": "FunctionDeclaration",
+      "filename": "typescript",
+      "id": 1135,
+      "type": "external"
+    },
+    {
+      "identifier": "Array",
+      "filename": "typescript/lib/lib.es5.d.ts",
+      "id": 1864,
+      "type": "external"
+    }
+  ],
+  "exports": [
+    {
+      "declares": {
+        "properties": {
+          "name": {
+            "builtin": "string",
+            "id": 16,
+            "type": "builtin"
+          },
+          "references": {
+            "element": {
+              "target": {
+                "type": "external",
+                "id": 42
+              },
+              "typeParameters": [],
+              "id": 64,
+              "type": "reference"
+            },
+            "id": 65,
+            "type": "array"
+          },
+          "exports": {
+            "element": {
+              "target": {
+                "type": "external",
+                "id": 55
+              },
+              "typeParameters": [],
+              "id": 66,
+              "type": "reference"
+            },
+            "id": 67,
+            "type": "array"
+          },
+          "identifiers": {
+            "target": {
+              "type": "external",
+              "id": 1797
+            },
+            "typeParameters": [
+              {
+                "target": {
+                  "type": "external",
+                  "id": 54
+                },
+                "typeParameters": [],
+                "id": 1798,
+                "type": "reference"
+              },
+              {
+                "builtin": "string",
+                "id": 1799,
+                "type": "builtin"
+              }
+            ],
+            "id": 1800,
+            "type": "reference"
+          }
+        },
+        "id": 1801,
+        "type": "object"
+      },
+      "parameters": [],
+      "doc": "/**\n * The output of analysis of a module.\n * \n * Includes all the things Echo detected\n * as \"exported declaration\", as well\n * as references to things that weren't\n * exported, such as internal, hidden\n * types or types from other packages.\n */",
+      "identifier": "EchoModule",
+      "id": 0,
+      "type": "type"
+    },
+    {
+      "declares": {
+        "properties": {
+          "source": {
+            "target": {
+              "type": "external",
+              "id": 1463
+            },
+            "typeParameters": [],
+            "id": 1802,
+            "type": "reference"
+          },
+          "program": {
+            "target": {
+              "type": "external",
+              "id": 1477
+            },
+            "typeParameters": [],
+            "id": 1803,
+            "type": "reference"
+          },
+          "host": {
+            "target": {
+              "type": "external",
+              "id": 1660
+            },
+            "typeParameters": [
+              {
+                "target": {
+                  "type": "external",
+                  "id": 1653
+                },
+                "typeParameters": [],
+                "id": 1804,
+                "type": "reference"
+              }
+            ],
+            "id": 1805,
+            "type": "reference"
+          },
+          "checker": {
+            "target": {
+              "type": "external",
+              "id": 1485
+            },
+            "typeParameters": [],
+            "id": 1806,
+            "type": "reference"
+          },
+          "internalDeclarations": {
+            "branches": [
+              {
+                "element": {
+                  "target": {
+                    "type": "external",
+                    "id": 56
+                  },
+                  "typeParameters": [],
+                  "id": 1807,
+                  "type": "reference"
+                },
+                "id": 1808,
+                "type": "array"
+              },
+              {
+                "value": null,
+                "id": 1809,
+                "type": "literal"
+              }
+            ],
+            "id": 1810,
+            "type": "union"
+          },
+          "internalSymbols": {
+            "target": {
+              "type": "external",
+              "id": 1811
+            },
+            "typeParameters": [
+              {
+                "target": {
+                  "type": "external",
+                  "id": 1497
+                },
+                "typeParameters": [],
+                "id": 1812,
+                "type": "reference"
+              },
+              {
+                "target": {
+                  "type": "external",
+                  "id": 54
+                },
+                "typeParameters": [],
+                "id": 1813,
+                "type": "reference"
+              }
+            ],
+            "id": 1814,
+            "type": "reference"
+          },
+          "externalSymbols": {
+            "target": {
+              "type": "external",
+              "id": 1811
+            },
+            "typeParameters": [
+              {
+                "target": {
+                  "type": "external",
+                  "id": 1497
+                },
+                "typeParameters": [],
+                "id": 1815,
+                "type": "reference"
+              },
+              {
+                "target": {
+                  "type": "external",
+                  "id": 54
+                },
+                "typeParameters": [],
+                "id": 1816,
+                "type": "reference"
+              }
+            ],
+            "id": 1817,
+            "type": "reference"
+          },
+          "exploredSymbols": {
+            "target": {
+              "type": "external",
+              "id": 1811
+            },
+            "typeParameters": [
+              {
+                "target": {
+                  "type": "external",
+                  "id": 1497
+                },
+                "typeParameters": [],
+                "id": 1818,
+                "type": "reference"
+              },
+              {
+                "target": {
+                  "type": "external",
+                  "id": 42
+                },
+                "typeParameters": [],
+                "id": 1819,
+                "type": "reference"
+              }
+            ],
+            "id": 1820,
+            "type": "reference"
+          },
+          "exploredPackagesModules": {
+            "target": {
+              "type": "external",
+              "id": 1821
+            },
+            "typeParameters": [
+              {
+                "target": {
+                  "type": "external",
+                  "id": 1497
+                },
+                "typeParameters": [],
+                "id": 1822,
+                "type": "reference"
+              }
+            ],
+            "id": 1823,
+            "type": "reference"
+          },
+          "identifiers": {
+            "target": {
+              "type": "external",
+              "id": 1811
+            },
+            "typeParameters": [
+              {
+                "target": {
+                  "type": "external",
+                  "id": 54
+                },
+                "typeParameters": [],
+                "id": 1824,
+                "type": "reference"
+              },
+              {
+                "builtin": "string",
+                "id": 1825,
+                "type": "builtin"
+              }
+            ],
+            "id": 1826,
+            "type": "reference"
+          },
+          "declarations": {
+            "branches": [
+              {
+                "element": {
+                  "target": {
+                    "type": "external",
+                    "id": 55
+                  },
+                  "typeParameters": [],
+                  "id": 1827,
+                  "type": "reference"
+                },
+                "id": 1828,
+                "type": "array"
+              },
+              {
+                "value": null,
+                "id": 1829,
+                "type": "literal"
+              }
+            ],
+            "id": 1830,
+            "type": "union"
+          },
+          "references": {
+            "element": {
+              "target": {
+                "type": "external",
+                "id": 42
+              },
+              "typeParameters": [],
+              "id": 1831,
+              "type": "reference"
+            },
+            "id": 1832,
+            "type": "array"
+          }
+        },
+        "id": 1833,
+        "type": "object"
+      },
+      "parameters": [],
+      "doc": "/**\n * @private\n * \n * ModuleBuildContext is a utility data structure\n * to keep track of discovered ts-specific information\n * as the build function generates all the declarations.\n */",
+      "identifier": "ModuleBuildContext",
+      "id": 1,
+      "type": "type"
+    },
+    {
+      "identifier": "buildEchoModule",
+      "doc": null,
+      "signature": {
+        "parameters": [],
+        "typeParameters": {},
+        "returns": {
+          "target": {
+            "type": "internal",
+            "id": 0
+          },
+          "typeParameters": [],
+          "id": 1834,
+          "type": "reference"
+        },
+        "id": 1835,
+        "type": "callable"
+      },
+      "id": 2,
+      "type": "function"
+    },
+    {
+      "declares": {
+        "properties": {
+          "module": {
+            "target": {
+              "type": "external",
+              "id": 19
+            },
+            "typeParameters": [],
+            "id": 1836,
+            "type": "reference"
+          },
+          "parametricTypes": {
+            "element": {
+              "target": {
+                "type": "external",
+                "id": 1497
+              },
+              "typeParameters": [],
+              "id": 1837,
+              "type": "reference"
+            },
+            "id": 1838,
+            "type": "array"
+          }
+        },
+        "id": 1839,
+        "type": "object"
+      },
+      "parameters": [],
+      "doc": null,
+      "identifier": "TypeBuildContext",
+      "id": 3,
+      "type": "type"
+    },
+    {
+      "declares": {
+        "properties": {
+          "package": {
+            "builtin": "string",
+            "id": 1840,
+            "type": "builtin"
+          },
+          "packagePath": {
+            "builtin": "string",
+            "id": 1841,
+            "type": "builtin"
+          },
+          "relativePath": {
+            "builtin": "string",
+            "id": 1842,
+            "type": "builtin"
+          }
+        },
+        "id": 1843,
+        "type": "object"
+      },
+      "parameters": [],
+      "doc": null,
+      "identifier": "PackageFileReferenceInfo",
+      "id": 4,
+      "type": "type"
+    },
+    {
+      "identifier": "createTypeBuilder2",
+      "doc": null,
+      "signature": {
+        "parameters": [],
+        "typeParameters": {},
+        "returns": {
+          "properties": {
+            "buildFromTsTypeNode": {
+              "parameters": [],
+              "typeParameters": {},
+              "returns": {
+                "target": {
+                  "type": "external",
+                  "id": 1844
+                },
+                "typeParameters": [],
+                "id": 1845,
+                "type": "reference"
+              },
+              "id": 1846,
+              "type": "callable"
+            },
+            "buildFromTsType": {
+              "parameters": [],
+              "typeParameters": {},
+              "returns": {
+                "target": {
+                  "type": "external",
+                  "id": 1844
+                },
+                "typeParameters": [],
+                "id": 1847,
+                "type": "reference"
+              },
+              "id": 1848,
+              "type": "callable"
+            }
+          },
+          "id": 1849,
+          "type": "object"
+        },
+        "id": 1850,
+        "type": "callable"
+      },
+      "id": 5,
+      "type": "function"
+    },
+    {
+      "declares": {
+        "target": {
+          "type": "external",
+          "id": 1844
+        },
+        "typeParameters": [],
+        "id": 1851,
+        "type": "reference"
+      },
+      "parameters": [],
+      "doc": null,
+      "identifier": "EchoType",
+      "id": 6,
+      "type": "type"
+    },
+    {
+      "declares": {
+        "target": {
+          "type": "external",
+          "id": 52
+        },
+        "typeParameters": [],
+        "id": 1852,
+        "type": "reference"
+      },
+      "parameters": [],
+      "doc": null,
+      "identifier": "EchoDeclaration",
+      "id": 7,
+      "type": "type"
+    },
+    {
+      "declares": {
+        "branches": [
+          {
+            "target": {
+              "type": "external",
+              "id": 1392
+            },
+            "typeParameters": [],
+            "id": 1853,
+            "type": "reference"
+          },
+          {
+            "target": {
+              "type": "external",
+              "id": 1115
+            },
+            "typeParameters": [],
+            "id": 1854,
+            "type": "reference"
+          },
+          {
+            "target": {
+              "type": "external",
+              "id": 1364
+            },
+            "typeParameters": [],
+            "id": 1855,
+            "type": "reference"
+          },
+          {
+            "target": {
+              "type": "external",
+              "id": 1357
+            },
+            "typeParameters": [],
+            "id": 1856,
+            "type": "reference"
+          },
+          {
+            "target": {
+              "type": "external",
+              "id": 1369
+            },
+            "typeParameters": [],
+            "id": 1857,
+            "type": "reference"
+          },
+          {
+            "target": {
+              "type": "external",
+              "id": 1362
+            },
+            "typeParameters": [],
+            "id": 1858,
+            "type": "reference"
+          },
+          {
+            "target": {
+              "type": "external",
+              "id": 1366
+            },
+            "typeParameters": [],
+            "id": 1859,
+            "type": "reference"
+          },
+          {
+            "target": {
+              "type": "external",
+              "id": 1135
+            },
+            "typeParameters": [],
+            "id": 1860,
+            "type": "reference"
+          }
+        ],
+        "id": 1861,
+        "type": "union"
+      },
+      "parameters": [],
+      "doc": null,
+      "identifier": "TSExportableDeclaration",
+      "id": 8,
+      "type": "type"
+    },
+    {
+      "identifier": "isStatementExported",
+      "doc": null,
+      "signature": {
+        "parameters": [],
+        "typeParameters": {},
+        "returns": {
+          "message": "RealType Union",
+          "id": 1862,
+          "type": "unsupported"
+        },
+        "id": 1863,
+        "type": "callable"
+      },
+      "id": 9,
+      "type": "function"
+    },
+    {
+      "identifier": "findTSExportableDeclarations",
+      "doc": null,
+      "signature": {
+        "parameters": [],
+        "typeParameters": {},
+        "returns": {
+          "target": {
+            "type": "external",
+            "id": 1864
+          },
+          "typeParameters": [
+            {
+              "target": {
+                "type": "internal",
+                "id": 8
+              },
+              "typeParameters": [],
+              "id": 1865,
+              "type": "reference"
+            }
+          ],
+          "id": 1866,
+          "type": "reference"
+        },
+        "id": 1867,
+        "type": "callable"
+      },
+      "id": 10,
+      "type": "function"
+    },
+    {
+      "identifier": "createEchoDeclaration",
+      "doc": null,
+      "signature": {
+        "parameters": [],
+        "typeParameters": {},
+        "returns": {
+          "target": {
+            "type": "external",
+            "id": 52
+          },
+          "typeParameters": [],
+          "id": 1868,
+          "type": "reference"
+        },
+        "id": 1869,
+        "type": "callable"
+      },
+      "id": 11,
+      "type": "function"
+    },
+    {
+      "identifier": "findExternalDeclarations",
+      "doc": null,
+      "signature": {
+        "parameters": [],
+        "typeParameters": {},
+        "returns": {
+          "message": "RealType Void",
+          "id": 1870,
+          "type": "unsupported"
+        },
+        "id": 1871,
+        "type": "callable"
+      },
+      "id": 12,
+      "type": "function"
+    },
+    {
+      "identifier": "findExternalDeclarationsInSource",
+      "doc": null,
+      "signature": {
+        "parameters": [],
+        "typeParameters": {},
+        "returns": {
+          "message": "RealType Void",
+          "id": 1872,
+          "type": "unsupported"
+        },
+        "id": 1873,
+        "type": "callable"
+      },
+      "id": 13,
+      "type": "function"
+    },
+    {
+      "identifier": "buildExternalReferences",
+      "doc": null,
+      "signature": {
+        "parameters": [],
+        "typeParameters": {},
+        "returns": {
+          "message": "RealType Void",
+          "id": 1874,
+          "type": "unsupported"
+        },
+        "id": 1875,
+        "type": "callable"
+      },
+      "id": 14,
+      "type": "function"
+    },
+    {
+      "identifier": "getModuleSource",
+      "doc": null,
+      "signature": {
+        "parameters": [],
+        "typeParameters": {},
+        "returns": {
+          "message": "RealType Union",
+          "id": 1876,
+          "type": "unsupported"
+        },
+        "id": 1877,
+        "type": "callable"
+      },
+      "id": 15,
+      "type": "function"
+    }
+  ],
+  "identifiers": {
+    "0": "EchoModule",
+    "1": "ModuleBuildContext",
+    "2": "buildEchoModule",
+    "3": "TypeBuildContext",
+    "4": "PackageFileReferenceInfo",
+    "5": "createTypeBuilder2",
+    "6": "EchoType",
+    "7": "EchoDeclaration",
+    "8": "TSExportableDeclaration",
+    "9": "isStatementExported",
+    "10": "findTSExportableDeclarations",
+    "11": "createEchoDeclaration",
+    "12": "findExternalDeclarations",
+    "13": "findExternalDeclarationsInSource",
+    "14": "buildExternalReferences",
+    "15": "getModuleSource",
+    "19": "ModuleBuildContext",
+    "42": "EchoDeclaration.External",
+    "52": "EchoDeclaration.Any",
+    "54": "EchoDeclaration.ID",
+    "55": "EchoDeclaration",
+    "56": "TSExportableDeclaration",
+    "1115": "VariableDeclaration",
+    "1135": "FunctionDeclaration",
+    "1357": "ClassDeclaration",
+    "1362": "InterfaceDeclaration",
+    "1364": "TypeAliasDeclaration",
+    "1366": "EnumDeclaration",
+    "1369": "ModuleDeclaration",
+    "1392": "ExportDeclaration",
+    "1463": "SourceFile",
+    "1477": "Program",
+    "1485": "TypeChecker",
+    "1497": "Symbol",
+    "1653": "SemanticDiagnosticsBuilderProgram",
+    "1660": "ProgramHost"
+  }
+}

@@ -1,6 +1,5 @@
 import ts from "typescript";
-import { createEchoModuleBuilder } from "./ModuleBuilder.ts";
-import { EchoModule } from "./reflections.ts";
+import { buildEchoModule, EchoModule } from "./module.ts";
 
 export const createEchoWatcher = async (entryPoints: string[], onModule: (entryPoint: string, module: EchoModule) => void) => {
   const tsOptions: ts.CompilerOptions = {
@@ -33,23 +32,20 @@ export const createEchoWatcher = async (entryPoints: string[], onModule: (entryP
 
     const program = builder.getProgram();
     for (const diag of builder.getGlobalDiagnostics())
-      console.log('[DIAG]', diag.messageText)
+      console.log('[DIAG (global)]', diag.messageText)
     for (const diag of builder.getOptionsDiagnostics())
-      console.log('[DIAG]', diag.messageText)
+      console.log('[DIAG (options)]', diag.messageText)
     for (const diag of builder.getSemanticDiagnostics())
-      console.log('[DIAG]', diag.messageText)
+      console.log('[DIAG (semantic)]', diag.messageText, diag.source || diag.file?.fileName)
     for (const diag of builder.getSyntacticDiagnostics())
-      console.log('[DIAG]', diag.messageText)
-
-    const types = program.getTypeChecker();
+      console.log('[DIAG (syntactic)]', diag.messageText)
 
     for (const entryPoint of entryPoints) {
       const source = program.getSourceFile(entryPoint);
       if (!source)
         return console.warn(`Can't find file: "${entryPoint}"`);
 
-      const echo = createEchoModuleBuilder(types)
-      const mod = echo.createModule(source);
+      const mod = buildEchoModule(source.fileName.replaceAll('.ts', ''), source, program, host);
       performance.mark('builder:end')
 
       onModule(entryPoint, mod);
@@ -63,5 +59,5 @@ export const createEchoWatcher = async (entryPoints: string[], onModule: (entryP
   const watcher = ts.createWatchProgram(host)
   
 
-  return watcher;
+  return { watcher, host };
 };
