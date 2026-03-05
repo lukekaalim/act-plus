@@ -12,7 +12,7 @@ export namespace EchoType {
 
   export type CallableParameter = {
     name: string,
-    type: Any,
+    type: ID,
     optional: boolean,
   }
 
@@ -29,47 +29,52 @@ export namespace EchoType {
   }>
 
   export type Array = Define<"array", {
-    element: Any
+    element: ID
   }>
   export type Tuple = Define<"tuple", {
-    values: Any[]
+    values: ID[]
   }>
+  export type InternalAlias = Define<"internal-alias", {
+    alias: ID,
+  }>
+  export type Temporary = Define<"temporary", {}>
 
   export type Object = Define<"object", {
-    properties: Record<string, Any>,
+    properties: Record<string, ID>,
   }>
   export type IndexedAccess = Define<"indexed-access", {
-    target: Any,
-    accessor: Any,
+    target: ID,
+    accessor: ID,
   }>
 
   export type Callable = Define<"callable", {
     parameters: CallableParameter[],
-    typeParameters: Record<string, EchoDeclaration.TypeParameter>,
-    returns: Any,
+    typeParameters: EchoDeclaration.TypeParameter[],
+    returns: ID,
   }>
 
   export type Reference = Define<"reference", {
-    typeParameters: Any[],
+    typeParameters: ID[],
     id: EchoType.ID,
 
     target:
       | { type: 'internal', id: EchoDeclaration.ID }
       | { type: 'external', id: EchoDeclaration.ID }
+      | { type: 'generic', id: EchoDeclaration.ID }
   }>
 
   export type Union = Define<"union", {
-    branches: Any[]
+    branches: ID[]
   }>
   export type Intersection = Define<"intersection", {
-    branches: Any[]
+    branches: ID[]
   }>
   export type Unsupported = Define<"unsupported", {
     message: string
   }>
 
-  export const create = <T extends Any["type"]>(type: T, props: Omit<ByType<T>, "id" | "type">): ByType<T> => {
-    return { ...(props), id: createId(), type } as ByType<T>;
+  export const create = <T extends Any["type"]>(type: T, id: ID, props: Omit<ByType<T>, "id" | "type">): ByType<T> => {
+    return { ...(props), id, type } as ByType<T>;
   }
 
 
@@ -86,6 +91,8 @@ export namespace EchoType {
     | Unsupported
     | Intersection
     | IndexedAccess
+    | InternalAlias
+    | Temporary
 
   export type ByType<T extends Any["type"]> = Extract<Any, { type: T }>
 
@@ -101,7 +108,7 @@ export namespace EchoDeclaration {
 
 
   export type External = Define<'external', {
-    filename: string,
+    module: string,
     identifier: string,
   }>;
 
@@ -109,24 +116,24 @@ export namespace EchoDeclaration {
     identifier: string,
     id: EchoDeclaration.ID,
 
-    extends: null | EchoType.Any,
-    default: null | EchoType.Any
+    extends: null | EchoType.ID,
+    default: null | EchoType.ID
   }
 
   export type Variable = Define<"variable", {
     doc: null | string,
     identifier: string,
-    typeof: null | EchoType,
+    typeof: null | EchoType.ID,
   }>;
   export type Function = Define<"function", {
     doc: null | string,
     identifier: string,
-    signature: EchoType.Callable
+    signature: EchoType.ID,
   }>;
   export type Type = Define<"type", {
     doc: null | string,
     identifier: string,
-    declares: EchoType,
+    declares: EchoType.ID,
     parameters: TypeParameter[],
   }>;
   export type Class = Define<"class", {
@@ -146,7 +153,7 @@ export namespace EchoDeclaration {
   export type Namespace = Define<"namespace", {
     doc: null | string,
     identifier: string,
-    exports: Any[]
+    exports: EchoType.ID[]
   }>;
 
   export const create = <T extends Any["type"]>(id: ID, type: T, props: Omit<ByType<T>, "id" | "type">): ByType<T> => {

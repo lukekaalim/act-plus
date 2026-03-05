@@ -1,226 +1,1301 @@
 {
   "name": "index",
+  "types": {
+    "16": {
+      "builtin": "string",
+      "id": 16,
+      "type": "builtin"
+    },
+    "35": {
+      "target": {
+        "type": "external",
+        "id": 34
+      },
+      "typeParameters": [],
+      "id": 35,
+      "type": "reference"
+    },
+    "36": {
+      "target": {
+        "type": "internal",
+        "id": 6
+      },
+      "typeParameters": [],
+      "id": 36,
+      "type": "reference"
+    },
+    "1307": {
+      "target": {
+        "type": "external",
+        "id": 1306
+      },
+      "typeParameters": [
+        35,
+        36
+      ],
+      "id": 1307,
+      "type": "reference"
+    },
+    "1309": {
+      "target": {
+        "type": "external",
+        "id": 1308
+      },
+      "typeParameters": [],
+      "id": 1309,
+      "type": "reference"
+    },
+    "1310": {
+      "element": 1309,
+      "id": 1310,
+      "type": "array"
+    },
+    "1311": {
+      "target": {
+        "type": "internal",
+        "id": 7
+      },
+      "typeParameters": [],
+      "id": 1311,
+      "type": "reference"
+    },
+    "1312": {
+      "element": 1311,
+      "id": 1312,
+      "type": "array"
+    },
+    "1314": {
+      "target": {
+        "type": "external",
+        "id": 1313
+      },
+      "typeParameters": [],
+      "id": 1314,
+      "type": "reference"
+    },
+    "1315": {
+      "builtin": "string",
+      "id": 1315,
+      "type": "builtin"
+    },
+    "1316": {
+      "target": {
+        "type": "external",
+        "id": 1306
+      },
+      "typeParameters": [
+        1314,
+        1315
+      ],
+      "id": 1316,
+      "type": "reference"
+    },
+    "1317": {
+      "properties": {
+        "name": 16,
+        "types": 1307,
+        "references": 1310,
+        "exports": 1312,
+        "identifiers": 1316
+      },
+      "id": 1317,
+      "type": "object"
+    },
+    "1318": {
+      "target": {
+        "type": "external",
+        "id": 973
+      },
+      "typeParameters": [],
+      "id": 1318,
+      "type": "reference"
+    },
+    "1319": {
+      "target": {
+        "type": "external",
+        "id": 987
+      },
+      "typeParameters": [],
+      "id": 1319,
+      "type": "reference"
+    },
+    "1320": {
+      "target": {
+        "type": "external",
+        "id": 1163
+      },
+      "typeParameters": [],
+      "id": 1320,
+      "type": "reference"
+    },
+    "1321": {
+      "target": {
+        "type": "external",
+        "id": 1170
+      },
+      "typeParameters": [
+        1320
+      ],
+      "id": 1321,
+      "type": "reference"
+    },
+    "1322": {
+      "target": {
+        "type": "external",
+        "id": 995
+      },
+      "typeParameters": [],
+      "id": 1322,
+      "type": "reference"
+    },
+    "1323": {
+      "target": {
+        "type": "internal",
+        "id": 8
+      },
+      "typeParameters": [],
+      "id": 1323,
+      "type": "reference"
+    },
+    "1324": {
+      "element": 1323,
+      "id": 1324,
+      "type": "array"
+    },
+    "1325": {
+      "value": null,
+      "id": 1325,
+      "type": "literal"
+    },
+    "1326": {
+      "branches": [
+        1324,
+        1325
+      ],
+      "id": 1326,
+      "type": "union"
+    },
+    "1327": {
+      "target": {
+        "type": "external",
+        "id": 34
+      },
+      "typeParameters": [],
+      "id": 1327,
+      "type": "reference"
+    },
+    "1329": {
+      "target": {
+        "type": "external",
+        "id": 1328
+      },
+      "typeParameters": [],
+      "id": 1329,
+      "type": "reference"
+    },
+    "1331": {
+      "target": {
+        "type": "external",
+        "id": 1330
+      },
+      "typeParameters": [
+        1327,
+        1329
+      ],
+      "id": 1331,
+      "type": "reference"
+    },
+    "1332": {
+      "target": {
+        "type": "external",
+        "id": 1007
+      },
+      "typeParameters": [],
+      "id": 1332,
+      "type": "reference"
+    },
+    "1333": {
+      "target": {
+        "type": "external",
+        "id": 1313
+      },
+      "typeParameters": [],
+      "id": 1333,
+      "type": "reference"
+    },
+    "1334": {
+      "target": {
+        "type": "external",
+        "id": 1330
+      },
+      "typeParameters": [
+        1332,
+        1333
+      ],
+      "id": 1334,
+      "type": "reference"
+    },
+    "1335": {
+      "target": {
+        "type": "external",
+        "id": 1007
+      },
+      "typeParameters": [],
+      "id": 1335,
+      "type": "reference"
+    },
+    "1336": {
+      "target": {
+        "type": "external",
+        "id": 1313
+      },
+      "typeParameters": [],
+      "id": 1336,
+      "type": "reference"
+    },
+    "1337": {
+      "target": {
+        "type": "external",
+        "id": 1330
+      },
+      "typeParameters": [
+        1335,
+        1336
+      ],
+      "id": 1337,
+      "type": "reference"
+    },
+    "1338": {
+      "target": {
+        "type": "external",
+        "id": 1007
+      },
+      "typeParameters": [],
+      "id": 1338,
+      "type": "reference"
+    },
+    "1339": {
+      "target": {
+        "type": "external",
+        "id": 1308
+      },
+      "typeParameters": [],
+      "id": 1339,
+      "type": "reference"
+    },
+    "1340": {
+      "target": {
+        "type": "external",
+        "id": 1330
+      },
+      "typeParameters": [
+        1338,
+        1339
+      ],
+      "id": 1340,
+      "type": "reference"
+    },
+    "1341": {
+      "target": {
+        "type": "external",
+        "id": 1007
+      },
+      "typeParameters": [],
+      "id": 1341,
+      "type": "reference"
+    },
+    "1343": {
+      "target": {
+        "type": "external",
+        "id": 1342
+      },
+      "typeParameters": [
+        1341
+      ],
+      "id": 1343,
+      "type": "reference"
+    },
+    "1344": {
+      "target": {
+        "type": "external",
+        "id": 1313
+      },
+      "typeParameters": [],
+      "id": 1344,
+      "type": "reference"
+    },
+    "1345": {
+      "builtin": "string",
+      "id": 1345,
+      "type": "builtin"
+    },
+    "1346": {
+      "target": {
+        "type": "external",
+        "id": 1330
+      },
+      "typeParameters": [
+        1344,
+        1345
+      ],
+      "id": 1346,
+      "type": "reference"
+    },
+    "1347": {
+      "target": {
+        "type": "internal",
+        "id": 7
+      },
+      "typeParameters": [],
+      "id": 1347,
+      "type": "reference"
+    },
+    "1348": {
+      "element": 1347,
+      "id": 1348,
+      "type": "array"
+    },
+    "1349": {
+      "value": null,
+      "id": 1349,
+      "type": "literal"
+    },
+    "1350": {
+      "branches": [
+        1348,
+        1349
+      ],
+      "id": 1350,
+      "type": "union"
+    },
+    "1351": {
+      "target": {
+        "type": "external",
+        "id": 1308
+      },
+      "typeParameters": [],
+      "id": 1351,
+      "type": "reference"
+    },
+    "1352": {
+      "element": 1351,
+      "id": 1352,
+      "type": "array"
+    },
+    "1353": {
+      "properties": {
+        "source": 1318,
+        "program": 1319,
+        "host": 1321,
+        "checker": 1322,
+        "internalDeclarations": 1326,
+        "includedTypes": 1331,
+        "internalSymbols": 1334,
+        "externalSymbols": 1337,
+        "exploredSymbols": 1340,
+        "exploredPackagesModules": 1343,
+        "identifiers": 1346,
+        "declarations": 1350,
+        "references": 1352
+      },
+      "id": 1353,
+      "type": "object"
+    },
+    "1354": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": 1355
+        },
+        {
+          "name": "source",
+          "optional": false,
+          "type": 1356
+        },
+        {
+          "name": "program",
+          "optional": false,
+          "type": 1357
+        },
+        {
+          "name": "host",
+          "optional": false,
+          "type": 1358
+        }
+      ],
+      "returns": 1360,
+      "id": 1354,
+      "type": "callable"
+    },
+    "1355": {
+      "builtin": "string",
+      "id": 1355,
+      "type": "builtin"
+    },
+    "1356": {
+      "target": {
+        "type": "external",
+        "id": 973
+      },
+      "typeParameters": [],
+      "id": 1356,
+      "type": "reference"
+    },
+    "1357": {
+      "target": {
+        "type": "external",
+        "id": 987
+      },
+      "typeParameters": [],
+      "id": 1357,
+      "type": "reference"
+    },
+    "1358": {
+      "target": {
+        "type": "external",
+        "id": 1170
+      },
+      "typeParameters": [
+        1359
+      ],
+      "id": 1358,
+      "type": "reference"
+    },
+    "1359": {
+      "target": {
+        "type": "external",
+        "id": 1163
+      },
+      "typeParameters": [],
+      "id": 1359,
+      "type": "reference"
+    },
+    "1360": {
+      "target": {
+        "type": "external",
+        "id": 18
+      },
+      "typeParameters": [],
+      "id": 1360,
+      "type": "reference"
+    },
+    "1361": {
+      "target": {
+        "type": "internal",
+        "id": 1
+      },
+      "typeParameters": [],
+      "id": 1361,
+      "type": "reference"
+    },
+    "1362": {
+      "target": {
+        "type": "external",
+        "id": 1007
+      },
+      "typeParameters": [],
+      "id": 1362,
+      "type": "reference"
+    },
+    "1364": {
+      "target": {
+        "type": "external",
+        "id": 1363
+      },
+      "typeParameters": [],
+      "id": 1364,
+      "type": "reference"
+    },
+    "1365": {
+      "target": {
+        "type": "external",
+        "id": 1330
+      },
+      "typeParameters": [
+        1362,
+        1364
+      ],
+      "id": 1365,
+      "type": "reference"
+    },
+    "1366": {
+      "target": {
+        "type": "external",
+        "id": 1015
+      },
+      "typeParameters": [],
+      "id": 1366,
+      "type": "reference"
+    },
+    "1367": {
+      "target": {
+        "type": "external",
+        "id": 34
+      },
+      "typeParameters": [],
+      "id": 1367,
+      "type": "reference"
+    },
+    "1368": {
+      "target": {
+        "type": "external",
+        "id": 1330
+      },
+      "typeParameters": [
+        1366,
+        1367
+      ],
+      "id": 1368,
+      "type": "reference"
+    },
+    "1369": {
+      "properties": {
+        "module": 1361,
+        "parametricTypes": 1365,
+        "visitedTypes": 1368
+      },
+      "id": 1369,
+      "type": "object"
+    },
+    "1370": {
+      "builtin": "string",
+      "id": 1370,
+      "type": "builtin"
+    },
+    "1371": {
+      "builtin": "string",
+      "id": 1371,
+      "type": "builtin"
+    },
+    "1372": {
+      "builtin": "string",
+      "id": 1372,
+      "type": "builtin"
+    },
+    "1373": {
+      "properties": {
+        "package": 1370,
+        "packagePath": 1371,
+        "relativePath": 1372
+      },
+      "id": 1373,
+      "type": "object"
+    },
+    "1374": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "context",
+          "optional": false,
+          "type": 1375
+        }
+      ],
+      "returns": 1376,
+      "id": 1374,
+      "type": "callable"
+    },
+    "1375": {
+      "target": {
+        "type": "internal",
+        "id": 3
+      },
+      "typeParameters": [],
+      "id": 1375,
+      "type": "reference"
+    },
+    "1376": {
+      "properties": {
+        "instances": 1377,
+        "declarations": 1383
+      },
+      "id": 1376,
+      "type": "object"
+    },
+    "1377": {
+      "properties": {
+        "fromType": 1378
+      },
+      "id": 1377,
+      "type": "object"
+    },
+    "1378": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "type",
+          "optional": false,
+          "type": 1379
+        },
+        {
+          "name": "ignoreDeclarations",
+          "optional": false,
+          "type": 1380
+        }
+      ],
+      "returns": 1381,
+      "id": 1378,
+      "type": "callable"
+    },
+    "1379": {
+      "target": {
+        "type": "external",
+        "id": 1015
+      },
+      "typeParameters": [],
+      "id": 1379,
+      "type": "reference"
+    },
+    "1380": {
+      "message": "RealType Boolean,Union",
+      "id": 1380,
+      "type": "unsupported"
+    },
+    "1381": {
+      "target": {
+        "type": "external",
+        "id": 34
+      },
+      "typeParameters": [],
+      "id": 1381,
+      "type": "reference"
+    },
+    "1383": {
+      "target": {
+        "type": "external",
+        "id": 1382
+      },
+      "typeParameters": [],
+      "id": 1383,
+      "type": "reference"
+    },
+    "1384": {
+      "target": {
+        "type": "external",
+        "id": 1328
+      },
+      "typeParameters": [],
+      "id": 1384,
+      "type": "reference"
+    },
+    "1386": {
+      "target": {
+        "type": "external",
+        "id": 1385
+      },
+      "typeParameters": [],
+      "id": 1386,
+      "type": "reference"
+    },
+    "1387": {
+      "target": {
+        "type": "external",
+        "id": 902
+      },
+      "typeParameters": [],
+      "id": 1387,
+      "type": "reference"
+    },
+    "1388": {
+      "target": {
+        "type": "external",
+        "id": 625
+      },
+      "typeParameters": [],
+      "id": 1388,
+      "type": "reference"
+    },
+    "1389": {
+      "target": {
+        "type": "external",
+        "id": 874
+      },
+      "typeParameters": [],
+      "id": 1389,
+      "type": "reference"
+    },
+    "1390": {
+      "target": {
+        "type": "external",
+        "id": 867
+      },
+      "typeParameters": [],
+      "id": 1390,
+      "type": "reference"
+    },
+    "1391": {
+      "target": {
+        "type": "external",
+        "id": 879
+      },
+      "typeParameters": [],
+      "id": 1391,
+      "type": "reference"
+    },
+    "1392": {
+      "target": {
+        "type": "external",
+        "id": 872
+      },
+      "typeParameters": [],
+      "id": 1392,
+      "type": "reference"
+    },
+    "1393": {
+      "target": {
+        "type": "external",
+        "id": 876
+      },
+      "typeParameters": [],
+      "id": 1393,
+      "type": "reference"
+    },
+    "1394": {
+      "target": {
+        "type": "external",
+        "id": 645
+      },
+      "typeParameters": [],
+      "id": 1394,
+      "type": "reference"
+    },
+    "1395": {
+      "branches": [
+        1387,
+        1388,
+        1389,
+        1390,
+        1391,
+        1392,
+        1393,
+        1394
+      ],
+      "id": 1395,
+      "type": "union"
+    },
+    "1396": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "statement",
+          "optional": false,
+          "type": 1397
+        }
+      ],
+      "returns": 1398,
+      "id": 1396,
+      "type": "callable"
+    },
+    "1397": {
+      "message": "RealType Union",
+      "id": 1397,
+      "type": "unsupported"
+    },
+    "1398": {
+      "message": "RealType Union",
+      "id": 1398,
+      "type": "unsupported"
+    },
+    "1399": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "statements",
+          "optional": false,
+          "type": 1400
+        },
+        {
+          "name": "filename",
+          "optional": false,
+          "type": 1401
+        },
+        {
+          "name": "context",
+          "optional": false,
+          "type": 1402
+        }
+      ],
+      "returns": 1404,
+      "id": 1399,
+      "type": "callable"
+    },
+    "1400": {
+      "message": "RealType Union",
+      "id": 1400,
+      "type": "unsupported"
+    },
+    "1401": {
+      "builtin": "string",
+      "id": 1401,
+      "type": "builtin"
+    },
+    "1402": {
+      "target": {
+        "type": "internal",
+        "id": 1
+      },
+      "typeParameters": [],
+      "id": 1402,
+      "type": "reference"
+    },
+    "1404": {
+      "target": {
+        "type": "external",
+        "id": 1403
+      },
+      "typeParameters": [
+        1405
+      ],
+      "id": 1404,
+      "type": "reference"
+    },
+    "1405": {
+      "target": {
+        "type": "internal",
+        "id": 8
+      },
+      "typeParameters": [],
+      "id": 1405,
+      "type": "reference"
+    },
+    "1406": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "tsDeclaration",
+          "optional": false,
+          "type": 1407
+        },
+        {
+          "name": "context",
+          "optional": false,
+          "type": 1408
+        }
+      ],
+      "returns": 1409,
+      "id": 1406,
+      "type": "callable"
+    },
+    "1407": {
+      "target": {
+        "type": "internal",
+        "id": 8
+      },
+      "typeParameters": [],
+      "id": 1407,
+      "type": "reference"
+    },
+    "1408": {
+      "target": {
+        "type": "internal",
+        "id": 1
+      },
+      "typeParameters": [],
+      "id": 1408,
+      "type": "reference"
+    },
+    "1409": {
+      "target": {
+        "type": "external",
+        "id": 1385
+      },
+      "typeParameters": [],
+      "id": 1409,
+      "type": "reference"
+    },
+    "1410": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "declarationPackage",
+          "optional": false,
+          "type": 1411
+        },
+        {
+          "name": "sourceFile",
+          "optional": false,
+          "type": 1412
+        },
+        {
+          "name": "context",
+          "optional": false,
+          "type": 1413
+        }
+      ],
+      "returns": 1414,
+      "id": 1410,
+      "type": "callable"
+    },
+    "1411": {
+      "target": {
+        "type": "internal",
+        "id": 4
+      },
+      "typeParameters": [],
+      "id": 1411,
+      "type": "reference"
+    },
+    "1412": {
+      "target": {
+        "type": "external",
+        "id": 973
+      },
+      "typeParameters": [],
+      "id": 1412,
+      "type": "reference"
+    },
+    "1413": {
+      "target": {
+        "type": "internal",
+        "id": 1
+      },
+      "typeParameters": [],
+      "id": 1413,
+      "type": "reference"
+    },
+    "1414": {
+      "keyword": "void",
+      "id": 1414,
+      "type": "keyword"
+    },
+    "1415": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "packageName",
+          "optional": false,
+          "type": 1416
+        },
+        {
+          "name": "sourceFile",
+          "optional": false,
+          "type": 1417
+        },
+        {
+          "name": "context",
+          "optional": false,
+          "type": 1418
+        }
+      ],
+      "returns": 1419,
+      "id": 1415,
+      "type": "callable"
+    },
+    "1416": {
+      "builtin": "string",
+      "id": 1416,
+      "type": "builtin"
+    },
+    "1417": {
+      "target": {
+        "type": "external",
+        "id": 973
+      },
+      "typeParameters": [],
+      "id": 1417,
+      "type": "reference"
+    },
+    "1418": {
+      "target": {
+        "type": "internal",
+        "id": 1
+      },
+      "typeParameters": [],
+      "id": 1418,
+      "type": "reference"
+    },
+    "1419": {
+      "keyword": "void",
+      "id": 1419,
+      "type": "keyword"
+    },
+    "1420": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "symbol",
+          "optional": false,
+          "type": 1421
+        },
+        {
+          "name": "moduleName",
+          "optional": false,
+          "type": 1422
+        },
+        {
+          "name": "context",
+          "optional": false,
+          "type": 1423
+        },
+        {
+          "name": "qualifiers",
+          "optional": false,
+          "type": 1424
+        }
+      ],
+      "returns": 1425,
+      "id": 1420,
+      "type": "callable"
+    },
+    "1421": {
+      "target": {
+        "type": "external",
+        "id": 1007
+      },
+      "typeParameters": [],
+      "id": 1421,
+      "type": "reference"
+    },
+    "1422": {
+      "builtin": "string",
+      "id": 1422,
+      "type": "builtin"
+    },
+    "1423": {
+      "target": {
+        "type": "internal",
+        "id": 1
+      },
+      "typeParameters": [],
+      "id": 1423,
+      "type": "reference"
+    },
+    "1424": {
+      "target": {
+        "type": "external",
+        "id": 1403
+      },
+      "typeParameters": [
+        1422
+      ],
+      "id": 1424,
+      "type": "reference"
+    },
+    "1425": {
+      "keyword": "void",
+      "id": 1425,
+      "type": "keyword"
+    },
+    "1426": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "moduleName",
+          "optional": false,
+          "type": 1427
+        },
+        {
+          "name": "currentFile",
+          "optional": false,
+          "type": 1428
+        },
+        {
+          "name": "context",
+          "optional": false,
+          "type": 1429
+        }
+      ],
+      "returns": 1430,
+      "id": 1426,
+      "type": "callable"
+    },
+    "1427": {
+      "builtin": "string",
+      "id": 1427,
+      "type": "builtin"
+    },
+    "1428": {
+      "target": {
+        "type": "external",
+        "id": 973
+      },
+      "typeParameters": [],
+      "id": 1428,
+      "type": "reference"
+    },
+    "1429": {
+      "target": {
+        "type": "internal",
+        "id": 1
+      },
+      "typeParameters": [],
+      "id": 1429,
+      "type": "reference"
+    },
+    "1430": {
+      "message": "RealType Union",
+      "id": 1430,
+      "type": "unsupported"
+    }
+  },
   "references": [
     {
-      "identifier": "EchoDeclaration.External",
-      "filename": "@lukekaalim/echo",
-      "id": 42,
-      "type": "external"
-    },
-    {
-      "identifier": "EchoDeclaration",
-      "filename": "@lukekaalim/echo",
-      "id": 55,
+      "identifier": "ID",
+      "module": "@lukekaalim/echo/reflections.ts",
+      "id": 34,
       "type": "external"
     },
     {
       "identifier": "Record",
-      "filename": "typescript/lib/lib.es5.d.ts",
-      "id": 1797,
+      "module": "typescript/lib/lib.es5.d.ts",
+      "id": 1306,
       "type": "external"
     },
     {
-      "identifier": "EchoDeclaration.ID",
-      "filename": "@lukekaalim/echo",
-      "id": 54,
+      "identifier": "External",
+      "module": "@lukekaalim/echo/reflections.ts",
+      "id": 1308,
+      "type": "external"
+    },
+    {
+      "identifier": "ID",
+      "module": "@lukekaalim/echo/reflections.ts",
+      "id": 1313,
       "type": "external"
     },
     {
       "identifier": "SourceFile",
-      "filename": "typescript",
-      "id": 1463,
+      "module": "typescript",
+      "id": 973,
       "type": "external"
     },
     {
       "identifier": "Program",
-      "filename": "typescript",
-      "id": 1477,
-      "type": "external"
-    },
-    {
-      "identifier": "ProgramHost",
-      "filename": "typescript",
-      "id": 1660,
+      "module": "typescript",
+      "id": 987,
       "type": "external"
     },
     {
       "identifier": "SemanticDiagnosticsBuilderProgram",
-      "filename": "typescript",
-      "id": 1653,
+      "module": "typescript",
+      "id": 1163,
+      "type": "external"
+    },
+    {
+      "identifier": "ProgramHost",
+      "module": "typescript",
+      "id": 1170,
       "type": "external"
     },
     {
       "identifier": "TypeChecker",
-      "filename": "typescript",
-      "id": 1485,
-      "type": "external"
-    },
-    {
-      "identifier": "TSExportableDeclaration",
-      "filename": "@lukekaalim/echo",
-      "id": 56,
-      "type": "external"
-    },
-    {
-      "identifier": "Map",
-      "filename": "typescript/lib/lib.es2015.collection.d.ts",
-      "id": 1811,
-      "type": "external"
-    },
-    {
-      "identifier": "Symbol",
-      "filename": "typescript",
-      "id": 1497,
-      "type": "external"
-    },
-    {
-      "identifier": "Set",
-      "filename": "typescript/lib/lib.es2015.collection.d.ts",
-      "id": 1821,
-      "type": "external"
-    },
-    {
-      "identifier": "EchoDeclaration",
-      "filename": "@lukekaalim/echo",
-      "id": 55,
-      "type": "external"
-    },
-    {
-      "identifier": "ModuleBuildContext",
-      "filename": "@lukekaalim/echo",
-      "id": 19,
+      "module": "typescript",
+      "id": 995,
       "type": "external"
     },
     {
       "identifier": "Any",
-      "filename": "@lukekaalim/echo/reflections.ts",
-      "id": 1844,
+      "module": "@lukekaalim/echo/reflections.ts",
+      "id": 1328,
       "type": "external"
     },
     {
-      "identifier": "EchoDeclaration.Any",
-      "filename": "@lukekaalim/echo",
-      "id": 52,
+      "identifier": "Map",
+      "module": "typescript/lib/lib.es2015.collection.d.ts",
+      "id": 1330,
+      "type": "external"
+    },
+    {
+      "identifier": "Symbol",
+      "module": "typescript",
+      "id": 1007,
+      "type": "external"
+    },
+    {
+      "identifier": "Set",
+      "module": "typescript/lib/lib.es2015.collection.d.ts",
+      "id": 1342,
+      "type": "external"
+    },
+    {
+      "identifier": "EchoModule",
+      "module": "@lukekaalim/echo",
+      "id": 18,
+      "type": "external"
+    },
+    {
+      "identifier": "TypeParameter",
+      "module": "@lukekaalim/echo/reflections.ts",
+      "id": 1363,
+      "type": "external"
+    },
+    {
+      "identifier": "Type",
+      "module": "typescript",
+      "id": 1015,
+      "type": "external"
+    },
+    {
+      "identifier": "DeclarationsTypeBuilder",
+      "module": "@lukekaalim/echo/types/declarations.ts",
+      "id": 1382,
+      "type": "external"
+    },
+    {
+      "identifier": "Any",
+      "module": "@lukekaalim/echo/reflections.ts",
+      "id": 1385,
       "type": "external"
     },
     {
       "identifier": "ExportDeclaration",
-      "filename": "typescript",
-      "id": 1392,
+      "module": "typescript",
+      "id": 902,
       "type": "external"
     },
     {
       "identifier": "VariableDeclaration",
-      "filename": "typescript",
-      "id": 1115,
+      "module": "typescript",
+      "id": 625,
       "type": "external"
     },
     {
       "identifier": "TypeAliasDeclaration",
-      "filename": "typescript",
-      "id": 1364,
+      "module": "typescript",
+      "id": 874,
       "type": "external"
     },
     {
       "identifier": "ClassDeclaration",
-      "filename": "typescript",
-      "id": 1357,
+      "module": "typescript",
+      "id": 867,
       "type": "external"
     },
     {
       "identifier": "ModuleDeclaration",
-      "filename": "typescript",
-      "id": 1369,
+      "module": "typescript",
+      "id": 879,
       "type": "external"
     },
     {
       "identifier": "InterfaceDeclaration",
-      "filename": "typescript",
-      "id": 1362,
+      "module": "typescript",
+      "id": 872,
       "type": "external"
     },
     {
       "identifier": "EnumDeclaration",
-      "filename": "typescript",
-      "id": 1366,
+      "module": "typescript",
+      "id": 876,
       "type": "external"
     },
     {
       "identifier": "FunctionDeclaration",
-      "filename": "typescript",
-      "id": 1135,
+      "module": "typescript",
+      "id": 645,
       "type": "external"
     },
     {
       "identifier": "Array",
-      "filename": "typescript/lib/lib.es5.d.ts",
-      "id": 1864,
+      "module": "typescript/lib/lib.es5.d.ts",
+      "id": 1403,
       "type": "external"
     }
   ],
   "exports": [
     {
-      "declares": {
-        "properties": {
-          "name": {
-            "builtin": "string",
-            "id": 16,
-            "type": "builtin"
-          },
-          "references": {
-            "element": {
-              "target": {
-                "type": "external",
-                "id": 42
-              },
-              "typeParameters": [],
-              "id": 64,
-              "type": "reference"
-            },
-            "id": 65,
-            "type": "array"
-          },
-          "exports": {
-            "element": {
-              "target": {
-                "type": "external",
-                "id": 55
-              },
-              "typeParameters": [],
-              "id": 66,
-              "type": "reference"
-            },
-            "id": 67,
-            "type": "array"
-          },
-          "identifiers": {
-            "target": {
-              "type": "external",
-              "id": 1797
-            },
-            "typeParameters": [
-              {
-                "target": {
-                  "type": "external",
-                  "id": 54
-                },
-                "typeParameters": [],
-                "id": 1798,
-                "type": "reference"
-              },
-              {
-                "builtin": "string",
-                "id": 1799,
-                "type": "builtin"
-              }
-            ],
-            "id": 1800,
-            "type": "reference"
-          }
-        },
-        "id": 1801,
-        "type": "object"
-      },
+      "declares": 1317,
       "parameters": [],
       "doc": "/**\n * The output of analysis of a module.\n * \n * Includes all the things Echo detected\n * as \"exported declaration\", as well\n * as references to things that weren't\n * exported, such as internal, hidden\n * types or types from other packages.\n */",
       "identifier": "EchoModule",
@@ -228,246 +1303,7 @@
       "type": "type"
     },
     {
-      "declares": {
-        "properties": {
-          "source": {
-            "target": {
-              "type": "external",
-              "id": 1463
-            },
-            "typeParameters": [],
-            "id": 1802,
-            "type": "reference"
-          },
-          "program": {
-            "target": {
-              "type": "external",
-              "id": 1477
-            },
-            "typeParameters": [],
-            "id": 1803,
-            "type": "reference"
-          },
-          "host": {
-            "target": {
-              "type": "external",
-              "id": 1660
-            },
-            "typeParameters": [
-              {
-                "target": {
-                  "type": "external",
-                  "id": 1653
-                },
-                "typeParameters": [],
-                "id": 1804,
-                "type": "reference"
-              }
-            ],
-            "id": 1805,
-            "type": "reference"
-          },
-          "checker": {
-            "target": {
-              "type": "external",
-              "id": 1485
-            },
-            "typeParameters": [],
-            "id": 1806,
-            "type": "reference"
-          },
-          "internalDeclarations": {
-            "branches": [
-              {
-                "element": {
-                  "target": {
-                    "type": "external",
-                    "id": 56
-                  },
-                  "typeParameters": [],
-                  "id": 1807,
-                  "type": "reference"
-                },
-                "id": 1808,
-                "type": "array"
-              },
-              {
-                "value": null,
-                "id": 1809,
-                "type": "literal"
-              }
-            ],
-            "id": 1810,
-            "type": "union"
-          },
-          "internalSymbols": {
-            "target": {
-              "type": "external",
-              "id": 1811
-            },
-            "typeParameters": [
-              {
-                "target": {
-                  "type": "external",
-                  "id": 1497
-                },
-                "typeParameters": [],
-                "id": 1812,
-                "type": "reference"
-              },
-              {
-                "target": {
-                  "type": "external",
-                  "id": 54
-                },
-                "typeParameters": [],
-                "id": 1813,
-                "type": "reference"
-              }
-            ],
-            "id": 1814,
-            "type": "reference"
-          },
-          "externalSymbols": {
-            "target": {
-              "type": "external",
-              "id": 1811
-            },
-            "typeParameters": [
-              {
-                "target": {
-                  "type": "external",
-                  "id": 1497
-                },
-                "typeParameters": [],
-                "id": 1815,
-                "type": "reference"
-              },
-              {
-                "target": {
-                  "type": "external",
-                  "id": 54
-                },
-                "typeParameters": [],
-                "id": 1816,
-                "type": "reference"
-              }
-            ],
-            "id": 1817,
-            "type": "reference"
-          },
-          "exploredSymbols": {
-            "target": {
-              "type": "external",
-              "id": 1811
-            },
-            "typeParameters": [
-              {
-                "target": {
-                  "type": "external",
-                  "id": 1497
-                },
-                "typeParameters": [],
-                "id": 1818,
-                "type": "reference"
-              },
-              {
-                "target": {
-                  "type": "external",
-                  "id": 42
-                },
-                "typeParameters": [],
-                "id": 1819,
-                "type": "reference"
-              }
-            ],
-            "id": 1820,
-            "type": "reference"
-          },
-          "exploredPackagesModules": {
-            "target": {
-              "type": "external",
-              "id": 1821
-            },
-            "typeParameters": [
-              {
-                "target": {
-                  "type": "external",
-                  "id": 1497
-                },
-                "typeParameters": [],
-                "id": 1822,
-                "type": "reference"
-              }
-            ],
-            "id": 1823,
-            "type": "reference"
-          },
-          "identifiers": {
-            "target": {
-              "type": "external",
-              "id": 1811
-            },
-            "typeParameters": [
-              {
-                "target": {
-                  "type": "external",
-                  "id": 54
-                },
-                "typeParameters": [],
-                "id": 1824,
-                "type": "reference"
-              },
-              {
-                "builtin": "string",
-                "id": 1825,
-                "type": "builtin"
-              }
-            ],
-            "id": 1826,
-            "type": "reference"
-          },
-          "declarations": {
-            "branches": [
-              {
-                "element": {
-                  "target": {
-                    "type": "external",
-                    "id": 55
-                  },
-                  "typeParameters": [],
-                  "id": 1827,
-                  "type": "reference"
-                },
-                "id": 1828,
-                "type": "array"
-              },
-              {
-                "value": null,
-                "id": 1829,
-                "type": "literal"
-              }
-            ],
-            "id": 1830,
-            "type": "union"
-          },
-          "references": {
-            "element": {
-              "target": {
-                "type": "external",
-                "id": 42
-              },
-              "typeParameters": [],
-              "id": 1831,
-              "type": "reference"
-            },
-            "id": 1832,
-            "type": "array"
-          }
-        },
-        "id": 1833,
-        "type": "object"
-      },
+      "declares": 1353,
       "parameters": [],
       "doc": "/**\n * @private\n * \n * ModuleBuildContext is a utility data structure\n * to keep track of discovered ts-specific information\n * as the build function generates all the declarations.\n */",
       "identifier": "ModuleBuildContext",
@@ -477,53 +1313,12 @@
     {
       "identifier": "buildEchoModule",
       "doc": null,
-      "signature": {
-        "parameters": [],
-        "typeParameters": {},
-        "returns": {
-          "target": {
-            "type": "internal",
-            "id": 0
-          },
-          "typeParameters": [],
-          "id": 1834,
-          "type": "reference"
-        },
-        "id": 1835,
-        "type": "callable"
-      },
+      "signature": 1354,
       "id": 2,
       "type": "function"
     },
     {
-      "declares": {
-        "properties": {
-          "module": {
-            "target": {
-              "type": "external",
-              "id": 19
-            },
-            "typeParameters": [],
-            "id": 1836,
-            "type": "reference"
-          },
-          "parametricTypes": {
-            "element": {
-              "target": {
-                "type": "external",
-                "id": 1497
-              },
-              "typeParameters": [],
-              "id": 1837,
-              "type": "reference"
-            },
-            "id": 1838,
-            "type": "array"
-          }
-        },
-        "id": 1839,
-        "type": "object"
-      },
+      "declares": 1369,
       "parameters": [],
       "doc": null,
       "identifier": "TypeBuildContext",
@@ -531,27 +1326,7 @@
       "type": "type"
     },
     {
-      "declares": {
-        "properties": {
-          "package": {
-            "builtin": "string",
-            "id": 1840,
-            "type": "builtin"
-          },
-          "packagePath": {
-            "builtin": "string",
-            "id": 1841,
-            "type": "builtin"
-          },
-          "relativePath": {
-            "builtin": "string",
-            "id": 1842,
-            "type": "builtin"
-          }
-        },
-        "id": 1843,
-        "type": "object"
-      },
+      "declares": 1373,
       "parameters": [],
       "doc": null,
       "identifier": "PackageFileReferenceInfo",
@@ -561,61 +1336,12 @@
     {
       "identifier": "createTypeBuilder2",
       "doc": null,
-      "signature": {
-        "parameters": [],
-        "typeParameters": {},
-        "returns": {
-          "properties": {
-            "buildFromTsTypeNode": {
-              "parameters": [],
-              "typeParameters": {},
-              "returns": {
-                "target": {
-                  "type": "external",
-                  "id": 1844
-                },
-                "typeParameters": [],
-                "id": 1845,
-                "type": "reference"
-              },
-              "id": 1846,
-              "type": "callable"
-            },
-            "buildFromTsType": {
-              "parameters": [],
-              "typeParameters": {},
-              "returns": {
-                "target": {
-                  "type": "external",
-                  "id": 1844
-                },
-                "typeParameters": [],
-                "id": 1847,
-                "type": "reference"
-              },
-              "id": 1848,
-              "type": "callable"
-            }
-          },
-          "id": 1849,
-          "type": "object"
-        },
-        "id": 1850,
-        "type": "callable"
-      },
+      "signature": 1374,
       "id": 5,
       "type": "function"
     },
     {
-      "declares": {
-        "target": {
-          "type": "external",
-          "id": 1844
-        },
-        "typeParameters": [],
-        "id": 1851,
-        "type": "reference"
-      },
+      "declares": 1384,
       "parameters": [],
       "doc": null,
       "identifier": "EchoType",
@@ -623,15 +1349,7 @@
       "type": "type"
     },
     {
-      "declares": {
-        "target": {
-          "type": "external",
-          "id": 52
-        },
-        "typeParameters": [],
-        "id": 1852,
-        "type": "reference"
-      },
+      "declares": 1386,
       "parameters": [],
       "doc": null,
       "identifier": "EchoDeclaration",
@@ -639,84 +1357,7 @@
       "type": "type"
     },
     {
-      "declares": {
-        "branches": [
-          {
-            "target": {
-              "type": "external",
-              "id": 1392
-            },
-            "typeParameters": [],
-            "id": 1853,
-            "type": "reference"
-          },
-          {
-            "target": {
-              "type": "external",
-              "id": 1115
-            },
-            "typeParameters": [],
-            "id": 1854,
-            "type": "reference"
-          },
-          {
-            "target": {
-              "type": "external",
-              "id": 1364
-            },
-            "typeParameters": [],
-            "id": 1855,
-            "type": "reference"
-          },
-          {
-            "target": {
-              "type": "external",
-              "id": 1357
-            },
-            "typeParameters": [],
-            "id": 1856,
-            "type": "reference"
-          },
-          {
-            "target": {
-              "type": "external",
-              "id": 1369
-            },
-            "typeParameters": [],
-            "id": 1857,
-            "type": "reference"
-          },
-          {
-            "target": {
-              "type": "external",
-              "id": 1362
-            },
-            "typeParameters": [],
-            "id": 1858,
-            "type": "reference"
-          },
-          {
-            "target": {
-              "type": "external",
-              "id": 1366
-            },
-            "typeParameters": [],
-            "id": 1859,
-            "type": "reference"
-          },
-          {
-            "target": {
-              "type": "external",
-              "id": 1135
-            },
-            "typeParameters": [],
-            "id": 1860,
-            "type": "reference"
-          }
-        ],
-        "id": 1861,
-        "type": "union"
-      },
+      "declares": 1395,
       "parameters": [],
       "doc": null,
       "identifier": "TSExportableDeclaration",
@@ -726,137 +1367,49 @@
     {
       "identifier": "isStatementExported",
       "doc": null,
-      "signature": {
-        "parameters": [],
-        "typeParameters": {},
-        "returns": {
-          "message": "RealType Union",
-          "id": 1862,
-          "type": "unsupported"
-        },
-        "id": 1863,
-        "type": "callable"
-      },
+      "signature": 1396,
       "id": 9,
       "type": "function"
     },
     {
       "identifier": "findTSExportableDeclarations",
       "doc": null,
-      "signature": {
-        "parameters": [],
-        "typeParameters": {},
-        "returns": {
-          "target": {
-            "type": "external",
-            "id": 1864
-          },
-          "typeParameters": [
-            {
-              "target": {
-                "type": "internal",
-                "id": 8
-              },
-              "typeParameters": [],
-              "id": 1865,
-              "type": "reference"
-            }
-          ],
-          "id": 1866,
-          "type": "reference"
-        },
-        "id": 1867,
-        "type": "callable"
-      },
+      "signature": 1399,
       "id": 10,
       "type": "function"
     },
     {
       "identifier": "createEchoDeclaration",
       "doc": null,
-      "signature": {
-        "parameters": [],
-        "typeParameters": {},
-        "returns": {
-          "target": {
-            "type": "external",
-            "id": 52
-          },
-          "typeParameters": [],
-          "id": 1868,
-          "type": "reference"
-        },
-        "id": 1869,
-        "type": "callable"
-      },
+      "signature": 1406,
       "id": 11,
       "type": "function"
     },
     {
       "identifier": "findExternalDeclarations",
       "doc": null,
-      "signature": {
-        "parameters": [],
-        "typeParameters": {},
-        "returns": {
-          "message": "RealType Void",
-          "id": 1870,
-          "type": "unsupported"
-        },
-        "id": 1871,
-        "type": "callable"
-      },
+      "signature": 1410,
       "id": 12,
       "type": "function"
     },
     {
       "identifier": "findExternalDeclarationsInSource",
       "doc": null,
-      "signature": {
-        "parameters": [],
-        "typeParameters": {},
-        "returns": {
-          "message": "RealType Void",
-          "id": 1872,
-          "type": "unsupported"
-        },
-        "id": 1873,
-        "type": "callable"
-      },
+      "signature": 1415,
       "id": 13,
       "type": "function"
     },
     {
       "identifier": "buildExternalReferences",
       "doc": null,
-      "signature": {
-        "parameters": [],
-        "typeParameters": {},
-        "returns": {
-          "message": "RealType Void",
-          "id": 1874,
-          "type": "unsupported"
-        },
-        "id": 1875,
-        "type": "callable"
-      },
+      "signature": 1420,
       "id": 14,
       "type": "function"
     },
     {
       "identifier": "getModuleSource",
       "doc": null,
-      "signature": {
-        "parameters": [],
-        "typeParameters": {},
-        "returns": {
-          "message": "RealType Union",
-          "id": 1876,
-          "type": "unsupported"
-        },
-        "id": 1877,
-        "type": "callable"
-      },
+      "signature": 1426,
       "id": 15,
       "type": "function"
     }
@@ -877,26 +1430,6 @@
     "12": "findExternalDeclarations",
     "13": "findExternalDeclarationsInSource",
     "14": "buildExternalReferences",
-    "15": "getModuleSource",
-    "19": "ModuleBuildContext",
-    "42": "EchoDeclaration.External",
-    "52": "EchoDeclaration.Any",
-    "54": "EchoDeclaration.ID",
-    "55": "EchoDeclaration",
-    "56": "TSExportableDeclaration",
-    "1115": "VariableDeclaration",
-    "1135": "FunctionDeclaration",
-    "1357": "ClassDeclaration",
-    "1362": "InterfaceDeclaration",
-    "1364": "TypeAliasDeclaration",
-    "1366": "EnumDeclaration",
-    "1369": "ModuleDeclaration",
-    "1392": "ExportDeclaration",
-    "1463": "SourceFile",
-    "1477": "Program",
-    "1485": "TypeChecker",
-    "1497": "Symbol",
-    "1653": "SemanticDiagnosticsBuilderProgram",
-    "1660": "ProgramHost"
+    "15": "getModuleSource"
   }
 }

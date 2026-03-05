@@ -28,7 +28,7 @@ export const buildExternalReferences = (symbol: ts.Symbol, moduleName: string, c
     const name = [...qualifiers, exportedSymbol.getName()].join('.');
     context.exploredSymbols.set(exportedSymbol, EchoDeclaration.create(id, 'external', {
       identifier: name,
-      filename: moduleName,
+      module: moduleName,
     }))
   }
 };

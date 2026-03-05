@@ -1,5 +1,5 @@
 import ts from "typescript"
-import { EchoDeclaration } from "./reflections"
+import { EchoDeclaration, EchoType } from "./reflections"
 import { createEchoDeclaration, findTSExportableDeclarations, TSExportableDeclaration } from "./declaration"
 import { createId } from "./utils"
 import { PackageFileReferenceInfo } from "./types"
@@ -15,6 +15,8 @@ import { PackageFileReferenceInfo } from "./types"
  */
 export type EchoModule = {
   name: string,
+
+  types: Record<EchoType.ID, EchoType>,
 
   references: EchoDeclaration.External[],
   exports: EchoDeclaration[],
@@ -36,6 +38,12 @@ export type ModuleBuildContext = {
   checker: ts.TypeChecker,
 
   internalDeclarations: TSExportableDeclaration[] | null,
+
+
+  /**
+   * Every relevant type to the type graph
+   */
+  includedTypes: Map<EchoType.ID, EchoType.Any>,
 
   /**
    * These symbols belong to literal exports of the current module,
@@ -78,6 +86,8 @@ export const buildEchoModule = (
 
     checker: program.getTypeChecker(),
 
+    includedTypes: new Map(),
+
     internalDeclarations: null,
     internalSymbols: new Map(),
     externalSymbols: new Map(),
@@ -106,6 +116,7 @@ export const buildEchoModule = (
 
   return {
     name,
+    types: Object.fromEntries(context.includedTypes),
     references: context.references,
     exports: context.declarations,
     identifiers: Object.fromEntries(context.identifiers)

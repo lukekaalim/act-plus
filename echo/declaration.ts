@@ -1,6 +1,6 @@
 import ts from "typescript";
 import { ModuleBuildContext } from "./module";
-import { EchoDeclaration } from "./reflections";
+import { EchoDeclaration, EchoType } from "./reflections";
 import { createId } from "./utils";
 import { createTypeBuilder2, PackageFileReferenceInfo } from "./types";
 import { buildExternalReferences, getModuleSource } from "./external";
@@ -86,6 +86,7 @@ export const findTSExportableDeclarations = (
           context.identifiers.set(id, declaration.name.text)
 
           variableDeclarations.push(declaration);
+          console.log(`Found`, declaration.name.text)
         }
 
         return variableDeclarations;
@@ -131,7 +132,8 @@ const createEchoTypeParameterDeclaration = (
     module: context,
     // TODO: TypeParameters can include each other - this should be extended to
     // capture this
-    parametricTypes: [],
+    parametricTypes: new Map(),
+    visitedTypes: new Map(),
   });
 
   context.internalSymbols.set(symbol, id);
@@ -139,11 +141,11 @@ const createEchoTypeParameterDeclaration = (
 
   let _extends = null;
   if (parameter.constraint) {
-    _extends = builder.buildFromTsTypeNode(parameter.constraint);
+    _extends = builder.declarations.fromAnyTypeNode(parameter.constraint);
   }
   let _default = null;
   if (parameter.default) {
-    _default = builder.buildFromTsTypeNode(parameter.default);
+    _default = builder.declarations.fromAnyTypeNode(parameter.default);
   }
 
   return {
@@ -177,10 +179,11 @@ export const createEchoDeclaration = (tsDeclaration: TSExportableDeclaration, co
 
       const typeBuilder = createTypeBuilder2({
         module: context,
-        parametricTypes: []
+        parametricTypes: new Map(),
+        visitedTypes: new Map(),
       })
 
-      const declares = typeBuilder.buildFromTsTypeNode(tsDeclaration.type);
+      const declares = typeBuilder.declarations.fromAnyTypeNode(tsDeclaration.type);
 
       return EchoDeclaration.create(id, 'type', { declares, parameters, doc, identifier })
     }
@@ -193,16 +196,19 @@ export const createEchoDeclaration = (tsDeclaration: TSExportableDeclaration, co
       const type = context.checker.getTypeOfSymbol(symbol);
       const typeBuilder = createTypeBuilder2({
         module: context,
-        parametricTypes: []
+        parametricTypes: new Map(),
+        visitedTypes: new Map(),
       })
       context.identifiers.set(id, name.text);
 
-      const echoType = typeBuilder.buildFromTsType(type, true);
+      const echoTypeID = typeBuilder.instances.fromType(type);
+      const echoType = context.includedTypes.get(echoTypeID) as EchoType;
+      
       switch (echoType.type) {
         case 'callable':
-          return EchoDeclaration.create(id, 'function', { identifier: name.text, doc: null, signature: echoType });
+          return EchoDeclaration.create(id, 'function', { identifier: name.text, doc: null, signature: echoTypeID });
         default:
-          return EchoDeclaration.create(id, 'variable', { identifier: name.text, doc: null, typeof: echoType });
+          return EchoDeclaration.create(id, 'variable', { identifier: name.text, doc: null, typeof: echoTypeID });
       }
     }
     case ts.SyntaxKind.FunctionDeclaration:

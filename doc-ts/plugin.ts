@@ -175,7 +175,7 @@ export const TypeDocPlugin = {
       }
     }
 
-    core.article.addArticlePreprocessor(createArticlePreprocessor(core, typedoc))
+    //core.article.addArticlePreprocessor(createArticlePreprocessor(core, typedoc))
     return typedoc;
   }
 } as const;

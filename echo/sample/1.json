@@ -1,56 +1,196 @@
 {
   "name": "sample/1",
+  "types": {
+    "1": {
+      "typeParameters": [
+        {
+          "id": 2,
+          "identifier": "TY",
+          "extends": null,
+          "default": null
+        }
+      ],
+      "parameters": [],
+      "returns": 3,
+      "id": 1,
+      "type": "callable"
+    },
+    "3": {
+      "properties": {
+        "otherValue": 4,
+        "myMethod": 5,
+        "myValue": 1276,
+        "jenny": 1280,
+        "oooo": 1285,
+        "forrest": 1286
+      },
+      "id": 3,
+      "type": "object"
+    },
+    "4": {
+      "value": 10,
+      "id": 4,
+      "type": "literal"
+    },
+    "5": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "__0",
+          "optional": false,
+          "type": 1276
+        }
+      ],
+      "returns": 1279,
+      "id": 5,
+      "type": "callable"
+    },
+    "1276": {
+      "target": {
+        "type": "external",
+        "id": 1275
+      },
+      "typeParameters": [
+        1277,
+        1278
+      ],
+      "id": 1276,
+      "type": "reference"
+    },
+    "1277": {
+      "value": "yes",
+      "id": 1277,
+      "type": "literal"
+    },
+    "1278": {
+      "value": "no",
+      "id": 1278,
+      "type": "literal"
+    },
+    "1279": {
+      "value": "thing2",
+      "id": 1279,
+      "type": "literal"
+    },
+    "1280": {
+      "typeParameters": [
+        {
+          "id": 1281,
+          "identifier": "T",
+          "extends": null,
+          "default": null
+        }
+      ],
+      "parameters": [
+        {
+          "name": "a",
+          "optional": false,
+          "type": 1282
+        },
+        {
+          "name": "b",
+          "optional": false,
+          "type": 1283
+        }
+      ],
+      "returns": 1284,
+      "id": 1280,
+      "type": "callable"
+    },
+    "1282": {
+      "target": {
+        "type": "generic",
+        "id": 1281
+      },
+      "typeParameters": [],
+      "id": 1282,
+      "type": "reference"
+    },
+    "1283": {
+      "target": {
+        "type": "generic",
+        "id": 2
+      },
+      "typeParameters": [],
+      "id": 1283,
+      "type": "reference"
+    },
+    "1284": {
+      "keyword": "void",
+      "id": 1284,
+      "type": "keyword"
+    },
+    "1285": {
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 1,
+      "id": 1285,
+      "type": "callable"
+    },
+    "1286": {
+      "typeParameters": [],
+      "parameters": [
+        {
+          "name": "checker",
+          "optional": false,
+          "type": 1287
+        }
+      ],
+      "returns": 1284,
+      "id": 1286,
+      "type": "callable"
+    },
+    "1287": {
+      "target": {
+        "type": "external",
+        "id": 1139
+      },
+      "typeParameters": [
+        1288
+      ],
+      "id": 1287,
+      "type": "reference"
+    },
+    "1288": {
+      "target": {
+        "type": "external",
+        "id": 1131
+      },
+      "typeParameters": [],
+      "id": 1288,
+      "type": "reference"
+    }
+  },
   "references": [
     {
-      "identifier": "ANestedType",
-      "filename": "@lukekaalim/echo/sample/2.ts",
-      "id": 2,
+      "identifier": "Map",
+      "module": "typescript/lib/lib.es2015.collection.d.ts",
+      "id": 1275,
       "type": "external"
     },
     {
-      "identifier": "TypeChecker",
-      "filename": "typescript",
-      "id": 1421,
+      "identifier": "ProgramHost",
+      "module": "typescript",
+      "id": 1139,
+      "type": "external"
+    },
+    {
+      "identifier": "BuilderProgram",
+      "module": "typescript",
+      "id": 1131,
       "type": "external"
     }
   ],
   "exports": [
     {
-      "declares": {
-        "branches": [
-          {
-            "builtin": "number",
-            "id": 1,
-            "type": "builtin"
-          },
-          {
-            "target": {
-              "type": "external",
-              "id": 2
-            },
-            "typeParameters": [],
-            "id": 3,
-            "type": "reference"
-          },
-          {
-            "target": {
-              "type": "external",
-              "id": 1421
-            },
-            "typeParameters": [],
-            "id": 1733,
-            "type": "reference"
-          }
-        ],
-        "id": 1734,
-        "type": "union"
-      },
-      "parameters": [],
-      "doc": "/**\n * Hi! this is my export!\n * \n * @example\n * ```ts\n * import { MyExport } from './1.ts';\n * \n * ```\n */",
-      "identifier": "MyExport",
+      "identifier": "myFunction",
+      "doc": null,
+      "signature": 1,
       "id": 0,
-      "type": "type"
+      "type": "function"
     }
   ],
-  "identifiers": {}
+  "identifiers": {
+    "0": "myFunction"
+  }
 }

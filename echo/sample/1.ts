@@ -1,16 +1,26 @@
-import ts from 'typescript';
-import { ANestedType } from './2';
+//type ThingFunc = () => { myValue: Map<any, any> }
 
-/**
- * Hi! this is my export!
- * 
- * @example
- * ```ts
- * import { MyExport } from './1.ts';
- * 
- * ```
- */
-export type MyExport =
-  | number
-  | ANestedType
-  | ts.TypeChecker
+import ts from "typescript";
+
+type A_Declared_Type = 10;
+
+export const myFunction = <TY>() => {
+  const myValue = new Map<"yes", "no">();
+
+
+  return {
+    otherValue: 10 as A_Declared_Type,
+    myMethod({ get }: typeof myValue) {
+      get;
+      return 'thing' as 'thing2';
+    },
+    myValue,
+    jenny<T>(a: T, b: TY): void {
+      return;
+    },
+    oooo: () => myFunction,
+    forrest(checker: ts.ProgramHost<ts.BuilderProgram>): void {
+
+    }
+  }
+}
