@@ -1,8 +1,9 @@
 import ts from "typescript"
 import { EchoDeclaration, EchoType } from "./reflections"
-import { createEchoDeclaration, findTSExportableDeclarations, TSExportableDeclaration } from "./declaration"
-import { createId } from "./utils"
-import { PackageFileReferenceInfo } from "./types"
+import { TypeBuildContext } from "./types"
+import { discoverModule, DiscoveryContext } from "./discovery/symbols"
+import { generateDeclarationFromDiscovery } from "./discovery/reflections"
+import { EchoExternalReference, EchoExternalReferenceID } from "./types/external"
 
 /**
  * The output of analysis of a module.
@@ -17,108 +18,87 @@ export type EchoModule = {
   name: string,
 
   types: Record<EchoType.ID, EchoType>,
+  declarations: Record<EchoDeclaration.ID, EchoDeclaration>,
+  references: Record<EchoExternalReferenceID, EchoExternalReference>,
 
-  references: EchoDeclaration.External[],
-  exports: EchoDeclaration[],
-  identifiers: Record<EchoDeclaration.ID, string>,
+  exports: EchoDeclaration.ID[],
 }
 
 /**
- * @private
- * 
- * ModuleBuildContext is a utility data structure
- * to keep track of discovered ts-specific information
- * as the build function generates all the declarations.
+ * All the of service objects for interacting with the typescript system.
  */
-export type ModuleBuildContext = {
+export type TypescriptContext = {
   source: ts.SourceFile,
   program: ts.Program,
-  host: ts.ProgramHost<ts.SemanticDiagnosticsBuilderProgram>,
-
+  host: ts.ProgramHost<ts.BuilderProgram>,
   checker: ts.TypeChecker,
-
-  internalDeclarations: TSExportableDeclaration[] | null,
-
-
-  /**
-   * Every relevant type to the type graph
-   */
-  includedTypes: Map<EchoType.ID, EchoType.Any>,
-
-  /**
-   * These symbols belong to literal exports of the current module,
-   * so you can confidently link to them
-   */
-  internalSymbols: Map<ts.Symbol, EchoDeclaration.ID>,
-  /**
-   * These symbols belong to some external module or unexported
-   * type/value. External symbols are explicitly _referenced_
-   * by some declaration or type.
-   */
-  externalSymbols: Map<ts.Symbol, EchoDeclaration.ID>,
-
-  /**
-   * Explored Symbols are recorded when a type includes
-   * a reference to a different module.
-   * 
-   * These symbols may or may not be explicitly referenced.
-   * Once they are confirmed to be references, make sure to
-   * add the declaration to the context.references array.
-   */
-  exploredSymbols: Map<ts.Symbol, EchoDeclaration.External>,
-  exploredPackagesModules: Set<ts.Symbol>,
-
-  identifiers: Map<EchoDeclaration.ID, string>,
-  declarations: EchoDeclaration[] | null,
-  references: EchoDeclaration.External[],
 }
 
-export const buildEchoModule = (
+/**
+ * Build Echo Module
+ * 
+ * @param name The name that will be given to the module. Ideally, it should
+ *  be the name of the package (or module), that can be used to find the relevant
+ *  file it was from.
+ * @param source The sourceFile that will act as the root of analysis. All it's
+ * exports will be analyzed to build the EchoModule.
+ * @param program The entire Typescript program, used to get the TypeChecker
+ * @param host Typescript's "Host" object, for interacting with the filesystem (finding package.json files)
+ * for packages
+ */
+export const buildEchoModule = <T extends ts.BuilderProgram>(
   name: string,
   source: ts.SourceFile,
   program: ts.Program,
-  host: ts.ProgramHost<ts.SemanticDiagnosticsBuilderProgram>
+  host: ts.ProgramHost<T>
 ): EchoModule => {
-  const context: ModuleBuildContext = {
-    source,
-    program,
-    host,
-
+  const typescriptContext: TypescriptContext = {
     checker: program.getTypeChecker(),
+    program,
+    source,
+    // cheating here a little. dont tell anyone
+    host: host as unknown as ts.ProgramHost<ts.BuilderProgram>,
+  }
+  const discoverContext: DiscoveryContext = {
+    ts: typescriptContext,
+    declarations: [],
+  }
+  const moduleSymbol = typescriptContext.checker.getSymbolAtLocation(source);
+  if (!moduleSymbol)
+    throw new Error();
 
-    includedTypes: new Map(),
+  const moduleExports = typescriptContext.checker.getExportsOfModule(moduleSymbol);
 
-    internalDeclarations: null,
-    internalSymbols: new Map(),
-    externalSymbols: new Map(),
-    exploredSymbols: new Map(),
-    exploredPackagesModules: new Set(),
+  discoverModule(discoverContext, moduleExports);
 
-    identifiers: new Map(),
-    declarations: null,
-    references: [],
+  const typeBuilderContext: TypeBuildContext = {
+    ts: typescriptContext,
+
+    types: new Map(),
+    packages: new Map(),
+    unusedReferences: new Map(),
+    declarations: new Map(),
+    references: new Map(),
+
+    declarationBySymbol: new Map(discoverContext.declarations.map(d => [d.symbol, d.id])),
+    referenceBySymbol: new Map(),
+    typeByTypescript: new Map(),
+    exploredSymbols: new Set(),
   }
 
-  context.internalDeclarations = findTSExportableDeclarations(source.statements, source.fileName, context);
-
-  console.log(`Found ${context.internalDeclarations.length} declarations for ${name} in ${source.fileName}`)
-
-  // give every declaration symbol a unique "Declaration ID"
-  for (const declaration of context.internalDeclarations) {
-    const symbol = context.checker.getSymbolAtLocation(declaration);
-    if (!symbol)
-      continue;
-
-    context.internalSymbols.set(symbol, createId());
+  for (const discoveredDeclaration of discoverContext.declarations) {
+    const declaration = generateDeclarationFromDiscovery(discoveredDeclaration, typeBuilderContext);
+    typeBuilderContext.declarations.set(declaration.id, declaration);
   }
   
-  context.declarations = context.internalDeclarations.map(dec => createEchoDeclaration(dec, context))
-
   return {
     name,
-    types: Object.fromEntries(context.includedTypes),
-    references: context.references,
-    exports: context.declarations,
-    identifiers: Object.fromEntries(context.identifiers)
-  }
+    types: Object.fromEntries(typeBuilderContext.types),
+    references: Object.fromEntries(typeBuilderContext.references),
+    declarations: Object.fromEntries(typeBuilderContext.declarations),
+
+    exports: moduleExports
+      .map(symbol => typeBuilderContext.declarationBySymbol.get(symbol))
+      .filter((x): x is EchoDeclaration.ID => !!x),
+  };
 }

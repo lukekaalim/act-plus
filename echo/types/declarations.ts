@@ -1,13 +1,8 @@
 import ts from "typescript"
 import { EchoDeclaration, EchoType } from "../reflections"
-import { ModuleBuildContext } from "../module"
 import { createId, getIdentifier } from "../utils"
 import { ExternalTypeBuilder } from "./external"
-
-export type DeclarationBuilderContext = {
-  module: ModuleBuildContext,
-  parametricTypes: Map<ts.Symbol, EchoDeclaration.TypeParameter>,
-}
+import { TypeBuildContext } from "../types"
 
 export type DeclarationsTypeBuilder = {
   fromAnyTypeNode(node: ts.TypeNode): EchoType.ID,
@@ -21,7 +16,8 @@ export type DeclarationsTypeBuilder = {
  * As such, it doesn't require the typechecker and simply
  * traversed the nodes of the elements provided.
  */
-export const createDeclarationBuilder = (context: DeclarationBuilderContext, external: ExternalTypeBuilder): DeclarationsTypeBuilder => {
+export const createDeclarationBuilder = (context: TypeBuildContext, external: ExternalTypeBuilder): DeclarationsTypeBuilder => {
+  const { checker } = context.ts;
 
   /**
    * Create a type, push it to the module's big list of types,
@@ -34,7 +30,7 @@ export const createDeclarationBuilder = (context: DeclarationBuilderContext, ext
   const pushType = <T extends EchoType["type"]>(type: T, props: Omit<EchoType.ByType<T>, "id" | "type">) => {
     const id = createId<"EchoTypeID">();
     const echoType = EchoType.create(type, id, props);
-    context.module.includedTypes.set(id, echoType);
+    context.types.set(id, echoType);
     return id;
   }
   
@@ -110,25 +106,13 @@ export const createDeclarationBuilder = (context: DeclarationBuilderContext, ext
   }
 
   const fromTypeReferenceNode = (reference: ts.TypeReferenceNode) => {
-    let symbol = context.module.checker.getSymbolAtLocation(reference.typeName);
+    let symbol = checker.getSymbolAtLocation(reference.typeName);
 
     if (!symbol) {
       throw new Error(`Unknown type reference`);
     }
     const typeParameters = (reference.typeArguments || []).map(fromAnyTypeNode);
-
-    const wellKnownReference = external.getReferenceTargetFromSymbol(symbol);
-    if (wellKnownReference)
-      return pushType('reference', { target: wellKnownReference, typeParameters });
-
-    const declaration = external.buildExternalTypeFromSymbol(symbol);
-    context.module.references.push(declaration);
-    context.module.externalSymbols.set(symbol, declaration.id);
-
-    return pushType('reference', {
-      target: { type: 'external', id: declaration.id },
-      typeParameters,
-    })
+    return pushType('reference', { target: external.getSymbolTarget(symbol), typeParameters });
   }
 
   const fromAnyTypeNode = (node: ts.TypeNode): EchoType.ID => {

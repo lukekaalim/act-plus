@@ -1,5 +1,6 @@
 import { DocComment } from "@microsoft/tsdoc";
 import { createId, OpaqueID } from "./utils";
+import { EchoExternalReferenceID } from "./types/external";
 
 export namespace EchoType {
   /**
@@ -49,7 +50,7 @@ export namespace EchoType {
 
   export type Callable = Define<"callable", {
     parameters: CallableParameter[],
-    typeParameters: EchoDeclaration.TypeParameter[],
+    typeParameters: EchoDeclaration.ID[],
     returns: ID,
   }>
 
@@ -58,9 +59,8 @@ export namespace EchoType {
     id: EchoType.ID,
 
     target:
-      | { type: 'internal', id: EchoDeclaration.ID }
-      | { type: 'external', id: EchoDeclaration.ID }
-      | { type: 'generic', id: EchoDeclaration.ID }
+      | { type: 'declaration', id: EchoDeclaration.ID }
+      | { type: 'reference', id: EchoExternalReferenceID }
   }>
 
   export type Union = Define<"union", {
@@ -101,59 +101,58 @@ export namespace EchoType {
 export type EchoType = EchoType.Any;
 
 export namespace EchoDeclaration {
+  export type CommentPart = {
+    kind: string,
+    text: string,
+  }
+
+
   type Define<Discriminator extends string, Props extends {}> = {
     type: Discriminator,
-    id: EchoDeclaration.ID,
+    id: ID,
   } & Props;
 
-
-  export type External = Define<'external', {
-    module: string,
+  export type Generic = Define<'generic', {
     identifier: string,
-  }>;
-
-  export type TypeParameter = {
-    identifier: string,
-    id: EchoDeclaration.ID,
 
     extends: null | EchoType.ID,
     default: null | EchoType.ID
-  }
+  }>
 
   export type Variable = Define<"variable", {
-    doc: null | string,
+    doc: null | CommentPart[],
     identifier: string,
     typeof: null | EchoType.ID,
   }>;
   export type Function = Define<"function", {
-    doc: null | string,
+    doc: null | CommentPart[],
     identifier: string,
     signature: EchoType.ID,
   }>;
   export type Type = Define<"type", {
-    doc: null | string,
+    doc: null | CommentPart[],
     identifier: string,
     declares: EchoType.ID,
-    parameters: TypeParameter[],
+    parameters: ID[],
   }>;
   export type Class = Define<"class", {
-    doc: null | string,
+    doc: null | CommentPart[],
     identifier: string,
   }>;
   export type Interface = Define<"interface", {
-    doc: null | string,
+    doc: null | CommentPart[],
     identifier: string,
-    parameters: TypeParameter[],
+    parameters: ID[],
   }>;
   export type Unsupported = Define<"unsupported", {
-    doc: null | string,
+    doc: null | CommentPart[],
     identifier: string,
     message: string,
   }>;
   export type Namespace = Define<"namespace", {
-    doc: null | string,
+    doc: null | CommentPart[],
     identifier: string,
-    exports: EchoType.ID[]
+    exports: ID[]
   }>;
 
   export const create = <T extends Any["type"]>(id: ID, type: T, props: Omit<ByType<T>, "id" | "type">): ByType<T> => {
@@ -168,7 +167,7 @@ export namespace EchoDeclaration {
     | Interface
     | Namespace
     | Function
-    | External
+    | Generic
 
   export type ByType<T extends Any["type"]> = Extract<Any, { type: T }>
 

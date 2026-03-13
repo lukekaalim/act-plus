@@ -1,15 +1,12 @@
 import ts from "typescript";
-import { ModuleBuildContext } from "../module";
 import { EchoDeclaration, EchoType } from "../reflections";
 import { createId, getFlags } from "../utils";
 import { ExternalTypeBuilder } from "./external";
-import { create } from "domain";
 import { DeclarationsTypeBuilder } from "./declarations";
+import { TypeBuildContext } from "../types";
 
-export type TypeInstanceBuilderContext=  {
-  visitedTypes: Map<ts.Type, EchoType.ID>,
-  parametricTypes: Map<ts.Symbol, EchoDeclaration.TypeParameter>,
-  module: ModuleBuildContext,
+export type TypeInstanceBuilder = {
+  fromType(type: ts.Type): EchoType.ID
 }
 
 /**
@@ -17,10 +14,11 @@ export type TypeInstanceBuilderContext=  {
  * acquired from the typescript type checker.
  */
 export const createTypeInstanceBuilder = (
-  context: TypeInstanceBuilderContext,
+  context: TypeBuildContext,
   external: ExternalTypeBuilder,
   declarations: DeclarationsTypeBuilder
-) => {
+): TypeInstanceBuilder => {
+  const { checker } = context.ts;
   
   const pushType = <T extends EchoType["type"]>(
     instance: ts.Type,
@@ -30,12 +28,12 @@ export const createTypeInstanceBuilder = (
     createProps: Omit<EchoType.ByType<T>, "id" | "type"> | (() => Omit<EchoType.ByType<T>, "id" | "type">)
   ) => {
     const id = createId<"EchoTypeID">();
-    context.visitedTypes.set(instance, id);
+    context.typeByTypescript.set(instance, id);
 
     const props = typeof createProps === 'function' ? createProps() : createProps;
 
     const echoType = EchoType.create(type, id, props);
-    context.module.includedTypes.set(id, echoType);
+    context.types.set(id, echoType);
 
     return id;
   }
@@ -43,8 +41,8 @@ export const createTypeInstanceBuilder = (
   const fromType = (type: ts.Type): EchoType.ID => {
     // If we already know of this type, just
     // return it instead.
-    if (context.visitedTypes.has(type)) {
-      return context.visitedTypes.get(type) as EchoType.ID;
+    if (context.typeByTypescript.has(type)) {
+      return context.typeByTypescript.get(type) as EchoType.ID;
     }
     if (type.aliasSymbol) {
       const target = external.getSymbolTarget(type.aliasSymbol);
@@ -54,14 +52,15 @@ export const createTypeInstanceBuilder = (
       }))
     }
     if (type.symbol) {
-      const parametric = context.parametricTypes.get(type.symbol)
-      if (parametric) {
-        return pushType(type, 'reference', () => ({
-          target: { type: 'generic', id: parametric.id } as const,
+      const declaredType = context.declarationBySymbol.get(type.symbol)
+      if (declaredType) {
+        return pushType(type, 'reference', {
+          target: { type: 'declaration', id: declaredType },
           typeParameters: []
-        }))
+        })
       }
     }
+
     if (type.flags & ts.TypeFlags.Boolean) {
       return pushType(type, 'builtin', { builtin: 'boolean' });
     }
@@ -83,7 +82,7 @@ export const createTypeInstanceBuilder = (
           }
 
           if (symbol.flags & ts.SymbolFlags.Alias) {
-            symbol = context.module.checker.getAliasedSymbol(symbol);
+            symbol = checker.getAliasedSymbol(symbol);
           }
           const target = external.getSymbolTarget(symbol);
 
@@ -108,21 +107,25 @@ export const createTypeInstanceBuilder = (
 
         if (objectType.getProperties().length > 0) {
           console.log(`It was an anonymous object. Lets see paul allen's properties:`)
-          const propertySymbols = context.module.checker.getPropertiesOfType(objectType)
+          const propertySymbols = checker.getPropertiesOfType(objectType)
 
           return pushType(type, 'object', () => ({
             properties: Object.fromEntries(propertySymbols.map(symbol => {
-              const propertyType = context.module.checker.getTypeOfSymbol(symbol);
+              const propertyType = checker.getTypeOfSymbol(symbol);
               return [symbol.name, fromType(propertyType)]
             }))
           }))
         }
         return pushType(type, 'unsupported', () => ({ message: 'ObjectType ' + getFlags(ts.ObjectFlags as any, objectType.objectFlags) }))
       }
+      case ts.TypeFlags.Undefined:
+        return pushType(type, 'keyword', { keyword: 'undefined' });
       case ts.TypeFlags.Void:
       case ts.TypeFlags.VoidLike:
           console.log(`It was a keyword`)
         return pushType(type, 'keyword', () => ({ keyword: 'void' as const }));
+      case ts.TypeFlags.BooleanLiteral:
+        return pushType(type, 'builtin', { builtin: 'boolean' });
       case ts.TypeFlags.Boolean:
       case ts.TypeFlags.NumberLiteral:
       case ts.TypeFlags.StringLiteral: {
@@ -154,20 +157,21 @@ export const createTypeInstanceBuilder = (
           defaultId = declarations.fromAnyTypeNode(decl.default)
         }
 
-        const typeParameterDeclaration: EchoDeclaration.TypeParameter = {
-          id: createId<"EchoDeclarationID">(),
+        const typeParameterDeclaration = EchoDeclaration.create(createId(), 'generic', {
           identifier: decl.name.text,
           extends: extendsId,
           default: defaultId,
-        }
+        })
 
-        context.parametricTypes.set(typeParameter.symbol, typeParameterDeclaration);
+        // Add the type parameter
+        context.declarations.set(typeParameterDeclaration.id, typeParameterDeclaration);
+        context.declarationBySymbol.set(typeParameter.symbol, typeParameterDeclaration.id);
 
-        return typeParameterDeclaration;
+        return typeParameterDeclaration.id;
       }).filter(x => !!x);
 
       const parameters = signature.parameters.map(param => {
-        const type = context.module.checker.getTypeOfSymbol(param);
+        const type = checker.getTypeOfSymbol(param);
         
         return {
           name: param.name,
@@ -176,9 +180,7 @@ export const createTypeInstanceBuilder = (
         }
       })
 
-      const returnType = context.module.checker.getReturnTypeOfSignature(signature);
-      console.log(returnType)
-      
+      const returnType = checker.getReturnTypeOfSignature(signature);
       const returns = fromType(returnType)
 
       return {

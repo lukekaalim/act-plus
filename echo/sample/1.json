@@ -1,196 +1,265 @@
 {
   "name": "sample/1",
   "types": {
-    "1": {
+    "8": {
       "typeParameters": [
-        {
-          "id": 2,
-          "identifier": "TY",
-          "extends": null,
-          "default": null
-        }
+        9
       ],
       "parameters": [],
-      "returns": 3,
-      "id": 1,
+      "returns": 10,
+      "id": 8,
       "type": "callable"
     },
-    "3": {
+    "10": {
       "properties": {
-        "otherValue": 4,
-        "myMethod": 5,
-        "myValue": 1276,
-        "jenny": 1280,
-        "oooo": 1285,
-        "forrest": 1286
+        "otherValue": 11,
+        "myMethod": 12,
+        "myValue": 1283,
+        "jenny": 1287,
+        "oooo": 1292,
+        "forrest": 1293
       },
-      "id": 3,
+      "id": 10,
       "type": "object"
     },
-    "4": {
+    "11": {
       "value": 10,
-      "id": 4,
+      "id": 11,
       "type": "literal"
     },
-    "5": {
+    "12": {
       "typeParameters": [],
       "parameters": [
         {
           "name": "__0",
           "optional": false,
-          "type": 1276
+          "type": 1283
         }
       ],
-      "returns": 1279,
-      "id": 5,
+      "returns": 1286,
+      "id": 12,
       "type": "callable"
     },
-    "1276": {
+    "1283": {
       "target": {
-        "type": "external",
-        "id": 1275
+        "type": "reference",
+        "id": 1282
       },
       "typeParameters": [
-        1277,
-        1278
+        1284,
+        1285
       ],
-      "id": 1276,
+      "id": 1283,
       "type": "reference"
     },
-    "1277": {
+    "1284": {
       "value": "yes",
-      "id": 1277,
+      "id": 1284,
       "type": "literal"
     },
-    "1278": {
+    "1285": {
       "value": "no",
-      "id": 1278,
+      "id": 1285,
       "type": "literal"
     },
-    "1279": {
+    "1286": {
       "value": "thing2",
-      "id": 1279,
+      "id": 1286,
       "type": "literal"
     },
-    "1280": {
+    "1287": {
       "typeParameters": [
-        {
-          "id": 1281,
-          "identifier": "T",
-          "extends": null,
-          "default": null
-        }
+        1288
       ],
       "parameters": [
         {
           "name": "a",
           "optional": false,
-          "type": 1282
+          "type": 1289
         },
         {
           "name": "b",
           "optional": false,
-          "type": 1283
+          "type": 1290
         }
       ],
-      "returns": 1284,
-      "id": 1280,
+      "returns": 1291,
+      "id": 1287,
       "type": "callable"
     },
-    "1282": {
-      "target": {
-        "type": "generic",
-        "id": 1281
-      },
-      "typeParameters": [],
-      "id": 1282,
-      "type": "reference"
+    "1289": {
+      "message": "RealType TypeParameter,IncludesMissingType",
+      "id": 1289,
+      "type": "unsupported"
     },
-    "1283": {
-      "target": {
-        "type": "generic",
-        "id": 2
-      },
-      "typeParameters": [],
-      "id": 1283,
-      "type": "reference"
+    "1290": {
+      "message": "RealType TypeParameter,IncludesMissingType",
+      "id": 1290,
+      "type": "unsupported"
     },
-    "1284": {
+    "1291": {
       "keyword": "void",
-      "id": 1284,
+      "id": 1291,
       "type": "keyword"
     },
-    "1285": {
+    "1292": {
       "typeParameters": [],
       "parameters": [],
-      "returns": 1,
-      "id": 1285,
+      "returns": 8,
+      "id": 1292,
       "type": "callable"
     },
-    "1286": {
+    "1293": {
       "typeParameters": [],
       "parameters": [
         {
           "name": "checker",
           "optional": false,
-          "type": 1287
+          "type": 1294
         }
       ],
-      "returns": 1284,
-      "id": 1286,
+      "returns": 1291,
+      "id": 1293,
       "type": "callable"
     },
-    "1287": {
+    "1294": {
       "target": {
-        "type": "external",
-        "id": 1139
+        "type": "reference",
+        "id": 1146
       },
       "typeParameters": [
-        1288
+        1295
       ],
-      "id": 1287,
+      "id": 1294,
       "type": "reference"
     },
-    "1288": {
+    "1295": {
       "target": {
-        "type": "external",
-        "id": 1131
+        "type": "reference",
+        "id": 1138
       },
       "typeParameters": [],
-      "id": 1288,
+      "id": 1295,
       "type": "reference"
+    },
+    "1296": {
+      "value": "hello",
+      "id": 1296,
+      "type": "literal"
+    },
+    "1297": {
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 1291,
+      "id": 1297,
+      "type": "callable"
+    },
+    "1298": {
+      "value": "World",
+      "id": 1298,
+      "type": "literal"
     }
   },
-  "references": [
-    {
-      "identifier": "Map",
+  "references": {
+    "1138": {
+      "id": 1138,
+      "module": "typescript",
+      "identifier": "BuilderProgram"
+    },
+    "1146": {
+      "id": 1146,
+      "module": "typescript",
+      "identifier": "ProgramHost"
+    },
+    "1282": {
+      "id": 1282,
       "module": "typescript/lib/lib.es2015.collection.d.ts",
-      "id": 1275,
-      "type": "external"
-    },
-    {
-      "identifier": "ProgramHost",
-      "module": "typescript",
-      "id": 1139,
-      "type": "external"
-    },
-    {
-      "identifier": "BuilderProgram",
-      "module": "typescript",
-      "id": 1131,
-      "type": "external"
+      "identifier": "Map"
     }
-  ],
-  "exports": [
-    {
+  },
+  "declarations": {
+    "0": {
       "identifier": "myFunction",
       "doc": null,
-      "signature": 1,
+      "typeof": 8,
       "id": 0,
+      "type": "variable"
+    },
+    "1": {
+      "identifier": "A",
+      "doc": null,
+      "typeof": 1296,
+      "id": 1,
+      "type": "variable"
+    },
+    "2": {
+      "identifier": "b",
+      "doc": null,
+      "typeof": 1296,
+      "id": 2,
+      "type": "variable"
+    },
+    "3": {
+      "identifier": "CustomNamespace",
+      "doc": null,
+      "exports": [
+        4,
+        5
+      ],
+      "id": 3,
+      "type": "namespace"
+    },
+    "4": {
+      "identifier": "D",
+      "doc": null,
+      "signature": 1297,
+      "id": 4,
       "type": "function"
+    },
+    "5": {
+      "identifier": "NestedNamespace",
+      "doc": null,
+      "exports": [
+        6,
+        7
+      ],
+      "id": 5,
+      "type": "namespace"
+    },
+    "6": {
+      "identifier": "C",
+      "doc": null,
+      "typeof": 1296,
+      "id": 6,
+      "type": "variable"
+    },
+    "7": {
+      "identifier": "Hello",
+      "doc": null,
+      "declares": 1298,
+      "parameters": [],
+      "id": 7,
+      "type": "type"
+    },
+    "9": {
+      "identifier": "TY",
+      "extends": null,
+      "default": null,
+      "id": 9,
+      "type": "generic"
+    },
+    "1288": {
+      "identifier": "T",
+      "extends": null,
+      "default": null,
+      "id": 1288,
+      "type": "generic"
     }
-  ],
-  "identifiers": {
-    "0": "myFunction"
-  }
+  },
+  "exports": [
+    0,
+    1,
+    2,
+    3
+  ]
 }

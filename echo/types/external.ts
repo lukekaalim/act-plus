@@ -1,21 +1,26 @@
 import ts from "typescript";
-import { ModuleBuildContext } from "../module";
-import { PackageFileReferenceInfo } from "../types";
+import { PackageFileReferenceInfo, TypeBuildContext } from "../types";
 import { EchoDeclaration, EchoType } from "../reflections";
-import { createId } from "../utils";
+import { createId, OpaqueID } from "../utils";
 
-export type ExternalTypeContext = {
-  parametricTypes: Map<ts.Symbol, EchoDeclaration.TypeParameter>,
-  module: ModuleBuildContext,
-}
+
+// TODO: ADD REFERENCE PROMOTION
+
+export type EchoExternalReference = {
+  id: EchoExternalReferenceID,
+  module: string,
+  identifier: string,
+};
+export type EchoExternalReferenceID = OpaqueID<"EchoExternalReferenceID">;
 
 export type ExternalTypeBuilder = {
-  explorePackageSymbols(symbol: ts.Symbol): void,
-  buildExternalTypeFromSymbol(symbol: ts.Symbol): EchoDeclaration.External,
-  findPackageFromSourceFile(sourceFile: ts.SourceFile): null | PackageFileReferenceInfo,
-  findSourceFileForNode(node: ts.Node): null | ts.SourceFile,
+  //explorePackageSymbols(symbol: ts.Symbol): void,
+  //buildExternalTypeFromSymbol(symbol: ts.Symbol): EchoDeclaration.External,
+  //findPackageFromSourceFile(sourceFile: ts.SourceFile): null | PackageFileReferenceInfo,
+  //findSourceFileForNode(node: ts.Node): null | ts.SourceFile,
 
-  getReferenceTargetFromSymbol(symbol: ts.Symbol): EchoType.Reference["target"] | null,
+  //getReferenceTargetFromSymbol(symbol: ts.Symbol): EchoType.Reference["target"] | null,
+
   getSymbolTarget(symbol: ts.Symbol): EchoType.Reference["target"],
 }
 
@@ -35,10 +40,29 @@ export type ExternalTypeBuilder = {
  * @param context provided from the root ModuleBuilder
  * @returns 
  */
-export const createExternalTypeBuilder = (context: ExternalTypeContext): ExternalTypeBuilder => {
-  const { checker, host, program,
-    exploredPackagesModules, exploredSymbols, internalSymbols,
-    externalSymbols, references } = context.module;
+export const createExternalTypeBuilder = (context: TypeBuildContext): ExternalTypeBuilder => {
+  const { checker, host, program } = context.ts;
+
+  const addReference = (symbol: ts.Symbol, module: string): EchoExternalReference => {
+    const reference: EchoExternalReference = {
+      id: createId(),
+      module,
+      identifier: symbol.name,
+    };
+    context.references.set(reference.id, reference);
+    context.referenceBySymbol.set(symbol, reference.id);
+    return reference;
+  }
+  const addPendingReference = (symbol: ts.Symbol, module: string) => {
+    const reference: EchoExternalReference = {
+      id: createId(),
+      module,
+      identifier: symbol.name,
+    };
+    context.unusedReferences.set(reference.id, reference);
+    context.referenceBySymbol.set(symbol, reference.id);
+    return reference;
+  }
 
   const createExternalDeclarationsFromSourcefileExports = (sourceFile: ts.SourceFile, moduleNameAlias?: string) => {
     const symbol = checker.getSymbolAtLocation(sourceFile);
@@ -46,18 +70,13 @@ export const createExternalTypeBuilder = (context: ExternalTypeContext): Externa
     if (!symbol)
       throw new Error(`No symbol for sourcefile "${sourceFile.fileName}"`);
 
-    if (exploredPackagesModules.has(symbol))
-      return console.log('We have been here before...');
-
     console.log(`Looking through ${moduleNameAlias} for external exports`)
 
-    exploredPackagesModules.add(symbol);
     const sourceFileExports = checker.getExportsOfModule(symbol);
     const moduleName = moduleNameAlias || sourceFile.fileName;
 
     for (const exportedSymbol of sourceFileExports) {
-      const declaration = EchoDeclaration.create(createId(), 'external', { identifier: exportedSymbol.name, module: moduleName })
-      exploredSymbols.set(exportedSymbol, declaration);
+      addPendingReference(exportedSymbol, moduleName);
     }
   };
 
@@ -110,6 +129,11 @@ export const createExternalTypeBuilder = (context: ExternalTypeContext): Externa
    * @returns 
    */
   const explorePackageSymbols = (symbol: ts.Symbol) => {
+    if (context.exploredSymbols.has(symbol))
+      return;
+
+    context.exploredSymbols.add(symbol);
+
     const declaration = (symbol.declarations || [])[0];
 
     if (!declaration)
@@ -127,6 +151,9 @@ export const createExternalTypeBuilder = (context: ExternalTypeContext): Externa
     const packageInfo = findPackageFromSourceFile(sourceFile);
 
     if (packageInfo) {
+      if (context.packages.has(packageInfo.package))
+        return;
+
       const moduleReference = ts.resolveModuleName(
         packageInfo.package,
         filename,
@@ -141,17 +168,14 @@ export const createExternalTypeBuilder = (context: ExternalTypeContext): Externa
       }
       const packageSourceFile = program.getSourceFile(moduleReference.resolvedModule.resolvedFileName)
       if (!packageSourceFile) {
-        return null;
-        //throw new Error(`Could not find source file "${moduleReference.resolvedModule.resolvedFileName}"`)
+        throw new Error(`Could not find source file "${moduleReference.resolvedModule.resolvedFileName}"`)
       }
+      context.packages.set(packageInfo.package, packageSourceFile);
+      
       console.log(`These declarations belong to ${packageInfo.package}:`)
       console.log('============')
       createExternalDeclarationsFromSourcefileExports(packageSourceFile, packageInfo.package);
       console.log('============')
-    } else {
-      // no package to search
-
-      
     }
   };
 
@@ -159,32 +183,24 @@ export const createExternalTypeBuilder = (context: ExternalTypeContext): Externa
     const declaration = (symbol.declarations || [])[0];
 
     if (!declaration)
-      return EchoDeclaration.create(createId(), 'external', {
-        identifier: symbol.name,
-        module: 'Undeclared',
-      })
+      return addReference(symbol, '<Mystery Land>')
 
     const sourceFile = findSourceFileForNode(declaration);
 
     if (!sourceFile)
       throw new Error(`Symbol ${symbol.name} is has no source file`);
 
-    const filename = sourceFile.fileName.startsWith('/')
-      ? sourceFile.fileName
-      : program.getCurrentDirectory() + sourceFile.fileName;
 
     const packageInfo = findPackageFromSourceFile(sourceFile);
 
     if (packageInfo) {
-      return EchoDeclaration.create(createId(), 'external', {
-        identifier: symbol.name,
-        module: [packageInfo.package, packageInfo.relativePath].join('/'),
-      })
+      return addReference(symbol, [packageInfo.package, packageInfo.relativePath].filter(Boolean).join('/'))
     } else {
-      return EchoDeclaration.create(createId(), 'external', {
-        identifier: symbol.name,
-        module: filename
-      });
+      const filename = sourceFile.fileName.startsWith('/')
+        ? sourceFile.fileName
+        : program.getCurrentDirectory() + sourceFile.fileName;
+
+      return addReference(symbol, filename)
     }
   }
 
@@ -193,34 +209,28 @@ export const createExternalTypeBuilder = (context: ExternalTypeContext): Externa
     if (symbol.flags & ts.SymbolFlags.Alias)
       symbol = checker.getAliasedSymbol(symbol)
 
-    
-    const genericParameter = context.parametricTypes.get(symbol);
-
-    if (genericParameter) {
-      return { type: 'generic', id: genericParameter.id }
-    }
-
-    const internalDeclaration = internalSymbols.get(symbol);
+    const internalDeclaration = context.declarationBySymbol.get(symbol);
 
     if (internalDeclaration) {
-      return { type: 'internal', id: internalDeclaration }
-    }
-
-    const externalDeclaration = externalSymbols.get(symbol);
-    
-    if (externalDeclaration) {
-      return { type: 'external', id: externalDeclaration }
+      return { type: 'declaration', id: internalDeclaration }
     }
 
     explorePackageSymbols(symbol);
-    const exploredDeclaration = exploredSymbols.get(symbol);
 
-    if (exploredDeclaration) {
-      externalSymbols.set(symbol, exploredDeclaration.id);
-      references.push(exploredDeclaration);
+    const externalReference = context.referenceBySymbol.get(symbol);
+    
+    if (externalReference) {
+      if (context.references.has(externalReference))
+        return { type: 'reference', id: externalReference }
 
-      return { type: 'external', id: exploredDeclaration.id };
+      const unusedReference = context.unusedReferences.get(externalReference);
+      if (unusedReference) {
+        // promoted into main reference
+        context.references.set(unusedReference.id, unusedReference);
+        return { type: 'reference', id: externalReference }
+      }
     }
+
 
     return null;
   }
@@ -231,18 +241,16 @@ export const createExternalTypeBuilder = (context: ExternalTypeContext): Externa
       return existingReference
 
     // Otherwise, create a new entry in the "external symbols" table.
-    const declaration = buildExternalTypeFromSymbol(symbol);
-    references.push(declaration);
-    externalSymbols.set(symbol, declaration.id);
-    return { type: 'external', id: declaration.id };
+    const newReference = buildExternalTypeFromSymbol(symbol);
+    return { type: 'reference', id: newReference.id }
   }
 
   return {
-    getReferenceTargetFromSymbol,
-    explorePackageSymbols,
-    buildExternalTypeFromSymbol,
-    findPackageFromSourceFile,
-    findSourceFileForNode,
+    //getReferenceTargetFromSymbol,
+    //explorePackageSymbols,
+    //buildExternalTypeFromSymbol,
+    //findPackageFromSourceFile,
+    //findSourceFileForNode,
 
     getSymbolTarget,
   }

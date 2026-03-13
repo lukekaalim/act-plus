@@ -26,7 +26,7 @@ export const getIdentifier = (name: ts.BindingName | ts.EntityName | ts.Property
   }
 }
 
-let latestId = 0;
+let latestId = 1;
 
 declare const opaqueType: unique symbol;
 export type OpaqueID<T extends string> = number & { readonly [opaqueType]: T };

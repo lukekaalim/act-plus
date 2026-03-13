@@ -24,3 +24,19 @@ export const myFunction = <TY>() => {
     }
   }
 }
+
+export const A = "hello";
+
+export const b = A;
+
+export namespace CustomNamespace {
+  export namespace NestedNamespace {
+    export const C = A; 
+
+    export type Hello = "World";
+  }
+
+  export function D() {
+    
+  }
+}

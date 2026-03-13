@@ -9,8 +9,6 @@ import Sample1JSON from '@lukekaalim/echo/sample/1.json';
 
 import reflection from 'echo:@lukekaalim/echo/index.ts';
 
-console.log({ reflection })
-
 const Sample1 = Sample1JSON as unknown as EchoModule;
 
 export const buildEchoDocs = (doc: DocApp<[EchoPlugin]>) => {
@@ -18,8 +16,8 @@ export const buildEchoDocs = (doc: DocApp<[EchoPlugin]>) => {
 
   doc.article.add('echo.readme', readmeMD, '/@lukekaalim/echo')
   doc.route.add('/@lukekaalim/echo/test', h('div', {}, [
-    Sample1.exports.map(exportedDeclaration => {
-      return h(EchoDeclarationRenderer, { module: Sample1, declaration: exportedDeclaration })
+    Sample1.exports.map(id => {
+      return h(EchoDeclarationRenderer, { module: Sample1, declaration: Sample1.declarations[id] })
     })
   ]))
 

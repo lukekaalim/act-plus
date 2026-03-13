@@ -5,10 +5,18 @@ import { Component, h, Node, useMemo } from "@lukekaalim/act";
 import { DocNode, TSDocParser, DocNodeKind, DocComment, DocSection, DocParagraph, DocPlainText } from '@microsoft/tsdoc';
 
 import "./simpleStyles.css";
+import { EchoExternalReference } from "@lukekaalim/echo/types/external";
 
-export const createTypeRenderer = (module: EchoModule) => {
+export const createTypeRenderer = (module: EchoModule, namespace?: string) => {
   const visitedTypes = new Set<EchoType.ID>();
-  const parametricTypes = new Map<EchoDeclaration.ID, EchoDeclaration.TypeParameter>();
+
+  const renderDelimitedList = <T>(elements: T[], renderElement: (element: T) => void, renderDelimiter: () => void) => {
+    for (let i = 0; i < elements.length; i++) {
+      renderElement(elements[i]);
+      if (i !== elements.length - 1)
+        renderDelimiter()
+    }
+  }
 
 
   const renderTypeParameters = (syntax: HLJSBuilder, typeParameters: EchoType.Any[]) => {
@@ -16,21 +24,16 @@ export const createTypeRenderer = (module: EchoModule) => {
       return syntax;
 
     syntax.text('<')
-    for (const parameter of typeParameters) {
-      renderType(syntax, parameter)
-      syntax.text(', ')
-    }
+    renderDelimitedList(typeParameters, parameter => renderType(syntax, parameter), () => syntax.text(', '))
     syntax.text('>')
     return syntax;
   }
-  const renderTypeParametersDeclaration = (syntax: HLJSBuilder, parameters: EchoDeclaration.TypeParameter[]) => {
+  const renderTypeParametersDeclaration = (syntax: HLJSBuilder, parameters: EchoDeclaration.Generic[]) => {
     if (parameters.length === 0)
       return syntax;
 
     syntax.text('<')
-    for (const parameter of parameters) {
-      parametricTypes.set(parameter.id, parameter);
-
+    renderDelimitedList(parameters, parameter => {
       syntax.title(parameter.identifier);
       if (parameter.extends) {
         syntax.type(' extends ');
@@ -40,8 +43,7 @@ export const createTypeRenderer = (module: EchoModule) => {
         syntax.type(' = ');
         renderType(syntax, module.types[parameter.default])
       }
-      syntax.text(', ')
-    }
+    }, () => syntax.text(', '))
     syntax.text('>')
     return syntax;
   }
@@ -112,25 +114,18 @@ export const createTypeRenderer = (module: EchoModule) => {
         syntax.text(']')
         return syntax;
       case 'reference':
-        if (echoType.target.type === 'internal') {
-          const declaration = module.exports.find(ex => ex.id === echoType.target.id)
+        if (echoType.target.type === 'declaration') {
+          const declaration = module.declarations[echoType.target.id]
           if (!declaration)
             syntax.titleClass(`<ReferenceNotFound id="${echoType.target.id}" />`)
           else
             syntax.titleClass(declaration.identifier)
-        } else if (echoType.target.type === 'external') {
-          const reference = module.references.find(ex => ex.id === echoType.target.id)
+        } else if (echoType.target.type === 'reference') {
+          const reference = module.references[echoType.target.id]
           if (!reference)
             syntax.comment(`<ReferenceNotFound id="${echoType.target.id}" />`)
           else
             syntax.titleClass(reference.identifier);
-          
-        } else if (echoType.target.type === 'generic') {
-          const parameter = parametricTypes.get(echoType.target.id);
-          if (parameter) {
-            syntax.titleClass(parameter.identifier)
-          } else
-            syntax.comment(`<ParameterNotFound id="${echoType.target.id}" />`)
         }
         renderTypeParameters(syntax, echoType.typeParameters.map(id => module.types[id]));
         return syntax;
@@ -143,18 +138,16 @@ export const createTypeRenderer = (module: EchoModule) => {
       case 'object': {
         visitedTypes.add(echoType.id);
         syntax.text('{').newLine(1);
-        for (const [key, propertyId] of Object.entries(echoType.properties)) {
+        renderDelimitedList(Object.entries(echoType.properties), ([key, propertyId]) => {
           const property = module.types[propertyId];
           if (property.type === 'callable') {
             syntax.titleClass(key);
             renderCallableSignature(syntax, property, true);
-            syntax.text(', ').newLine()
           } else {
             syntax.text(key).text(': ');
             renderType(syntax, property);
-            syntax.text(', ').newLine()
           }
-        }
+        }, () => syntax.text(', ').newLine())
         syntax.newLine(-1).text('}')
         return syntax;
       }
@@ -162,18 +155,19 @@ export const createTypeRenderer = (module: EchoModule) => {
   }
 
   const renderCallableSignature = (syntax: HLJSBuilder, callable: EchoType.Callable, isMethod: boolean) => {
-    renderTypeParametersDeclaration(syntax, callable.typeParameters);
+    renderTypeParametersDeclaration(syntax, callable.typeParameters.map(id => module.declarations[id]).filter(d => d.type === 'generic'));
     syntax.text('(');
-    for (const param of callable.parameters) {
-      syntax.titleClass(param.name)
+    syntax.indent(1).newLine()
+    renderDelimitedList(callable.parameters, param => {
+      syntax.params(param.name)
       if (param.optional) {
         syntax.text('?: ')
       } else {
         syntax.text(': ')
       }
       renderType(syntax, module.types[param.type]);
-      syntax.text(', ')
-    }
+    }, () => syntax.text(', ').newLine())
+    syntax.indent(-1).newLine()
     if (isMethod)
       syntax.text('): ');
     else
@@ -182,28 +176,29 @@ export const createTypeRenderer = (module: EchoModule) => {
   }
 
   const renderDeclaration = (syntax: HLJSBuilder, echoDeclaration: EchoDeclaration.Any) => {
+    const identifier = [namespace, echoDeclaration.identifier].filter(Boolean).join('.');
     switch (echoDeclaration.type) {
       case 'type':
         syntax
-          .keyword('export type ')
-          .title(echoDeclaration.identifier);
+          .keyword('type ')
+          .title(identifier);
         //renderTypeParametersDeclaration(syntax, echoDeclaration.parameters);
         syntax.text(' = ');
 
         renderType(syntax, module.types[echoDeclaration.declares]);
         return syntax;
       case 'namespace':
-        syntax.keyword("namespace ").titleClass(echoDeclaration.identifier);
+        syntax.keyword("namespace ").titleClass(identifier);
         return syntax;
       case 'function':
-        syntax.keyword('function ').titleClass(echoDeclaration.identifier)
+        syntax.keyword('function ').titleClass(identifier)
         renderCallableSignature(syntax, module.types[echoDeclaration.signature] as EchoType.Callable, true);
         return syntax;
       case 'unsupported':
         return syntax.comment(`<Unsupported(Reflector) declaration "${echoDeclaration.message}" />`)
       case 'variable':
-        syntax.keyword('export var ')
-          .title(echoDeclaration.identifier);
+        syntax.keyword('let ')
+          .title(identifier);
         if (echoDeclaration.typeof) {
           syntax.text(': ')
           renderType(syntax, module.types[echoDeclaration.typeof]);
@@ -253,9 +248,20 @@ export const createTypeRenderer = (module: EchoModule) => {
 }
 
 
-export type EchoDeclarationRendererProps = { module: EchoModule, declaration: EchoDeclaration, headingElement?: string };
-export const EchoDeclarationRenderer: Component<EchoDeclarationRendererProps> = ({ module, declaration, headingElement = 'h3', children }) => {
-  const renderer = useMemo(() => createTypeRenderer(module), [module]);
+export type EchoDeclarationRendererProps = {
+  module: EchoModule,
+  declaration: EchoDeclaration,
+  namespace?: string,
+  headingElement?: string
+};
+export const EchoDeclarationRenderer: Component<EchoDeclarationRendererProps> = ({
+  module,
+  declaration,
+  namespace,
+  headingElement = 'h3',
+  children
+}) => {
+  const renderer = useMemo(() => createTypeRenderer(module, namespace), [module]);
 
   const syntax = useMemo(() => {
     const syntax = createHLJSBuilder();
@@ -264,6 +270,7 @@ export const EchoDeclarationRenderer: Component<EchoDeclarationRendererProps> = 
   }, [renderer, declaration]);
 
   const comment = useMemo(() => {
+
     switch (declaration.type) {
       case 'function':
       case 'class':
@@ -273,27 +280,42 @@ export const EchoDeclarationRenderer: Component<EchoDeclarationRendererProps> = 
       case 'variable':
         if (!declaration.doc)
           return null;
-        return renderer.parser.parseString(declaration.doc).docComment;
+        return [
+          declaration.doc.map(d => d.text),
+          h('pre', {}, JSON.stringify(declaration.doc))
+        ]
       default:
         return null;
     }
   }, [renderer, declaration])
 
   return [
-    h(headingElement, { id: `echo:${module.identifiers[declaration.id]}` }, [module.identifiers[declaration.id] || '?', ` (${declaration.id})`]),
+    h(headingElement, { id: `echo:${declaration.identifier}` }, [declaration.identifier || '?', ` (${declaration.id})`]),
     children,
     h(CodeBox, { lines: syntax.output() }),
-    comment && renderer.renderDocCommentNode(comment),
+    comment,// && renderer.renderDocCommentNode(comment),
 
     declaration.type === "namespace" && [
-      declaration.exports.map(declaration => h(EchoDeclarationRenderer, { module, declaration: module.types[declaration], headingElement }))
+      declaration.exports.map(namespaceExport =>
+        h(EchoDeclarationRenderer, {
+          module,
+          namespace: [namespace, declaration.identifier].filter(Boolean).join('.'),
+          declaration: module.declarations[namespaceExport],
+          headingElement: 'h4'
+        }))
     ]
-
   ];
 }
-export const EchoExternalDeclarationRenderer: Component<EchoDeclarationRendererProps> = ({ module, declaration, headingElement = 'h3', children }) => {
-  if (declaration.type !== 'external')
-    return null;
+export type EchoExternalDeclarationRendererProps = {
+  module: EchoModule,
+  declaration: EchoExternalReference,
+  headingElement?: string
+};
+export const EchoExternalDeclarationRenderer: Component<EchoExternalDeclarationRendererProps> = ({
+  module, declaration,
+  headingElement = 'h4',
+  children
+}) => {
 
   return [
     h(headingElement, { id: `echo:${declaration.module}:${declaration.identifier}` }, [declaration.identifier]),
@@ -308,12 +330,13 @@ export const EchoPlugin = createPlugin('echo', (core) => {
   const EchoMDXRenderer: MDXComponent = ({ attributes, children }) => {
     const moduleId = attributes['module'] as string;
     const declarationId = attributes['name'] as string;
+    return null;
 
     const module = modules.get(moduleId);
     if (!module)
       return h(InlineErrorBox, {}, `No module of id "${moduleId}" found`)
 
-    const declaration = module.exports.find(d => d.identifier === declarationId)
+    const declaration = module.declarations[declarationId]
     if (!declaration)
       return h(InlineErrorBox, {}, `No declaration of id "${declarationId}" found`)
 
@@ -331,29 +354,30 @@ export const EchoPlugin = createPlugin('echo', (core) => {
 
     const declarationHeadingElement = attributes['declarationHeadingElement'] as string;
 
-    const externalsByModule = new Map(module.references.map(ref => [ref.module, [] as EchoDeclaration.External[]]))
-    for (const ref of module.references)
-      (externalsByModule.get(ref.module) as EchoDeclaration.External[]).push(ref)
+    const externalsByModule = new Map(Object.values(module.references).map(ref => [ref.module, [] as EchoExternalReference[]]))
+    for (const ref of Object.values(module.references))
+      (externalsByModule.get(ref.module) as EchoExternalReference[]).push(ref)
+
       
     return [
       h(headingElement, { id: `echo:${moduleId}` }, headingText),
 
       h('table', {}, [
-        Object.entries(module.identifiers).map(([name, typeID]) => {
+        Object.values(module.exports).map(ex => module.declarations[ex]).map((declaration) => {
           return h('tr', {}, [
-            h('td', {}, name),
-            h('td', {}, typeID),
+            h('td', {}, declaration.identifier),
+            h('td', {}, declaration.id),
           ])
         })
       ]),
 
       children,
-      module.exports
+      module.exports.map(id => module.declarations[id])
         .map(declaration => h(EchoDeclarationRenderer, { module, declaration, headingElement: declarationHeadingElement })),
-      h(headingElement, {}, `${headingText} Externals`),
+      h(headingElement, { id: 'Externals' }, `${headingText} Externals`),
       [...externalsByModule.entries()]
         .map(([filename, declarations]) => [
-          h('h2', { id: `echo:${filename}`}, filename),
+          h('h3', { id: `echo:${filename}`}, filename),
           declarations.map(declaration => h(EchoExternalDeclarationRenderer, { module, declaration, headingElement: declarationHeadingElement }))
         ])
     ]
