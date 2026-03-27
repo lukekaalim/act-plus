@@ -7,5 +7,5 @@ status: complete
 We should track pending work in text. This should be displayed on the
 documentation site somewhere.
 
-  - [ ] Add Task Page
-  - [ ] Dynamically find all tasks for each project (in a subdirectory)
+  - [x] Add Task Page
+  - [x] Dynamically find all tasks for each project (in a subdirectory)
