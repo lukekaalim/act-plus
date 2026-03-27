@@ -1,312 +1,312 @@
 {
   "name": "sample/1",
   "types": {
-    "11": {
+    "1316": {
       "typeParameters": [
-        12
+        1317
       ],
       "parameters": [],
-      "returns": 13,
-      "id": 11,
+      "returns": 1318,
+      "id": 1316,
       "type": "callable"
     },
-    "13": {
+    "1318": {
       "properties": {
-        "otherValue": 14,
-        "myMethod": 15,
-        "myValue": 1286,
-        "jenny": 1290,
-        "oooo": 1295,
-        "forrest": 1296
+        "otherValue": 1319,
+        "myMethod": 1320,
+        "myValue": 2591,
+        "jenny": 2595,
+        "oooo": 2600,
+        "forrest": 2601
       },
-      "id": 13,
+      "id": 1318,
       "type": "object"
     },
-    "14": {
+    "1319": {
       "value": 10,
-      "id": 14,
+      "id": 1319,
       "type": "literal"
     },
-    "15": {
+    "1320": {
       "typeParameters": [],
       "parameters": [
         {
           "name": "__0",
           "optional": false,
-          "type": 1286
+          "type": 2591
         }
       ],
-      "returns": 1289,
-      "id": 15,
+      "returns": 2594,
+      "id": 1320,
       "type": "callable"
     },
-    "1286": {
+    "2591": {
       "target": {
         "type": "reference",
-        "id": 1285
+        "id": 2590
       },
       "typeParameters": [
-        1287,
-        1288
+        2592,
+        2593
       ],
-      "id": 1286,
+      "id": 2591,
       "type": "reference"
     },
-    "1287": {
+    "2592": {
       "value": "yes",
-      "id": 1287,
+      "id": 2592,
       "type": "literal"
     },
-    "1288": {
+    "2593": {
       "value": "no",
-      "id": 1288,
+      "id": 2593,
       "type": "literal"
     },
-    "1289": {
+    "2594": {
       "value": "thing2",
-      "id": 1289,
+      "id": 2594,
       "type": "literal"
     },
-    "1290": {
+    "2595": {
       "typeParameters": [
-        1291
+        2596
       ],
       "parameters": [
         {
           "name": "a",
           "optional": false,
-          "type": 1292
+          "type": 2597
         },
         {
           "name": "b",
           "optional": false,
-          "type": 1293
+          "type": 2598
         }
       ],
-      "returns": 1294,
-      "id": 1290,
+      "returns": 2599,
+      "id": 2595,
       "type": "callable"
     },
-    "1292": {
+    "2597": {
       "target": {
         "type": "declaration",
-        "id": 1291
+        "id": 2596
       },
       "typeParameters": [],
-      "id": 1292,
+      "id": 2597,
       "type": "reference"
     },
-    "1293": {
+    "2598": {
       "target": {
         "type": "declaration",
-        "id": 12
+        "id": 1317
       },
       "typeParameters": [],
-      "id": 1293,
+      "id": 2598,
       "type": "reference"
     },
-    "1294": {
+    "2599": {
       "keyword": "void",
-      "id": 1294,
+      "id": 2599,
       "type": "keyword"
     },
-    "1295": {
+    "2600": {
       "typeParameters": [],
       "parameters": [],
-      "returns": 11,
-      "id": 1295,
+      "returns": 1316,
+      "id": 2600,
       "type": "callable"
     },
-    "1296": {
+    "2601": {
       "typeParameters": [],
       "parameters": [
         {
           "name": "checker",
           "optional": false,
-          "type": 1297
+          "type": 2602
         }
       ],
-      "returns": 1294,
-      "id": 1296,
+      "returns": 2599,
+      "id": 2601,
       "type": "callable"
     },
-    "1297": {
+    "2602": {
       "target": {
         "type": "reference",
-        "id": 1149
+        "id": 2454
       },
       "typeParameters": [
-        1298
+        2603
       ],
-      "id": 1297,
+      "id": 2602,
       "type": "reference"
     },
-    "1298": {
+    "2603": {
       "target": {
         "type": "reference",
-        "id": 1141
+        "id": 2446
       },
       "typeParameters": [],
-      "id": 1298,
+      "id": 2603,
       "type": "reference"
     },
-    "1300": {
+    "2605": {
       "value": "hello",
-      "id": 1300,
+      "id": 2605,
       "type": "literal"
     },
-    "1301": {
+    "2606": {
       "builtin": "string",
-      "id": 1301,
+      "id": 2606,
       "type": "builtin"
     },
-    "1304": {
+    "2609": {
       "target": {
         "type": "declaration",
-        "id": 7
+        "id": 1312
       },
       "typeParameters": [],
-      "id": 1304,
+      "id": 2609,
       "type": "reference"
     },
-    "1305": {
+    "2610": {
       "value": "World",
-      "id": 1305,
+      "id": 2610,
       "type": "literal"
     }
   },
   "references": {
-    "1141": {
-      "id": 1141,
+    "2446": {
+      "id": 2446,
       "module": "typescript",
       "identifier": "BuilderProgram"
     },
-    "1149": {
-      "id": 1149,
+    "2454": {
+      "id": 2454,
       "module": "typescript",
       "identifier": "ProgramHost"
     },
-    "1285": {
-      "id": 1285,
+    "2590": {
+      "id": 2590,
       "module": "typescript/lib/lib.es2015.collection.d.ts",
       "identifier": "Map"
     }
   },
   "declarations": {
-    "1": {
+    "1306": {
       "identifier": "myFunction",
-      "typeof": 11,
-      "id": 1,
+      "typeof": 1316,
+      "id": 1306,
       "type": "variable"
     },
-    "2": {
+    "1307": {
       "identifier": "A",
-      "typeof": 1300,
-      "id": 2,
+      "typeof": 2605,
+      "id": 1307,
       "type": "variable"
     },
-    "3": {
+    "1308": {
       "identifier": "b",
-      "typeof": 1300,
-      "id": 3,
+      "typeof": 2605,
+      "id": 1308,
       "type": "variable"
     },
-    "4": {
+    "1309": {
       "identifier": "e",
-      "typeof": 1301,
-      "id": 4,
+      "typeof": 2606,
+      "id": 1309,
       "type": "variable"
     },
-    "5": {
+    "1310": {
       "identifier": "f",
-      "typeof": 1301,
-      "id": 5,
+      "typeof": 2606,
+      "id": 1310,
       "type": "variable"
     },
-    "6": {
+    "1311": {
       "identifier": "CustomNamespace",
       "exports": [
-        7,
-        8
+        1312,
+        1313
       ],
-      "id": 6,
+      "id": 1311,
       "type": "namespace"
     },
-    "7": {
+    "1312": {
       "identifier": "D",
-      "signature": 1304,
-      "id": 7,
+      "signature": 2609,
+      "id": 1312,
       "type": "function"
     },
-    "8": {
+    "1313": {
       "identifier": "NestedNamespace",
       "exports": [
-        9,
-        10
+        1314,
+        1315
       ],
-      "id": 8,
+      "id": 1313,
       "type": "namespace"
     },
-    "9": {
+    "1314": {
       "identifier": "C",
-      "typeof": 1300,
-      "id": 9,
+      "typeof": 2605,
+      "id": 1314,
       "type": "variable"
     },
-    "10": {
+    "1315": {
       "identifier": "Hello",
-      "declares": 1305,
+      "declares": 2610,
       "parameters": [],
-      "id": 10,
+      "id": 1315,
       "type": "type"
     },
-    "12": {
+    "1317": {
       "identifier": "TY",
       "extends": null,
       "default": null,
-      "id": 12,
+      "id": 1317,
       "type": "generic"
     },
-    "1291": {
+    "2596": {
       "identifier": "T",
       "extends": null,
       "default": null,
-      "id": 1291,
+      "id": 2596,
       "type": "generic"
     }
   },
   "comments": {
-    "1299": {
-      "id": 1299,
+    "2604": {
+      "id": 2604,
       "comment": "/**\n * I DEMAND DOCUMENTATION\n * \n * @returns \n */",
       "target": {
         "type": "declaration",
-        "id": 1
+        "id": 1306
       }
     },
-    "1302": {
-      "id": 1302,
+    "2607": {
+      "id": 2607,
       "comment": "/** whoah! */",
       "target": {
         "type": "declaration",
-        "id": 4
+        "id": 1309
       }
     },
-    "1303": {
-      "id": 1303,
+    "2608": {
+      "id": 2608,
       "comment": "/** mama! */",
       "target": {
         "type": "declaration",
-        "id": 5
+        "id": 1310
       }
     }
   },
   "exports": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
+    1306,
+    1307,
+    1308,
+    1309,
+    1310,
+    1311
   ]
 }
