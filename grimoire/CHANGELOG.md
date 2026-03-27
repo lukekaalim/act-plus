@@ -1,5 +1,11 @@
 # @lukekaalim/grimoire
 
+## 2.1.0-echo-beta.0
+
+### Minor Changes
+
+Some fixes for CodeBox and Themes
+
 ## 2.0.2
 
 ### Patch Changes

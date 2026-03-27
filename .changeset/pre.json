@@ -1,5 +1,5 @@
 {
-  "mode": "pre",
+  "mode": "exit",
   "tag": "echo-beta",
   "initialVersions": {
     "@lukekaalim/act-curve": "4.0.0",
@@ -13,6 +13,7 @@
     "sample-lib": "1.0.0"
   },
   "changesets": [
-    "sweet-teams-shout"
+    "sweet-teams-shout",
+    "three-zoos-laugh"
   ]
 }
