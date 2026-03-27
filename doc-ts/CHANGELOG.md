@@ -1,5 +1,12 @@
 # @lukekaalim/grimoire-ts
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies [e9cf59a]
+  - @lukekaalim/echo@2.1.0
+
 ## 1.0.0
 
 ### Major Changes
