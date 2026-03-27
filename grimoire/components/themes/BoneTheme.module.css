@@ -7,12 +7,25 @@
   
   --fonts: "Fira Code", monospace;
 
+  --codebox-background-color: rgb(214, 214, 214);
+  --codebox-text-color: rgb(49, 49, 49);
+  --codebox-border-color: rgb(131, 131, 131);
+  --codebox-line-number-color: rgb(106, 106, 106);
+
   font-family: "Fira Code", monospace;
 
   font-optical-sizing: auto;
-  font-weight: 300;
+  font-weight: normal;
   font-style: normal;
 
   height: 100%;
   width: 100%;
+}
+
+.boneTheme a {
+  color: rgb(38, 47, 167);
+  transition: color 2s;
+}
+.boneTheme a:visited {
+  color: rgb(65, 65, 85)
 }

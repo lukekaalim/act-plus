@@ -1,7 +1,8 @@
 import { Component, createContext, useContext } from "@lukekaalim/act";
 
 export type ThemeContext = {
-  VerticalNav: Component
+  VerticalNav: Component,
+  highlightJsTheme: CSSModuleClasses,
 }
 
 export const ThemeContext = createContext<ThemeContext | null>(null);

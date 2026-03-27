@@ -1,0 +1,447 @@
+{
+  "name": "../graphit/index",
+  "types": {
+    "undefined": {
+      "alias": 322,
+      "type": "internal-alias"
+    }
+  },
+  "references": [
+    {
+      "identifier": "Set",
+      "module": "typescript/lib/lib.es2015.collection.d.ts",
+      "id": 48,
+      "type": "external"
+    },
+    {
+      "identifier": "Node",
+      "module": "@lukekaalim/act",
+      "id": 101,
+      "type": "external"
+    },
+    {
+      "identifier": "Ref",
+      "module": "@lukekaalim/act",
+      "id": 82,
+      "type": "external"
+    },
+    {
+      "identifier": "SVGLineElement",
+      "module": "typescript/lib/lib.dom.d.ts",
+      "id": 123,
+      "type": "external"
+    },
+    {
+      "identifier": "SVGPatternElement",
+      "module": "typescript/lib/lib.dom.d.ts",
+      "id": 132,
+      "type": "external"
+    },
+    {
+      "identifier": "AssertRefsExtends",
+      "module": "@lukekaalim/act-graphit/ResizingSpace.ts",
+      "id": 176,
+      "type": "external"
+    },
+    {
+      "identifier": "SVGElement",
+      "module": "typescript/lib/lib.dom.d.ts",
+      "id": 182,
+      "type": "external"
+    },
+    {
+      "identifier": "SVGSVGElement",
+      "module": "typescript/lib/lib.dom.d.ts",
+      "id": 185,
+      "type": "external"
+    },
+    {
+      "identifier": "Deps",
+      "module": "@lukekaalim/act",
+      "id": 70,
+      "type": "external"
+    },
+    {
+      "identifier": "Dimension",
+      "module": "@lukekaalim/act-graphit/vector.ts",
+      "id": 226,
+      "type": "external"
+    },
+    {
+      "identifier": "Dimension",
+      "module": "@lukekaalim/act-graphit/vector.ts",
+      "id": 241,
+      "type": "external"
+    },
+    {
+      "identifier": "Dimension",
+      "module": "@lukekaalim/act-graphit/vector.ts",
+      "id": 253,
+      "type": "external"
+    },
+    {
+      "identifier": "SVGCircleElement",
+      "module": "typescript/lib/lib.dom.d.ts",
+      "id": 285,
+      "type": "external"
+    },
+    {
+      "identifier": "SVGRectElement",
+      "module": "typescript/lib/lib.dom.d.ts",
+      "id": 293,
+      "type": "external"
+    },
+    {
+      "identifier": "SVGGElement",
+      "module": "typescript/lib/lib.dom.d.ts",
+      "id": 303,
+      "type": "external"
+    },
+    {
+      "identifier": "PointerEvent",
+      "module": "typescript/lib/lib.dom.d.ts",
+      "id": 324,
+      "type": "external"
+    }
+  ],
+  "exports": [
+    {
+      "declares": 37,
+      "parameters": [],
+      "doc": null,
+      "identifier": "EditablePointProps",
+      "id": 0,
+      "type": "type"
+    },
+    {
+      "identifier": "EditablePoint",
+      "doc": null,
+      "signature": 44,
+      "id": 1,
+      "type": "function"
+    },
+    {
+      "identifier": "globalDefs",
+      "doc": null,
+      "typeof": 47,
+      "id": 2,
+      "type": "variable"
+    },
+    {
+      "identifier": "registerSVGDef",
+      "doc": null,
+      "signature": 49,
+      "id": 3,
+      "type": "function"
+    },
+    {
+      "identifier": "DefProvider",
+      "doc": null,
+      "signature": 52,
+      "id": 4,
+      "type": "function"
+    },
+    {
+      "declares": 54,
+      "parameters": [],
+      "doc": null,
+      "identifier": "CartesianSpaceController",
+      "id": 5,
+      "type": "type"
+    },
+    {
+      "declares": 60,
+      "parameters": [],
+      "doc": null,
+      "identifier": "CartesianSpaceProps",
+      "id": 6,
+      "type": "type"
+    },
+    {
+      "identifier": "CartesianSpace",
+      "doc": null,
+      "signature": 133,
+      "id": 7,
+      "type": "function"
+    },
+    {
+      "identifier": "assertRefs",
+      "doc": null,
+      "signature": 136,
+      "id": 8,
+      "type": "function"
+    },
+    {
+      "identifier": "assertSVGParent",
+      "doc": null,
+      "signature": 179,
+      "id": 9,
+      "type": "function"
+    },
+    {
+      "identifier": "ResizingSpace",
+      "doc": null,
+      "signature": 186,
+      "id": 10,
+      "type": "function"
+    },
+    {
+      "declares": 189,
+      "parameters": [],
+      "doc": null,
+      "identifier": "PositiveAxesProps",
+      "id": 11,
+      "type": "type"
+    },
+    {
+      "identifier": "PositiveAxes",
+      "doc": null,
+      "signature": 197,
+      "id": 12,
+      "type": "function"
+    },
+    {
+      "declares": 200,
+      "parameters": [],
+      "doc": null,
+      "identifier": "ZeroBasedAxesProps",
+      "id": 13,
+      "type": "type"
+    },
+    {
+      "identifier": "ZeroBasedAxes",
+      "doc": null,
+      "signature": 205,
+      "id": 14,
+      "type": "function"
+    },
+    {
+      "declares": 208,
+      "parameters": [],
+      "doc": null,
+      "identifier": "UnitSizeProps",
+      "id": 15,
+      "type": "type"
+    },
+    {
+      "identifier": "UnitSize",
+      "doc": null,
+      "signature": 212,
+      "id": 16,
+      "type": "function"
+    },
+    {
+      "declares": 215,
+      "parameters": [],
+      "doc": null,
+      "identifier": "LinePathProps",
+      "id": 17,
+      "type": "type"
+    },
+    {
+      "identifier": "LinePath",
+      "doc": null,
+      "signature": 221,
+      "id": 18,
+      "type": "function"
+    },
+    {
+      "declares": 227,
+      "parameters": [
+        {
+          "identifier": "D",
+          "id": 224,
+          "extends": 225,
+          "default": null
+        }
+      ],
+      "doc": null,
+      "identifier": "Vector",
+      "id": 22,
+      "type": "type"
+    },
+    {
+      "declares": 228,
+      "parameters": [],
+      "doc": null,
+      "identifier": "AnyVector",
+      "id": 20,
+      "type": "type"
+    },
+    {
+      "declares": 242,
+      "parameters": [
+        {
+          "identifier": "D",
+          "id": 239,
+          "extends": 240,
+          "default": null
+        }
+      ],
+      "doc": null,
+      "identifier": "VectorOps",
+      "id": 21,
+      "type": "type"
+    },
+    {
+      "identifier": "Vector",
+      "doc": null,
+      "signature": 250,
+      "id": 22,
+      "type": "function"
+    },
+    {
+      "declares": 259,
+      "parameters": [
+        {
+          "identifier": "T",
+          "id": 256,
+          "extends": 257,
+          "default": 258
+        }
+      ],
+      "doc": null,
+      "identifier": "SVGCoreProps",
+      "id": 23,
+      "type": "type"
+    },
+    {
+      "identifier": "remapCoreProps",
+      "doc": null,
+      "signature": 269,
+      "id": 24,
+      "type": "function"
+    },
+    {
+      "declares": 274,
+      "parameters": [],
+      "doc": null,
+      "identifier": "LineProps",
+      "id": 25,
+      "type": "type"
+    },
+    {
+      "identifier": "Line",
+      "doc": null,
+      "signature": 278,
+      "id": 26,
+      "type": "function"
+    },
+    {
+      "declares": 281,
+      "parameters": [],
+      "doc": null,
+      "identifier": "CircleProps",
+      "id": 27,
+      "type": "type"
+    },
+    {
+      "identifier": "Circle",
+      "doc": null,
+      "signature": 286,
+      "id": 28,
+      "type": "function"
+    },
+    {
+      "declares": 289,
+      "parameters": [],
+      "doc": null,
+      "identifier": "RectProps",
+      "id": 29,
+      "type": "type"
+    },
+    {
+      "identifier": "Rect",
+      "doc": null,
+      "signature": 294,
+      "id": 30,
+      "type": "function"
+    },
+    {
+      "declares": 297,
+      "parameters": [],
+      "doc": null,
+      "identifier": "GroupProps",
+      "id": 31,
+      "type": "type"
+    },
+    {
+      "identifier": "Group",
+      "doc": null,
+      "signature": 304,
+      "id": 32,
+      "type": "function"
+    },
+    {
+      "declares": 307,
+      "parameters": [],
+      "doc": null,
+      "identifier": "ForeignObjectProps",
+      "id": 33,
+      "type": "type"
+    },
+    {
+      "identifier": "ForeignObject",
+      "doc": null,
+      "signature": 308,
+      "id": 34,
+      "type": "function"
+    },
+    {
+      "identifier": "subscribeMap",
+      "doc": null,
+      "signature": 311,
+      "id": 35,
+      "type": "function"
+    },
+    {
+      "identifier": "useDrag",
+      "doc": null,
+      "signature": 315,
+      "id": 36,
+      "type": "function"
+    }
+  ],
+  "identifiers": {
+    "0": "EditablePointProps",
+    "1": "EditablePoint",
+    "2": "globalDefs",
+    "3": "registerSVGDef",
+    "4": "DefProvider",
+    "5": "CartesianSpaceController",
+    "6": "CartesianSpaceProps",
+    "7": "CartesianSpace",
+    "8": "assertRefs",
+    "9": "assertSVGParent",
+    "10": "ResizingSpace",
+    "11": "PositiveAxesProps",
+    "12": "PositiveAxes",
+    "13": "ZeroBasedAxesProps",
+    "14": "ZeroBasedAxes",
+    "15": "UnitSizeProps",
+    "16": "UnitSize",
+    "17": "LinePathProps",
+    "18": "LinePath",
+    "19": "Vector",
+    "20": "AnyVector",
+    "21": "VectorOps",
+    "22": "Vector",
+    "23": "SVGCoreProps",
+    "24": "remapCoreProps",
+    "25": "LineProps",
+    "26": "Line",
+    "27": "CircleProps",
+    "28": "Circle",
+    "29": "RectProps",
+    "30": "Rect",
+    "31": "GroupProps",
+    "32": "Group",
+    "33": "ForeignObjectProps",
+    "34": "ForeignObject",
+    "35": "subscribeMap",
+    "36": "useDrag",
+    "224": "D",
+    "239": "D",
+    "256": "T"
+  }
+}

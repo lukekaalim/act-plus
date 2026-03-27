@@ -1,5 +1,23 @@
 # @lukekaalim/grimoire
 
+## 2.1.0-echo-beta.0
+
+### Minor Changes
+
+Some fixes for CodeBox and Themes
+
+## 2.0.2
+
+### Patch Changes
+
+- 7775df8: Fix images being too wide in markdown articles
+
+## 2.0.1
+
+### Patch Changes
+
+- c252001: Fix issues with themeing codeboxes in Grimoire
+
 ## 2.0.0
 
 ### Major Changes

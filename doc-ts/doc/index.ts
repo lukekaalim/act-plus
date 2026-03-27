@@ -1,10 +1,10 @@
 import { DocApp } from "@lukekaalim/grimoire";
-import { TypeDocPlugin } from "@lukekaalim/grimoire-ts";
+import { EchoPlugin, TypeDocPlugin } from "@lukekaalim/grimoire-ts";
 
 import readmeMd from '../readme.md?raw';
 import apiMd from './api.md?raw';
 import guideMd from './guides.md?raw';
-import projectJSON from 'typedoc:../index.ts';
+import reflection from 'echo:@lukekaalim/grimoire-ts';
 
 import {
   Comment, CommentTag, DeclarationReflection, IntrinsicType,
@@ -13,8 +13,8 @@ import {
 import { DeclarationReflectionRenderer } from "../Reflection";
 import { h } from "@lukekaalim/act";
 
-export const buildGrimoireTSDocs = (doc: DocApp<[TypeDocPlugin]>) => {
-  doc.typedoc.addProjectJSON('@lukekaalim/grimoire-ts', projectJSON);
+export const buildGrimoireTSDocs = (doc: DocApp<[TypeDocPlugin, EchoPlugin]>) => {
+  doc.echo.modules.set('@lukekaalim/grimoire-ts', reflection);
 
   doc.article.add('ts.readme', readmeMd, '/packages/@lukekaalim/grimoire-ts');
   doc.article.add('ts.api', apiMd, '/packages/@lukekaalim/grimoire-ts/api');

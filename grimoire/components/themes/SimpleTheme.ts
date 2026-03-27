@@ -6,6 +6,8 @@ import { ThemeContext } from "../../lib";
 import { VerticalNavMenu2 } from "../vertical_nav_menu";
 import { TopBanner2, TopBanner2Props } from "../header";
 
+import "../code/themes/highlight.nord.css";
+
 export type SimpleThemeProps = {
   doc: DocApp,
   banner?: TopBanner2Props,
@@ -25,13 +27,14 @@ export const SimpleTheme: Component<SimpleThemeProps> = ({ doc, banner }) => {
   const theme: ThemeContext = useMemo(() => ({
     VerticalNav() {
       return h(VerticalNavMenu2, { tree })
-    }
+    },
+    highlightJsTheme: {},
   }), []);
 
   return h('div', { style: { height: '100%', width: '100%', display: 'flex', 'flex-direction': 'column' }}, h(DocAppContext.Provider, { value: doc }, h(ThemeContext.Provider, { value: theme }, [
     !!banner && h(TopBanner2, banner),
     
-    h('div', { style: { position: 'relative', flex: 1 } },
+    h('div', { style: { position: 'relative', flex: 1 }, className: 'nord' },
       pageStates.map(state => h(PageTransitionDriver, { state, key: state.id, direction: router.direction })))
   ])));
 }

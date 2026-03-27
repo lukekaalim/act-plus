@@ -12,10 +12,12 @@ import {
 } from '@lukekaalim/act-router';
 import {  Grid3, Hero, TopBanner, createDocApp, SimpleTheme, BannerLink, IconTextBannerLogo, BoneTheme } from '@lukekaalim/grimoire';
 
-import { TypeDocPlugin } from '@lukekaalim/grimoire-ts';
+import { EchoPlugin, TypeDocPlugin } from '@lukekaalim/grimoire-ts';
 import { SVGRepo } from '@lukekaalim/act-icons';
 
 import iconPlusURL from './media/icon-plus.png';
+import { buildEchoDocs } from '../echo/docs';
+import { TaskPage } from './TaskPage';
 
 const origin = createRelativeURLFactory();
 
@@ -221,6 +223,7 @@ const DemoPage = () => {
           ],
         },
         {
+          
           id: 'icons',
           destination: origin.createURL('/packages/@lukekaalim/act-icons'),
           content: [
@@ -233,8 +236,11 @@ const DemoPage = () => {
   ])
 }
 
-const doc = createDocApp([TypeDocPlugin]);
+const doc = createDocApp([TypeDocPlugin, EchoPlugin]);
 doc.route.add('/', h(DemoPage))
+
+
+doc.route.add('/tasks', h(TaskPage))
 
 const wait = (time: number) => new Promise(resolve => setTimeout(resolve, time));
 
@@ -249,6 +255,7 @@ const allDocs = await Promise.all([
   import('@lukekaalim/act-markdown/doc.ts'),
   import('sample-lib/docs'),
 ])
+
 const {
   buildCurveDocs,
   buildGraphitDocs,
@@ -259,21 +266,15 @@ const {
   createSampleDocPages,
 } = allDocs.reduce((left, right) => ({ ...left, ...right }), {}) as UnionToIntersection<(typeof allDocs)[number]>;
 
+buildEchoDocs(doc);
 
 buildGrimoireDocs(doc);
-await wait(10);
 buildGrimoireTSDocs(doc);
-await wait(10);
 createSampleDocPages(doc);
-await wait(10);
 buildIconDocs(doc);
-await wait(10);
 buildCurveDocs(doc);
-await wait(10);
 buildGraphitDocs(doc);
-await wait(10);
 buildMarkdownDocs(doc)
-await wait(10);
 
 const main = () => {
   const banner = {
@@ -281,6 +282,7 @@ const main = () => {
       h(IconTextBannerLogo, { iconURL: iconPlusURL, name: `@lukekaalim/act-plus`, style: { 'font-weight': 'bold' } })),
     nav: [
       h(BannerLink, { link: '/#packages' }, 'Packages'),
+      h(BannerLink, { link: '/tasks' }, 'Tasks'),
     ]
   }
   render(h(SimpleTheme, { doc, banner }), document.body);

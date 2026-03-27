@@ -5,7 +5,7 @@ export const CoreDebug = () => {
   const doc = useDocApp([]);
 
   return [
-    h('h3', {}, 'Direct References'),
+    h('h3', { id: 'debug:direct-references' }, 'Direct References'),
     h('table', {}, doc.reference.references.map(reference => h('tr', {}, [
       h('td', {}, reference.key),
       h('td', {}, reference.location.path),
@@ -14,7 +14,7 @@ export const CoreDebug = () => {
         h('span', {}, reference.location.fragment)
       ]
     ]))),
-    h('h3', {}, 'Indirect References'),
+    h('h3', { id: 'debug:indirect-references'  }, 'Indirect References'),
     h('table', {}, doc.reference.indirect_references.map(reference => h('tr', {}, [
       h('td', {}, reference.source),
       h('td', {}, reference.destination),
@@ -22,7 +22,7 @@ export const CoreDebug = () => {
         h('td', {}, reference.fragment)
       ]
     ]))),
-    h('h3', {}, 'Routes'),
+    h('h3', { id: 'debug:routes'  }, 'Routes'),
     h('table', {}, doc.route.routes.map(route => h('tr', {}, [
       h('td', {}, route.path),
     ]))),

@@ -9,7 +9,7 @@ type PageTransitionState = {
   animation: Bezier4Animation<Vector1D>,
 }
 
-const DURATION = 800;
+const DURATION = 400;
 
 export const SimpleTransition1D = createTransitionAPI<{
   Value: RouterPage,
@@ -101,9 +101,9 @@ export const PageTransitionDriver: Component<{ state: PageTransitionState, direc
 
     if (point.x <= 0) {
       if (direction === 'forward')
-        el.style.transform = `translate(${-point.x * 50}%, 0px)`;
+        el.style.transform = `translate(${-point.x * 5}%, 0px)`;
       else
-        el.style.transform = `translate(${-point.x * -50}%, 0px)`;
+        el.style.transform = `translate(${-point.x * -5}%, 0px)`;
     }
 
     el.style.pointerEvents = point.x === 0 ? 'all' : 'none'

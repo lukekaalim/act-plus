@@ -30,8 +30,6 @@
 
 .title {
   margin: 0;
-
-  _font-family: var(--fonts, "Arvo");
 }
 
 .description {
@@ -58,5 +56,5 @@
 }
 
 .image {
-  width: 100%;
+  max-width: 100%;
 }

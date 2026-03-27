@@ -2,8 +2,8 @@
   white-space: pre;
   display: block;
 
-  background-color: rgb(22, 21, 44);
-  color: white;
+  background-color: var(--codebox-background-color, rgb(22, 21, 44));
+  color: var(--codebox-text-color, rgb(255, 255, 255));;
 
   padding: 16px;
 
@@ -11,14 +11,14 @@
   margin: 8px 0;
 
   border-radius: 8px;
-  border: 2px solid rgb(182, 179, 203);
+  border: 2px solid var(--codebox-border-color, rgb(182, 179, 203));
 
   overflow: auto;
 }
 
 .lineNumber {
   user-select: none;
-  color: rgb(122, 130, 158)
+  color: var(--codebox-line-number-color, rgb(122, 130, 158))
 }
 
 .unknownLineGuessBox {
