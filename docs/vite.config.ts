@@ -36,9 +36,6 @@ const createEchoPlugin = async (): Promise<Plugin> => {
       if (!entrypoint)
         return null;
 
-      options.attributes['original-id'] = id.slice(ECHO_PREFIX.length);
-      console.log('resolve', id, JSON.stringify(options))
-
       return {
         id: RESOLVED_ECHO_PREFIX + entrypoint.id,
         resolvedBy: 'echo',
