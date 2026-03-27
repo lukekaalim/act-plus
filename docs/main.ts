@@ -253,7 +253,7 @@ const allDocs = await Promise.all([
   import('@lukekaalim/act-curve/docs'),
   import('@lukekaalim/act-graphit/mod.doc.ts'),
   import('@lukekaalim/act-markdown/doc.ts'),
-  import('sample-lib/docs'),
+  //import('sample-lib/docs'),
 ])
 
 const {
@@ -263,14 +263,14 @@ const {
   buildGrimoireTSDocs,
   buildIconDocs,
   buildMarkdownDocs,
-  createSampleDocPages,
+  //createSampleDocPages,
 } = allDocs.reduce((left, right) => ({ ...left, ...right }), {}) as UnionToIntersection<(typeof allDocs)[number]>;
 
 buildEchoDocs(doc);
 
 buildGrimoireDocs(doc);
 buildGrimoireTSDocs(doc);
-createSampleDocPages(doc);
+//createSampleDocPages(doc);
 buildIconDocs(doc);
 buildCurveDocs(doc);
 buildGraphitDocs(doc);

@@ -9,6 +9,10 @@
   "scripts": {
     "build": "tsup-node index.ts"
   },
+  "exports": {
+    ".": "./index.ts",
+    "./plugin": "./plugin/index.ts"
+  },
   "dependencies": {
     "@microsoft/tsdoc": "^0.16.0"
   },

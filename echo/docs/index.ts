@@ -5,7 +5,7 @@ import { EchoDeclarationRenderer, EchoPlugin } from '@lukekaalim/grimoire-ts';
 import readmeMD from '../README.md?raw';
 
 import { EchoModule } from '@lukekaalim/echo';
-import Sample1JSON from '@lukekaalim/echo/sample/1.json';
+import Sample1JSON from '../sample/1.json';
 
 import reflection from 'echo:@lukekaalim/echo';
 
