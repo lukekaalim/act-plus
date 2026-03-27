@@ -3,9 +3,7 @@
   "main": "index.ts",
   "version": "2.1.0",
   "dependencies": {
-    "@lukekaalim/act": "^3.2.1",
     "@lukekaalim/act-icons": "^1.0.0",
-    "@lukekaalim/act-web": "^3.4.0-alpha.2",
     "@lukekaalim/act-router": "^0.1.0",
     "@lukekaalim/act-curve": "^4.0.0",
     "@lukekaalim/act-markdown": "^2.0.1",
@@ -18,5 +16,8 @@
     "mdast-util-to-string": "^4.0.0",
     "rollup": "^4.50.1",
     "yaml": "^2.8.0"
+  },
+  "peerDependencies": {
+    "@lukekaalim/act": "^4.1.0"
   }
 }

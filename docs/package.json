@@ -9,12 +9,11 @@
     "vite": "^7.1.10"
   },
   "dependencies": {
-    "@lukekaalim/act": "^3.2.0",
-    "@lukekaalim/act-debug": "^1.0.0-alpha.0",
+    "@lukekaalim/act": "^4.1.0",
     "@lukekaalim/act-icons": "^1.0.0",
     "@lukekaalim/act-markdown": "^2.0.2",
     "@lukekaalim/act-router": "*",
-    "@lukekaalim/act-web": "^3.4.0-alpha.2",
+    "@lukekaalim/act-web": "^5.0.0",
     "@lukekaalim/grimoire": "2.1.0",
     "@lukekaalim/grimoire-ts": "1.0.1",
     "rxjs": "^7.8.2",

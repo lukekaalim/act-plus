@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@lukekaalim/act": "^3.2.1",
-    "@lukekaalim/act-web": "^3.4.0-alpha.2"
+  },
+  "peerDependencies": {
+    "@lukekaalim/act": "^4.1.0"
   }
 }
