@@ -1,8 +1,8 @@
 ---
 id: docs-0
-status: backlog
+status: complete
 ---
-# Tasks
+### Tasks
 
 We should track pending work in text. This should be displayed on the
 documentation site somewhere.

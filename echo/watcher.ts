@@ -15,11 +15,10 @@ export const createEchoWatcher = async (entryPoints: string[], onModule: (entryP
   const host = ts.createWatchCompilerHost<ts.SemanticDiagnosticsBuilderProgram>(
     entryPoints, tsOptions, ts.sys, ts.createSemanticDiagnosticsBuilderProgram,
     diagnostic => {
-      console.warn('[Echo:Typescript:Error]', diagnostic.messageText);
+      //console.warn('[Echo:Typescript:Error]', diagnostic.messageText);
     },
     watchStatus => {
-      console.warn('[Echo:Typescript]', watchStatus.messageText);
-
+      //console.warn('[Echo:Typescript]', watchStatus.messageText);
     },
     [],
     {
@@ -31,6 +30,7 @@ export const createEchoWatcher = async (entryPoints: string[], onModule: (entryP
     performance.mark('builder:start')
 
     const program = builder.getProgram();
+    /*
     for (const diag of builder.getGlobalDiagnostics())
       console.log('[DIAG (global)]', diag.messageText)
     for (const diag of builder.getOptionsDiagnostics())
@@ -39,6 +39,7 @@ export const createEchoWatcher = async (entryPoints: string[], onModule: (entryP
       console.log('[DIAG (semantic)]', diag.messageText, diag.source || diag.file?.fileName)
     for (const diag of builder.getSyntacticDiagnostics())
       console.log('[DIAG (syntactic)]', diag.messageText)
+    */
 
     for (const entryPoint of entryPoints) {
       const source = program.getSourceFile(entryPoint);

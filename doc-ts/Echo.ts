@@ -1,14 +1,31 @@
-import { CodeBox, CoreAPI, createHLJSBuilder, createPlugin, HLJSBuilder, InlineErrorBox, MDXComponent } from "@lukekaalim/grimoire";
+import { CodeBox, CoreAPI, createHLJSBuilder, createPlugin, DocApp, hljs, HLJSBuilder, hljsClassNames, InlineErrorBox, MDXComponent, useDocApp } from "@lukekaalim/grimoire";
 import { EchoDeclaration, EchoModule, EchoType } from "@lukekaalim/echo";
 import { Component, h, Node, useMemo } from "@lukekaalim/act";
 
-import { DocNode, TSDocParser, DocNodeKind, DocComment, DocSection, DocParagraph, DocPlainText } from '@microsoft/tsdoc';
+import {  TSDocParser, TSDocConfiguration } from '@microsoft/tsdoc';
 
 import "./simpleStyles.css";
 import { EchoExternalReference } from "@lukekaalim/echo/types/external";
+import { renderDocCommentNode } from "./comment";
+import { visit } from "unist-util-visit";
+import { buildMdxAttributes } from "@lukekaalim/act-markdown";
+import { ref } from "process";
 
-export const createTypeRenderer = (module: EchoModule, namespace?: string) => {
+export const createTypeRenderer = (module: EchoModule, docApp: DocApp<[EchoPlugin]>) => {
   const visitedTypes = new Set<EchoType.ID>();
+
+  const identifierByDeclarationId = new Map<EchoDeclaration.ID, string>();
+  for (const exportId of module.exports) {
+    const declaration = module.declarations[exportId];
+    identifierByDeclarationId.set(declaration.id, declaration.identifier);
+    if (declaration.type === 'namespace') {
+      // TODO: this should be recursive
+      for (const namespaceExportId of declaration.exports) {
+        const innerDeclaration = module.declarations[namespaceExportId];
+        identifierByDeclarationId.set(innerDeclaration.id, [declaration.identifier, innerDeclaration.identifier].join('.'));
+      }
+    }
+  }
 
   const renderDelimitedList = <T>(elements: T[], renderElement: (element: T) => void, renderDelimiter: () => void) => {
     for (let i = 0; i < elements.length; i++) {
@@ -118,14 +135,35 @@ export const createTypeRenderer = (module: EchoModule, namespace?: string) => {
           const declaration = module.declarations[echoType.target.id]
           if (!declaration)
             syntax.titleClass(`<ReferenceNotFound id="${echoType.target.id}" />`)
-          else
-            syntax.titleClass(declaration.identifier)
+          else {
+            const fullName = identifierByDeclarationId.get(declaration.id);
+            if (!fullName) {
+              if (declaration.type === 'generic')
+                syntax.titleClass(declaration.identifier)
+              else
+                syntax.titleClass(`<IdentifierNotFound id="${echoType.target.id}" />`)
+            }
+            else {
+              const location = docApp.reference.resolveRouteLink(`echo:${module.name}:${fullName}`)
+              console.log(`echo:${module.name}:${fullName}`, location)
+              if (location)
+                syntax.node(h('a', { href: location.href, classList: [hljsClassNames.titleClass] }, fullName))
+              else
+                syntax.titleClass(fullName)
+            }
+          }
         } else if (echoType.target.type === 'reference') {
           const reference = module.references[echoType.target.id]
           if (!reference)
             syntax.comment(`<ReferenceNotFound id="${echoType.target.id}" />`)
-          else
-            syntax.titleClass(reference.identifier);
+          else {
+            const location = docApp.reference.resolveRouteLink(`echo:${reference.module}:${reference.identifier}`)
+            if (location) {
+              syntax.node(h('a', { href: location.href, classList: [hljsClassNames.titleClass] }, reference.identifier))
+            }
+            else
+              syntax.titleClass(reference.identifier);
+          }
         }
         renderTypeParameters(syntax, echoType.typeParameters.map(id => module.types[id]));
         return syntax;
@@ -176,7 +214,7 @@ export const createTypeRenderer = (module: EchoModule, namespace?: string) => {
   }
 
   const renderDeclaration = (syntax: HLJSBuilder, echoDeclaration: EchoDeclaration.Any) => {
-    const identifier = [namespace, echoDeclaration.identifier].filter(Boolean).join('.');
+    const identifier = identifierByDeclarationId.get(echoDeclaration.id) as string;
     switch (echoDeclaration.type) {
       case 'type':
         syntax
@@ -192,7 +230,12 @@ export const createTypeRenderer = (module: EchoModule, namespace?: string) => {
         return syntax;
       case 'function':
         syntax.keyword('function ').titleClass(identifier)
-        renderCallableSignature(syntax, module.types[echoDeclaration.signature] as EchoType.Callable, true);
+        const type = module.types[echoDeclaration.signature];
+        if (type.type === 'callable')
+          renderCallableSignature(syntax, type, true);
+        else {
+          syntax.comment(`<Function Type "${type.type}" is not a callable?? />`)
+        }
         return syntax;
       case 'unsupported':
         return syntax.comment(`<Unsupported(Reflector) declaration "${echoDeclaration.message}" />`)
@@ -210,36 +253,11 @@ export const createTypeRenderer = (module: EchoModule, namespace?: string) => {
     }
   }
 
-  const renderDocCommentNode = (node: DocNode): Node => {
-    switch (node.kind) {
-      case DocNodeKind.Comment:
-        const comment = node as DocComment;
-        console.log({ comment })
-        return h('article', {}, [
-          renderDocCommentNode(comment.summarySection)
-        ])
-      case DocNodeKind.Paragraph:
-        const paragraph = node as DocParagraph;
-        return h('p', {}, paragraph.nodes.map(renderDocCommentNode));
-      case DocNodeKind.Section:
-        const section = node as DocSection;
-        return h('section', {}, section.nodes.map(renderDocCommentNode))
-      case DocNodeKind.PlainText:
-        const plainText = node as DocPlainText;
-        return plainText.text
-      case DocNodeKind.SoftBreak:
-        return h('br');
-      default:
-        return `Unsupported (${node.kind})`
-    }
-  }
-
   const parser = new TSDocParser();
 
   return {
     renderCallableSignature,
     renderDeclaration,
-    renderDocCommentNode,
     renderType,
     renderTypeParameters,
     renderTypeParametersDeclaration,
@@ -261,7 +279,8 @@ export const EchoDeclarationRenderer: Component<EchoDeclarationRendererProps> = 
   headingElement = 'h3',
   children
 }) => {
-  const renderer = useMemo(() => createTypeRenderer(module, namespace), [module]);
+  const docApp = useDocApp([EchoPlugin]);
+  const renderer = useMemo(() => createTypeRenderer(module, docApp), [module]);
 
   const syntax = useMemo(() => {
     const syntax = createHLJSBuilder();
@@ -270,30 +289,28 @@ export const EchoDeclarationRenderer: Component<EchoDeclarationRendererProps> = 
   }, [renderer, declaration]);
 
   const comment = useMemo(() => {
+    const commentByDeclaration = new Map(Object.values(module.comments).map(c => {
+      if (c.target.type === 'declaration')
+        return [c.target.id, c] as const;
+      return null;
+    }).filter(x => !!x));
 
-    switch (declaration.type) {
-      case 'function':
-      case 'class':
-      case 'interface':
-      case 'namespace':
-      case 'type':
-      case 'variable':
-        if (!declaration.doc)
-          return null;
-        return [
-          declaration.doc.map(d => d.text),
-          h('pre', {}, JSON.stringify(declaration.doc))
-        ]
-      default:
-        return null;
-    }
-  }, [renderer, declaration])
+    const comment = commentByDeclaration.get(declaration.id);
+    if (!comment)
+      return null;
+    const conf = new TSDocConfiguration();
+    
+    const parser = new TSDocParser(conf);
+    return parser.parseString(comment.comment).docComment;
+  }, [renderer, declaration]);
+
+  const fullName = [namespace, declaration.identifier].filter(Boolean).join('.');
 
   return [
-    h(headingElement, { id: `echo:${declaration.identifier}` }, [declaration.identifier || '?', ` (${declaration.id})`]),
+    h(headingElement, { id: `echo:${module.name}:${fullName}` }, [declaration.identifier || '?',]),
     children,
     h(CodeBox, { lines: syntax.output() }),
-    comment,// && renderer.renderDocCommentNode(comment),
+    comment && renderDocCommentNode(comment),
 
     declaration.type === "namespace" && [
       declaration.exports.map(namespaceExport =>
@@ -361,16 +378,6 @@ export const EchoPlugin = createPlugin('echo', (core) => {
       
     return [
       h(headingElement, { id: `echo:${moduleId}` }, headingText),
-
-      h('table', {}, [
-        Object.values(module.exports).map(ex => module.declarations[ex]).map((declaration) => {
-          return h('tr', {}, [
-            h('td', {}, declaration.identifier),
-            h('td', {}, declaration.id),
-          ])
-        })
-      ]),
-
       children,
       module.exports.map(id => module.declarations[id])
         .map(declaration => h(EchoDeclarationRenderer, { module, declaration, headingElement: declarationHeadingElement })),
@@ -385,6 +392,30 @@ export const EchoPlugin = createPlugin('echo', (core) => {
 
   core.component.add('Echo', EchoMDXRenderer)
   core.component.add('EchoModule', EchoModuleMDXRenderer)
+  core.article.addArticlePreprocessor((article) => {
+    visit(article.content, 'mdxJsxFlowElement', node => {
+      if (node.name === "EchoModule") {
+        const attributes = buildMdxAttributes(node);
+        const module = modules.get(attributes['module']);
+        if (!module)
+          return;
+        
+        for (const exportId of Object.values(module.exports)) {
+          const declaration = module.declarations[exportId];
+          core.reference.addIndirect(`echo:${module.name}:${declaration.identifier}`, 'article:' + article.key, `echo:${module.name}:${declaration.identifier}`)
+          console.log(`Adding `, `echo:${module.name}:${declaration.identifier}`)
+          if (declaration.type === 'namespace') {
+            const namespace = declaration;
+            for (const exportId of declaration.exports) {
+              const declaration = module.declarations[exportId];
+              const identifier = `${namespace.identifier}.${declaration.identifier}`
+              core.reference.addIndirect(`echo:${module.name}:${identifier}`, 'article:' + article.key, `echo:${module.name}:${identifier}`)
+            }
+          }
+        }
+      }
+    })
+  })
 
   return {
     modules,

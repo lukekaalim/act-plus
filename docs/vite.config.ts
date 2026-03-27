@@ -36,7 +36,18 @@ const createEchoPlugin = async (): Promise<Plugin> => {
       if (!entrypoint)
         return null;
 
-      return RESOLVED_ECHO_PREFIX + entrypoint.id;
+      options.attributes['original-id'] = id.slice(ECHO_PREFIX.length);
+      console.log('resolve', id, JSON.stringify(options))
+
+      return {
+        id: RESOLVED_ECHO_PREFIX + entrypoint.id,
+        resolvedBy: 'echo',
+        meta: {
+          'echo': {
+            originalId: id.slice(ECHO_PREFIX.length)
+          }
+        }
+      };
     },
     closeWatcher() {
       console.log('[closeWatcher] Closing Watcher')
@@ -49,6 +60,12 @@ const createEchoPlugin = async (): Promise<Plugin> => {
     async load(id, options) {
       if (!id.startsWith(RESOLVED_ECHO_PREFIX))
         return null;
+
+      const info = this.getModuleInfo(id);
+
+      const name = info?.meta?.echo?.originalId || id;
+
+      console.log('load', id, name)
 
       const entrypoint = id.slice(RESOLVED_ECHO_PREFIX.length)
       this.addWatchFile(entrypoint);
@@ -66,9 +83,9 @@ const createEchoPlugin = async (): Promise<Plugin> => {
       if (!source)
         return console.warn(`Can't find file: "${entrypoint}"`);
 
-      const mod = buildEchoModule(entrypoint, source, program, host);
+      const mod = buildEchoModule(name, source, program, host);
 
-      console.log(`Returning build for ${source.fileName}`)
+      console.log(`Returning build for ${name}`)
 
       return `export default ${JSON.stringify(mod, null, 2)}`;
     }

@@ -70,7 +70,6 @@ export const createExternalTypeBuilder = (context: TypeBuildContext): ExternalTy
     if (!symbol)
       throw new Error(`No symbol for sourcefile "${sourceFile.fileName}"`);
 
-    console.log(`Looking through ${moduleNameAlias} for external exports`)
 
     const sourceFileExports = checker.getExportsOfModule(symbol);
     const moduleName = moduleNameAlias || sourceFile.fileName;
@@ -172,10 +171,7 @@ export const createExternalTypeBuilder = (context: TypeBuildContext): ExternalTy
       }
       context.packages.set(packageInfo.package, packageSourceFile);
       
-      console.log(`These declarations belong to ${packageInfo.package}:`)
-      console.log('============')
       createExternalDeclarationsFromSourcefileExports(packageSourceFile, packageInfo.package);
-      console.log('============')
     }
   };
 

@@ -3,67 +3,54 @@ import { EchoDeclaration } from "../reflections";
 import { DiscoveredDeclaration, DiscoveryContext } from "./symbols";
 import { createTypeBuilder2, TypeBuildContext } from "../types";
 import { TypescriptContext } from "../module";
+import { TextRange, TSDocParser } from "@microsoft/tsdoc";
+import { findComment } from "./comments";
 
 
 export const generateDeclarationFromDiscovery = (discovered: DiscoveredDeclaration, context: TypeBuildContext): EchoDeclaration => {
   if (!discovered.declarationNode.name || discovered.declarationNode.name.kind !== ts.SyntaxKind.Identifier)
-    return EchoDeclaration.create(discovered.id, 'unsupported', { identifier: "???", doc: null, message: 'Name too complex' })
+    return EchoDeclaration.create(discovered.id, 'unsupported', { identifier: "???", message: 'Name too complex' })
 
   const identifier = discovered.declarationNode.name.text;
   const types = createTypeBuilder2(context);
-
-  
-  const src = discovered.declarationNode.getSourceFile()
-  const start = discovered.declarationNode.getFullStart()
-  const end = discovered.declarationNode.getStart()
-  const commentStart = ts.getLeadingCommentRanges(src.text, discovered.declarationNode.pos);
-  const comment = (commentStart?.map(range => src.text.slice(range.pos)) || []).join(' ')
-  
-  const doc = [{ kind: 'text', text: comment }]
 
   switch (discovered.declarationNode.kind) {
     case ts.SyntaxKind.ModuleDeclaration:
       const exportedSymbols = context.ts.checker.getExportsOfModule(discovered.symbol);
       return EchoDeclaration.create(discovered.id, "namespace", {
         identifier,
-        doc,
         exports: exportedSymbols.map(symbol => context.declarationBySymbol.get(symbol) as EchoDeclaration.ID),
       })
     case ts.SyntaxKind.TypeAliasDeclaration:
       return EchoDeclaration.create(discovered.id, 'type', {
         identifier,
-        doc,
         declares: types.declarations.fromAnyTypeNode(discovered.declarationNode.type),
         parameters: [],
       })
     case ts.SyntaxKind.FunctionDeclaration:
       return EchoDeclaration.create(discovered.id, 'function', {
         identifier,
-        doc,
         signature: types.instances.fromType(context.ts.checker.getTypeOfSymbol(discovered.symbol))
       })
     case ts.SyntaxKind.VariableDeclaration:
       if (discovered.declarationNode.type) {
         return EchoDeclaration.create(discovered.id, 'variable', {
           identifier,
-          doc,
           typeof: types.declarations.fromAnyTypeNode(discovered.declarationNode.type)
         })
       }
       return EchoDeclaration.create(discovered.id, 'variable', {
         identifier,
-        doc,
         typeof: types.instances.fromType(context.ts.checker.getTypeOfSymbol(discovered.symbol))
       })
     case ts.SyntaxKind.ClassDeclaration:
     case ts.SyntaxKind.InterfaceDeclaration:
-      return EchoDeclaration.create(discovered.id, 'unsupported', { identifier, doc, message: 'In development' })
+      return EchoDeclaration.create(discovered.id, 'unsupported', { identifier, message: 'In development' })
     case ts.SyntaxKind.ExportSpecifier:
       const exportedType = context.ts.checker.getTypeAtLocation(discovered.declarationNode);
 
       return EchoDeclaration.create(discovered.id, 'variable', {
         identifier,
-        doc,
         typeof: types.instances.fromType(exportedType)
       })
     default:

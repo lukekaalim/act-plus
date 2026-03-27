@@ -4,6 +4,11 @@ import ts from "typescript";
 
 type A_Declared_Type = 10;
 
+/**
+ * I DEMAND DOCUMENTATION
+ * 
+ * @returns 
+ */
 export const myFunction = <TY>() => {
   const myValue = new Map<"yes", "no">();
 
@@ -25,9 +30,15 @@ export const myFunction = <TY>() => {
   }
 }
 
+
 export const A = "hello";
 
 export const b = A;
+
+/** whoah! */
+export let e = "whoah",
+/** mama! */
+f = "mama"
 
 export namespace CustomNamespace {
   export namespace NestedNamespace {

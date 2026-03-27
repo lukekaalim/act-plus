@@ -2279,12 +2279,7 @@
   "declarations": {
     "1": {
       "identifier": "createEchoWatcher",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "typeof": 39,
       "id": 1,
       "type": "variable"
@@ -2293,8 +2288,8 @@
       "identifier": "EchoModule",
       "doc": [
         {
-          "kind": "text",
-          "text": "/**\n * The output of analysis of a module.\n * \n * Includes all the things Echo detected\n * as \"exported declaration\", as well\n * as references to things that weren't\n * exported, such as internal, hidden\n * types or types from other packages.\n */\nexport type EchoModule = {\n  name: string,\n\n  types: Record<EchoType.ID, EchoType>,\n  declarations: Record<EchoDeclaration.ID, EchoDeclaration>,\n  references: Record<EchoExternalReferenceID, EchoExternalReference>,\n\n  exports: EchoDeclaration.ID[],\n}\n\n/**\n * All the of service objects for interacting with the typescript system.\n */\nexport type TypescriptContext = {\n  source: ts.SourceFile,\n  program: ts.Program,\n  host: ts.ProgramHost<ts.BuilderProgram>,\n  checker: ts.TypeChecker,\n}\n\n/**\n * Build Echo Module\n * \n * @param name The name that will be given to the module. Ideally, it should\n *  be the name of the package (or module), that can be used to find the relevant\n *  file it was from.\n * @param source The sourceFile that will act as the root of analysis. All it's\n * exports will be analyzed to build the EchoModule.\n * @param program The entire Typescript program, used to get the TypeChecker\n * @param host Typescript's \"Host\" object, for interacting with the filesystem (finding package.json files)\n * for packages\n */\nexport const buildEchoModule = <T extends ts.BuilderProgram>(\n  name: string,\n  source: ts.SourceFile,\n  program: ts.Program,\n  host: ts.ProgramHost<T>\n): EchoModule => {\n  const typescriptContext: TypescriptContext = {\n    checker: program.getTypeChecker(),\n    program,\n    source,\n    // cheating here a little. dont tell anyone\n    host: host as unknown as ts.ProgramHost<ts.BuilderProgram>,\n  }\n  const discoverContext: DiscoveryContext = {\n    ts: typescriptContext,\n    declarations: [],\n  }\n  const moduleSymbol = typescriptContext.checker.getSymbolAtLocation(source);\n  if (!moduleSymbol)\n    throw new Error();\n\n  const moduleExports = typescriptContext.checker.getExportsOfModule(moduleSymbol);\n\n  discoverModule(discoverContext, moduleExports);\n\n  const typeBuilderContext: TypeBuildContext = {\n    ts: typescriptContext,\n\n    types: new Map(),\n    packages: new Map(),\n    unusedReferences: new Map(),\n    declarations: new Map(),\n    references: new Map(),\n\n    declarationBySymbol: new Map(discoverContext.declarations.map(d => [d.symbol, d.id])),\n    referenceBySymbol: new Map(),\n    typeByTypescript: new Map(),\n    exploredSymbols: new Set(),\n  }\n\n  for (const discoveredDeclaration of discoverContext.declarations) {\n    const declaration = generateDeclarationFromDiscovery(discoveredDeclaration, typeBuilderContext);\n    typeBuilderContext.declarations.set(declaration.id, declaration);\n  }\n  \n  return {\n    name,\n    types: Object.fromEntries(typeBuilderContext.types),\n    references: Object.fromEntries(typeBuilderContext.references),\n    declarations: Object.fromEntries(typeBuilderContext.declarations),\n\n    exports: moduleExports\n      .map(symbol => typeBuilderContext.declarationBySymbol.get(symbol))\n      .filter((x): x is EchoDeclaration.ID => !!x),\n  };\n}"
+          "text": "The output of analysis of a module.\n\nIncludes all the things Echo detected\nas \"exported declaration\", as well\nas references to things that weren't\nexported, such as internal, hidden\ntypes or types from other packages.",
+          "kind": "text"
         }
       ],
       "declares": 1342,
@@ -2306,8 +2301,8 @@
       "identifier": "TypescriptContext",
       "doc": [
         {
-          "kind": "text",
-          "text": "/**\n * All the of service objects for interacting with the typescript system.\n */\nexport type TypescriptContext = {\n  source: ts.SourceFile,\n  program: ts.Program,\n  host: ts.ProgramHost<ts.BuilderProgram>,\n  checker: ts.TypeChecker,\n}\n\n/**\n * Build Echo Module\n * \n * @param name The name that will be given to the module. Ideally, it should\n *  be the name of the package (or module), that can be used to find the relevant\n *  file it was from.\n * @param source The sourceFile that will act as the root of analysis. All it's\n * exports will be analyzed to build the EchoModule.\n * @param program The entire Typescript program, used to get the TypeChecker\n * @param host Typescript's \"Host\" object, for interacting with the filesystem (finding package.json files)\n * for packages\n */\nexport const buildEchoModule = <T extends ts.BuilderProgram>(\n  name: string,\n  source: ts.SourceFile,\n  program: ts.Program,\n  host: ts.ProgramHost<T>\n): EchoModule => {\n  const typescriptContext: TypescriptContext = {\n    checker: program.getTypeChecker(),\n    program,\n    source,\n    // cheating here a little. dont tell anyone\n    host: host as unknown as ts.ProgramHost<ts.BuilderProgram>,\n  }\n  const discoverContext: DiscoveryContext = {\n    ts: typescriptContext,\n    declarations: [],\n  }\n  const moduleSymbol = typescriptContext.checker.getSymbolAtLocation(source);\n  if (!moduleSymbol)\n    throw new Error();\n\n  const moduleExports = typescriptContext.checker.getExportsOfModule(moduleSymbol);\n\n  discoverModule(discoverContext, moduleExports);\n\n  const typeBuilderContext: TypeBuildContext = {\n    ts: typescriptContext,\n\n    types: new Map(),\n    packages: new Map(),\n    unusedReferences: new Map(),\n    declarations: new Map(),\n    references: new Map(),\n\n    declarationBySymbol: new Map(discoverContext.declarations.map(d => [d.symbol, d.id])),\n    referenceBySymbol: new Map(),\n    typeByTypescript: new Map(),\n    exploredSymbols: new Set(),\n  }\n\n  for (const discoveredDeclaration of discoverContext.declarations) {\n    const declaration = generateDeclarationFromDiscovery(discoveredDeclaration, typeBuilderContext);\n    typeBuilderContext.declarations.set(declaration.id, declaration);\n  }\n  \n  return {\n    name,\n    types: Object.fromEntries(typeBuilderContext.types),\n    references: Object.fromEntries(typeBuilderContext.references),\n    declarations: Object.fromEntries(typeBuilderContext.declarations),\n\n    exports: moduleExports\n      .map(symbol => typeBuilderContext.declarationBySymbol.get(symbol))\n      .filter((x): x is EchoDeclaration.ID => !!x),\n  };\n}"
+          "text": "All the of service objects for interacting with the typescript system.",
+          "kind": "text"
         }
       ],
       "declares": 1348,
@@ -2319,8 +2314,8 @@
       "identifier": "buildEchoModule",
       "doc": [
         {
-          "kind": "text",
-          "text": ""
+          "text": "Build Echo Module",
+          "kind": "text"
         }
       ],
       "typeof": 1349,
@@ -2329,12 +2324,7 @@
     },
     "5": {
       "identifier": "EchoType",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "exports": [
         6,
         7,
@@ -2361,12 +2351,7 @@
     },
     "6": {
       "identifier": "CallableParameter",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1359,
       "parameters": [],
       "id": 6,
@@ -2374,12 +2359,7 @@
     },
     "7": {
       "identifier": "Literal",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1368,
       "parameters": [],
       "id": 7,
@@ -2387,12 +2367,7 @@
     },
     "8": {
       "identifier": "Builtin",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1375,
       "parameters": [],
       "id": 8,
@@ -2400,12 +2375,7 @@
     },
     "9": {
       "identifier": "Keyword",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1384,
       "parameters": [],
       "id": 9,
@@ -2413,12 +2383,7 @@
     },
     "10": {
       "identifier": "Array",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1388,
       "parameters": [],
       "id": 10,
@@ -2426,12 +2391,7 @@
     },
     "11": {
       "identifier": "Tuple",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1393,
       "parameters": [],
       "id": 11,
@@ -2439,12 +2399,7 @@
     },
     "12": {
       "identifier": "InternalAlias",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1397,
       "parameters": [],
       "id": 12,
@@ -2452,12 +2407,7 @@
     },
     "13": {
       "identifier": "Temporary",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1400,
       "parameters": [],
       "id": 13,
@@ -2465,12 +2415,7 @@
     },
     "14": {
       "identifier": "Object",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1406,
       "parameters": [],
       "id": 14,
@@ -2478,12 +2423,7 @@
     },
     "15": {
       "identifier": "IndexedAccess",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1411,
       "parameters": [],
       "id": 15,
@@ -2491,12 +2431,7 @@
     },
     "16": {
       "identifier": "Callable",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1419,
       "parameters": [],
       "id": 16,
@@ -2504,12 +2439,7 @@
     },
     "17": {
       "identifier": "Reference",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1433,
       "parameters": [],
       "id": 17,
@@ -2517,12 +2447,7 @@
     },
     "18": {
       "identifier": "Union",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1438,
       "parameters": [],
       "id": 18,
@@ -2530,12 +2455,7 @@
     },
     "19": {
       "identifier": "Intersection",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1443,
       "parameters": [],
       "id": 19,
@@ -2543,12 +2463,7 @@
     },
     "20": {
       "identifier": "Unsupported",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1447,
       "parameters": [],
       "id": 20,
@@ -2556,24 +2471,14 @@
     },
     "21": {
       "identifier": "create",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "typeof": 1448,
       "id": 21,
       "type": "variable"
     },
     "22": {
       "identifier": "Any",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1475,
       "parameters": [],
       "id": 22,
@@ -2581,12 +2486,7 @@
     },
     "23": {
       "identifier": "ByType",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1481,
       "parameters": [],
       "id": 23,
@@ -2594,12 +2494,7 @@
     },
     "24": {
       "identifier": "ID",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1484,
       "parameters": [],
       "id": 24,
@@ -2607,12 +2502,7 @@
     },
     "25": {
       "identifier": "EchoDeclaration",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "exports": [
         26,
         27,
@@ -2633,12 +2523,7 @@
     },
     "26": {
       "identifier": "CommentPart",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1487,
       "parameters": [],
       "id": 26,
@@ -2646,12 +2531,7 @@
     },
     "27": {
       "identifier": "Generic",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1498,
       "parameters": [],
       "id": 27,
@@ -2659,12 +2539,7 @@
     },
     "28": {
       "identifier": "Variable",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1509,
       "parameters": [],
       "id": 28,
@@ -2672,12 +2547,7 @@
     },
     "29": {
       "identifier": "Function",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1518,
       "parameters": [],
       "id": 29,
@@ -2685,12 +2555,7 @@
     },
     "30": {
       "identifier": "Type",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1529,
       "parameters": [],
       "id": 30,
@@ -2698,12 +2563,7 @@
     },
     "31": {
       "identifier": "Class",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1537,
       "parameters": [],
       "id": 31,
@@ -2711,12 +2571,7 @@
     },
     "32": {
       "identifier": "Interface",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1547,
       "parameters": [],
       "id": 32,
@@ -2724,12 +2579,7 @@
     },
     "33": {
       "identifier": "Unsupported",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1556,
       "parameters": [],
       "id": 33,
@@ -2737,12 +2587,7 @@
     },
     "34": {
       "identifier": "Namespace",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1566,
       "parameters": [],
       "id": 34,
@@ -2750,24 +2595,14 @@
     },
     "35": {
       "identifier": "create",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "typeof": 1567,
       "id": 35,
       "type": "variable"
     },
     "36": {
       "identifier": "Any",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1584,
       "parameters": [],
       "id": 36,
@@ -2775,12 +2610,7 @@
     },
     "37": {
       "identifier": "ByType",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1589,
       "parameters": [],
       "id": 37,
@@ -2788,12 +2618,7 @@
     },
     "38": {
       "identifier": "ID",
-      "doc": [
-        {
-          "kind": "text",
-          "text": ""
-        }
-      ],
+      "doc": [],
       "declares": 1592,
       "parameters": [],
       "id": 38,

@@ -2,6 +2,15 @@ import { DocComment } from "@microsoft/tsdoc";
 import { createId, OpaqueID } from "./utils";
 import { EchoExternalReferenceID } from "./types/external";
 
+export type EchoTSDocCommentID = OpaqueID<"EchoCommentID">
+export type EchoTSDocComment = {
+  id: EchoTSDocCommentID,
+  target:
+    | { type: 'declaration', id: EchoDeclaration.ID }
+    | { type: 'member', id: EchoType.ID, name: string }
+  comment: string,
+}
+
 export namespace EchoType {
   /**
    * Create a new EchoType (with the appropriate discriminator and ID types)
@@ -101,12 +110,6 @@ export namespace EchoType {
 export type EchoType = EchoType.Any;
 
 export namespace EchoDeclaration {
-  export type CommentPart = {
-    kind: string,
-    text: string,
-  }
-
-
   type Define<Discriminator extends string, Props extends {}> = {
     type: Discriminator,
     id: ID,
@@ -120,37 +123,30 @@ export namespace EchoDeclaration {
   }>
 
   export type Variable = Define<"variable", {
-    doc: null | CommentPart[],
     identifier: string,
     typeof: null | EchoType.ID,
   }>;
   export type Function = Define<"function", {
-    doc: null | CommentPart[],
     identifier: string,
     signature: EchoType.ID,
   }>;
   export type Type = Define<"type", {
-    doc: null | CommentPart[],
     identifier: string,
     declares: EchoType.ID,
     parameters: ID[],
   }>;
   export type Class = Define<"class", {
-    doc: null | CommentPart[],
     identifier: string,
   }>;
   export type Interface = Define<"interface", {
-    doc: null | CommentPart[],
     identifier: string,
     parameters: ID[],
   }>;
   export type Unsupported = Define<"unsupported", {
-    doc: null | CommentPart[],
     identifier: string,
     message: string,
   }>;
   export type Namespace = Define<"namespace", {
-    doc: null | CommentPart[],
     identifier: string,
     exports: ID[]
   }>;

@@ -1,9 +1,11 @@
 import ts from "typescript"
-import { EchoDeclaration, EchoType } from "./reflections"
+import { EchoDeclaration, EchoTSDocComment, EchoTSDocCommentID, EchoType } from "./reflections"
 import { TypeBuildContext } from "./types"
 import { discoverModule, DiscoveryContext } from "./discovery/symbols"
 import { generateDeclarationFromDiscovery } from "./discovery/reflections"
 import { EchoExternalReference, EchoExternalReferenceID } from "./types/external"
+import { findComment } from "./discovery/comments"
+import { createId } from "./utils"
 
 /**
  * The output of analysis of a module.
@@ -20,6 +22,7 @@ export type EchoModule = {
   types: Record<EchoType.ID, EchoType>,
   declarations: Record<EchoDeclaration.ID, EchoDeclaration>,
   references: Record<EchoExternalReferenceID, EchoExternalReference>,
+  comments: Record<EchoTSDocCommentID, EchoTSDocComment>,
 
   exports: EchoDeclaration.ID[],
 }
@@ -85,17 +88,27 @@ export const buildEchoModule = <T extends ts.BuilderProgram>(
     typeByTypescript: new Map(),
     exploredSymbols: new Set(),
   }
+  const comments = [] as EchoTSDocComment[];
 
   for (const discoveredDeclaration of discoverContext.declarations) {
     const declaration = generateDeclarationFromDiscovery(discoveredDeclaration, typeBuilderContext);
     typeBuilderContext.declarations.set(declaration.id, declaration);
+    const comment = findComment(discoveredDeclaration.declarationNode);
+    if (comment)
+      comments.push({
+        id: createId(),
+        comment,
+        target: { type: 'declaration', id: declaration.id }
+      })
   }
-  
+
+
   return {
     name,
     types: Object.fromEntries(typeBuilderContext.types),
     references: Object.fromEntries(typeBuilderContext.references),
     declarations: Object.fromEntries(typeBuilderContext.declarations),
+    comments: Object.fromEntries(comments.map(c => [c.id, c])),
 
     exports: moduleExports
       .map(symbol => typeBuilderContext.declarationBySymbol.get(symbol))

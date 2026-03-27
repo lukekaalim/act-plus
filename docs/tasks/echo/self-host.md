@@ -2,7 +2,7 @@
 id: echo-0
 status: complete
 ---
-# Self Host
+### Self Host
 
 Echo should be able to document itself in a satisfying way. It should at least:
   - [x] Find Namespaces (and namespaced declarations)

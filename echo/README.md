@@ -59,6 +59,8 @@ and provides the relevant information about their references.
 
 ## Usage
 
+The output of each of these is an [Echo Module](#echo:@lukekaalim/echo:EchoModule)
+
 ### As a executable
 
 ```bash
@@ -70,6 +72,7 @@ ts-echo ./index.ts --out types.json
 ### As a library
 
 ```ts
+import *  as ts from 'typescript';
 import {
   createModuleBuilder,
   createModuleWatcher

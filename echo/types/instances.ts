@@ -106,7 +106,6 @@ export const createTypeInstanceBuilder = (
         }
 
         if (objectType.getProperties().length > 0) {
-          console.log(`It was an anonymous object. Lets see paul allen's properties:`)
           const propertySymbols = checker.getPropertiesOfType(objectType)
 
           return pushType(type, 'object', () => ({
@@ -122,14 +121,12 @@ export const createTypeInstanceBuilder = (
         return pushType(type, 'keyword', { keyword: 'undefined' });
       case ts.TypeFlags.Void:
       case ts.TypeFlags.VoidLike:
-          console.log(`It was a keyword`)
         return pushType(type, 'keyword', () => ({ keyword: 'void' as const }));
       case ts.TypeFlags.BooleanLiteral:
         return pushType(type, 'builtin', { builtin: 'boolean' });
       case ts.TypeFlags.Boolean:
       case ts.TypeFlags.NumberLiteral:
       case ts.TypeFlags.StringLiteral: {
-        console.log(`It was a literal`)
         const stringLiteral = type as ts.StringLiteralType;
         return pushType(type, 'literal', () => ({ value: stringLiteral.value }));
       }
@@ -139,7 +136,6 @@ export const createTypeInstanceBuilder = (
         return pushType(type, 'keyword', () => ({ keyword: 'any' } as const));
       case ts.TypeFlags.Union:
     }
-    console.log(`It was a something unsupported`)
     return pushType(type, 'unsupported', () => ({ message: 'RealType ' + getFlags(ts.TypeFlags as any, type.flags) }))
   }
 

@@ -1,7 +1,7 @@
 ---
 id: ${project-id}-$task-index
-status: backlog|in-progress|done
+status: backlog|in-progress|complete
 ---
-# Task Title
+### Task Title
 
 Task Description

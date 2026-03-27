@@ -1,265 +1,312 @@
 {
   "name": "sample/1",
   "types": {
-    "8": {
+    "11": {
       "typeParameters": [
-        9
+        12
       ],
       "parameters": [],
-      "returns": 10,
-      "id": 8,
+      "returns": 13,
+      "id": 11,
       "type": "callable"
     },
-    "10": {
+    "13": {
       "properties": {
-        "otherValue": 11,
-        "myMethod": 12,
-        "myValue": 1283,
-        "jenny": 1287,
-        "oooo": 1292,
-        "forrest": 1293
+        "otherValue": 14,
+        "myMethod": 15,
+        "myValue": 1286,
+        "jenny": 1290,
+        "oooo": 1295,
+        "forrest": 1296
       },
-      "id": 10,
+      "id": 13,
       "type": "object"
     },
-    "11": {
+    "14": {
       "value": 10,
-      "id": 11,
+      "id": 14,
       "type": "literal"
     },
-    "12": {
+    "15": {
       "typeParameters": [],
       "parameters": [
         {
           "name": "__0",
           "optional": false,
-          "type": 1283
+          "type": 1286
         }
       ],
-      "returns": 1286,
-      "id": 12,
+      "returns": 1289,
+      "id": 15,
       "type": "callable"
     },
-    "1283": {
+    "1286": {
       "target": {
         "type": "reference",
-        "id": 1282
+        "id": 1285
       },
       "typeParameters": [
-        1284,
-        1285
+        1287,
+        1288
       ],
-      "id": 1283,
+      "id": 1286,
       "type": "reference"
     },
-    "1284": {
-      "value": "yes",
-      "id": 1284,
-      "type": "literal"
-    },
-    "1285": {
-      "value": "no",
-      "id": 1285,
-      "type": "literal"
-    },
-    "1286": {
-      "value": "thing2",
-      "id": 1286,
-      "type": "literal"
-    },
     "1287": {
+      "value": "yes",
+      "id": 1287,
+      "type": "literal"
+    },
+    "1288": {
+      "value": "no",
+      "id": 1288,
+      "type": "literal"
+    },
+    "1289": {
+      "value": "thing2",
+      "id": 1289,
+      "type": "literal"
+    },
+    "1290": {
       "typeParameters": [
-        1288
+        1291
       ],
       "parameters": [
         {
           "name": "a",
           "optional": false,
-          "type": 1289
+          "type": 1292
         },
         {
           "name": "b",
           "optional": false,
-          "type": 1290
+          "type": 1293
         }
       ],
-      "returns": 1291,
-      "id": 1287,
-      "type": "callable"
-    },
-    "1289": {
-      "message": "RealType TypeParameter,IncludesMissingType",
-      "id": 1289,
-      "type": "unsupported"
-    },
-    "1290": {
-      "message": "RealType TypeParameter,IncludesMissingType",
+      "returns": 1294,
       "id": 1290,
-      "type": "unsupported"
-    },
-    "1291": {
-      "keyword": "void",
-      "id": 1291,
-      "type": "keyword"
+      "type": "callable"
     },
     "1292": {
+      "target": {
+        "type": "declaration",
+        "id": 1291
+      },
       "typeParameters": [],
-      "parameters": [],
-      "returns": 8,
       "id": 1292,
-      "type": "callable"
+      "type": "reference"
     },
     "1293": {
+      "target": {
+        "type": "declaration",
+        "id": 12
+      },
+      "typeParameters": [],
+      "id": 1293,
+      "type": "reference"
+    },
+    "1294": {
+      "keyword": "void",
+      "id": 1294,
+      "type": "keyword"
+    },
+    "1295": {
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 11,
+      "id": 1295,
+      "type": "callable"
+    },
+    "1296": {
       "typeParameters": [],
       "parameters": [
         {
           "name": "checker",
           "optional": false,
-          "type": 1294
+          "type": 1297
         }
       ],
-      "returns": 1291,
-      "id": 1293,
-      "type": "callable"
-    },
-    "1294": {
-      "target": {
-        "type": "reference",
-        "id": 1146
-      },
-      "typeParameters": [
-        1295
-      ],
-      "id": 1294,
-      "type": "reference"
-    },
-    "1295": {
-      "target": {
-        "type": "reference",
-        "id": 1138
-      },
-      "typeParameters": [],
-      "id": 1295,
-      "type": "reference"
-    },
-    "1296": {
-      "value": "hello",
+      "returns": 1294,
       "id": 1296,
-      "type": "literal"
+      "type": "callable"
     },
     "1297": {
-      "typeParameters": [],
-      "parameters": [],
-      "returns": 1291,
+      "target": {
+        "type": "reference",
+        "id": 1149
+      },
+      "typeParameters": [
+        1298
+      ],
       "id": 1297,
-      "type": "callable"
+      "type": "reference"
     },
     "1298": {
-      "value": "World",
+      "target": {
+        "type": "reference",
+        "id": 1141
+      },
+      "typeParameters": [],
       "id": 1298,
+      "type": "reference"
+    },
+    "1300": {
+      "value": "hello",
+      "id": 1300,
+      "type": "literal"
+    },
+    "1301": {
+      "builtin": "string",
+      "id": 1301,
+      "type": "builtin"
+    },
+    "1304": {
+      "target": {
+        "type": "declaration",
+        "id": 7
+      },
+      "typeParameters": [],
+      "id": 1304,
+      "type": "reference"
+    },
+    "1305": {
+      "value": "World",
+      "id": 1305,
       "type": "literal"
     }
   },
   "references": {
-    "1138": {
-      "id": 1138,
+    "1141": {
+      "id": 1141,
       "module": "typescript",
       "identifier": "BuilderProgram"
     },
-    "1146": {
-      "id": 1146,
+    "1149": {
+      "id": 1149,
       "module": "typescript",
       "identifier": "ProgramHost"
     },
-    "1282": {
-      "id": 1282,
+    "1285": {
+      "id": 1285,
       "module": "typescript/lib/lib.es2015.collection.d.ts",
       "identifier": "Map"
     }
   },
   "declarations": {
-    "0": {
-      "identifier": "myFunction",
-      "doc": null,
-      "typeof": 8,
-      "id": 0,
-      "type": "variable"
-    },
     "1": {
-      "identifier": "A",
-      "doc": null,
-      "typeof": 1296,
+      "identifier": "myFunction",
+      "typeof": 11,
       "id": 1,
       "type": "variable"
     },
     "2": {
-      "identifier": "b",
-      "doc": null,
-      "typeof": 1296,
+      "identifier": "A",
+      "typeof": 1300,
       "id": 2,
       "type": "variable"
     },
     "3": {
-      "identifier": "CustomNamespace",
-      "doc": null,
-      "exports": [
-        4,
-        5
-      ],
+      "identifier": "b",
+      "typeof": 1300,
       "id": 3,
-      "type": "namespace"
-    },
-    "4": {
-      "identifier": "D",
-      "doc": null,
-      "signature": 1297,
-      "id": 4,
-      "type": "function"
-    },
-    "5": {
-      "identifier": "NestedNamespace",
-      "doc": null,
-      "exports": [
-        6,
-        7
-      ],
-      "id": 5,
-      "type": "namespace"
-    },
-    "6": {
-      "identifier": "C",
-      "doc": null,
-      "typeof": 1296,
-      "id": 6,
       "type": "variable"
     },
+    "4": {
+      "identifier": "e",
+      "typeof": 1301,
+      "id": 4,
+      "type": "variable"
+    },
+    "5": {
+      "identifier": "f",
+      "typeof": 1301,
+      "id": 5,
+      "type": "variable"
+    },
+    "6": {
+      "identifier": "CustomNamespace",
+      "exports": [
+        7,
+        8
+      ],
+      "id": 6,
+      "type": "namespace"
+    },
     "7": {
-      "identifier": "Hello",
-      "doc": null,
-      "declares": 1298,
-      "parameters": [],
+      "identifier": "D",
+      "signature": 1304,
       "id": 7,
-      "type": "type"
+      "type": "function"
+    },
+    "8": {
+      "identifier": "NestedNamespace",
+      "exports": [
+        9,
+        10
+      ],
+      "id": 8,
+      "type": "namespace"
     },
     "9": {
+      "identifier": "C",
+      "typeof": 1300,
+      "id": 9,
+      "type": "variable"
+    },
+    "10": {
+      "identifier": "Hello",
+      "declares": 1305,
+      "parameters": [],
+      "id": 10,
+      "type": "type"
+    },
+    "12": {
       "identifier": "TY",
       "extends": null,
       "default": null,
-      "id": 9,
+      "id": 12,
       "type": "generic"
     },
-    "1288": {
+    "1291": {
       "identifier": "T",
       "extends": null,
       "default": null,
-      "id": 1288,
+      "id": 1291,
       "type": "generic"
     }
   },
+  "comments": {
+    "1299": {
+      "id": 1299,
+      "comment": "/**\n * I DEMAND DOCUMENTATION\n * \n * @returns \n */",
+      "target": {
+        "type": "declaration",
+        "id": 1
+      }
+    },
+    "1302": {
+      "id": 1302,
+      "comment": "/** whoah! */",
+      "target": {
+        "type": "declaration",
+        "id": 4
+      }
+    },
+    "1303": {
+      "id": 1303,
+      "comment": "/** mama! */",
+      "target": {
+        "type": "declaration",
+        "id": 5
+      }
+    }
+  },
   "exports": [
-    0,
     1,
     2,
-    3
+    3,
+    4,
+    5,
+    6
   ]
 }
