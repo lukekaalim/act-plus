@@ -167,7 +167,8 @@ export const createExternalTypeBuilder = (context: TypeBuildContext): ExternalTy
       }
       const packageSourceFile = program.getSourceFile(moduleReference.resolvedModule.resolvedFileName)
       if (!packageSourceFile) {
-        throw new Error(`Could not find source file "${moduleReference.resolvedModule.resolvedFileName}"`)
+        return;
+        //throw new Error(`Could not find source file "${moduleReference.resolvedModule.resolvedFileName}"`)
       }
       context.packages.set(packageInfo.package, packageSourceFile);
       
