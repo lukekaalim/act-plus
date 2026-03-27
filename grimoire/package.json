@@ -1,12 +1,12 @@
 {
   "name": "@lukekaalim/grimoire",
   "main": "index.ts",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "dependencies": {
-    "@lukekaalim/act-icons": "^1.0.0",
+    "@lukekaalim/act-icons": "^1.1.0",
     "@lukekaalim/act-router": "^0.1.0",
-    "@lukekaalim/act-curve": "^4.0.0",
-    "@lukekaalim/act-markdown": "^2.0.1",
+    "@lukekaalim/act-curve": "^4.1.0",
+    "@lukekaalim/act-markdown": "^2.1.0",
     "@sindresorhus/string-hash": "^2.0.0",
     "@types/mdast": "^4.0.4",
     "change-case": "^5.4.4",

@@ -1,5 +1,18 @@
 # @lukekaalim/grimoire
 
+## 2.2.0
+
+### Minor Changes
+
+- 92ea037: Dependency upgrade on @lukekaalim/act major versions
+
+### Patch Changes
+
+- Updated dependencies [92ea037]
+  - @lukekaalim/act-markdown@2.1.0
+  - @lukekaalim/act-curve@4.1.0
+  - @lukekaalim/act-icons@1.1.0
+
 ## 2.1.0
 
 ### Minor Changes

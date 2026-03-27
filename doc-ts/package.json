@@ -1,6 +1,6 @@
 {
   "name": "@lukekaalim/grimoire-ts",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "index.ts",
   "dependencies": {
     "@lukekaalim/echo": "2.1.0",

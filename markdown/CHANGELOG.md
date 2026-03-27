@@ -1,5 +1,11 @@
 # @lukekaalim/act-markdown
 
+## 2.1.0
+
+### Minor Changes
+
+- 92ea037: Dependency upgrade on @lukekaalim/act major versions
+
 ## 2.0.2
 
 ### Patch Changes

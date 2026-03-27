@@ -1,6 +1,6 @@
 {
   "name": "@lukekaalim/act-graphit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An Act-based graphing component library.",
   "main": "index.ts",
   "scripts": {
@@ -8,8 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "@lukekaalim/act": "^4.1.0"
   }

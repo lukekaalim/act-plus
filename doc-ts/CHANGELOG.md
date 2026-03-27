@@ -1,5 +1,11 @@
 # @lukekaalim/grimoire-ts
 
+## 1.1.0
+
+### Minor Changes
+
+- 92ea037: Dependency upgrade on @lukekaalim/act major versions
+
 ## 1.0.1
 
 ### Patch Changes
