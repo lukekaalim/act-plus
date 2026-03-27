@@ -1,5 +1,11 @@
 # @lukekaalim/grimoire
 
+## 2.1.0
+
+### Minor Changes
+
+- 437f38a: Some fixes for CodeBox and Themes
+
 ## 2.1.0-echo-beta.0
 
 ### Minor Changes
