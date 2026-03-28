@@ -1,312 +1,393 @@
 {
   "name": "sample/1",
   "types": {
-    "1316": {
+    "10476": {
       "typeParameters": [
-        1317
+        10477
       ],
-      "parameters": [],
-      "returns": 1318,
-      "id": 1316,
+      "parameters": [
+        {
+          "name": "input",
+          "optional": false,
+          "type": 10478
+        }
+      ],
+      "returns": 11749,
+      "id": 10476,
       "type": "callable"
     },
-    "1318": {
-      "properties": {
-        "otherValue": 1319,
-        "myMethod": 1320,
-        "myValue": 2591,
-        "jenny": 2595,
-        "oooo": 2600,
-        "forrest": 2601
+    "10478": {
+      "target": {
+        "type": "declaration",
+        "id": 10477
       },
-      "id": 1318,
+      "typeParameters": [],
+      "id": 10478,
+      "type": "reference"
+    },
+    "11749": {
+      "target": {
+        "type": "reference",
+        "id": 11748
+      },
+      "typeParameters": [
+        10478
+      ],
+      "id": 11749,
+      "type": "reference"
+    },
+    "11750": {
+      "properties": {
+        "generic": 10476
+      },
+      "id": 11750,
       "type": "object"
     },
-    "1319": {
+    "11751": {
+      "typeParameters": [
+        11752
+      ],
+      "parameters": [],
+      "returns": 11753,
+      "id": 11751,
+      "type": "callable"
+    },
+    "11753": {
+      "properties": {
+        "otherValue": 11754,
+        "myMethod": 11755,
+        "myValue": 11757,
+        "jenny": 11761,
+        "oooo": 11767,
+        "forrest": 11768
+      },
+      "id": 11753,
+      "type": "object"
+    },
+    "11754": {
       "value": 10,
-      "id": 1319,
+      "id": 11754,
       "type": "literal"
     },
-    "1320": {
+    "11755": {
       "typeParameters": [],
       "parameters": [
         {
           "name": "__0",
           "optional": false,
-          "type": 2591
+          "type": 11757
         }
       ],
-      "returns": 2594,
-      "id": 1320,
+      "returns": 11760,
+      "id": 11755,
       "type": "callable"
     },
-    "2591": {
+    "11757": {
       "target": {
         "type": "reference",
-        "id": 2590
+        "id": 11756
       },
       "typeParameters": [
-        2592,
-        2593
+        11758,
+        11759
       ],
-      "id": 2591,
+      "id": 11757,
       "type": "reference"
     },
-    "2592": {
+    "11758": {
       "value": "yes",
-      "id": 2592,
+      "id": 11758,
       "type": "literal"
     },
-    "2593": {
+    "11759": {
       "value": "no",
-      "id": 2593,
+      "id": 11759,
       "type": "literal"
     },
-    "2594": {
+    "11760": {
       "value": "thing2",
-      "id": 2594,
+      "id": 11760,
       "type": "literal"
     },
-    "2595": {
+    "11761": {
       "typeParameters": [
-        2596
+        11762
       ],
       "parameters": [
         {
           "name": "a",
           "optional": false,
-          "type": 2597
+          "type": 11763
         },
         {
           "name": "b",
           "optional": false,
-          "type": 2598
+          "type": 11764
         }
       ],
-      "returns": 2599,
-      "id": 2595,
+      "returns": 11765,
+      "id": 11761,
       "type": "callable"
     },
-    "2597": {
+    "11763": {
       "target": {
         "type": "declaration",
-        "id": 2596
+        "id": 11762
       },
       "typeParameters": [],
-      "id": 2597,
+      "id": 11763,
       "type": "reference"
     },
-    "2598": {
+    "11764": {
       "target": {
         "type": "declaration",
-        "id": 1317
+        "id": 11752
       },
       "typeParameters": [],
-      "id": 2598,
+      "id": 11764,
       "type": "reference"
     },
-    "2599": {
-      "keyword": "void",
-      "id": 2599,
-      "type": "keyword"
+    "11765": {
+      "target": {
+        "type": "reference",
+        "id": 11748
+      },
+      "typeParameters": [
+        11766
+      ],
+      "id": 11765,
+      "type": "reference"
     },
-    "2600": {
+    "11766": {
+      "branches": [
+        11764,
+        11763
+      ],
+      "id": 11766,
+      "type": "union"
+    },
+    "11767": {
       "typeParameters": [],
       "parameters": [],
-      "returns": 1316,
-      "id": 2600,
+      "returns": 11751,
+      "id": 11767,
       "type": "callable"
     },
-    "2601": {
+    "11768": {
       "typeParameters": [],
       "parameters": [
         {
           "name": "checker",
           "optional": false,
-          "type": 2602
+          "type": 11769
         }
       ],
-      "returns": 2599,
-      "id": 2601,
+      "returns": 11771,
+      "id": 11768,
       "type": "callable"
     },
-    "2602": {
+    "11769": {
       "target": {
         "type": "reference",
-        "id": 2454
+        "id": 11612
       },
       "typeParameters": [
-        2603
+        11770
       ],
-      "id": 2602,
+      "id": 11769,
       "type": "reference"
     },
-    "2603": {
+    "11770": {
       "target": {
         "type": "reference",
-        "id": 2446
+        "id": 11604
       },
       "typeParameters": [],
-      "id": 2603,
+      "id": 11770,
       "type": "reference"
     },
-    "2605": {
+    "11771": {
+      "keyword": "void",
+      "id": 11771,
+      "type": "keyword"
+    },
+    "11773": {
       "value": "hello",
-      "id": 2605,
+      "id": 11773,
       "type": "literal"
     },
-    "2606": {
+    "11774": {
       "builtin": "string",
-      "id": 2606,
+      "id": 11774,
       "type": "builtin"
     },
-    "2609": {
+    "11777": {
       "target": {
         "type": "declaration",
-        "id": 1312
+        "id": 10472
       },
       "typeParameters": [],
-      "id": 2609,
+      "id": 11777,
       "type": "reference"
     },
-    "2610": {
+    "11778": {
       "value": "World",
-      "id": 2610,
+      "id": 11778,
       "type": "literal"
     }
   },
   "references": {
-    "2446": {
-      "id": 2446,
+    "11604": {
+      "id": 11604,
       "module": "typescript",
       "identifier": "BuilderProgram"
     },
-    "2454": {
-      "id": 2454,
+    "11612": {
+      "id": 11612,
       "module": "typescript",
       "identifier": "ProgramHost"
     },
-    "2590": {
-      "id": 2590,
+    "11748": {
+      "id": 11748,
+      "module": "typescript/lib/lib.es5.d.ts",
+      "identifier": "Array"
+    },
+    "11756": {
+      "id": 11756,
       "module": "typescript/lib/lib.es2015.collection.d.ts",
       "identifier": "Map"
     }
   },
   "declarations": {
-    "1306": {
-      "identifier": "myFunction",
-      "typeof": 1316,
-      "id": 1306,
-      "type": "variable"
-    },
-    "1307": {
-      "identifier": "A",
-      "typeof": 2605,
-      "id": 1307,
-      "type": "variable"
-    },
-    "1308": {
-      "identifier": "b",
-      "typeof": 2605,
-      "id": 1308,
-      "type": "variable"
-    },
-    "1309": {
-      "identifier": "e",
-      "typeof": 2606,
-      "id": 1309,
-      "type": "variable"
-    },
-    "1310": {
-      "identifier": "f",
-      "typeof": 2606,
-      "id": 1310,
-      "type": "variable"
-    },
-    "1311": {
-      "identifier": "CustomNamespace",
-      "exports": [
-        1312,
-        1313
-      ],
-      "id": 1311,
-      "type": "namespace"
-    },
-    "1312": {
-      "identifier": "D",
-      "signature": 2609,
-      "id": 1312,
-      "type": "function"
-    },
-    "1313": {
-      "identifier": "NestedNamespace",
-      "exports": [
-        1314,
-        1315
-      ],
-      "id": 1313,
-      "type": "namespace"
-    },
-    "1314": {
-      "identifier": "C",
-      "typeof": 2605,
-      "id": 1314,
-      "type": "variable"
-    },
-    "1315": {
-      "identifier": "Hello",
-      "declares": 2610,
+    "10465": {
+      "identifier": "Container",
+      "declares": 11750,
       "parameters": [],
-      "id": 1315,
+      "id": 10465,
       "type": "type"
     },
-    "1317": {
+    "10466": {
+      "identifier": "myFunction",
+      "typeof": 11751,
+      "id": 10466,
+      "type": "variable"
+    },
+    "10467": {
+      "identifier": "A",
+      "typeof": 11773,
+      "id": 10467,
+      "type": "variable"
+    },
+    "10468": {
+      "identifier": "b",
+      "typeof": 11773,
+      "id": 10468,
+      "type": "variable"
+    },
+    "10469": {
+      "identifier": "e",
+      "typeof": 11774,
+      "id": 10469,
+      "type": "variable"
+    },
+    "10470": {
+      "identifier": "f",
+      "typeof": 11774,
+      "id": 10470,
+      "type": "variable"
+    },
+    "10471": {
+      "identifier": "CustomNamespace",
+      "exports": [
+        10472,
+        10473
+      ],
+      "id": 10471,
+      "type": "namespace"
+    },
+    "10472": {
+      "identifier": "D",
+      "signature": 11777,
+      "id": 10472,
+      "type": "function"
+    },
+    "10473": {
+      "identifier": "NestedNamespace",
+      "exports": [
+        10474,
+        10475
+      ],
+      "id": 10473,
+      "type": "namespace"
+    },
+    "10474": {
+      "identifier": "C",
+      "typeof": 11773,
+      "id": 10474,
+      "type": "variable"
+    },
+    "10475": {
+      "identifier": "Hello",
+      "declares": 11778,
+      "parameters": [],
+      "id": 10475,
+      "type": "type"
+    },
+    "10477": {
+      "identifier": "TGeneric",
+      "extends": null,
+      "default": null,
+      "id": 10477,
+      "type": "generic"
+    },
+    "11752": {
       "identifier": "TY",
       "extends": null,
       "default": null,
-      "id": 1317,
+      "id": 11752,
       "type": "generic"
     },
-    "2596": {
+    "11762": {
       "identifier": "T",
       "extends": null,
       "default": null,
-      "id": 2596,
+      "id": 11762,
       "type": "generic"
     }
   },
   "comments": {
-    "2604": {
-      "id": 2604,
+    "11772": {
+      "id": 11772,
       "comment": "/**\n * I DEMAND DOCUMENTATION\n * \n * @returns \n */",
       "target": {
         "type": "declaration",
-        "id": 1306
+        "id": 10466
       }
     },
-    "2607": {
-      "id": 2607,
+    "11775": {
+      "id": 11775,
       "comment": "/** whoah! */",
       "target": {
         "type": "declaration",
-        "id": 1309
+        "id": 10469
       }
     },
-    "2608": {
-      "id": 2608,
+    "11776": {
+      "id": 11776,
       "comment": "/** mama! */",
       "target": {
         "type": "declaration",
-        "id": 1310
+        "id": 10470
       }
     }
   },
   "exports": [
-    1306,
-    1307,
-    1308,
-    1309,
-    1310,
-    1311
+    10465,
+    10466,
+    10467,
+    10468,
+    10469,
+    10470,
+    10471
   ]
 }

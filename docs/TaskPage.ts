@@ -50,7 +50,7 @@ const styles = {
     display: 'flex',
     'flex-direction': 'column',
     flex: 1,
-    margin: '32px',
+    margin: '16px',
   },
   columnTitle: {
     'text-align': 'center'
@@ -61,14 +61,18 @@ const styles = {
     'flex-direction': 'column',
     'overflow-y': 'auto',
     margin: '0',
-    padding: '4px',
-    gap: '16px'
+    padding: '16px',
+    gap: '16px',
+    'background': '#f2f2f2',
+    flex: 1,
+    'border-radius': '32px',
   },
   task: {
     padding: '16px',
     //border: '1px solid #0000008c',
     'border-radius': '8px',
-    'box-shadow': '#0000007e 0px 2px 8px 0px'
+    'box-shadow': '#0000007e 0px 2px 8px 0px',
+    background: 'white'
   },
   taskFilename: {
     'text-decoration': 'underline',

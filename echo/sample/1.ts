@@ -4,6 +4,14 @@ import ts from "typescript";
 
 type A_Declared_Type = 10;
 
+function Generic<TGeneric>(input: TGeneric) {
+  return [input];
+}
+
+export type Container = {
+  generic: typeof Generic
+}
+
 /**
  * I DEMAND DOCUMENTATION
  * 
@@ -20,8 +28,8 @@ export const myFunction = <TY>() => {
       return 'thing' as 'thing2';
     },
     myValue,
-    jenny<T>(a: T, b: TY): void {
-      return;
+    jenny<T>(a: T, b: TY) {
+      return [a, b];
     },
     oooo: () => myFunction,
     forrest(checker: ts.ProgramHost<ts.BuilderProgram>): void {

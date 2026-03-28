@@ -1,6 +1,5 @@
 import { DocComment } from "@microsoft/tsdoc";
 import { createId, OpaqueID } from "./utils";
-import { EchoExternalReferenceID } from "./types/external";
 
 export type EchoTSDocCommentID = OpaqueID<"EchoCommentID">
 export type EchoTSDocComment = {
@@ -10,6 +9,13 @@ export type EchoTSDocComment = {
     | { type: 'member', id: EchoType.ID, name: string }
   comment: string,
 }
+
+export type EchoExternalReference = {
+  id: EchoExternalReferenceID,
+  module: string,
+  identifier: string,
+};
+export type EchoExternalReferenceID = OpaqueID<"EchoExternalReferenceID">;
 
 export namespace EchoType {
   /**
@@ -31,7 +37,7 @@ export namespace EchoType {
   }>;
 
   export type Builtin = Define<"builtin", {
-    builtin: 'string' | 'number' | 'boolean'
+    builtin: 'string' | 'number' | 'boolean' | 'symbol'
   }>
 
   export type Keyword = Define<"keyword", {

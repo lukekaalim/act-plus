@@ -3,9 +3,11 @@ import { EchoDeclaration, EchoType } from "../reflections"
 import { createId, getIdentifier } from "../utils"
 import { ExternalTypeBuilder } from "./external"
 import { TypeBuildContext } from "../types"
+import { TypeInstanceBuilder } from "./instances"
 
 export type DeclarationsTypeBuilder = {
   fromAnyTypeNode(node: ts.TypeNode): EchoType.ID,
+  fromTypeParameterDeclaration(typeParameterDeclaration: ts.TypeParameterDeclaration): EchoDeclaration.ID
 }
 
 /**
@@ -16,7 +18,11 @@ export type DeclarationsTypeBuilder = {
  * As such, it doesn't require the typechecker and simply
  * traversed the nodes of the elements provided.
  */
-export const createDeclarationBuilder = (context: TypeBuildContext, external: ExternalTypeBuilder): DeclarationsTypeBuilder => {
+export const createDeclarationBuilder = (
+  context: TypeBuildContext,
+  external: ExternalTypeBuilder,
+  getInstanceBuilder: () => TypeInstanceBuilder,
+): DeclarationsTypeBuilder => {
   const { checker } = context.ts;
 
   /**
@@ -85,24 +91,49 @@ export const createDeclarationBuilder = (context: TypeBuildContext, external: Ex
     })
   }
 
-  const fromFunctionTypeNode = (functionType: ts.FunctionTypeNode) => {
-    return pushType('unsupported', { message: `Haven't implemented function types yet` });
-    throw new Error("Unimplemented");
-    /*
-    const typeParameters = buildTypeParameterDeclarations(functionType.typeParameters);
+  const fromTypeParameterDeclaration = (typeParam: ts.TypeParameterDeclaration) => {
+    let extendsId = null;
+    let defaultId = null;
 
-    return createType('callable', {
+    if (typeParam.constraint) {
+      extendsId = fromAnyTypeNode(typeParam.constraint)
+    }
+    if (typeParam.default) {
+      defaultId = fromAnyTypeNode(typeParam.default)
+    }
+
+    const typeParameterDeclaration = EchoDeclaration.create(createId(), 'generic', {
+      identifier: typeParam.name.text,
+      extends: extendsId,
+      default: defaultId,
+    })
+
+    const symbol = checker.getSymbolAtLocation(typeParam.name);
+
+    // Add the type parameter
+    context.declarations.set(typeParameterDeclaration.id, typeParameterDeclaration);
+    if (symbol)
+      context.declarationBySymbol.set(symbol, typeParameterDeclaration.id);
+    else
+      console.warn(`Type parameter without symbol???`)
+
+    return typeParameterDeclaration.id;
+  }
+
+  const fromFunctionTypeNode = (functionType: ts.FunctionTypeNode) => {
+    const typeParameters = (functionType.typeParameters || []).map(fromTypeParameterDeclaration);
+
+    return pushType('callable', {
       parameters: functionType.parameters.map(parameter => {
         return {
           name: getIdentifier(parameter.name),
-          type: parameter.type ? buildFromTsTypeNode(parameter.type).id : createType('unsupported', { message: '???' }).id,
+          type: parameter.type ? fromAnyTypeNode(parameter.type) : pushType('unsupported', { message: '???' }),
           optional: !!parameter.questionToken
         }
       }),
-      returns: buildFromTsTypeNode(functionType.type).id,
+      returns: fromAnyTypeNode(functionType.type),
       typeParameters
     })
-    */
   }
 
   const fromTypeReferenceNode = (reference: ts.TypeReferenceNode) => {
@@ -117,10 +148,15 @@ export const createDeclarationBuilder = (context: TypeBuildContext, external: Ex
 
   const fromAnyTypeNode = (node: ts.TypeNode): EchoType.ID => {
     switch (node.kind) {
+      case ts.SyntaxKind.UnknownKeyword:
+        return pushType('keyword', { keyword: 'unknown' });
+        
       case ts.SyntaxKind.StringKeyword:
         return pushType('builtin', { builtin: 'string' });
       case ts.SyntaxKind.NumberKeyword:
         return pushType('builtin', { builtin: 'number' });
+      case ts.SyntaxKind.SymbolKeyword:
+        return pushType('builtin', { builtin: 'symbol' });
       case ts.SyntaxKind.BooleanKeyword:
         return pushType('builtin', { builtin: 'boolean' });
       case ts.SyntaxKind.VoidKeyword:
@@ -152,10 +188,14 @@ export const createDeclarationBuilder = (context: TypeBuildContext, external: Ex
         return fromFunctionTypeNode(node as ts.FunctionTypeNode);
       case ts.SyntaxKind.IndexedAccessType:
         return fromIndexedAccessTypeNode(node as ts.IndexedAccessTypeNode)
+      case ts.SyntaxKind.TypeQuery:
+        return getInstanceBuilder().fromType(checker.getTypeAtLocation(node as ts.TypeQueryNode))
+      case ts.SyntaxKind.ParenthesizedType:
+        return fromAnyTypeNode((node as ts.ParenthesizedTypeNode).type);
       default:
         return pushType('unsupported', { message: `Don't support Node "${ts.SyntaxKind[node.kind]}" yet`})
     }
   }
 
-  return { fromAnyTypeNode }
+  return { fromAnyTypeNode, fromTypeParameterDeclaration }
 }

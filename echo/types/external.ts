@@ -1,17 +1,11 @@
 import ts from "typescript";
 import { PackageFileReferenceInfo, TypeBuildContext } from "../types";
-import { EchoDeclaration, EchoType } from "../reflections";
+import { EchoDeclaration, EchoExternalReference, EchoType } from "../reflections";
 import { createId, OpaqueID } from "../utils";
 
 
 // TODO: ADD REFERENCE PROMOTION
 
-export type EchoExternalReference = {
-  id: EchoExternalReferenceID,
-  module: string,
-  identifier: string,
-};
-export type EchoExternalReferenceID = OpaqueID<"EchoExternalReferenceID">;
 
 export type ExternalTypeBuilder = {
   //explorePackageSymbols(symbol: ts.Symbol): void,

@@ -9,8 +9,8 @@ definition/information.
 
   - [ ] Rename package (to support Echo & Grimoire instead of Doc and DocTs)
   - [ ] Drop support for TypeDoc
-  - [ ] Refactor code into subdirectories better
-  - [ ] Add in support for rendering single declarations by name
-  - [ ] Support declaration Referencing (i.e. article preprocessing)
-    - [ ] Support links to other referenced types
-    - [ ] Support external links
+  - [x] Refactor code into subdirectories better
+  - [x] Add in support for rendering single declarations by name
+  - [x] Support declaration Referencing (i.e. article preprocessing)
+    - [x] Support links to other referenced types
+    - [x] Support external links

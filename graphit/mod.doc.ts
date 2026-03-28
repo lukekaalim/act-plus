@@ -86,7 +86,7 @@ export default h(MarkdownArticle, {
 })
 
 export const buildGraphitDocs = (doc: DocApp<[EchoPlugin]>) => {
-  doc.echo.modules.set('@lukekaalim/act-graphit', reflection);
+  doc.echo.addModule(reflection);
 
   doc.article.add('graphit.readme', readmeMd, '/packages/@lukekaalim/act-graphit')
   doc.article.add('graphit.structs', structuresMd, '/packages/@lukekaalim/act-graphit/structures');

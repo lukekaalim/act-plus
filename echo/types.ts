@@ -39,7 +39,7 @@ export type PackageFileReferenceInfo = {
 
 export const createTypeBuilder2 = (context: TypeBuildContext) => {
   const external = createExternalTypeBuilder(context);
-  const declarations = createDeclarationBuilder(context, external);
+  const declarations = createDeclarationBuilder(context, external, () => instances);
   const instances = createTypeInstanceBuilder(context, external, declarations);
 
   return {

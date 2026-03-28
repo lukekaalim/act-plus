@@ -145,7 +145,7 @@ export const TypeDocPlugin = {
     const projects = new Map<string, ProjectReflection>();
     const deserializer = new Deserializer(new ConsoleLogger());
 
-    core.component.add('TypeDoc', TypeDoc);
+    core.component.add('TypeDoc', () => h(InlineErrorBox, {}, 'TypeDoc is no longer supported, move to "Echo"'));
     core.component.add('TypeDocDebug', TypeDocDebug);
 
     const typedoc = {

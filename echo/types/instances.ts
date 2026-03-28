@@ -76,6 +76,13 @@ export const createTypeInstanceBuilder = (
         if (objectType.objectFlags & ts.ObjectFlags.Reference) {
           const reference = objectType as ts.TypeReference;
 
+          if (reference.target.objectFlags & ts.ObjectFlags.Tuple) {
+            // special case: this is a tuple
+            return pushType(type, 'tuple', () => ({
+              values: (reference.typeArguments || []).map(value => fromType(value))
+            }))
+          }
+
           let symbol = reference.target.getSymbol()
           if (!symbol) {
             return pushType(type, 'unsupported', () => ({ message: `Reference missing symbol??` }))
@@ -134,6 +141,7 @@ export const createTypeInstanceBuilder = (
         return pushType(type, 'builtin', () => ({ builtin: 'string' } as const));
       case ts.TypeFlags.Any:
         return pushType(type, 'keyword', () => ({ keyword: 'any' } as const));
+      case ts.TypeFlags.TypeParameter:
       case ts.TypeFlags.Union:
     }
     return pushType(type, 'unsupported', () => ({ message: 'RealType ' + getFlags(ts.TypeFlags as any, type.flags) }))
@@ -143,27 +151,8 @@ export const createTypeInstanceBuilder = (
     return pushType(type, 'callable', () => {
       const typeParameters = (signature.typeParameters || []).map(typeParameter => {
         const decl = (typeParameter.symbol.declarations || [])[0] as ts.TypeParameterDeclaration
-        let extendsId: EchoType.ID | null = null;
-        let defaultId: EchoType.ID | null = null;
 
-        if (decl.constraint) {
-          extendsId = declarations.fromAnyTypeNode(decl.constraint)
-        }
-        if (decl.default) {
-          defaultId = declarations.fromAnyTypeNode(decl.default)
-        }
-
-        const typeParameterDeclaration = EchoDeclaration.create(createId(), 'generic', {
-          identifier: decl.name.text,
-          extends: extendsId,
-          default: defaultId,
-        })
-
-        // Add the type parameter
-        context.declarations.set(typeParameterDeclaration.id, typeParameterDeclaration);
-        context.declarationBySymbol.set(typeParameter.symbol, typeParameterDeclaration.id);
-
-        return typeParameterDeclaration.id;
+        return declarations.fromTypeParameterDeclaration(decl);
       }).filter(x => !!x);
 
       const parameters = signature.parameters.map(param => {

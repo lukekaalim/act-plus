@@ -13,7 +13,7 @@ import { Vector2D } from "../vectors";
 import { InteractiveGuide } from "./interactive";
 
 export const buildCurveDocs = (doc: DocApp<[TypeDocPlugin, EchoPlugin]>) => {
-  doc.echo.modules.set('@lukekaalim/act-curve', reflection);
+  doc.echo.addModule(reflection);
 
   doc.article.add('curve.readme', readmeMd, '/packages/@lukekaalim/act-curve/api');
   doc.route.add('/packages/@lukekaalim/act-curve', h(FullSizePage, {}, h(CurveDemo, { offset: { x: 600, y: 100} })));

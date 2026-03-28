@@ -93,6 +93,7 @@ export const buildEchoModule = <T extends ts.BuilderProgram>(
   for (const discoveredDeclaration of discoverContext.declarations) {
     const declaration = generateDeclarationFromDiscovery(discoveredDeclaration, typeBuilderContext);
     typeBuilderContext.declarations.set(declaration.id, declaration);
+    
     const comment = findComment(discoveredDeclaration.declarationNode);
     if (comment)
       comments.push({

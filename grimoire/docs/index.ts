@@ -15,7 +15,7 @@ import { PrismaticComponent, VerticalNavMenuDemo } from "./demos";
 import { h } from "@lukekaalim/act";
 
 export const buildGrimoireDocs = (doc: DocApp<[EchoPlugin]>) => {
-  doc.echo.modules.set('@lukekaalim/grimoire', reflection);
+  doc.echo.addModule(reflection);
 
   doc.article.add('grimoire.readme', readmeMd, '/packages/@lukekaalim/grimoire');
   doc.article.add('grimoire.guides', guidesMd, '/packages/@lukekaalim/grimoire/guides');

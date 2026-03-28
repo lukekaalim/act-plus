@@ -22,10 +22,13 @@ export const generateDeclarationFromDiscovery = (discovered: DiscoveredDeclarati
         exports: exportedSymbols.map(symbol => context.declarationBySymbol.get(symbol) as EchoDeclaration.ID),
       })
     case ts.SyntaxKind.TypeAliasDeclaration:
+      const parameters = (discovered.declarationNode.typeParameters || []).map(typeParameter => {
+        return types.declarations.fromTypeParameterDeclaration(typeParameter)
+      })
       return EchoDeclaration.create(discovered.id, 'type', {
         identifier,
         declares: types.declarations.fromAnyTypeNode(discovered.declarationNode.type),
-        parameters: [],
+        parameters,
       })
     case ts.SyntaxKind.FunctionDeclaration:
       return EchoDeclaration.create(discovered.id, 'function', {

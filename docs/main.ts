@@ -18,6 +18,7 @@ import { SVGRepo } from '@lukekaalim/act-icons';
 import iconPlusURL from './media/icon-plus.png';
 import { buildEchoDocs } from '../echo/docs';
 import { TaskPage } from './TaskPage';
+import { createSandboxDocs } from './sandbox';
 
 const origin = createRelativeURLFactory();
 
@@ -175,6 +176,14 @@ const DemoPage = () => {
           ]
         },
         {
+          id: 'echo',
+          destination: origin.createURL('/packages/@lukekaalim/echo'),
+          content: [
+            h('h3', {}, '@lukekaalim/echo'),
+            h('p', {}, 'Typescript Reflection library, for reading your types at runtime!'),
+          ],
+        },
+        {
           id: 'tsdoc',
           destination: origin.createURL('/packages/@lukekaalim/grimoire-ts'),
           content: [
@@ -275,6 +284,8 @@ buildIconDocs(doc);
 buildCurveDocs(doc);
 buildGraphitDocs(doc);
 buildMarkdownDocs(doc)
+
+createSandboxDocs(doc);
 
 const main = () => {
   const banner = {

@@ -131,8 +131,6 @@ consumers of this data to match up the external references themselves, either
 using the DocApp reference system if they are building a Grimoire app, or by
 some other system (or just ignoring them and not linking to 3rd party documentation).
 
-<EchoModule module="@lukekaalim/echo" heading="API">
+## API
 
-> 🤖 Generated using Echo!
-
-</EchoModule>
+<Echo module="@lukekaalim/echo" name="EchoModule" />

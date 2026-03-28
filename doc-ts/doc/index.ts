@@ -14,7 +14,7 @@ import { DeclarationReflectionRenderer } from "../Reflection";
 import { h } from "@lukekaalim/act";
 
 export const buildGrimoireTSDocs = (doc: DocApp<[TypeDocPlugin, EchoPlugin]>) => {
-  doc.echo.modules.set('@lukekaalim/grimoire-ts', reflection);
+  doc.echo.addModule(reflection);
 
   doc.article.add('ts.readme', readmeMd, '/packages/@lukekaalim/grimoire-ts');
   doc.article.add('ts.api', apiMd, '/packages/@lukekaalim/grimoire-ts/api');

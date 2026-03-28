@@ -5,7 +5,7 @@ import reflection from 'echo:@lukekaalim/act-markdown';
 import readmeMd from './readme.md?raw';
 
 export const buildMarkdownDocs = (doc: DocApp<[EchoPlugin]>) => {
-  doc.echo.modules.set('@lukekaalim/act-markdown', reflection);
+  doc.echo.addModule(reflection);
   doc.article.add('markdown.readme', readmeMd, '/packages/@lukekaalim/act-markdown');
   doc.reference.addExternal('ts:@types/mdast.Nodes', new URL(`https://github.com/syntax-tree/mdast?tab=readme-ov-file#content-model`));
   doc.reference.addExternal('ts:@types/mdast.Root', new URL(`https://github.com/syntax-tree/mdast?tab=readme-ov-file#root`));
