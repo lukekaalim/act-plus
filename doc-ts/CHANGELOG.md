@@ -1,5 +1,16 @@
 # @lukekaalim/grimoire-ts
 
+## 1.2.0
+
+### Minor Changes
+
+- Advancements in technology!
+
+### Patch Changes
+
+- Updated dependencies
+  - @lukekaalim/echo@2.2.0
+
 ## 1.1.0
 
 ### Minor Changes
