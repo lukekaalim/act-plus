@@ -1,0 +1,1686 @@
+{
+  "moduleName": "index",
+  "types": [
+    {
+      "type": "reference",
+      "id": 250,
+      "target": 249,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 252,
+      "target": 251,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 254,
+      "target": 253,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 256,
+      "target": 255,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 258,
+      "target": 257,
+      "parameters": [
+        254,
+        256
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 260,
+      "target": 259,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 262,
+      "target": 261,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 263,
+      "target": 257,
+      "parameters": [
+        260,
+        262
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 265,
+      "target": 264,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 267,
+      "target": 266,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 268,
+      "target": 257,
+      "parameters": [
+        265,
+        267
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 270,
+      "target": 269,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 271,
+      "target": 253,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 272,
+      "target": 257,
+      "parameters": [
+        270,
+        271
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 273,
+      "target": 269,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 274,
+      "target": 259,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 275,
+      "target": 257,
+      "parameters": [
+        273,
+        274
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 276,
+      "target": 269,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 278,
+      "target": 277,
+      "parameters": [
+        276
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 279,
+      "target": 269,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 280,
+      "target": 277,
+      "parameters": [
+        279
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 281,
+      "target": 269,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 282,
+      "target": 269,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 283,
+      "element": 282
+    },
+    {
+      "type": "reference",
+      "id": 284,
+      "target": 257,
+      "parameters": [
+        281,
+        283
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 285,
+      "target": 269,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 287,
+      "target": 286,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 288,
+      "target": 257,
+      "parameters": [
+        285,
+        287
+      ]
+    },
+    {
+      "type": "object",
+      "id": 289,
+      "properties": [
+        {
+          "identifier": "ts",
+          "typeof": 250
+        },
+        {
+          "identifier": "source",
+          "typeof": 252
+        },
+        {
+          "identifier": "types",
+          "typeof": 258
+        },
+        {
+          "identifier": "identifiers",
+          "typeof": 263
+        },
+        {
+          "identifier": "comments",
+          "typeof": 268
+        },
+        {
+          "identifier": "typeByInstance",
+          "typeof": 272
+        },
+        {
+          "identifier": "identifierBySymbol",
+          "typeof": 275
+        },
+        {
+          "identifier": "visitedModules",
+          "typeof": 278
+        },
+        {
+          "identifier": "symbolsToExpand",
+          "typeof": 280
+        },
+        {
+          "identifier": "symbolsByNamespaceSymbol",
+          "typeof": 284
+        },
+        {
+          "identifier": "exportableDeclarationNodeBySymbol",
+          "typeof": 288
+        }
+      ]
+    },
+    {
+      "id": 291,
+      "type": "reference",
+      "target": 290,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "type": "namespace",
+      "id": 292,
+      "name": "Type",
+      "exports": [
+        228,
+        229,
+        230,
+        231
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 294,
+      "target": 293,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 296,
+      "target": 295,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 298,
+      "target": 297,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 300,
+      "target": 299,
+      "parameters": []
+    },
+    {
+      "type": "literal",
+      "id": 301,
+      "literal": "TypeID"
+    },
+    {
+      "type": "reference",
+      "id": 303,
+      "target": 302,
+      "parameters": [
+        301
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 304,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 306,
+      "target": 305,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 307,
+      "element": 306
+    },
+    {
+      "type": "reference",
+      "id": 309,
+      "target": 308,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 310,
+      "element": 309
+    },
+    {
+      "type": "reference",
+      "id": 312,
+      "target": 311,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 313,
+      "element": 312
+    },
+    {
+      "type": "reference",
+      "id": 315,
+      "target": 314,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 316,
+      "element": 315
+    },
+    {
+      "type": "reference",
+      "id": 318,
+      "target": 317,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 319,
+      "element": 318
+    },
+    {
+      "type": "object",
+      "id": 320,
+      "properties": [
+        {
+          "identifier": "moduleName",
+          "typeof": 304
+        },
+        {
+          "identifier": "types",
+          "typeof": 307
+        },
+        {
+          "identifier": "identifiers",
+          "typeof": 310
+        },
+        {
+          "identifier": "comments",
+          "typeof": 313
+        },
+        {
+          "identifier": "exports",
+          "typeof": 316
+        },
+        {
+          "identifier": "diagnostics",
+          "typeof": 319
+        }
+      ]
+    },
+    {
+      "type": "literal",
+      "id": 321,
+      "literal": "IdentifierID"
+    },
+    {
+      "type": "reference",
+      "id": 323,
+      "target": 322,
+      "parameters": [
+        321
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 324,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 326,
+      "properties": []
+    },
+    {
+      "type": "reference",
+      "id": 328,
+      "target": 234,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 329,
+      "target": 325,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 330,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 331,
+      "properties": [
+        {
+          "identifier": "id",
+          "typeof": 328
+        },
+        {
+          "identifier": "type",
+          "typeof": 329
+        },
+        {
+          "identifier": "name",
+          "typeof": 330
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 332,
+      "target": 327,
+      "parameters": []
+    },
+    {
+      "type": "intersection",
+      "id": 333,
+      "intersections": [
+        331,
+        332
+      ]
+    },
+    {
+      "id": 336,
+      "type": "reference",
+      "target": 335,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 338,
+      "type": "reference",
+      "target": 337,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 334,
+      "type": "intersection",
+      "intersections": [
+        336,
+        338
+      ]
+    },
+    {
+      "id": 340,
+      "type": "reference",
+      "target": 335,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 342,
+      "type": "reference",
+      "target": 341,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 339,
+      "type": "intersection",
+      "intersections": [
+        340,
+        342
+      ]
+    },
+    {
+      "id": 344,
+      "type": "reference",
+      "target": 335,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 346,
+      "type": "reference",
+      "target": 345,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 343,
+      "type": "intersection",
+      "intersections": [
+        344,
+        346
+      ]
+    },
+    {
+      "id": 348,
+      "type": "reference",
+      "target": 335,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 350,
+      "type": "reference",
+      "target": 349,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 347,
+      "type": "intersection",
+      "intersections": [
+        348,
+        350
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 351,
+      "target": 236,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 352,
+      "target": 237,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 353,
+      "target": 238,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 354,
+      "target": 239,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 355,
+      "unions": [
+        351,
+        352,
+        353,
+        354
+      ]
+    },
+    {
+      "type": "literal",
+      "id": 356,
+      "literal": "CommentID"
+    },
+    {
+      "type": "reference",
+      "id": 358,
+      "target": 357,
+      "parameters": [
+        356
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 359,
+      "target": 241,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 360,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 362,
+      "target": 361,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 363,
+      "keyword": "null"
+    },
+    {
+      "type": "keyword",
+      "id": 364,
+      "keyword": "string"
+    },
+    {
+      "type": "union",
+      "id": 365,
+      "unions": [
+        363,
+        364
+      ]
+    },
+    {
+      "type": "object",
+      "id": 366,
+      "properties": [
+        {
+          "identifier": "id",
+          "typeof": 359
+        },
+        {
+          "identifier": "text",
+          "typeof": 360
+        },
+        {
+          "identifier": "typeId",
+          "typeof": 362
+        },
+        {
+          "identifier": "memberName",
+          "typeof": 365
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 367,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 369,
+      "properties": []
+    },
+    {
+      "type": "reference",
+      "id": 372,
+      "target": 371,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 373,
+      "target": 368,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 374,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 375,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 377,
+      "target": 376,
+      "parameters": [
+        374,
+        375
+      ]
+    },
+    {
+      "type": "object",
+      "id": 378,
+      "properties": [
+        {
+          "identifier": "id",
+          "typeof": 372
+        },
+        {
+          "identifier": "type",
+          "typeof": 373
+        },
+        {
+          "identifier": "meta",
+          "typeof": 377
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 379,
+      "target": 370,
+      "parameters": []
+    },
+    {
+      "type": "intersection",
+      "id": 380,
+      "intersections": [
+        378,
+        379
+      ]
+    },
+    {
+      "id": 383,
+      "type": "reference",
+      "target": 382,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 385,
+      "type": "reference",
+      "target": 384,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 381,
+      "type": "intersection",
+      "intersections": [
+        383,
+        385
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 387,
+      "target": 386,
+      "parameters": []
+    },
+    {
+      "type": "literal",
+      "id": 388,
+      "literal": "type"
+    },
+    {
+      "type": "index-access",
+      "id": 389,
+      "target": 387,
+      "index": 388
+    },
+    {
+      "type": "reference",
+      "id": 391,
+      "target": 386,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 392,
+      "target": 390,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 393,
+      "properties": [
+        {
+          "identifier": "type",
+          "typeof": 392
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 395,
+      "target": 394,
+      "parameters": [
+        391,
+        393
+      ]
+    },
+    {
+      "type": "literal",
+      "id": 396,
+      "literal": "id"
+    },
+    {
+      "type": "literal",
+      "id": 397,
+      "literal": "type"
+    },
+    {
+      "type": "union",
+      "id": 398,
+      "unions": [
+        396,
+        397
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 400,
+      "target": 399,
+      "parameters": [
+        395,
+        398
+      ]
+    },
+    {
+      "id": 402,
+      "type": "reference",
+      "target": 401,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 404,
+      "target": 403,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 406,
+      "target": 405,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 408,
+      "target": 407,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 409,
+      "target": 257,
+      "parameters": [
+        406,
+        408
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 411,
+      "target": 410,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 413,
+      "target": 412,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 414,
+      "target": 257,
+      "parameters": [
+        411,
+        413
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 416,
+      "target": 415,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 418,
+      "target": 417,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 419,
+      "target": 257,
+      "parameters": [
+        416,
+        418
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 420,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 421,
+      "target": 410,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 422,
+      "element": 421
+    },
+    {
+      "type": "reference",
+      "id": 423,
+      "target": 257,
+      "parameters": [
+        420,
+        422
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 424,
+      "target": 405,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 425,
+      "target": 415,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 426,
+      "target": 257,
+      "parameters": [
+        424,
+        425
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 427,
+      "target": 405,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 428,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 429,
+      "target": 415,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 430,
+      "target": 257,
+      "parameters": [
+        428,
+        429
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 431,
+      "target": 257,
+      "parameters": [
+        427,
+        430
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 432,
+      "target": 410,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 433,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 434,
+      "target": 257,
+      "parameters": [
+        432,
+        433
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 435,
+      "target": 405,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 436,
+      "target": 407,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 437,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "id",
+          "typeof": 435
+        }
+      ],
+      "returns": 436
+    },
+    {
+      "type": "reference",
+      "id": 438,
+      "target": 410,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 440,
+      "target": 439,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 441,
+      "target": 412,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 442,
+      "target": 439,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 443,
+      "properties": [
+        {
+          "identifier": "type",
+          "typeof": 442
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 444,
+      "target": 394,
+      "parameters": [
+        441,
+        443
+      ]
+    },
+    {
+      "type": "function",
+      "id": 445,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "id",
+          "typeof": 438
+        },
+        {
+          "identifier": "expectedType",
+          "typeof": 440
+        }
+      ],
+      "returns": 444
+    },
+    {
+      "type": "object",
+      "id": 446,
+      "properties": [
+        {
+          "identifier": "echo",
+          "typeof": 404
+        },
+        {
+          "identifier": "types",
+          "typeof": 409
+        },
+        {
+          "identifier": "identifiers",
+          "typeof": 414
+        },
+        {
+          "identifier": "comments",
+          "typeof": 419
+        },
+        {
+          "identifier": "identifiersByName",
+          "typeof": 423
+        },
+        {
+          "identifier": "commentByTypeID",
+          "typeof": 426
+        },
+        {
+          "identifier": "commentByTypeIDAndMember",
+          "typeof": 431
+        },
+        {
+          "identifier": "qualifiedNameByIdentifier",
+          "typeof": 434
+        },
+        {
+          "identifier": "getTypeOrThrow",
+          "typeof": 437
+        },
+        {
+          "identifier": "getIdentifierOrThrow",
+          "typeof": 445
+        }
+      ]
+    },
+    {
+      "id": 448,
+      "type": "reference",
+      "target": 447,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    }
+  ],
+  "identifiers": [
+    {
+      "id": 249,
+      "type": "external",
+      "name": "TypescriptContext",
+      "moduleName": "@lukekaalim/echo/builders/echo.ts"
+    },
+    {
+      "id": 251,
+      "type": "external",
+      "name": "SourceFile",
+      "moduleName": "typescript/lib/typescript.d.ts"
+    },
+    {
+      "id": 253,
+      "type": "external",
+      "name": "TypeID",
+      "moduleName": "@lukekaalim/echo/builders/echo.ts"
+    },
+    {
+      "id": 255,
+      "type": "external",
+      "name": "Type",
+      "moduleName": "@lukekaalim/echo/builders/echo.ts"
+    },
+    {
+      "id": 257,
+      "type": "external",
+      "name": "Map",
+      "moduleName": "typescript/lib/lib.es2015.collection.d.ts"
+    },
+    {
+      "id": 259,
+      "type": "external",
+      "name": "IdentifierID",
+      "moduleName": "@lukekaalim/echo/builders/echo.ts"
+    },
+    {
+      "id": 261,
+      "type": "external",
+      "name": "Identifier",
+      "moduleName": "@lukekaalim/echo/builders/echo.ts"
+    },
+    {
+      "id": 264,
+      "type": "external",
+      "name": "CommentID",
+      "moduleName": "@lukekaalim/echo/builders/echo.ts"
+    },
+    {
+      "id": 266,
+      "type": "external",
+      "name": "Comment",
+      "moduleName": "@lukekaalim/echo/builders/echo.ts"
+    },
+    {
+      "id": 269,
+      "type": "external",
+      "name": "Symbol",
+      "moduleName": "typescript/lib/typescript.d.ts"
+    },
+    {
+      "id": 277,
+      "type": "external",
+      "name": "Set",
+      "moduleName": "typescript/lib/lib.es2015.collection.d.ts"
+    },
+    {
+      "id": 286,
+      "type": "external",
+      "name": "TSExportableDeclaration",
+      "moduleName": "@lukekaalim/echo/builders/echo.ts"
+    },
+    {
+      "type": "type",
+      "id": 225,
+      "name": "ModuleBuildContext",
+      "parameters": [],
+      "typeId": 289
+    },
+    {
+      "id": 290,
+      "type": "external",
+      "name": "__function",
+      "moduleName": "@lukekaalim/echo/builders/echo.ts"
+    },
+    {
+      "type": "value",
+      "id": 226,
+      "name": "createEchoFromSourceFile",
+      "typeId": 291
+    },
+    {
+      "type": "value",
+      "id": 227,
+      "name": "Type",
+      "typeId": 292
+    },
+    {
+      "id": 293,
+      "type": "external",
+      "name": "FunctionType",
+      "moduleName": "@lukekaalim/echo/definitions/index.ts"
+    },
+    {
+      "type": "type",
+      "id": 228,
+      "name": "Function",
+      "parameters": [],
+      "typeId": 294
+    },
+    {
+      "id": 295,
+      "type": "external",
+      "name": "ObjectType",
+      "moduleName": "@lukekaalim/echo/definitions/index.ts"
+    },
+    {
+      "type": "type",
+      "id": 229,
+      "name": "Object",
+      "parameters": [],
+      "typeId": 296
+    },
+    {
+      "id": 297,
+      "type": "external",
+      "name": "UnionType",
+      "moduleName": "@lukekaalim/echo/definitions/index.ts"
+    },
+    {
+      "type": "type",
+      "id": 230,
+      "name": "Union",
+      "parameters": [],
+      "typeId": 298
+    },
+    {
+      "id": 299,
+      "type": "external",
+      "name": "IntersectionType",
+      "moduleName": "@lukekaalim/echo/definitions/index.ts"
+    },
+    {
+      "type": "type",
+      "id": 231,
+      "name": "Intersection",
+      "parameters": [],
+      "typeId": 300
+    },
+    {
+      "id": 302,
+      "type": "external",
+      "name": "OpaqueID",
+      "moduleName": "@lukekaalim/echo/definitions/type.ts"
+    },
+    {
+      "type": "type",
+      "id": 232,
+      "name": "TypeID",
+      "parameters": [],
+      "typeId": 303
+    },
+    {
+      "id": 305,
+      "type": "external",
+      "name": "Type",
+      "moduleName": "@lukekaalim/echo/definitions/module.ts"
+    },
+    {
+      "id": 308,
+      "type": "external",
+      "name": "Identifier",
+      "moduleName": "@lukekaalim/echo/definitions/module.ts"
+    },
+    {
+      "id": 311,
+      "type": "external",
+      "name": "Comment",
+      "moduleName": "@lukekaalim/echo/definitions/module.ts"
+    },
+    {
+      "id": 314,
+      "type": "external",
+      "name": "IdentifierID",
+      "moduleName": "@lukekaalim/echo/definitions/module.ts"
+    },
+    {
+      "id": 317,
+      "type": "external",
+      "name": "Diagnostic",
+      "moduleName": "@lukekaalim/echo/definitions/module.ts"
+    },
+    {
+      "type": "type",
+      "id": 233,
+      "name": "Echo",
+      "parameters": [],
+      "typeId": 320
+    },
+    {
+      "id": 322,
+      "type": "external",
+      "name": "OpaqueID",
+      "moduleName": "@lukekaalim/echo/definitions/identifiers.ts"
+    },
+    {
+      "type": "type",
+      "id": 234,
+      "name": "IdentifierID",
+      "parameters": [],
+      "typeId": 323
+    },
+    {
+      "id": 325,
+      "name": "Discriminator",
+      "type": "type-parameter",
+      "constraint": 324,
+      "default": null
+    },
+    {
+      "id": 327,
+      "name": "Props",
+      "type": "type-parameter",
+      "constraint": 326,
+      "default": null
+    },
+    {
+      "type": "type",
+      "id": 235,
+      "name": "DefineIdentifier",
+      "parameters": [
+        325,
+        327
+      ],
+      "typeId": 333
+    },
+    {
+      "id": 335,
+      "type": "external",
+      "name": "__type",
+      "moduleName": "@lukekaalim/echo/definitions/identifiers.ts"
+    },
+    {
+      "id": 337,
+      "type": "external",
+      "name": "__type",
+      "moduleName": "@lukekaalim/echo/definitions/identifiers.ts"
+    },
+    {
+      "type": "type",
+      "id": 236,
+      "name": "TypeParameterIdentifier",
+      "parameters": [],
+      "typeId": 334
+    },
+    {
+      "id": 341,
+      "type": "external",
+      "name": "__type",
+      "moduleName": "@lukekaalim/echo/definitions/identifiers.ts"
+    },
+    {
+      "type": "type",
+      "id": 237,
+      "name": "TypeIdentifier",
+      "parameters": [],
+      "typeId": 339
+    },
+    {
+      "id": 345,
+      "type": "external",
+      "name": "__type",
+      "moduleName": "@lukekaalim/echo/definitions/identifiers.ts"
+    },
+    {
+      "type": "type",
+      "id": 238,
+      "name": "ValueIdentifier",
+      "parameters": [],
+      "typeId": 343
+    },
+    {
+      "id": 349,
+      "type": "external",
+      "name": "__type",
+      "moduleName": "@lukekaalim/echo/definitions/identifiers.ts"
+    },
+    {
+      "type": "type",
+      "id": 239,
+      "name": "ExternalIdentifier",
+      "parameters": [],
+      "typeId": 347
+    },
+    {
+      "type": "type",
+      "id": 240,
+      "name": "Identifier",
+      "parameters": [],
+      "typeId": 355
+    },
+    {
+      "id": 357,
+      "type": "external",
+      "name": "OpaqueID",
+      "moduleName": "@lukekaalim/echo/definitions/comments.ts"
+    },
+    {
+      "type": "type",
+      "id": 241,
+      "name": "CommentID",
+      "parameters": [],
+      "typeId": 358
+    },
+    {
+      "id": 361,
+      "type": "external",
+      "name": "TypeID",
+      "moduleName": "@lukekaalim/echo/definitions/comments.ts"
+    },
+    {
+      "type": "type",
+      "id": 242,
+      "name": "Comment",
+      "parameters": [],
+      "typeId": 366
+    },
+    {
+      "id": 368,
+      "name": "Discriminator",
+      "type": "type-parameter",
+      "constraint": 367,
+      "default": null
+    },
+    {
+      "id": 370,
+      "name": "Props",
+      "type": "type-parameter",
+      "constraint": 369,
+      "default": null
+    },
+    {
+      "id": 371,
+      "type": "external",
+      "name": "TypeID",
+      "moduleName": "@lukekaalim/echo/definitions/meta.ts"
+    },
+    {
+      "id": 376,
+      "type": "external",
+      "name": "Record",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "type": "type",
+      "id": 243,
+      "name": "DefineType",
+      "parameters": [
+        368,
+        370
+      ],
+      "typeId": 380
+    },
+    {
+      "id": 382,
+      "type": "external",
+      "name": "__type",
+      "moduleName": "@lukekaalim/echo/definitions/meta.ts"
+    },
+    {
+      "id": 384,
+      "type": "external",
+      "name": "__type",
+      "moduleName": "@lukekaalim/echo/definitions/meta.ts"
+    },
+    {
+      "type": "type",
+      "id": 244,
+      "name": "MissingType",
+      "parameters": [],
+      "typeId": 381
+    },
+    {
+      "id": 386,
+      "type": "external",
+      "name": "Type",
+      "moduleName": "@lukekaalim/echo/definitions/meta.ts"
+    },
+    {
+      "id": 390,
+      "name": "T",
+      "type": "type-parameter",
+      "constraint": 389,
+      "default": null
+    },
+    {
+      "id": 394,
+      "type": "external",
+      "name": "Extract",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "id": 399,
+      "type": "external",
+      "name": "Omit",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "type": "type",
+      "id": 245,
+      "name": "ExtractTypePropsByName",
+      "parameters": [
+        390
+      ],
+      "typeId": 400
+    },
+    {
+      "id": 401,
+      "type": "external",
+      "name": "__function",
+      "moduleName": "@lukekaalim/echo/watcher.ts"
+    },
+    {
+      "type": "value",
+      "id": 246,
+      "name": "createEchoWatcher",
+      "typeId": 402
+    },
+    {
+      "id": 403,
+      "type": "external",
+      "name": "Echo",
+      "moduleName": "@lukekaalim/echo/reading.ts"
+    },
+    {
+      "id": 405,
+      "type": "external",
+      "name": "TypeID",
+      "moduleName": "@lukekaalim/echo/reading.ts"
+    },
+    {
+      "id": 407,
+      "type": "external",
+      "name": "Type",
+      "moduleName": "@lukekaalim/echo/reading.ts"
+    },
+    {
+      "id": 410,
+      "type": "external",
+      "name": "IdentifierID",
+      "moduleName": "@lukekaalim/echo/reading.ts"
+    },
+    {
+      "id": 412,
+      "type": "external",
+      "name": "Identifier",
+      "moduleName": "@lukekaalim/echo/reading.ts"
+    },
+    {
+      "id": 415,
+      "type": "external",
+      "name": "CommentID",
+      "moduleName": "@lukekaalim/echo/reading.ts"
+    },
+    {
+      "id": 417,
+      "type": "external",
+      "name": "Comment",
+      "moduleName": "@lukekaalim/echo/reading.ts"
+    },
+    {
+      "id": 439,
+      "type": "external",
+      "name": "T",
+      "moduleName": "@lukekaalim/echo/reading.ts"
+    },
+    {
+      "type": "type",
+      "id": 247,
+      "name": "EchoReadingContext",
+      "parameters": [],
+      "typeId": 446
+    },
+    {
+      "id": 447,
+      "type": "external",
+      "name": "__function",
+      "moduleName": "@lukekaalim/echo/reading.ts"
+    },
+    {
+      "type": "value",
+      "id": 248,
+      "name": "createEchoReadingContext",
+      "typeId": 448
+    }
+  ],
+  "comments": [],
+  "exports": [
+    225,
+    226,
+    227,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248
+  ],
+  "diagnostics": []
+}

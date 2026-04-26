@@ -1,12 +1,31 @@
 import { Plugin } from 'vite';
-import { buildEchoModule, createEchoWatcher } from '@lukekaalim/echo';
+import { createEchoFromSourceFile, createEchoWatcher } from '@lukekaalim/echo';
+import ts from 'typescript';
 
-export const createEchoPlugin = async (): Promise<Plugin> => {
+export const DEFAULT_TS_OPTIONS = {
+  noEmit: true,
+  strict: true,
+  allowImportingTsExtensions: true,
+  target: ts.ScriptTarget.ES2022,
+  module: ts.ModuleKind.ES2022,
+  moduleResolution: ts.ModuleResolutionKind.Bundler,
+
+  types: ["vite/client", "@types/node", "./globals.ts"]
+};
+
+export const createEchoPlugin = async (tsOptions: ts.CompilerOptions = DEFAULT_TS_OPTIONS): Promise<Plugin> => {
   const ECHO_PREFIX = `echo:`;
   const RESOLVED_ECHO_PREFIX = `\0echo:`;
   
   const watchedEntrypoints = new Set<string>();
-  const { watcher, host } = await createEchoWatcher([], () => {});
+
+  const host = ts.createWatchCompilerHost<ts.SemanticDiagnosticsBuilderProgram>(
+    [],
+    tsOptions,
+    ts.sys,
+    ts.createSemanticDiagnosticsBuilderProgram
+  );
+  const watcher = ts.createWatchProgram(host)
 
   return {
     name: '@lukekaalim/echo-rollup',
@@ -51,15 +70,12 @@ export const createEchoPlugin = async (): Promise<Plugin> => {
 
       const name = info?.meta?.echo?.originalId || id;
 
-      console.log('load', id, name)
-
       const entrypoint = id.slice(RESOLVED_ECHO_PREFIX.length)
       this.addWatchFile(entrypoint);
       
       if (!watchedEntrypoints.has(entrypoint)) {
         watchedEntrypoints.add(entrypoint)
         watcher.updateRootFileNames([...watchedEntrypoints])
-        console.log('Watching', [...watchedEntrypoints])
       }
       
       const builder = watcher.getProgram();
@@ -69,9 +85,13 @@ export const createEchoPlugin = async (): Promise<Plugin> => {
       if (!source)
         return console.warn(`Can't find file: "${entrypoint}"`);
 
-      const mod = buildEchoModule(name, source, program, host);
-
-      console.log(`Returning build for ${name}`)
+      const mod = createEchoFromSourceFile(name, source, program, host);
+      for (const diag of builder.getSemanticDiagnostics())
+        mod.diagnostics.push({
+          category: 'semantic',
+          message: typeof diag.messageText === 'string' &&  diag.messageText || 'Complex error',
+          source: diag.source || 'Missing Source'
+        })
 
       return `export default ${JSON.stringify(mod, null, 2)}`;
     }

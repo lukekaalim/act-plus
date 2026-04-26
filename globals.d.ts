@@ -7,9 +7,9 @@ declare module "typedoc:*" {
 }
 
 declare module "echo:*" {
-  import { EchoModule } from '@lukekaalim/echo';
+  import { Echo } from '@lukekaalim/echo';
 
-  const project: EchoModule;
+  const project: Echo;
 
   export default project;
 }

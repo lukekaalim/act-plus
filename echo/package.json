@@ -14,10 +14,10 @@
     "./plugin": "./plugin/index.ts"
   },
   "dependencies": {
-    "@microsoft/tsdoc": "^0.16.0"
+    "@microsoft/tsdoc": "^0.16.0",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "tsup": "^8.5.1",
-    "typescript": "^5.9.3"
+    "tsup": "^8.5.1"
   }
 }

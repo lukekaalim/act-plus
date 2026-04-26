@@ -1,0 +1,5715 @@
+{
+  "moduleName": "../grimoire/index",
+  "types": [
+    {
+      "type": "keyword",
+      "id": 110,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 111,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 112,
+      "properties": []
+    },
+    {
+      "type": "object",
+      "id": 113,
+      "properties": [
+        {
+          "identifier": "iconURL",
+          "typeof": 110
+        },
+        {
+          "identifier": "name",
+          "typeof": 111
+        },
+        {
+          "identifier": "style",
+          "typeof": 112
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 114,
+      "target": 1,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 116,
+      "target": 115,
+      "parameters": [
+        114
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 118,
+      "target": 117,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 119,
+      "target": 117,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 120,
+      "element": 119
+    },
+    {
+      "type": "reference",
+      "id": 122,
+      "target": 121,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 123,
+      "properties": [
+        {
+          "identifier": "logoLink",
+          "typeof": 118
+        },
+        {
+          "identifier": "topLevelLinks",
+          "typeof": 120
+        },
+        {
+          "identifier": "endContext",
+          "typeof": 122
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 124,
+      "target": 3,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 126,
+      "target": 125,
+      "parameters": [
+        124
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 127,
+      "target": 121,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 128,
+      "target": 121,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 129,
+      "element": 128
+    },
+    {
+      "type": "reference",
+      "id": 130,
+      "target": 121,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 131,
+      "properties": [
+        {
+          "identifier": "home",
+          "typeof": 127
+        },
+        {
+          "identifier": "nav",
+          "typeof": 129
+        },
+        {
+          "identifier": "endContent",
+          "typeof": 130
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 132,
+      "target": 5,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 133,
+      "target": 125,
+      "parameters": [
+        132
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 134,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 136,
+      "target": 135,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 137,
+      "unions": [
+        134,
+        136
+      ]
+    },
+    {
+      "type": "object",
+      "id": 138,
+      "properties": [
+        {
+          "identifier": "link",
+          "typeof": 137
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 139,
+      "target": 7,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 141,
+      "target": 140,
+      "parameters": [
+        139
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 143,
+      "target": 142,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 144,
+      "target": 142,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 145,
+      "properties": [
+        {
+          "identifier": "backgroundContent",
+          "typeof": 143
+        },
+        {
+          "identifier": "blurbContent",
+          "typeof": 144
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 146,
+      "target": 9,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 148,
+      "target": 147,
+      "parameters": [
+        146
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 149,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 151,
+      "target": 150,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 152,
+      "target": 135,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 153,
+      "properties": [
+        {
+          "identifier": "id",
+          "typeof": 149
+        },
+        {
+          "identifier": "content",
+          "typeof": 151
+        },
+        {
+          "identifier": "destination",
+          "typeof": 152
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 155,
+      "target": 154,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 156,
+      "element": 155
+    },
+    {
+      "type": "object",
+      "id": 157,
+      "properties": [
+        {
+          "identifier": "cards",
+          "typeof": 156
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 158,
+      "target": 12,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 160,
+      "target": 159,
+      "parameters": [
+        158
+      ]
+    },
+    {
+      "id": 162,
+      "type": "keyword",
+      "keyword": "any"
+    },
+    {
+      "id": 161,
+      "type": "object",
+      "properties": [
+        {
+          "identifier": "heading",
+          "typeof": 162
+        },
+        {
+          "identifier": "code",
+          "typeof": 162
+        },
+        {
+          "identifier": "inlineCode",
+          "typeof": 162
+        },
+        {
+          "identifier": "paragraph",
+          "typeof": 162
+        },
+        {
+          "identifier": "blockquote",
+          "typeof": 162
+        },
+        {
+          "identifier": "headingAnchor",
+          "typeof": 162
+        }
+      ]
+    },
+    {
+      "id": 164,
+      "type": "reference",
+      "target": 163,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 165,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 166,
+      "properties": [
+        {
+          "identifier": "content",
+          "typeof": 165
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 167,
+      "target": 16,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 169,
+      "target": 168,
+      "parameters": [
+        167
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 171,
+      "target": 170,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 172,
+      "target": 168,
+      "parameters": [
+        171
+      ]
+    },
+    {
+      "type": "literal",
+      "id": 173,
+      "literal": "left"
+    },
+    {
+      "type": "literal",
+      "id": 174,
+      "literal": "right"
+    },
+    {
+      "type": "union",
+      "id": 175,
+      "unions": [
+        173,
+        174
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 177,
+      "target": 176,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 178,
+      "properties": [
+        {
+          "identifier": "direction",
+          "typeof": 175
+        },
+        {
+          "identifier": "children",
+          "typeof": 177
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 180,
+      "target": 179,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 181,
+      "target": 179,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 183,
+      "target": 182,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 184,
+      "keyword": "null"
+    },
+    {
+      "type": "union",
+      "id": 185,
+      "unions": [
+        183,
+        184
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 187,
+      "target": 186,
+      "parameters": [
+        185
+      ]
+    },
+    {
+      "type": "object",
+      "id": 188,
+      "properties": [
+        {
+          "identifier": "left",
+          "typeof": 180
+        },
+        {
+          "identifier": "right",
+          "typeof": 181
+        },
+        {
+          "identifier": "scrollWindowRef",
+          "typeof": 187
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 189,
+      "target": 20,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 191,
+      "target": 190,
+      "parameters": [
+        189
+      ]
+    },
+    {
+      "id": 193,
+      "type": "literal",
+      "literal": "hljs"
+    },
+    {
+      "id": 194,
+      "type": "literal",
+      "literal": "hljs-tag"
+    },
+    {
+      "id": 195,
+      "type": "literal",
+      "literal": "hljs-keyword"
+    },
+    {
+      "id": 196,
+      "type": "literal",
+      "literal": "hljs-selector-tag"
+    },
+    {
+      "id": 197,
+      "type": "literal",
+      "literal": "hljs-literal"
+    },
+    {
+      "id": 198,
+      "type": "literal",
+      "literal": "hljs-number"
+    },
+    {
+      "id": 199,
+      "type": "literal",
+      "literal": "hljs-name"
+    },
+    {
+      "id": 200,
+      "type": "literal",
+      "literal": "hljs-code"
+    },
+    {
+      "id": 201,
+      "type": "literal",
+      "literal": "hljs-attribute"
+    },
+    {
+      "id": 202,
+      "type": "literal",
+      "literal": "hljs-attr"
+    },
+    {
+      "id": 203,
+      "type": "literal",
+      "literal": "hljs-symbol"
+    },
+    {
+      "id": 204,
+      "type": "literal",
+      "literal": "hljs-regexp"
+    },
+    {
+      "id": 205,
+      "type": "literal",
+      "literal": "hljs-link"
+    },
+    {
+      "id": 206,
+      "type": "literal",
+      "literal": "hljs-string"
+    },
+    {
+      "id": 207,
+      "type": "literal",
+      "literal": "hljs-bullet"
+    },
+    {
+      "id": 208,
+      "type": "literal",
+      "literal": "hljs-subst"
+    },
+    {
+      "id": 209,
+      "type": "literal",
+      "literal": "hljs-title"
+    },
+    {
+      "id": 210,
+      "type": "literal",
+      "literal": "hljs-section"
+    },
+    {
+      "id": 211,
+      "type": "literal",
+      "literal": "hljs-emphasis"
+    },
+    {
+      "id": 212,
+      "type": "literal",
+      "literal": "hljs-type"
+    },
+    {
+      "id": 213,
+      "type": "literal",
+      "literal": "hljs-built_in"
+    },
+    {
+      "id": 214,
+      "type": "literal",
+      "literal": "hljs-selector-attr"
+    },
+    {
+      "id": 215,
+      "type": "literal",
+      "literal": "hljs-selector-pseudo"
+    },
+    {
+      "id": 216,
+      "type": "literal",
+      "literal": "hljs-addition"
+    },
+    {
+      "id": 217,
+      "type": "literal",
+      "literal": "hljs-template-tag"
+    },
+    {
+      "id": 218,
+      "type": "literal",
+      "literal": "hljs-template-variable"
+    },
+    {
+      "id": 219,
+      "type": "literal",
+      "literal": "hljs-class"
+    },
+    {
+      "id": 220,
+      "type": "literal",
+      "literal": "hljs-title class_"
+    },
+    {
+      "id": 221,
+      "type": "literal",
+      "literal": "hljs-comment"
+    },
+    {
+      "id": 222,
+      "type": "literal",
+      "literal": "hljs-quote"
+    },
+    {
+      "id": 223,
+      "type": "literal",
+      "literal": "hljs-deletion"
+    },
+    {
+      "id": 224,
+      "type": "literal",
+      "literal": "hljs-meta"
+    },
+    {
+      "id": 225,
+      "type": "literal",
+      "literal": "hljs-doctag"
+    },
+    {
+      "id": 192,
+      "type": "object",
+      "properties": [
+        {
+          "identifier": "root",
+          "typeof": 193
+        },
+        {
+          "identifier": "tag",
+          "typeof": 194
+        },
+        {
+          "identifier": "keyword",
+          "typeof": 195
+        },
+        {
+          "identifier": "selectorTag",
+          "typeof": 196
+        },
+        {
+          "identifier": "literal",
+          "typeof": 197
+        },
+        {
+          "identifier": "number",
+          "typeof": 198
+        },
+        {
+          "identifier": "name",
+          "typeof": 199
+        },
+        {
+          "identifier": "code",
+          "typeof": 200
+        },
+        {
+          "identifier": "attribute",
+          "typeof": 201
+        },
+        {
+          "identifier": "attr",
+          "typeof": 202
+        },
+        {
+          "identifier": "symbol",
+          "typeof": 203
+        },
+        {
+          "identifier": "regexp",
+          "typeof": 204
+        },
+        {
+          "identifier": "link",
+          "typeof": 205
+        },
+        {
+          "identifier": "string",
+          "typeof": 206
+        },
+        {
+          "identifier": "bullet",
+          "typeof": 207
+        },
+        {
+          "identifier": "subst",
+          "typeof": 208
+        },
+        {
+          "identifier": "title",
+          "typeof": 209
+        },
+        {
+          "identifier": "section",
+          "typeof": 210
+        },
+        {
+          "identifier": "emphasis",
+          "typeof": 211
+        },
+        {
+          "identifier": "type",
+          "typeof": 212
+        },
+        {
+          "identifier": "builtIn",
+          "typeof": 213
+        },
+        {
+          "identifier": "selectorAttr",
+          "typeof": 214
+        },
+        {
+          "identifier": "selectorPseudo",
+          "typeof": 215
+        },
+        {
+          "identifier": "addition",
+          "typeof": 216
+        },
+        {
+          "identifier": "templateTag",
+          "typeof": 217
+        },
+        {
+          "identifier": "templateVariable",
+          "typeof": 218
+        },
+        {
+          "identifier": "class",
+          "typeof": 219
+        },
+        {
+          "identifier": "titleClass",
+          "typeof": 220
+        },
+        {
+          "identifier": "comment",
+          "typeof": 221
+        },
+        {
+          "identifier": "quote",
+          "typeof": 222
+        },
+        {
+          "identifier": "deletion",
+          "typeof": 223
+        },
+        {
+          "identifier": "meta",
+          "typeof": 224
+        },
+        {
+          "identifier": "doctag",
+          "typeof": 225
+        }
+      ]
+    },
+    {
+      "id": 227,
+      "type": "literal",
+      "literal": "string"
+    },
+    {
+      "id": 228,
+      "type": "literal",
+      "literal": "number"
+    },
+    {
+      "id": 229,
+      "type": "literal",
+      "literal": "symbol"
+    },
+    {
+      "id": 230,
+      "type": "literal",
+      "literal": "root"
+    },
+    {
+      "id": 231,
+      "type": "literal",
+      "literal": "tag"
+    },
+    {
+      "id": 232,
+      "type": "literal",
+      "literal": "keyword"
+    },
+    {
+      "id": 233,
+      "type": "literal",
+      "literal": "selectorTag"
+    },
+    {
+      "id": 234,
+      "type": "literal",
+      "literal": "literal"
+    },
+    {
+      "id": 235,
+      "type": "literal",
+      "literal": "name"
+    },
+    {
+      "id": 236,
+      "type": "literal",
+      "literal": "code"
+    },
+    {
+      "id": 237,
+      "type": "literal",
+      "literal": "attribute"
+    },
+    {
+      "id": 238,
+      "type": "literal",
+      "literal": "attr"
+    },
+    {
+      "id": 239,
+      "type": "literal",
+      "literal": "regexp"
+    },
+    {
+      "id": 240,
+      "type": "literal",
+      "literal": "link"
+    },
+    {
+      "id": 241,
+      "type": "literal",
+      "literal": "bullet"
+    },
+    {
+      "id": 242,
+      "type": "literal",
+      "literal": "subst"
+    },
+    {
+      "id": 243,
+      "type": "literal",
+      "literal": "title"
+    },
+    {
+      "id": 244,
+      "type": "literal",
+      "literal": "section"
+    },
+    {
+      "id": 245,
+      "type": "literal",
+      "literal": "emphasis"
+    },
+    {
+      "id": 246,
+      "type": "literal",
+      "literal": "type"
+    },
+    {
+      "id": 247,
+      "type": "literal",
+      "literal": "builtIn"
+    },
+    {
+      "id": 248,
+      "type": "literal",
+      "literal": "selectorAttr"
+    },
+    {
+      "id": 249,
+      "type": "literal",
+      "literal": "selectorPseudo"
+    },
+    {
+      "id": 250,
+      "type": "literal",
+      "literal": "addition"
+    },
+    {
+      "id": 251,
+      "type": "literal",
+      "literal": "templateTag"
+    },
+    {
+      "id": 252,
+      "type": "literal",
+      "literal": "templateVariable"
+    },
+    {
+      "id": 253,
+      "type": "literal",
+      "literal": "class"
+    },
+    {
+      "id": 254,
+      "type": "literal",
+      "literal": "titleClass"
+    },
+    {
+      "id": 255,
+      "type": "literal",
+      "literal": "comment"
+    },
+    {
+      "id": 256,
+      "type": "literal",
+      "literal": "quote"
+    },
+    {
+      "id": 257,
+      "type": "literal",
+      "literal": "deletion"
+    },
+    {
+      "id": 258,
+      "type": "literal",
+      "literal": "meta"
+    },
+    {
+      "id": 259,
+      "type": "literal",
+      "literal": "doctag"
+    },
+    {
+      "id": 226,
+      "type": "union",
+      "unions": [
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259
+      ]
+    },
+    {
+      "id": 263,
+      "type": "reference",
+      "target": 262,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 261,
+      "type": "reference",
+      "target": 260,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        226,
+        263
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 264,
+      "keyword": "number"
+    },
+    {
+      "type": "reference",
+      "id": 266,
+      "target": 265,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 267,
+      "element": 266
+    },
+    {
+      "type": "object",
+      "id": 268,
+      "properties": [
+        {
+          "identifier": "lineStart",
+          "typeof": 264
+        },
+        {
+          "identifier": "lines",
+          "typeof": 267
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 269,
+      "target": 25,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 271,
+      "target": 270,
+      "parameters": [
+        269
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 272,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 273,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 274,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 275,
+      "properties": [
+        {
+          "identifier": "language",
+          "typeof": 272
+        },
+        {
+          "identifier": "code",
+          "typeof": 273
+        },
+        {
+          "identifier": "theme",
+          "typeof": 274
+        }
+      ]
+    },
+    {
+      "id": 278,
+      "type": "reference",
+      "target": 277,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 280,
+      "type": "reference",
+      "target": 279,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 276,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "node",
+          "typeof": 278
+        }
+      ],
+      "returns": 280
+    },
+    {
+      "type": "reference",
+      "id": 281,
+      "target": 27,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 283,
+      "target": 282,
+      "parameters": [
+        281
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 285,
+      "target": 284,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 287,
+      "target": 286,
+      "parameters": []
+    },
+    {
+      "id": 292,
+      "type": "reference",
+      "target": 291,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 290,
+      "type": "reference",
+      "target": 289,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": [
+        292
+      ]
+    },
+    {
+      "id": 288,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 290
+    },
+    {
+      "type": "literal",
+      "id": 293,
+      "literal": "error"
+    },
+    {
+      "type": "literal",
+      "id": 294,
+      "literal": "warning"
+    },
+    {
+      "type": "literal",
+      "id": 295,
+      "literal": "info"
+    },
+    {
+      "type": "literal",
+      "id": 296,
+      "literal": "debug"
+    },
+    {
+      "type": "union",
+      "id": 297,
+      "unions": [
+        293,
+        294,
+        295,
+        296
+      ]
+    },
+    {
+      "type": "object",
+      "id": 298,
+      "properties": [
+        {
+          "identifier": "severity",
+          "typeof": 297
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 299,
+      "target": 33,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 301,
+      "target": 300,
+      "parameters": [
+        299
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 303,
+      "target": 302,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 304,
+      "properties": [
+        {
+          "identifier": "tree",
+          "typeof": 303
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 305,
+      "target": 35,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 307,
+      "target": 306,
+      "parameters": [
+        305
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 309,
+      "target": 308,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 310,
+      "keyword": "boolean"
+    },
+    {
+      "type": "object",
+      "id": 311,
+      "properties": [
+        {
+          "identifier": "tree",
+          "typeof": 309
+        },
+        {
+          "identifier": "rightAligned",
+          "typeof": 310
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 312,
+      "target": 37,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 313,
+      "target": 306,
+      "parameters": [
+        312
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 315,
+      "target": 314,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 316,
+      "element": 315
+    },
+    {
+      "type": "object",
+      "id": 317,
+      "properties": [
+        {
+          "identifier": "entries",
+          "typeof": 316
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 318,
+      "target": 39,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 319,
+      "target": 306,
+      "parameters": [
+        318
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 320,
+      "target": 314,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 321,
+      "keyword": "null"
+    },
+    {
+      "type": "keyword",
+      "id": 322,
+      "keyword": "string"
+    },
+    {
+      "type": "union",
+      "id": 323,
+      "unions": [
+        321,
+        322
+      ]
+    },
+    {
+      "type": "object",
+      "id": 324,
+      "properties": [
+        {
+          "identifier": "content",
+          "typeof": 320
+        },
+        {
+          "identifier": "href",
+          "typeof": 323
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 325,
+      "target": 41,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 326,
+      "target": 306,
+      "parameters": [
+        325
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 328,
+      "target": 327,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 330,
+      "target": 329,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 331,
+      "properties": [
+        {
+          "identifier": "articleKey",
+          "typeof": 328
+        },
+        {
+          "identifier": "navTree",
+          "typeof": 330
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 332,
+      "target": 43,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 334,
+      "target": 333,
+      "parameters": [
+        332
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 336,
+      "target": 335,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 337,
+      "properties": [
+        {
+          "identifier": "navTree",
+          "typeof": 336
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 338,
+      "target": 45,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 340,
+      "target": 339,
+      "parameters": [
+        338
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 342,
+      "target": 341,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 343,
+      "properties": [
+        {
+          "identifier": "doc",
+          "typeof": 342
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 344,
+      "target": 47,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 346,
+      "target": 345,
+      "parameters": [
+        344
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 348,
+      "target": 347,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 350,
+      "target": 349,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 351,
+      "properties": [
+        {
+          "identifier": "doc",
+          "typeof": 348
+        },
+        {
+          "identifier": "banner",
+          "typeof": 350
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 352,
+      "target": 49,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 354,
+      "target": 353,
+      "parameters": [
+        352
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 355,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 357,
+      "target": 356,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 358,
+      "target": 52,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 359,
+      "properties": [
+        {
+          "identifier": "id",
+          "typeof": 355
+        },
+        {
+          "identifier": "content",
+          "typeof": 357
+        },
+        {
+          "identifier": "meta",
+          "typeof": 358
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 360,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 361,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 362,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 364,
+      "target": 363,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 365,
+      "keyword": "string"
+    },
+    {
+      "type": "array",
+      "id": 366,
+      "element": 365
+    },
+    {
+      "type": "object",
+      "id": 367,
+      "properties": [
+        {
+          "identifier": "title",
+          "typeof": 360
+        },
+        {
+          "identifier": "author",
+          "typeof": 361
+        },
+        {
+          "identifier": "description",
+          "typeof": 362
+        },
+        {
+          "identifier": "published",
+          "typeof": 364
+        },
+        {
+          "identifier": "tagKeys",
+          "typeof": 366
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 368,
+      "target": 53,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 369,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 370,
+      "target": 53,
+      "parameters": []
+    },
+    {
+      "type": "literal",
+      "id": 371,
+      "literal": "id"
+    },
+    {
+      "type": "reference",
+      "id": 373,
+      "target": 372,
+      "parameters": [
+        370,
+        371
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 375,
+      "target": 374,
+      "parameters": [
+        373
+      ]
+    },
+    {
+      "type": "function",
+      "id": 376,
+      "parameters": [
+        {
+          "identifier": "placeholder name",
+          "typeof": 369
+        },
+        {
+          "identifier": "placeholder name",
+          "typeof": 375
+        }
+      ],
+      "typeParameters": [],
+      "returns": 368
+    },
+    {
+      "type": "keyword",
+      "id": 377,
+      "keyword": "string"
+    },
+    {
+      "type": "class",
+      "id": 378,
+      "properties": [],
+      "implements": [],
+      "abstract": false,
+      "extends": null
+    },
+    {
+      "type": "keyword",
+      "id": 379,
+      "keyword": "null"
+    },
+    {
+      "type": "keyword",
+      "id": 380,
+      "keyword": "string"
+    },
+    {
+      "type": "union",
+      "id": 381,
+      "unions": [
+        379,
+        380
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 382,
+      "keyword": "null"
+    },
+    {
+      "type": "keyword",
+      "id": 383,
+      "keyword": "string"
+    },
+    {
+      "type": "union",
+      "id": 384,
+      "unions": [
+        382,
+        383
+      ]
+    },
+    {
+      "type": "object",
+      "id": 385,
+      "properties": [
+        {
+          "identifier": "content",
+          "typeof": 381
+        },
+        {
+          "identifier": "href",
+          "typeof": 384
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "id": 386,
+      "properties": [],
+      "implements": [],
+      "abstract": false,
+      "extends": null
+    },
+    {
+      "type": "reference",
+      "id": 387,
+      "target": 57,
+      "parameters": []
+    },
+    {
+      "type": "parser-error",
+      "id": 388,
+      "message": "Don't support Node \"TupleType\" yet"
+    },
+    {
+      "type": "parser-error",
+      "id": 389,
+      "message": "Don't support Node \"TupleType\" yet"
+    },
+    {
+      "type": "parser-error",
+      "id": 390,
+      "message": "Don't support Node \"TupleType\" yet"
+    },
+    {
+      "type": "union",
+      "id": 391,
+      "unions": [
+        387,
+        388,
+        389,
+        390
+      ]
+    },
+    {
+      "id": 393,
+      "type": "reference",
+      "target": 58,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 394,
+      "type": "reference",
+      "target": 57,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 392,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "expression",
+          "typeof": 393
+        }
+      ],
+      "returns": 394
+    },
+    {
+      "type": "reference",
+      "id": 395,
+      "target": 61,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 396,
+      "target": 62,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 397,
+      "target": 260,
+      "parameters": [
+        395,
+        396
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 398,
+      "target": 61,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 399,
+      "element": 398
+    },
+    {
+      "type": "object",
+      "id": 400,
+      "properties": [
+        {
+          "identifier": "leaves",
+          "typeof": 397
+        },
+        {
+          "identifier": "roots",
+          "typeof": 399
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 401,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 402,
+      "target": 61,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 403,
+      "keyword": "null"
+    },
+    {
+      "type": "reference",
+      "id": 404,
+      "target": 61,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 405,
+      "unions": [
+        403,
+        404
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 406,
+      "target": 61,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 407,
+      "element": 406
+    },
+    {
+      "type": "keyword",
+      "id": 408,
+      "keyword": "null"
+    },
+    {
+      "type": "reference",
+      "id": 410,
+      "target": 409,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 411,
+      "unions": [
+        408,
+        410
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 412,
+      "target": 135,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 413,
+      "properties": [
+        {
+          "identifier": "id",
+          "typeof": 402
+        },
+        {
+          "identifier": "parent",
+          "typeof": 405
+        },
+        {
+          "identifier": "children",
+          "typeof": 407
+        },
+        {
+          "identifier": "content",
+          "typeof": 411
+        },
+        {
+          "identifier": "location",
+          "typeof": 412
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 414,
+      "target": 60,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 415,
+      "target": 61,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 416,
+      "target": 61,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 417,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 418,
+      "target": 135,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 419,
+      "target": 62,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 420,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "id",
+          "typeof": 415
+        },
+        {
+          "identifier": "parent",
+          "typeof": 416
+        },
+        {
+          "identifier": "content",
+          "typeof": 417
+        },
+        {
+          "identifier": "location",
+          "typeof": 418
+        }
+      ],
+      "returns": 419
+    },
+    {
+      "type": "reference",
+      "id": 421,
+      "target": 61,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 422,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 423,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 424,
+      "target": 135,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 425,
+      "target": 62,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 426,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "id",
+          "typeof": 421
+        },
+        {
+          "identifier": "depth",
+          "typeof": 422
+        },
+        {
+          "identifier": "content",
+          "typeof": 423
+        },
+        {
+          "identifier": "location",
+          "typeof": 424
+        }
+      ],
+      "returns": 425
+    },
+    {
+      "type": "keyword",
+      "id": 427,
+      "keyword": "void"
+    },
+    {
+      "type": "function",
+      "id": 428,
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 427
+    },
+    {
+      "type": "object",
+      "id": 429,
+      "properties": [
+        {
+          "identifier": "tree",
+          "typeof": 414
+        },
+        {
+          "identifier": "leaf",
+          "typeof": 420
+        },
+        {
+          "identifier": "add",
+          "typeof": 426
+        },
+        {
+          "identifier": "trim",
+          "typeof": 428
+        }
+      ]
+    },
+    {
+      "id": 431,
+      "type": "reference",
+      "target": 63,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 430,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 431
+    },
+    {
+      "id": 433,
+      "type": "reference",
+      "target": 63,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 435,
+      "type": "reference",
+      "target": 434,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 436,
+      "type": "keyword",
+      "keyword": "void"
+    },
+    {
+      "id": 432,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "builder",
+          "typeof": 433
+        },
+        {
+          "identifier": "element",
+          "typeof": 435
+        }
+      ],
+      "returns": 436
+    },
+    {
+      "id": 438,
+      "type": "reference",
+      "target": 60,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 437,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "tree",
+          "typeof": 438
+        }
+      ],
+      "returns": 436
+    },
+    {
+      "type": "reference",
+      "id": 440,
+      "target": 439,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 441,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 442,
+      "target": 67,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 444,
+      "target": 443,
+      "parameters": [
+        441,
+        442
+      ]
+    },
+    {
+      "type": "object",
+      "id": 445,
+      "properties": [
+        {
+          "identifier": "subjects",
+          "typeof": 444
+        }
+      ]
+    },
+    {
+      "id": 447,
+      "type": "reference",
+      "target": 68,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 446,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 447
+    },
+    {
+      "id": 449,
+      "type": "literal",
+      "literal": "hljs-params"
+    },
+    {
+      "id": 448,
+      "type": "object",
+      "properties": [
+        {
+          "identifier": "root",
+          "typeof": 193
+        },
+        {
+          "identifier": "tag",
+          "typeof": 194
+        },
+        {
+          "identifier": "keyword",
+          "typeof": 195
+        },
+        {
+          "identifier": "selectorTag",
+          "typeof": 196
+        },
+        {
+          "identifier": "literal",
+          "typeof": 197
+        },
+        {
+          "identifier": "number",
+          "typeof": 198
+        },
+        {
+          "identifier": "name",
+          "typeof": 199
+        },
+        {
+          "identifier": "code",
+          "typeof": 200
+        },
+        {
+          "identifier": "attribute",
+          "typeof": 201
+        },
+        {
+          "identifier": "attr",
+          "typeof": 202
+        },
+        {
+          "identifier": "symbol",
+          "typeof": 203
+        },
+        {
+          "identifier": "regexp",
+          "typeof": 204
+        },
+        {
+          "identifier": "link",
+          "typeof": 205
+        },
+        {
+          "identifier": "string",
+          "typeof": 206
+        },
+        {
+          "identifier": "bullet",
+          "typeof": 207
+        },
+        {
+          "identifier": "subst",
+          "typeof": 208
+        },
+        {
+          "identifier": "title",
+          "typeof": 209
+        },
+        {
+          "identifier": "section",
+          "typeof": 210
+        },
+        {
+          "identifier": "emphasis",
+          "typeof": 211
+        },
+        {
+          "identifier": "type",
+          "typeof": 212
+        },
+        {
+          "identifier": "builtIn",
+          "typeof": 213
+        },
+        {
+          "identifier": "selectorAttr",
+          "typeof": 214
+        },
+        {
+          "identifier": "selectorPseudo",
+          "typeof": 215
+        },
+        {
+          "identifier": "addition",
+          "typeof": 216
+        },
+        {
+          "identifier": "templateTag",
+          "typeof": 217
+        },
+        {
+          "identifier": "templateVariable",
+          "typeof": 218
+        },
+        {
+          "identifier": "class",
+          "typeof": 219
+        },
+        {
+          "identifier": "titleClass",
+          "typeof": 220
+        },
+        {
+          "identifier": "params",
+          "typeof": 449
+        },
+        {
+          "identifier": "comment",
+          "typeof": 221
+        },
+        {
+          "identifier": "quote",
+          "typeof": 222
+        },
+        {
+          "identifier": "deletion",
+          "typeof": 223
+        },
+        {
+          "identifier": "meta",
+          "typeof": 224
+        },
+        {
+          "identifier": "doctag",
+          "typeof": 225
+        }
+      ]
+    },
+    {
+      "id": 451,
+      "type": "literal",
+      "literal": "params"
+    },
+    {
+      "id": 450,
+      "type": "union",
+      "unions": [
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259,
+        451
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 452,
+      "message": "Don't support Node \"MappedType\" yet"
+    },
+    {
+      "type": "keyword",
+      "id": 453,
+      "keyword": "number"
+    },
+    {
+      "type": "reference",
+      "id": 454,
+      "target": 74,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 455,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "indent",
+          "typeof": 453
+        }
+      ],
+      "returns": 454
+    },
+    {
+      "type": "keyword",
+      "id": 456,
+      "keyword": "number"
+    },
+    {
+      "type": "reference",
+      "id": 457,
+      "target": 74,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 458,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "indent",
+          "typeof": 456
+        }
+      ],
+      "returns": 457
+    },
+    {
+      "type": "keyword",
+      "id": 459,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 460,
+      "target": 74,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 461,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "text",
+          "typeof": 459
+        }
+      ],
+      "returns": 460
+    },
+    {
+      "type": "reference",
+      "id": 462,
+      "target": 74,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 463,
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 462
+    },
+    {
+      "type": "reference",
+      "id": 465,
+      "target": 464,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 466,
+      "target": 74,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 467,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "node",
+          "typeof": 465
+        }
+      ],
+      "returns": 466
+    },
+    {
+      "type": "reference",
+      "id": 468,
+      "target": 464,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 469,
+      "element": 468
+    },
+    {
+      "type": "function",
+      "id": 470,
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 469
+    },
+    {
+      "type": "object",
+      "id": 471,
+      "properties": [
+        {
+          "identifier": "newLine",
+          "typeof": 455
+        },
+        {
+          "identifier": "indent",
+          "typeof": 458
+        },
+        {
+          "identifier": "text",
+          "typeof": 461
+        },
+        {
+          "identifier": "space",
+          "typeof": 463
+        },
+        {
+          "identifier": "node",
+          "typeof": 467
+        },
+        {
+          "identifier": "output",
+          "typeof": 470
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 472,
+      "target": 73,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 473,
+      "target": 72,
+      "parameters": []
+    },
+    {
+      "type": "intersection",
+      "id": 474,
+      "intersections": [
+        472,
+        473
+      ]
+    },
+    {
+      "id": 476,
+      "type": "reference",
+      "target": 74,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 475,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 476
+    },
+    {
+      "id": 479,
+      "type": "keyword",
+      "keyword": "undefined"
+    },
+    {
+      "id": 480,
+      "type": "reference",
+      "target": 289,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 478,
+      "type": "union",
+      "unions": [
+        479,
+        480
+      ]
+    },
+    {
+      "id": 481,
+      "type": "reference",
+      "target": 163,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 477,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "extraComponents",
+          "typeof": 478
+        }
+      ],
+      "returns": 481
+    },
+    {
+      "id": 485,
+      "type": "keyword",
+      "keyword": "number"
+    },
+    {
+      "id": 484,
+      "type": "object",
+      "properties": [
+        {
+          "identifier": "now",
+          "typeof": 485
+        },
+        {
+          "identifier": "delta",
+          "typeof": 485
+        }
+      ]
+    },
+    {
+      "id": 483,
+      "type": "reference",
+      "target": 482,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        484
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 487,
+      "target": 486,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 489,
+      "target": 488,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 490,
+      "properties": [
+        {
+          "identifier": "VerticalNav",
+          "typeof": 487
+        },
+        {
+          "identifier": "highlightJsTheme",
+          "typeof": 489
+        }
+      ]
+    },
+    {
+      "id": 492,
+      "type": "reference",
+      "target": 78,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 491,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 492
+    },
+    {
+      "type": "reference",
+      "id": 494,
+      "target": 493,
+      "parameters": []
+    },
+    {
+      "type": "parser-error",
+      "id": 495,
+      "message": "Don't support Node \"TupleType\" yet"
+    },
+    {
+      "type": "reference",
+      "id": 497,
+      "target": 496,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 499,
+      "target": 498,
+      "parameters": [
+        497
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 501,
+      "target": 500,
+      "parameters": []
+    },
+    {
+      "type": "intersection",
+      "id": 502,
+      "intersections": [
+        499,
+        501
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 504,
+      "target": 493,
+      "parameters": []
+    },
+    {
+      "id": 506,
+      "type": "reference",
+      "target": 505,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 508,
+      "type": "reference",
+      "target": 505,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 507,
+      "type": "reference",
+      "target": 80,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        508
+      ]
+    },
+    {
+      "id": 503,
+      "type": "function",
+      "typeParameters": [
+        505
+      ],
+      "parameters": [
+        {
+          "identifier": "plugins",
+          "typeof": 506
+        }
+      ],
+      "returns": 507
+    },
+    {
+      "id": 512,
+      "type": "keyword",
+      "keyword": "null"
+    },
+    {
+      "id": 514,
+      "type": "reference",
+      "target": 107,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 513,
+      "type": "reference",
+      "target": 80,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        514
+      ]
+    },
+    {
+      "id": 511,
+      "type": "union",
+      "unions": [
+        512,
+        513
+      ]
+    },
+    {
+      "id": 510,
+      "type": "reference",
+      "target": 509,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        511
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 516,
+      "target": 493,
+      "parameters": []
+    },
+    {
+      "id": 518,
+      "type": "reference",
+      "target": 517,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 520,
+      "type": "reference",
+      "target": 517,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 519,
+      "type": "reference",
+      "target": 80,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        520
+      ]
+    },
+    {
+      "id": 515,
+      "type": "function",
+      "typeParameters": [
+        517
+      ],
+      "parameters": [
+        {
+          "identifier": "requiredPlugins",
+          "typeof": 518
+        }
+      ],
+      "returns": 519
+    },
+    {
+      "type": "reference",
+      "id": 521,
+      "target": 85,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 522,
+      "target": 89,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 523,
+      "target": 95,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 524,
+      "target": 90,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 525,
+      "target": 102,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 526,
+      "properties": [
+        {
+          "identifier": "route",
+          "typeof": 521
+        },
+        {
+          "identifier": "component",
+          "typeof": 522
+        },
+        {
+          "identifier": "article",
+          "typeof": 523
+        },
+        {
+          "identifier": "reference",
+          "typeof": 524
+        },
+        {
+          "identifier": "demos",
+          "typeof": 525
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 528,
+      "target": 527,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 529,
+      "element": 528
+    },
+    {
+      "type": "keyword",
+      "id": 530,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 532,
+      "target": 531,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 534,
+      "target": 533,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 535,
+      "unions": [
+        532,
+        534
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 536,
+      "target": 527,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 537,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "path",
+          "typeof": 530
+        },
+        {
+          "identifier": "content",
+          "typeof": 535
+        }
+      ],
+      "returns": 536
+    },
+    {
+      "type": "reference",
+      "id": 539,
+      "target": 538,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 540,
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 539
+    },
+    {
+      "type": "object",
+      "id": 541,
+      "properties": [
+        {
+          "identifier": "routes",
+          "typeof": 529
+        },
+        {
+          "identifier": "add",
+          "typeof": 537
+        },
+        {
+          "identifier": "getNavTree",
+          "typeof": 540
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 542,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 543,
+      "target": 531,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 544,
+      "properties": [
+        {
+          "identifier": "path",
+          "typeof": 542
+        },
+        {
+          "identifier": "content",
+          "typeof": 543
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 545,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 546,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 547,
+      "keyword": "void"
+    },
+    {
+      "type": "union",
+      "id": 548,
+      "unions": [
+        546,
+        547
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 549,
+      "target": 260,
+      "parameters": [
+        545,
+        548
+      ]
+    },
+    {
+      "type": "object",
+      "id": 550,
+      "properties": [
+        {
+          "identifier": "attributes",
+          "typeof": 549
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 552,
+      "target": 551,
+      "parameters": [
+        550
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 553,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 554,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 555,
+      "target": 87,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 556,
+      "properties": [
+        {
+          "identifier": "name",
+          "typeof": 553
+        },
+        {
+          "identifier": "module",
+          "typeof": 554
+        },
+        {
+          "identifier": "component",
+          "typeof": 555
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 557,
+      "target": 88,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 558,
+      "element": 557
+    },
+    {
+      "type": "keyword",
+      "id": 559,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 560,
+      "target": 87,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 561,
+      "target": 88,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 562,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "name",
+          "typeof": 559
+        },
+        {
+          "identifier": "component",
+          "typeof": 560
+        }
+      ],
+      "returns": 561
+    },
+    {
+      "type": "object",
+      "id": 563,
+      "properties": [
+        {
+          "identifier": "components",
+          "typeof": 558
+        },
+        {
+          "identifier": "add",
+          "typeof": 562
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 564,
+      "target": 93,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 565,
+      "element": 564
+    },
+    {
+      "type": "reference",
+      "id": 566,
+      "target": 94,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 567,
+      "element": 566
+    },
+    {
+      "type": "reference",
+      "id": 568,
+      "target": 91,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 569,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 570,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 571,
+      "target": 93,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 572,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "key",
+          "typeof": 568
+        },
+        {
+          "identifier": "path",
+          "typeof": 569
+        },
+        {
+          "identifier": "fragment",
+          "typeof": 570
+        }
+      ],
+      "returns": 571
+    },
+    {
+      "type": "reference",
+      "id": 573,
+      "target": 91,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 574,
+      "target": 135,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 575,
+      "target": 93,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 576,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "key",
+          "typeof": 573
+        },
+        {
+          "identifier": "url",
+          "typeof": 574
+        }
+      ],
+      "returns": 575
+    },
+    {
+      "type": "reference",
+      "id": 577,
+      "target": 91,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 578,
+      "target": 91,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 579,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 580,
+      "target": 94,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 581,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "source",
+          "typeof": 577
+        },
+        {
+          "identifier": "destination",
+          "typeof": 578
+        },
+        {
+          "identifier": "fragment",
+          "typeof": 579
+        }
+      ],
+      "returns": 580
+    },
+    {
+      "type": "reference",
+      "id": 582,
+      "target": 91,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 583,
+      "keyword": "null"
+    },
+    {
+      "type": "reference",
+      "id": 584,
+      "target": 92,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 585,
+      "unions": [
+        583,
+        584
+      ]
+    },
+    {
+      "type": "function",
+      "id": 586,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "key",
+          "typeof": 582
+        }
+      ],
+      "returns": 585
+    },
+    {
+      "type": "reference",
+      "id": 587,
+      "target": 91,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 588,
+      "keyword": "null"
+    },
+    {
+      "type": "reference",
+      "id": 589,
+      "target": 135,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 590,
+      "unions": [
+        588,
+        589
+      ]
+    },
+    {
+      "type": "function",
+      "id": 591,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "key",
+          "typeof": 587
+        }
+      ],
+      "returns": 590
+    },
+    {
+      "type": "object",
+      "id": 592,
+      "properties": [
+        {
+          "identifier": "references",
+          "typeof": 565
+        },
+        {
+          "identifier": "indirect_references",
+          "typeof": 567
+        },
+        {
+          "identifier": "add",
+          "typeof": 572
+        },
+        {
+          "identifier": "addExternal",
+          "typeof": 576
+        },
+        {
+          "identifier": "addIndirect",
+          "typeof": 581
+        },
+        {
+          "identifier": "resolveKey",
+          "typeof": 586
+        },
+        {
+          "identifier": "resolveRouteLink",
+          "typeof": 591
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 593,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 594,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 595,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 596,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 597,
+      "properties": [
+        {
+          "identifier": "path",
+          "typeof": 594
+        },
+        {
+          "identifier": "fragment",
+          "typeof": 595
+        },
+        {
+          "identifier": "origin",
+          "typeof": 596
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 598,
+      "target": 91,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 599,
+      "target": 92,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 600,
+      "properties": [
+        {
+          "identifier": "key",
+          "typeof": 598
+        },
+        {
+          "identifier": "location",
+          "typeof": 599
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 601,
+      "target": 91,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 602,
+      "target": 91,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 603,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 604,
+      "properties": [
+        {
+          "identifier": "source",
+          "typeof": 601
+        },
+        {
+          "identifier": "destination",
+          "typeof": 602
+        },
+        {
+          "identifier": "fragment",
+          "typeof": 603
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 605,
+      "target": 98,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 606,
+      "element": 605
+    },
+    {
+      "type": "keyword",
+      "id": 607,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 608,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 609,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 610,
+      "target": 98,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 611,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "key",
+          "typeof": 607
+        },
+        {
+          "identifier": "markdownContent",
+          "typeof": 608
+        },
+        {
+          "identifier": "path",
+          "typeof": 609
+        }
+      ],
+      "returns": 610
+    },
+    {
+      "type": "keyword",
+      "id": 612,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 614,
+      "target": 613,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 615,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 616,
+      "target": 98,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 617,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "key",
+          "typeof": 612
+        },
+        {
+          "identifier": "root",
+          "typeof": 614
+        },
+        {
+          "identifier": "path",
+          "typeof": 615
+        }
+      ],
+      "returns": 616
+    },
+    {
+      "type": "reference",
+      "id": 618,
+      "target": 96,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 619,
+      "keyword": "void"
+    },
+    {
+      "type": "function",
+      "id": 620,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "preprocessor",
+          "typeof": 618
+        }
+      ],
+      "returns": 619
+    },
+    {
+      "type": "object",
+      "id": 621,
+      "properties": [
+        {
+          "identifier": "articles",
+          "typeof": 606
+        },
+        {
+          "identifier": "add",
+          "typeof": 611
+        },
+        {
+          "identifier": "addRawRoot",
+          "typeof": 617
+        },
+        {
+          "identifier": "addArticlePreprocessor",
+          "typeof": 620
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 622,
+      "target": 98,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 623,
+      "keyword": "void"
+    },
+    {
+      "type": "function",
+      "id": 624,
+      "parameters": [
+        {
+          "identifier": "kinda hard to tell",
+          "typeof": 622
+        }
+      ],
+      "returns": 623,
+      "typeParameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 625,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 626,
+      "target": 97,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 627,
+      "target": 613,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 628,
+      "properties": [
+        {
+          "identifier": "key",
+          "typeof": 626
+        },
+        {
+          "identifier": "content",
+          "typeof": 627
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 629,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 630,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 631,
+      "properties": []
+    },
+    {
+      "type": "reference",
+      "id": 632,
+      "target": 551,
+      "parameters": [
+        631
+      ]
+    },
+    {
+      "type": "object",
+      "id": 633,
+      "properties": [
+        {
+          "identifier": "key",
+          "typeof": 629
+        },
+        {
+          "identifier": "frame",
+          "typeof": 630
+        },
+        {
+          "identifier": "component",
+          "typeof": 632
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 634,
+      "target": 99,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 635,
+      "properties": [
+        {
+          "identifier": "demo",
+          "typeof": 634
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 636,
+      "target": 551,
+      "parameters": [
+        635
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 637,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 638,
+      "target": 100,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 639,
+      "properties": [
+        {
+          "identifier": "key",
+          "typeof": 637
+        },
+        {
+          "identifier": "component",
+          "typeof": 638
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 640,
+      "target": 99,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 641,
+      "element": 640
+    },
+    {
+      "type": "reference",
+      "id": 642,
+      "target": 101,
+      "parameters": []
+    },
+    {
+      "type": "array",
+      "id": 643,
+      "element": 642
+    },
+    {
+      "type": "reference",
+      "id": 644,
+      "target": 101,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 645,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 646,
+      "properties": []
+    },
+    {
+      "type": "reference",
+      "id": 647,
+      "target": 551,
+      "parameters": [
+        646
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 648,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 649,
+      "target": 99,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 650,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "key",
+          "typeof": 645
+        },
+        {
+          "identifier": "component",
+          "typeof": 647
+        },
+        {
+          "identifier": "frame",
+          "typeof": 648
+        }
+      ],
+      "returns": 649
+    },
+    {
+      "type": "keyword",
+      "id": 651,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 652,
+      "target": 100,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 653,
+      "target": 101,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 654,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "key",
+          "typeof": 651
+        },
+        {
+          "identifier": "frameComponent",
+          "typeof": 652
+        }
+      ],
+      "returns": 653
+    },
+    {
+      "type": "reference",
+      "id": 655,
+      "target": 101,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 656,
+      "keyword": "void"
+    },
+    {
+      "type": "function",
+      "id": 657,
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "frame",
+          "typeof": 655
+        }
+      ],
+      "returns": 656
+    },
+    {
+      "type": "object",
+      "id": 658,
+      "properties": [
+        {
+          "identifier": "demos",
+          "typeof": 641
+        },
+        {
+          "identifier": "frames",
+          "typeof": 643
+        },
+        {
+          "identifier": "defaultFrame",
+          "typeof": 644
+        },
+        {
+          "identifier": "add",
+          "typeof": 650
+        },
+        {
+          "identifier": "addFrame",
+          "typeof": 654
+        },
+        {
+          "identifier": "setDefaultFrame",
+          "typeof": 657
+        }
+      ]
+    },
+    {
+      "id": 660,
+      "type": "reference",
+      "target": 84,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 659,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 660
+    },
+    {
+      "type": "keyword",
+      "id": 661,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 664,
+      "target": 662,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 666,
+      "target": 665,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 667,
+      "target": 663,
+      "parameters": []
+    },
+    {
+      "type": "function",
+      "id": 668,
+      "parameters": [
+        {
+          "identifier": "kinda hard to tell",
+          "typeof": 666
+        }
+      ],
+      "returns": 667,
+      "typeParameters": []
+    },
+    {
+      "type": "object",
+      "id": 669,
+      "properties": [
+        {
+          "identifier": "key",
+          "typeof": 664
+        },
+        {
+          "identifier": "api",
+          "typeof": 668
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 670,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 671,
+      "keyword": "unknown"
+    },
+    {
+      "type": "reference",
+      "id": 672,
+      "target": 104,
+      "parameters": [
+        670,
+        671
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 674,
+      "target": 673,
+      "parameters": []
+    },
+    {
+      "type": "literal",
+      "id": 675,
+      "literal": "api"
+    },
+    {
+      "type": "index-access",
+      "id": 676,
+      "target": 674,
+      "index": 675
+    },
+    {
+      "type": "reference",
+      "id": 678,
+      "target": 677,
+      "parameters": [
+        676
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 680,
+      "keyword": "string"
+    },
+    {
+      "id": 683,
+      "type": "reference",
+      "target": 681,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 685,
+      "type": "reference",
+      "target": 84,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 686,
+      "type": "reference",
+      "target": 682,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 684,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "core",
+          "typeof": 685
+        }
+      ],
+      "returns": 686
+    },
+    {
+      "id": 688,
+      "type": "reference",
+      "target": 681,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 689,
+      "type": "reference",
+      "target": 682,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 687,
+      "type": "reference",
+      "target": 104,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        688,
+        689
+      ]
+    },
+    {
+      "id": 679,
+      "type": "function",
+      "typeParameters": [
+        681,
+        682
+      ],
+      "parameters": [
+        {
+          "identifier": "key",
+          "typeof": 683
+        },
+        {
+          "identifier": "api",
+          "typeof": 684
+        }
+      ],
+      "returns": 687
+    },
+    {
+      "type": "keyword",
+      "id": 690,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 691,
+      "keyword": "unknown"
+    },
+    {
+      "type": "reference",
+      "id": 692,
+      "target": 104,
+      "parameters": [
+        690,
+        691
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 694,
+      "target": 693,
+      "parameters": [
+        692
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 695,
+      "target": 107,
+      "parameters": []
+    },
+    {
+      "type": "parser-error",
+      "id": 697,
+      "message": "Don't support Node \"MappedType\" yet"
+    },
+    {
+      "type": "reference",
+      "id": 698,
+      "target": 107,
+      "parameters": []
+    },
+    {
+      "type": "parser-error",
+      "id": 700,
+      "message": "Don't support Node \"MappedType\" yet"
+    }
+  ],
+  "identifiers": [
+    {
+      "type": "type",
+      "id": 1,
+      "name": "IconTextBannerLogoProps",
+      "parameters": [],
+      "typeId": 113
+    },
+    {
+      "id": 115,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/header/index.ts"
+    },
+    {
+      "type": "value",
+      "id": 2,
+      "name": "IconTextBannerLogo",
+      "typeId": 116
+    },
+    {
+      "id": 117,
+      "type": "external",
+      "name": "Link",
+      "moduleName": "@lukekaalim/grimoire/components/header/TopBanner.ts"
+    },
+    {
+      "id": 121,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/components/header/TopBanner.ts"
+    },
+    {
+      "type": "type",
+      "id": 3,
+      "name": "TopBannerProps",
+      "parameters": [],
+      "typeId": 123
+    },
+    {
+      "id": 125,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/header/TopBanner.ts"
+    },
+    {
+      "type": "value",
+      "id": 4,
+      "name": "TopBanner",
+      "typeId": 126
+    },
+    {
+      "type": "type",
+      "id": 5,
+      "name": "TopBanner2Props",
+      "parameters": [],
+      "typeId": 131
+    },
+    {
+      "type": "value",
+      "id": 6,
+      "name": "TopBanner2",
+      "typeId": 133
+    },
+    {
+      "id": 135,
+      "type": "external",
+      "name": "URL",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "type": "type",
+      "id": 7,
+      "name": "BannerLinkProps",
+      "parameters": [],
+      "typeId": 138
+    },
+    {
+      "id": 140,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/header/BannerLink.ts"
+    },
+    {
+      "type": "value",
+      "id": 8,
+      "name": "BannerLink",
+      "typeId": 141
+    },
+    {
+      "id": 142,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/components/hero/Hero.ts"
+    },
+    {
+      "type": "type",
+      "id": 9,
+      "name": "HeroProps",
+      "parameters": [],
+      "typeId": 145
+    },
+    {
+      "id": 147,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/hero/Hero.ts"
+    },
+    {
+      "type": "value",
+      "id": 10,
+      "name": "Hero",
+      "typeId": 148
+    },
+    {
+      "id": 150,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/components/grid/card.ts"
+    },
+    {
+      "type": "type",
+      "id": 11,
+      "name": "GridCard",
+      "parameters": [],
+      "typeId": 153
+    },
+    {
+      "id": 154,
+      "type": "external",
+      "name": "GridCard",
+      "moduleName": "@lukekaalim/grimoire/components/grid/Grid3.ts"
+    },
+    {
+      "type": "type",
+      "id": 12,
+      "name": "Grid3Props",
+      "parameters": [],
+      "typeId": 157
+    },
+    {
+      "id": 159,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/grid/Grid3.ts"
+    },
+    {
+      "type": "value",
+      "id": 13,
+      "name": "Grid3",
+      "typeId": 160
+    },
+    {
+      "type": "value",
+      "id": 14,
+      "name": "markdownClasses",
+      "typeId": 161
+    },
+    {
+      "id": 163,
+      "type": "external",
+      "name": "MdastRenderer",
+      "moduleName": "@lukekaalim/act-markdown"
+    },
+    {
+      "type": "value",
+      "id": 15,
+      "name": "renderMarkdown",
+      "typeId": 164
+    },
+    {
+      "type": "type",
+      "id": 16,
+      "name": "MarkdownArticleProps",
+      "parameters": [],
+      "typeId": 166
+    },
+    {
+      "id": 168,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/article/MarkdownArticle.ts"
+    },
+    {
+      "type": "value",
+      "id": 17,
+      "name": "MarkdownArticle",
+      "typeId": 169
+    },
+    {
+      "id": 170,
+      "type": "external",
+      "name": "StaticMarkdownArticleProps",
+      "moduleName": "@lukekaalim/grimoire/components/article/MarkdownArticle.ts"
+    },
+    {
+      "type": "value",
+      "id": 18,
+      "name": "StaticMarkdownArticle",
+      "typeId": 172
+    },
+    {
+      "id": 176,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/components/sidenav/SideNav.ts"
+    },
+    {
+      "type": "type",
+      "id": 19,
+      "name": "SideNav",
+      "parameters": [],
+      "typeId": 178
+    },
+    {
+      "id": 179,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/components/sidenav/SidePanelContainer.ts"
+    },
+    {
+      "id": 182,
+      "type": "external",
+      "name": "HTMLElement",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "id": 186,
+      "type": "external",
+      "name": "ReadonlyRef",
+      "moduleName": "@lukekaalim/grimoire/components/sidenav/SidePanelContainer.ts"
+    },
+    {
+      "type": "type",
+      "id": 20,
+      "name": "SidePanelContainerProps",
+      "parameters": [],
+      "typeId": 188
+    },
+    {
+      "id": 190,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/sidenav/SidePanelContainer.ts"
+    },
+    {
+      "type": "value",
+      "id": 21,
+      "name": "SidePanelContainer",
+      "typeId": 191
+    },
+    {
+      "type": "value",
+      "id": 22,
+      "name": "hljsClassNames",
+      "typeId": 192
+    },
+    {
+      "type": "type",
+      "id": 23,
+      "name": "HLJSClassName",
+      "parameters": [],
+      "typeId": 226
+    },
+    {
+      "id": 260,
+      "type": "external",
+      "name": "Record",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "id": 262,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "value",
+      "id": 24,
+      "name": "hljs",
+      "typeId": 261
+    },
+    {
+      "id": 265,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/components/code/CodeBox.ts"
+    },
+    {
+      "type": "type",
+      "id": 25,
+      "name": "CodeBoxProps",
+      "parameters": [],
+      "typeId": 268
+    },
+    {
+      "id": 270,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/code/CodeBox.ts"
+    },
+    {
+      "type": "value",
+      "id": 26,
+      "name": "CodeBox",
+      "typeId": 271
+    },
+    {
+      "type": "type",
+      "id": 27,
+      "name": "SyntaxHighlightingCodeBoxProps",
+      "parameters": [],
+      "typeId": 275
+    },
+    {
+      "id": 277,
+      "type": "external",
+      "name": "Nodes",
+      "moduleName": "@types/hast/index.d.ts"
+    },
+    {
+      "id": 279,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "value",
+      "id": 28,
+      "name": "renderLowlightNodes",
+      "typeId": 276
+    },
+    {
+      "id": 282,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/code/SyntaxHighlightingCodeBox.ts"
+    },
+    {
+      "type": "value",
+      "id": 29,
+      "name": "SyntaxHighlightingCodeBox",
+      "typeId": 283
+    },
+    {
+      "id": 284,
+      "type": "external",
+      "name": "DemoFrameComponent",
+      "moduleName": "@lukekaalim/grimoire/components/demo/Demo.ts"
+    },
+    {
+      "type": "value",
+      "id": 30,
+      "name": "DefaultDemoFrame",
+      "typeId": 285
+    },
+    {
+      "id": 286,
+      "type": "external",
+      "name": "MDXComponent",
+      "moduleName": "@lukekaalim/grimoire/components/demo/Demo.ts"
+    },
+    {
+      "type": "value",
+      "id": 31,
+      "name": "DemoMDX",
+      "typeId": 287
+    },
+    {
+      "id": 289,
+      "type": "external",
+      "name": "Array",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "id": 291,
+      "type": "external",
+      "name": "Element",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "value",
+      "id": 32,
+      "name": "CoreDebug",
+      "typeId": 288
+    },
+    {
+      "type": "type",
+      "id": 33,
+      "name": "InlineErrorBoxProps",
+      "parameters": [],
+      "typeId": 298
+    },
+    {
+      "id": 300,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/debug/ErrorBox.ts"
+    },
+    {
+      "type": "value",
+      "id": 34,
+      "name": "InlineErrorBox",
+      "typeId": 301
+    },
+    {
+      "id": 302,
+      "type": "external",
+      "name": "NavTree",
+      "moduleName": "@lukekaalim/grimoire/components/vertical_nav_menu/VerticalNavMenu.ts"
+    },
+    {
+      "type": "type",
+      "id": 35,
+      "name": "VerticalNavMenuProps",
+      "parameters": [],
+      "typeId": 304
+    },
+    {
+      "id": 306,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/vertical_nav_menu/VerticalNavMenu.ts"
+    },
+    {
+      "type": "value",
+      "id": 36,
+      "name": "VerticalNavMenu",
+      "typeId": 307
+    },
+    {
+      "id": 308,
+      "type": "external",
+      "name": "NavTree2",
+      "moduleName": "@lukekaalim/grimoire/components/vertical_nav_menu/VerticalNavMenu.ts"
+    },
+    {
+      "type": "type",
+      "id": 37,
+      "name": "VerticalNavMenu2Props",
+      "parameters": [],
+      "typeId": 311
+    },
+    {
+      "type": "value",
+      "id": 38,
+      "name": "VerticalNavMenu2",
+      "typeId": 313
+    },
+    {
+      "id": 314,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/components/vertical_nav_menu/VerticalNavMenu.ts"
+    },
+    {
+      "type": "type",
+      "id": 39,
+      "name": "VerticalNavMenuListProps",
+      "parameters": [],
+      "typeId": 317
+    },
+    {
+      "type": "value",
+      "id": 40,
+      "name": "VerticalNavMenuList",
+      "typeId": 319
+    },
+    {
+      "type": "type",
+      "id": 41,
+      "name": "VerticalNavMenuLinkProps",
+      "parameters": [],
+      "typeId": 324
+    },
+    {
+      "type": "value",
+      "id": 42,
+      "name": "VerticalNavMenuLink",
+      "typeId": 326
+    },
+    {
+      "id": 327,
+      "type": "external",
+      "name": "ArticleKey",
+      "moduleName": "@lukekaalim/grimoire/components/page/ArticlePage.ts"
+    },
+    {
+      "id": 329,
+      "type": "external",
+      "name": "NavTree2",
+      "moduleName": "@lukekaalim/grimoire/components/page/ArticlePage.ts"
+    },
+    {
+      "type": "type",
+      "id": 43,
+      "name": "ArticlePageProps",
+      "parameters": [],
+      "typeId": 331
+    },
+    {
+      "id": 333,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/page/ArticlePage.ts"
+    },
+    {
+      "type": "value",
+      "id": 44,
+      "name": "ArticlePage",
+      "typeId": 334
+    },
+    {
+      "id": 335,
+      "type": "external",
+      "name": "NavTree2",
+      "moduleName": "@lukekaalim/grimoire/components/page/FullSizePage.ts"
+    },
+    {
+      "type": "type",
+      "id": 45,
+      "name": "FullSizePageProps",
+      "parameters": [],
+      "typeId": 337
+    },
+    {
+      "id": 339,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/page/FullSizePage.ts"
+    },
+    {
+      "type": "value",
+      "id": 46,
+      "name": "FullSizePage",
+      "typeId": 340
+    },
+    {
+      "id": 341,
+      "type": "external",
+      "name": "DocApp",
+      "moduleName": "@lukekaalim/grimoire/components/themes/BoneTheme.ts"
+    },
+    {
+      "type": "type",
+      "id": 47,
+      "name": "BoneThemeProps",
+      "parameters": [],
+      "typeId": 343
+    },
+    {
+      "id": 345,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/themes/BoneTheme.ts"
+    },
+    {
+      "type": "value",
+      "id": 48,
+      "name": "BoneTheme",
+      "typeId": 346
+    },
+    {
+      "id": 347,
+      "type": "external",
+      "name": "DocApp",
+      "moduleName": "@lukekaalim/grimoire/components/themes/SimpleTheme.ts"
+    },
+    {
+      "id": 349,
+      "type": "external",
+      "name": "TopBanner2Props",
+      "moduleName": "@lukekaalim/grimoire/components/themes/SimpleTheme.ts"
+    },
+    {
+      "type": "type",
+      "id": 49,
+      "name": "SimpleThemeProps",
+      "parameters": [],
+      "typeId": 351
+    },
+    {
+      "id": 353,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/components/themes/SimpleTheme.ts"
+    },
+    {
+      "type": "value",
+      "id": 50,
+      "name": "SimpleTheme",
+      "typeId": 354
+    },
+    {
+      "id": 356,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/lib/document.ts"
+    },
+    {
+      "type": "type",
+      "id": 52,
+      "name": "DocumentMetadata",
+      "parameters": [],
+      "typeId": 367
+    },
+    {
+      "type": "type",
+      "id": 51,
+      "name": "Document",
+      "parameters": [],
+      "typeId": 359
+    },
+    {
+      "id": 363,
+      "type": "external",
+      "name": "Date",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "type": "value",
+      "id": 53,
+      "name": "Tag",
+      "typeId": 376
+    },
+    {
+      "id": 372,
+      "type": "external",
+      "name": "Omit",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "id": 374,
+      "type": "external",
+      "name": "Partial",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "type": "type",
+      "id": 54,
+      "name": "TagID",
+      "parameters": [],
+      "typeId": 377
+    },
+    {
+      "type": "type",
+      "id": 55,
+      "name": "UnimplementedError",
+      "parameters": [],
+      "typeId": 378
+    },
+    {
+      "type": "type",
+      "id": 56,
+      "name": "NavTreeLink",
+      "parameters": [],
+      "typeId": 385
+    },
+    {
+      "type": "type",
+      "id": 57,
+      "name": "NavTree",
+      "parameters": [],
+      "typeId": 386
+    },
+    {
+      "type": "type",
+      "id": 58,
+      "name": "NavTreeCompactExpression",
+      "parameters": [],
+      "typeId": 391
+    },
+    {
+      "type": "value",
+      "id": 59,
+      "name": "createNavTreeFromExpression",
+      "typeId": 392
+    },
+    {
+      "type": "type",
+      "id": 61,
+      "name": "NavLeafID",
+      "parameters": [],
+      "typeId": 401
+    },
+    {
+      "type": "type",
+      "id": 62,
+      "name": "NavLeaf",
+      "parameters": [],
+      "typeId": 413
+    },
+    {
+      "type": "type",
+      "id": 60,
+      "name": "NavTree2",
+      "parameters": [],
+      "typeId": 400
+    },
+    {
+      "id": 409,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/lib/navtree.ts"
+    },
+    {
+      "type": "type",
+      "id": 63,
+      "name": "NavTreeBuilder",
+      "parameters": [],
+      "typeId": 429
+    },
+    {
+      "type": "value",
+      "id": 64,
+      "name": "createNavTreeBuilder",
+      "typeId": 430
+    },
+    {
+      "id": 434,
+      "type": "external",
+      "name": "Element",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "type": "value",
+      "id": 65,
+      "name": "buildNavTreeFromDOM",
+      "typeId": 432
+    },
+    {
+      "type": "value",
+      "id": 66,
+      "name": "simplifyTree",
+      "typeId": 437
+    },
+    {
+      "id": 439,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/lib/demo.ts"
+    },
+    {
+      "type": "type",
+      "id": 67,
+      "name": "DemoSubject",
+      "parameters": [],
+      "typeId": 440
+    },
+    {
+      "id": 443,
+      "type": "external",
+      "name": "Map",
+      "moduleName": "typescript/lib/lib.es2015.collection.d.ts"
+    },
+    {
+      "type": "type",
+      "id": 68,
+      "name": "DemoStore",
+      "parameters": [],
+      "typeId": 445
+    },
+    {
+      "type": "value",
+      "id": 69,
+      "name": "createDemoStore",
+      "typeId": 446
+    },
+    {
+      "type": "value",
+      "id": 70,
+      "name": "classMap",
+      "typeId": 448
+    },
+    {
+      "type": "type",
+      "id": 71,
+      "name": "HLJSClassKey",
+      "parameters": [],
+      "typeId": 450
+    },
+    {
+      "type": "type",
+      "id": 72,
+      "name": "HLJSElementBuilderFuncMap",
+      "parameters": [],
+      "typeId": 452
+    },
+    {
+      "type": "type",
+      "id": 74,
+      "name": "HLJSBuilder",
+      "parameters": [],
+      "typeId": 474
+    },
+    {
+      "id": 464,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/lib/highlighting.ts"
+    },
+    {
+      "type": "type",
+      "id": 73,
+      "name": "HLJSBuilderAPI",
+      "parameters": [],
+      "typeId": 471
+    },
+    {
+      "type": "value",
+      "id": 75,
+      "name": "createHLJSBuilder",
+      "typeId": 475
+    },
+    {
+      "type": "value",
+      "id": 76,
+      "name": "useGrimoireMdastRenderer",
+      "typeId": 477
+    },
+    {
+      "id": 482,
+      "type": "external",
+      "name": "Beat",
+      "moduleName": "@lukekaalim/act-curve"
+    },
+    {
+      "type": "value",
+      "id": 77,
+      "name": "RAFBeat",
+      "typeId": 483
+    },
+    {
+      "id": 486,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/lib/theme.ts"
+    },
+    {
+      "id": 488,
+      "type": "external",
+      "name": "CSSModuleClasses",
+      "moduleName": "A Mystery"
+    },
+    {
+      "type": "type",
+      "id": 78,
+      "name": "ThemeContext",
+      "parameters": [],
+      "typeId": 490
+    },
+    {
+      "type": "value",
+      "id": 79,
+      "name": "useDocThemeContext",
+      "typeId": 491
+    },
+    {
+      "id": 493,
+      "type": "external",
+      "name": "AnyPluginArray",
+      "moduleName": "@lukekaalim/grimoire/application/App.ts"
+    },
+    {
+      "id": 496,
+      "name": "Plugins",
+      "type": "type-parameter",
+      "constraint": 494,
+      "default": 495
+    },
+    {
+      "id": 498,
+      "type": "external",
+      "name": "PluginAPI",
+      "moduleName": "@lukekaalim/grimoire/application/App.ts"
+    },
+    {
+      "id": 500,
+      "type": "external",
+      "name": "CoreAPI",
+      "moduleName": "@lukekaalim/grimoire/application/App.ts"
+    },
+    {
+      "type": "type",
+      "id": 80,
+      "name": "DocApp",
+      "parameters": [
+        496
+      ],
+      "typeId": 502
+    },
+    {
+      "id": 505,
+      "name": "Plugins",
+      "type": "type-parameter",
+      "constraint": 504,
+      "default": null
+    },
+    {
+      "type": "value",
+      "id": 81,
+      "name": "createDocApp",
+      "typeId": 503
+    },
+    {
+      "id": 509,
+      "type": "external",
+      "name": "Context",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "type",
+      "id": 107,
+      "name": "AnyPluginArray",
+      "parameters": [],
+      "typeId": 694
+    },
+    {
+      "type": "value",
+      "id": 82,
+      "name": "DocAppContext",
+      "typeId": 510
+    },
+    {
+      "id": 517,
+      "name": "Plugins",
+      "type": "type-parameter",
+      "constraint": 516,
+      "default": null
+    },
+    {
+      "type": "value",
+      "id": 83,
+      "name": "useDocApp",
+      "typeId": 515
+    },
+    {
+      "type": "type",
+      "id": 85,
+      "name": "RoutesAPI",
+      "parameters": [],
+      "typeId": 541
+    },
+    {
+      "type": "type",
+      "id": 89,
+      "name": "ComponentsAPI",
+      "parameters": [],
+      "typeId": 563
+    },
+    {
+      "type": "type",
+      "id": 95,
+      "name": "ArticleAPI",
+      "parameters": [],
+      "typeId": 621
+    },
+    {
+      "type": "type",
+      "id": 90,
+      "name": "ReferenceAPI",
+      "parameters": [],
+      "typeId": 592
+    },
+    {
+      "type": "type",
+      "id": 102,
+      "name": "DemoAPI",
+      "parameters": [],
+      "typeId": 658
+    },
+    {
+      "type": "type",
+      "id": 84,
+      "name": "CoreAPI",
+      "parameters": [],
+      "typeId": 526
+    },
+    {
+      "id": 527,
+      "type": "external",
+      "name": "RouterPage",
+      "moduleName": "@lukekaalim/grimoire/application/Core.ts"
+    },
+    {
+      "id": 531,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/grimoire/application/Core.ts"
+    },
+    {
+      "id": 533,
+      "type": "external",
+      "name": "RouterPageComponent",
+      "moduleName": "@lukekaalim/grimoire/application/Core.ts"
+    },
+    {
+      "id": 538,
+      "type": "external",
+      "name": "NavTree2",
+      "moduleName": "@lukekaalim/grimoire/application/Core.ts"
+    },
+    {
+      "type": "type",
+      "id": 86,
+      "name": "Route",
+      "parameters": [],
+      "typeId": 544
+    },
+    {
+      "id": 551,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/grimoire/application/Core.ts"
+    },
+    {
+      "type": "type",
+      "id": 87,
+      "name": "MDXComponent",
+      "parameters": [],
+      "typeId": 552
+    },
+    {
+      "type": "type",
+      "id": 88,
+      "name": "MDXComponentEntry",
+      "parameters": [],
+      "typeId": 556
+    },
+    {
+      "type": "type",
+      "id": 93,
+      "name": "Reference",
+      "parameters": [],
+      "typeId": 600
+    },
+    {
+      "type": "type",
+      "id": 94,
+      "name": "IndirectReference",
+      "parameters": [],
+      "typeId": 604
+    },
+    {
+      "type": "type",
+      "id": 91,
+      "name": "ReferenceKey",
+      "parameters": [],
+      "typeId": 593
+    },
+    {
+      "type": "type",
+      "id": 92,
+      "name": "ReferenceLocation",
+      "parameters": [],
+      "typeId": 597
+    },
+    {
+      "type": "type",
+      "id": 98,
+      "name": "Article",
+      "parameters": [],
+      "typeId": 628
+    },
+    {
+      "id": 613,
+      "type": "external",
+      "name": "Root",
+      "moduleName": "@lukekaalim/grimoire/application/Core.ts"
+    },
+    {
+      "type": "type",
+      "id": 96,
+      "name": "ArticlePreprocessor",
+      "parameters": [],
+      "typeId": 624
+    },
+    {
+      "type": "type",
+      "id": 97,
+      "name": "ArticleKey",
+      "parameters": [],
+      "typeId": 625
+    },
+    {
+      "type": "type",
+      "id": 99,
+      "name": "Demo",
+      "parameters": [],
+      "typeId": 633
+    },
+    {
+      "type": "type",
+      "id": 100,
+      "name": "DemoFrameComponent",
+      "parameters": [],
+      "typeId": 636
+    },
+    {
+      "type": "type",
+      "id": 101,
+      "name": "DemoFrame",
+      "parameters": [],
+      "typeId": 639
+    },
+    {
+      "type": "value",
+      "id": 103,
+      "name": "createCoreAPI",
+      "typeId": 659
+    },
+    {
+      "id": 662,
+      "name": "Key",
+      "type": "type-parameter",
+      "constraint": 661,
+      "default": null
+    },
+    {
+      "id": 663,
+      "name": "API",
+      "type": "type-parameter",
+      "constraint": null,
+      "default": null
+    },
+    {
+      "id": 665,
+      "type": "external",
+      "name": "CoreAPI",
+      "moduleName": "@lukekaalim/grimoire/application/Plugin.ts"
+    },
+    {
+      "type": "type",
+      "id": 104,
+      "name": "PluginI",
+      "parameters": [
+        662,
+        663
+      ],
+      "typeId": 669
+    },
+    {
+      "id": 673,
+      "name": "Plugin",
+      "type": "type-parameter",
+      "constraint": 672,
+      "default": null
+    },
+    {
+      "id": 677,
+      "type": "external",
+      "name": "ReturnType",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "type": "type",
+      "id": 105,
+      "name": "PluginIAPI",
+      "parameters": [
+        673
+      ],
+      "typeId": 678
+    },
+    {
+      "id": 681,
+      "name": "Key",
+      "type": "type-parameter",
+      "constraint": 680,
+      "default": null
+    },
+    {
+      "id": 682,
+      "name": "API",
+      "type": "type-parameter",
+      "constraint": null,
+      "default": null
+    },
+    {
+      "type": "value",
+      "id": 106,
+      "name": "createPlugin",
+      "typeId": 679
+    },
+    {
+      "id": 693,
+      "type": "external",
+      "name": "ReadonlyArray",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "id": 696,
+      "name": "Plugins",
+      "type": "type-parameter",
+      "constraint": 695,
+      "default": null
+    },
+    {
+      "type": "type",
+      "id": 108,
+      "name": "PluginAPI",
+      "parameters": [
+        696
+      ],
+      "typeId": 697
+    },
+    {
+      "id": 699,
+      "name": "Plugins",
+      "type": "type-parameter",
+      "constraint": 698,
+      "default": null
+    },
+    {
+      "type": "type",
+      "id": 109,
+      "name": "PluginKeyArray",
+      "parameters": [
+        699
+      ],
+      "typeId": 700
+    }
+  ],
+  "comments": [],
+  "exports": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109
+  ],
+  "diagnostics": [
+    {
+      "category": "semantic",
+      "message": "Cannot find module './TopBanner.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './BannerLink.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './Hero.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './Grid3.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './classes.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './Demo.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './SideNav.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './SidePanelContainer.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './VerticalNavMenu.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './CartesianSpace.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find name 'CSSModuleClasses'.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './TagPill.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './TagRow.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './Article.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './MarkdownArticle.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './CodeBox.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './MarkdownArticle.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './Article.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './BoneTheme.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './PageTransition.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    }
+  ]
+}

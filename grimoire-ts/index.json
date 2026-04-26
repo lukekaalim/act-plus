@@ -1,0 +1,794 @@
+{
+  "moduleName": "grimoire-ts/index",
+  "types": [
+    {
+      "id": 10,
+      "type": "literal",
+      "literal": "echo"
+    },
+    {
+      "id": 15,
+      "type": "keyword",
+      "keyword": "string"
+    },
+    {
+      "id": 17,
+      "type": "reference",
+      "target": 16,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 14,
+      "type": "reference",
+      "target": 13,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": [
+        15,
+        17
+      ]
+    },
+    {
+      "id": 19,
+      "type": "reference",
+      "target": 16,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 20,
+      "type": "keyword",
+      "keyword": "void"
+    },
+    {
+      "id": 18,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "path",
+          "typeof": 15
+        },
+        {
+          "identifier": "context",
+          "typeof": 19
+        }
+      ],
+      "returns": 20
+    },
+    {
+      "id": 24,
+      "type": "reference",
+      "target": 23,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 25,
+      "type": "reference",
+      "target": 16,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 22,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "echo",
+          "typeof": 24
+        }
+      ],
+      "returns": 25
+    },
+    {
+      "id": 12,
+      "type": "object",
+      "meta": {
+        "resolvedBy": "instance:objectWithProperties",
+        "objectFlags": "1572880",
+        "symbol": "__object"
+      },
+      "properties": [
+        {
+          "identifier": "moduleContexts",
+          "typeof": 14
+        },
+        {
+          "identifier": "addModuleReference",
+          "typeof": 18
+        },
+        {
+          "identifier": "addModule",
+          "typeof": 22
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "reference",
+      "target": 8,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        10,
+        12
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 26,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 27,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 28,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 29,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 31,
+      "target": 30,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 32,
+      "properties": [
+        {
+          "identifier": "id",
+          "typeof": 26
+        },
+        {
+          "identifier": "name",
+          "typeof": 27
+        },
+        {
+          "identifier": "typeName",
+          "typeof": 28
+        },
+        {
+          "identifier": "typeLinkURL",
+          "typeof": 29
+        },
+        {
+          "identifier": "description",
+          "typeof": 31
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 33,
+      "target": 2,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 35,
+      "target": 34,
+      "parameters": [
+        33
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 37,
+      "target": 36,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 39,
+      "target": 38,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 40,
+      "unions": [
+        37,
+        39
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 42,
+      "target": 41,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 44,
+      "target": 43,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 45,
+      "keyword": "boolean"
+    },
+    {
+      "type": "object",
+      "id": 46,
+      "properties": [
+        {
+          "identifier": "identifier",
+          "typeof": 40
+        },
+        {
+          "identifier": "context",
+          "typeof": 42
+        },
+        {
+          "identifier": "header",
+          "typeof": 44
+        },
+        {
+          "identifier": "noId",
+          "typeof": 45
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "type": "reference",
+      "target": 49,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 52,
+      "type": "reference",
+      "target": 51,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 48,
+      "type": "union",
+      "unions": [
+        50,
+        52
+      ]
+    },
+    {
+      "id": 53,
+      "type": "reference",
+      "target": 16,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 55,
+      "type": "keyword",
+      "keyword": "undefined"
+    },
+    {
+      "id": 56,
+      "type": "keyword",
+      "keyword": "null"
+    },
+    {
+      "id": 57,
+      "type": "keyword",
+      "keyword": "number"
+    },
+    {
+      "id": 58,
+      "type": "keyword",
+      "keyword": "boolean"
+    },
+    {
+      "id": 59,
+      "type": "keyword",
+      "keyword": "boolean"
+    },
+    {
+      "id": 61,
+      "type": "reference",
+      "target": 60,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 65,
+      "type": "reference",
+      "target": 64,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 63,
+      "type": "reference",
+      "target": 62,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": [
+        65
+      ]
+    },
+    {
+      "id": 54,
+      "type": "union",
+      "unions": [
+        55,
+        56,
+        15,
+        57,
+        58,
+        59,
+        61,
+        63
+      ]
+    },
+    {
+      "id": 66,
+      "type": "union",
+      "unions": [
+        55,
+        58,
+        59
+      ]
+    },
+    {
+      "id": 47,
+      "type": "object",
+      "meta": {
+        "resolvedBy": "instance:objectWithProperties",
+        "objectFlags": "16",
+        "symbol": "__type"
+      },
+      "properties": [
+        {
+          "identifier": "identifier",
+          "typeof": 48
+        },
+        {
+          "identifier": "context",
+          "typeof": 53
+        },
+        {
+          "identifier": "header",
+          "typeof": 54
+        },
+        {
+          "identifier": "noId",
+          "typeof": 66
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 68,
+      "target": 67,
+      "parameters": [
+        47
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 70,
+      "target": 69,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 72,
+      "target": 71,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 74,
+      "target": 73,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 75,
+      "keyword": "boolean"
+    },
+    {
+      "type": "keyword",
+      "id": 76,
+      "keyword": "boolean"
+    },
+    {
+      "type": "object",
+      "id": 77,
+      "properties": [
+        {
+          "identifier": "context",
+          "typeof": 70
+        },
+        {
+          "identifier": "echo",
+          "typeof": 72
+        },
+        {
+          "identifier": "header",
+          "typeof": 74
+        },
+        {
+          "identifier": "noId",
+          "typeof": 75
+        },
+        {
+          "identifier": "debug",
+          "typeof": 76
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "type": "reference",
+      "target": 16,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 80,
+      "type": "reference",
+      "target": 23,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 78,
+      "type": "object",
+      "meta": {
+        "resolvedBy": "instance:objectWithProperties",
+        "objectFlags": "16",
+        "symbol": "__type"
+      },
+      "properties": [
+        {
+          "identifier": "context",
+          "typeof": 79
+        },
+        {
+          "identifier": "echo",
+          "typeof": 80
+        },
+        {
+          "identifier": "header",
+          "typeof": 54
+        },
+        {
+          "identifier": "noId",
+          "typeof": 66
+        },
+        {
+          "identifier": "debug",
+          "typeof": 66
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 82,
+      "target": 81,
+      "parameters": [
+        78
+      ]
+    }
+  ],
+  "identifiers": [
+    {
+      "id": 8,
+      "type": "external",
+      "name": "PluginI",
+      "moduleName": "@lukekaalim/grimoire"
+    },
+    {
+      "id": 13,
+      "type": "external",
+      "name": "Map",
+      "moduleName": "typescript/lib/lib.es2015.collection.d.ts"
+    },
+    {
+      "id": 16,
+      "type": "external",
+      "name": "EchoReadingContext",
+      "moduleName": "@lukekaalim/echo"
+    },
+    {
+      "id": 23,
+      "type": "external",
+      "name": "Echo",
+      "moduleName": "@lukekaalim/echo"
+    },
+    {
+      "type": "type",
+      "id": 1,
+      "name": "EchoPlugin",
+      "parameters": [],
+      "typeId": 9
+    },
+    {
+      "id": 30,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "type",
+      "id": 2,
+      "name": "ParameterCommentProps",
+      "parameters": [],
+      "typeId": 32
+    },
+    {
+      "id": 34,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "value",
+      "id": 3,
+      "name": "ParameterComment",
+      "typeId": 35
+    },
+    {
+      "id": 36,
+      "type": "external",
+      "name": "ValueIdentifier",
+      "moduleName": "@lukekaalim/echo"
+    },
+    {
+      "id": 38,
+      "type": "external",
+      "name": "TypeIdentifier",
+      "moduleName": "@lukekaalim/echo"
+    },
+    {
+      "id": 41,
+      "type": "external",
+      "name": "EchoReadingContext",
+      "moduleName": "@lukekaalim/echo"
+    },
+    {
+      "id": 43,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "type",
+      "id": 4,
+      "name": "IdentifierViewProps",
+      "parameters": [],
+      "typeId": 46
+    },
+    {
+      "id": 49,
+      "type": "external",
+      "name": "ValueIdentifier",
+      "moduleName": "@lukekaalim/echo"
+    },
+    {
+      "id": 51,
+      "type": "external",
+      "name": "TypeIdentifier",
+      "moduleName": "@lukekaalim/echo"
+    },
+    {
+      "id": 60,
+      "type": "external",
+      "name": "Element",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "id": 62,
+      "type": "external",
+      "name": "Array",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "id": 64,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "id": 67,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "value",
+      "id": 5,
+      "name": "IdentifierView",
+      "typeId": 68
+    },
+    {
+      "id": 69,
+      "type": "external",
+      "name": "EchoReadingContext",
+      "moduleName": "@lukekaalim/echo"
+    },
+    {
+      "id": 71,
+      "type": "external",
+      "name": "Echo",
+      "moduleName": "@lukekaalim/echo"
+    },
+    {
+      "id": 73,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "type",
+      "id": 6,
+      "name": "EchoViewProps",
+      "parameters": [],
+      "typeId": 77
+    },
+    {
+      "id": 81,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "value",
+      "id": 7,
+      "name": "EchoView",
+      "typeId": 82
+    }
+  ],
+  "comments": [],
+  "exports": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "diagnostics": [
+    {
+      "category": "semantic",
+      "message": "Cannot find module './TopBanner.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './BannerLink.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './Hero.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './Grid3.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './classes.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './Demo.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './SideNav.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './SidePanelContainer.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './VerticalNavMenu.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './CartesianSpace.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find name 'CSSModuleClasses'.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './TagPill.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './TagRow.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './Article.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './MarkdownArticle.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './CodeBox.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './MarkdownArticle.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './Article.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './BoneTheme.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Cannot find module './PageTransition.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    }
+  ]
+}

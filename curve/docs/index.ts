@@ -1,6 +1,6 @@
 import { DocApp, FullSizePage } from "@lukekaalim/grimoire";
 import { EchoPlugin, TypeDocPlugin } from "@lukekaalim/grimoire-ts";
-import { throttle } from 'lodash-es';
+//import { throttle } from 'lodash-es';
 
 import reflection from 'echo:@lukekaalim/act-curve';
 

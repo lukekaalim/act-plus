@@ -12,7 +12,7 @@ import {
 } from '@lukekaalim/act-router';
 import {  Grid3, Hero, TopBanner, createDocApp, SimpleTheme, BannerLink, IconTextBannerLogo, BoneTheme } from '@lukekaalim/grimoire';
 
-import { EchoPlugin, TypeDocPlugin } from '@lukekaalim/grimoire-ts';
+import { EchoPlugin } from '@lukekaalim/grimoire-ts';
 import { SVGRepo } from '@lukekaalim/act-icons';
 
 import iconPlusURL from './media/icon-plus.png';
@@ -245,7 +245,7 @@ const DemoPage = () => {
   ])
 }
 
-const doc = createDocApp([TypeDocPlugin, EchoPlugin]);
+const doc = createDocApp([EchoPlugin]);
 doc.route.add('/', h(DemoPage))
 
 

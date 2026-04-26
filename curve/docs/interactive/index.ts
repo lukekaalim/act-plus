@@ -11,7 +11,7 @@ import { LerpDemo } from "./LerpDemo";
 
 import "./svg.css";
 import { ContinueDemo } from "./ContinueDemo";
-import { throttle } from "lodash-es";
+//import { throttle } from "lodash-es";
 import { ButtonCounter } from "./ButtonCounter";
 
 export type InteractiveDemo = Component<{

@@ -133,4 +133,4 @@ some other system (or just ignoring them and not linking to 3rd party documentat
 
 ## API
 
-<Echo module="@lukekaalim/echo" name="EchoModule" />
+<Echo module="@lukekaalim/echo" />

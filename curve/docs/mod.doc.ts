@@ -1,7 +1,7 @@
 import { Component, createContext, h, Node, StateSetter, Updater, useContext, useEffect, useMemo, useRef, useState } from "@lukekaalim/act";
 import { hs, HTML, render, SVG } from "@lukekaalim/act-web";
 
-import { throttle } from 'lodash-es';
+//import { throttle } from 'lodash-es';
 
 import { CartesianSpace, CartesianSpaceController } from "@lukekaalim/act-graphit/CartesianSpace";
 import { LinePath } from "@lukekaalim/act-graphit/LinePath";

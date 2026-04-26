@@ -1,10 +1,10 @@
 import { writeFileSync } from "fs";
-import { createEchoWatcher } from "./index.ts";
+import { createEchoWatcher } from "./watcher";
 
 const main = (...filesToBuild: string[]) => {
   createEchoWatcher(filesToBuild.length > 0 ? filesToBuild : ["./index.ts"], async (path, module) => {
 
-    writeFileSync(`./${module.name}.json`, JSON.stringify(module, null, 2), 'utf8');
+    writeFileSync(`./${module.moduleName}.json`, JSON.stringify(module, null, 2), 'utf8');
   })
 }
 

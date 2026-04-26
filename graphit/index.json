@@ -1,447 +1,2320 @@
 {
-  "name": "../graphit/index",
-  "types": {
-    "undefined": {
-      "alias": 322,
-      "type": "internal-alias"
-    }
-  },
-  "references": [
+  "moduleName": "../graphit/index",
+  "types": [
     {
-      "identifier": "Set",
-      "module": "typescript/lib/lib.es2015.collection.d.ts",
+      "type": "parser-error",
+      "id": 38,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 40,
+      "target": 39,
+      "parameters": [
+        38
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 41,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 42,
+      "target": 39,
+      "parameters": [
+        41
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 43,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 44,
+      "target": 39,
+      "parameters": [
+        43
+      ]
+    },
+    {
+      "type": "function",
+      "id": 45,
+      "parameters": [
+        {
+          "identifier": "kinda hard to tell",
+          "typeof": 42
+        }
+      ],
+      "returns": 44,
+      "typeParameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 46,
+      "keyword": "void"
+    },
+    {
+      "type": "function",
+      "id": 47,
+      "parameters": [
+        {
+          "identifier": "kinda hard to tell",
+          "typeof": 45
+        }
+      ],
+      "returns": 46,
+      "typeParameters": []
+    },
+    {
+      "type": "keyword",
       "id": 48,
-      "type": "external"
+      "keyword": "string"
     },
     {
-      "identifier": "Node",
-      "module": "@lukekaalim/act",
-      "id": 101,
-      "type": "external"
+      "type": "object",
+      "id": 49,
+      "properties": [
+        {
+          "identifier": "point",
+          "typeof": 40
+        },
+        {
+          "identifier": "onPointEdit",
+          "typeof": 47
+        },
+        {
+          "identifier": "fill",
+          "typeof": 48
+        }
+      ]
     },
     {
-      "identifier": "Ref",
-      "module": "@lukekaalim/act",
-      "id": 82,
-      "type": "external"
+      "type": "reference",
+      "id": 50,
+      "target": 1,
+      "parameters": []
     },
     {
-      "identifier": "SVGLineElement",
-      "module": "typescript/lib/lib.dom.d.ts",
-      "id": 123,
-      "type": "external"
+      "type": "reference",
+      "id": 52,
+      "target": 51,
+      "parameters": [
+        50
+      ]
     },
     {
-      "identifier": "SVGPatternElement",
-      "module": "typescript/lib/lib.dom.d.ts",
-      "id": 132,
-      "type": "external"
+      "id": 56,
+      "type": "reference",
+      "target": 55,
+      "parameters": []
     },
     {
-      "identifier": "AssertRefsExtends",
-      "module": "@lukekaalim/act-graphit/ResizingSpace.ts",
-      "id": 176,
-      "type": "external"
+      "id": 54,
+      "type": "reference",
+      "target": 53,
+      "parameters": [
+        56
+      ]
     },
     {
-      "identifier": "SVGElement",
-      "module": "typescript/lib/lib.dom.d.ts",
-      "id": 182,
-      "type": "external"
+      "id": 58,
+      "type": "keyword",
+      "keyword": "void"
     },
     {
-      "identifier": "SVGSVGElement",
-      "module": "typescript/lib/lib.dom.d.ts",
-      "id": 185,
-      "type": "external"
+      "id": 57,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "def",
+          "typeof": 56
+        }
+      ],
+      "returns": 58
     },
     {
-      "identifier": "Deps",
-      "module": "@lukekaalim/act",
+      "id": 61,
+      "type": "reference",
+      "target": 60,
+      "parameters": []
+    },
+    {
+      "id": 59,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 61
+    },
+    {
+      "type": "parser-error",
+      "id": 62,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 64,
+      "target": 63,
+      "parameters": [
+        62
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 65,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 66,
+      "target": 63,
+      "parameters": [
+        65
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 67,
+      "message": "Method not supported yet"
+    },
+    {
+      "type": "object",
+      "id": 68,
+      "properties": [
+        {
+          "identifier": "position",
+          "typeof": 64
+        },
+        {
+          "identifier": "size",
+          "typeof": 66
+        },
+        {
+          "identifier": "unknown",
+          "typeof": 67
+        }
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 69,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
       "id": 70,
-      "type": "external"
+      "target": 63,
+      "parameters": [
+        69
+      ]
     },
     {
-      "identifier": "Dimension",
-      "module": "@lukekaalim/act-graphit/vector.ts",
+      "type": "keyword",
+      "id": 71,
+      "keyword": "unknown"
+    },
+    {
+      "type": "reference",
+      "id": 73,
+      "target": 72,
+      "parameters": []
+    },
+    {
+      "type": "parser-error",
+      "id": 74,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 75,
+      "target": 63,
+      "parameters": [
+        74
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 76,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 77,
+      "target": 63,
+      "parameters": [
+        76
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 78,
+      "keyword": "void"
+    },
+    {
+      "type": "function",
+      "id": 79,
+      "parameters": [
+        {
+          "identifier": "kinda hard to tell",
+          "typeof": 77
+        }
+      ],
+      "returns": 78,
+      "typeParameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 80,
+      "keyword": "null"
+    },
+    {
+      "type": "reference",
+      "id": 81,
+      "target": 6,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 82,
+      "unions": [
+        80,
+        81
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 84,
+      "target": 83,
+      "parameters": [
+        82
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 85,
+      "keyword": "null"
+    },
+    {
+      "type": "reference",
+      "id": 87,
+      "target": 86,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 88,
+      "unions": [
+        85,
+        87
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 89,
+      "target": 83,
+      "parameters": [
+        88
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 90,
+      "keyword": "null"
+    },
+    {
+      "type": "reference",
+      "id": 91,
+      "target": 86,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 92,
+      "unions": [
+        90,
+        91
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 93,
+      "target": 83,
+      "parameters": [
+        92
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 94,
+      "keyword": "null"
+    },
+    {
+      "type": "reference",
+      "id": 96,
+      "target": 95,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 97,
+      "unions": [
+        94,
+        96
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 98,
+      "target": 83,
+      "parameters": [
+        97
+      ]
+    },
+    {
+      "type": "object",
+      "id": 99,
+      "properties": [
+        {
+          "identifier": "controller",
+          "typeof": 84
+        },
+        {
+          "identifier": "axisX",
+          "typeof": 89
+        },
+        {
+          "identifier": "axisY",
+          "typeof": 93
+        },
+        {
+          "identifier": "pattern",
+          "typeof": 98
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "id": 100,
+      "properties": [
+        {
+          "identifier": "offset",
+          "typeof": 70
+        },
+        {
+          "identifier": "style",
+          "typeof": 71
+        },
+        {
+          "identifier": "overlay",
+          "typeof": 73
+        },
+        {
+          "identifier": "initialPosition",
+          "typeof": 75
+        },
+        {
+          "identifier": "onDragComplete",
+          "typeof": 79
+        },
+        {
+          "identifier": "refs",
+          "typeof": 99
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 101,
+      "target": 7,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 103,
+      "target": 102,
+      "parameters": [
+        101
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 106,
+      "target": 105,
+      "parameters": []
+    },
+    {
+      "id": 108,
+      "type": "reference",
+      "target": 107,
+      "parameters": []
+    },
+    {
+      "id": 110,
+      "type": "reference",
+      "target": 109,
+      "parameters": [
+        108
+      ]
+    },
+    {
+      "id": 104,
+      "type": "function",
+      "typeParameters": [
+        107
+      ],
+      "parameters": [
+        {
+          "identifier": "refs",
+          "typeof": 108
+        }
+      ],
+      "returns": 110
+    },
+    {
+      "type": "reference",
+      "id": 113,
+      "target": 112,
+      "parameters": []
+    },
+    {
+      "id": 115,
+      "type": "reference",
+      "target": 114,
+      "parameters": []
+    },
+    {
+      "id": 117,
+      "type": "reference",
+      "target": 116,
+      "parameters": []
+    },
+    {
+      "id": 111,
+      "type": "function",
+      "typeParameters": [
+        114
+      ],
+      "parameters": [
+        {
+          "identifier": "el",
+          "typeof": 115
+        }
+      ],
+      "returns": 117
+    },
+    {
+      "type": "reference",
+      "id": 119,
+      "target": 118,
+      "parameters": []
+    },
+    {
+      "type": "parser-error",
+      "id": 120,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 122,
+      "target": 121,
+      "parameters": [
+        120
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 123,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 124,
+      "target": 121,
+      "parameters": [
+        123
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 126,
+      "target": 125,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 127,
+      "target": 125,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 128,
+      "properties": [
+        {
+          "identifier": "x",
+          "typeof": 126
+        },
+        {
+          "identifier": "y",
+          "typeof": 127
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "id": 129,
+      "properties": [
+        {
+          "identifier": "size",
+          "typeof": 122
+        },
+        {
+          "identifier": "position",
+          "typeof": 124
+        },
+        {
+          "identifier": "axes",
+          "typeof": 128
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 130,
+      "target": 12,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 132,
+      "target": 131,
+      "parameters": [
+        130
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 133,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 134,
+      "target": 121,
+      "parameters": [
+        133
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 135,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 136,
+      "target": 121,
+      "parameters": [
+        135
+      ]
+    },
+    {
+      "type": "object",
+      "id": 137,
+      "properties": [
+        {
+          "identifier": "size",
+          "typeof": 134
+        },
+        {
+          "identifier": "position",
+          "typeof": 136
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 138,
+      "target": 14,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 139,
+      "target": 131,
+      "parameters": [
+        138
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 140,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 141,
+      "target": 121,
+      "parameters": [
+        140
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 143,
+      "target": 142,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 144,
+      "properties": [
+        {
+          "identifier": "size",
+          "typeof": 141
+        },
+        {
+          "identifier": "deps",
+          "typeof": 143
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 145,
+      "target": 16,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 146,
+      "target": 131,
+      "parameters": [
+        145
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 147,
+      "keyword": "number"
+    },
+    {
+      "type": "parser-error",
+      "id": 148,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 150,
+      "target": 149,
+      "parameters": [
+        148
+      ]
+    },
+    {
+      "type": "function",
+      "id": 151,
+      "parameters": [
+        {
+          "identifier": "kinda hard to tell",
+          "typeof": 147
+        }
+      ],
+      "returns": 150,
+      "typeParameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 152,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 153,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 154,
+      "keyword": "number"
+    },
+    {
+      "type": "object",
+      "id": 155,
+      "properties": [
+        {
+          "identifier": "calcPoint",
+          "typeof": 151
+        },
+        {
+          "identifier": "resolution",
+          "typeof": 152
+        },
+        {
+          "identifier": "stroke",
+          "typeof": 153
+        },
+        {
+          "identifier": "strokeWidth",
+          "typeof": 154
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 156,
+      "target": 18,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 158,
+      "target": 157,
+      "parameters": [
+        156
+      ]
+    },
+    {
+      "type": "class",
+      "id": 160,
+      "properties": [],
+      "implements": [],
+      "abstract": false,
+      "extends": null
+    },
+    {
+      "type": "reference",
+      "id": 162,
+      "target": 161,
+      "parameters": []
+    },
+    {
+      "type": "parser-error",
+      "id": 164,
+      "message": "Don't support Node \"MappedType\" yet"
+    },
+    {
+      "type": "parser-error",
+      "id": 165,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 166,
+      "target": 21,
+      "parameters": [
+        165
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 167,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 168,
+      "target": 21,
+      "parameters": [
+        167
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 169,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 170,
+      "target": 21,
+      "parameters": [
+        169
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 171,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 172,
+      "target": 21,
+      "parameters": [
+        171
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 173,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 174,
+      "target": 21,
+      "parameters": [
+        173
+      ]
+    },
+    {
+      "type": "union",
+      "id": 175,
+      "unions": [
+        166,
+        168,
+        170,
+        172,
+        174
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 176,
+      "target": 161,
+      "parameters": []
+    },
+    {
+      "type": "parser-error",
+      "id": 178,
+      "message": "Method not supported yet"
+    },
+    {
+      "type": "parser-error",
+      "id": 179,
+      "message": "Method not supported yet"
+    },
+    {
+      "type": "parser-error",
+      "id": 180,
+      "message": "Method not supported yet"
+    },
+    {
+      "type": "parser-error",
+      "id": 181,
+      "message": "Method not supported yet"
+    },
+    {
+      "type": "parser-error",
+      "id": 182,
+      "message": "Method not supported yet"
+    },
+    {
+      "type": "parser-error",
+      "id": 183,
+      "message": "Method not supported yet"
+    },
+    {
+      "type": "object",
+      "id": 184,
+      "properties": [
+        {
+          "identifier": "unknown",
+          "typeof": 182
+        },
+        {
+          "identifier": "unknown",
+          "typeof": 183
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "id": 185,
+      "properties": [
+        {
+          "identifier": "unknown",
+          "typeof": 178
+        },
+        {
+          "identifier": "unknown",
+          "typeof": 179
+        },
+        {
+          "identifier": "unknown",
+          "typeof": 180
+        },
+        {
+          "identifier": "unknown",
+          "typeof": 181
+        },
+        {
+          "identifier": "scalar",
+          "typeof": 184
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 186,
+      "target": 112,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 187,
+      "target": 112,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 189,
+      "keyword": "null"
+    },
+    {
+      "type": "reference",
+      "id": 190,
+      "target": 188,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 191,
+      "unions": [
+        189,
+        190
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 193,
+      "target": 192,
+      "parameters": [
+        191
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 194,
+      "keyword": "string"
+    },
+    {
+      "type": "keyword",
+      "id": 195,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 196,
+      "keyword": "number"
+    },
+    {
+      "type": "array",
+      "id": 197,
+      "element": 196
+    },
+    {
+      "type": "keyword",
+      "id": 198,
+      "keyword": "string"
+    },
+    {
+      "type": "object",
+      "id": 199,
+      "properties": [
+        {
+          "identifier": "ref",
+          "typeof": 193
+        },
+        {
+          "identifier": "stroke",
+          "typeof": 194
+        },
+        {
+          "identifier": "strokeWidth",
+          "typeof": 195
+        },
+        {
+          "identifier": "strokeDashArray",
+          "typeof": 197
+        },
+        {
+          "identifier": "fill",
+          "typeof": 198
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 201,
+      "target": 112,
+      "parameters": []
+    },
+    {
+      "id": 204,
+      "type": "reference",
+      "target": 202,
+      "parameters": []
+    },
+    {
+      "id": 203,
+      "type": "reference",
+      "target": 24,
+      "parameters": [
+        204
+      ]
+    },
+    {
+      "id": 207,
+      "type": "keyword",
+      "keyword": "string"
+    },
+    {
+      "id": 208,
+      "type": "parser-error",
+      "message": "RealType Unknown"
+    },
+    {
+      "id": 206,
+      "type": "reference",
+      "target": 205,
+      "parameters": [
+        207,
+        208
+      ]
+    },
+    {
+      "id": 200,
+      "type": "function",
+      "typeParameters": [
+        202
+      ],
+      "parameters": [
+        {
+          "identifier": "props",
+          "typeof": 203
+        }
+      ],
+      "returns": 206
+    },
+    {
+      "type": "keyword",
+      "id": 209,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 210,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 211,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 212,
+      "keyword": "number"
+    },
+    {
+      "type": "object",
+      "id": 213,
+      "properties": [
+        {
+          "identifier": "x1",
+          "typeof": 209
+        },
+        {
+          "identifier": "y1",
+          "typeof": 210
+        },
+        {
+          "identifier": "x2",
+          "typeof": 211
+        },
+        {
+          "identifier": "y2",
+          "typeof": 212
+        }
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 214,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 216,
+      "target": 215,
+      "parameters": [
+        214
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 217,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 218,
+      "target": 215,
+      "parameters": [
+        217
+      ]
+    },
+    {
+      "type": "object",
+      "id": 219,
+      "properties": [
+        {
+          "identifier": "start",
+          "typeof": 216
+        },
+        {
+          "identifier": "end",
+          "typeof": 218
+        }
+      ]
+    },
+    {
+      "type": "union",
+      "id": 220,
+      "unions": [
+        213,
+        219
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 221,
+      "target": 86,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 222,
+      "target": 24,
+      "parameters": [
+        221
+      ]
+    },
+    {
+      "type": "intersection",
+      "id": 223,
+      "intersections": [
+        220,
+        222
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 224,
+      "target": 26,
+      "parameters": []
+    },
+    {
+      "type": "reference",
       "id": 226,
-      "type": "external"
+      "target": 225,
+      "parameters": [
+        224
+      ]
     },
     {
-      "identifier": "Dimension",
-      "module": "@lukekaalim/act-graphit/vector.ts",
+      "type": "keyword",
+      "id": 227,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 228,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 229,
+      "keyword": "number"
+    },
+    {
+      "type": "object",
+      "id": 230,
+      "properties": [
+        {
+          "identifier": "cx",
+          "typeof": 227
+        },
+        {
+          "identifier": "cy",
+          "typeof": 228
+        },
+        {
+          "identifier": "r",
+          "typeof": 229
+        }
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 231,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 232,
+      "target": 215,
+      "parameters": [
+        231
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 233,
+      "keyword": "number"
+    },
+    {
+      "type": "object",
+      "id": 234,
+      "properties": [
+        {
+          "identifier": "center",
+          "typeof": 232
+        },
+        {
+          "identifier": "radius",
+          "typeof": 233
+        }
+      ]
+    },
+    {
+      "type": "union",
+      "id": 235,
+      "unions": [
+        230,
+        234
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 237,
+      "target": 236,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 238,
+      "target": 24,
+      "parameters": [
+        237
+      ]
+    },
+    {
+      "type": "intersection",
+      "id": 239,
+      "intersections": [
+        235,
+        238
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 240,
+      "target": 28,
+      "parameters": []
+    },
+    {
+      "type": "reference",
       "id": 241,
-      "type": "external"
+      "target": 225,
+      "parameters": [
+        240
+      ]
     },
     {
-      "identifier": "Dimension",
-      "module": "@lukekaalim/act-graphit/vector.ts",
-      "id": 253,
-      "type": "external"
+      "type": "keyword",
+      "id": 242,
+      "keyword": "number"
     },
     {
-      "identifier": "SVGCircleElement",
-      "module": "typescript/lib/lib.dom.d.ts",
-      "id": 285,
-      "type": "external"
+      "type": "keyword",
+      "id": 243,
+      "keyword": "number"
     },
     {
-      "identifier": "SVGRectElement",
-      "module": "typescript/lib/lib.dom.d.ts",
+      "type": "keyword",
+      "id": 244,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 245,
+      "keyword": "number"
+    },
+    {
+      "type": "object",
+      "id": 246,
+      "properties": [
+        {
+          "identifier": "x",
+          "typeof": 242
+        },
+        {
+          "identifier": "y",
+          "typeof": 243
+        },
+        {
+          "identifier": "width",
+          "typeof": 244
+        },
+        {
+          "identifier": "height",
+          "typeof": 245
+        }
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 247,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 248,
+      "target": 215,
+      "parameters": [
+        247
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 249,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 250,
+      "target": 215,
+      "parameters": [
+        249
+      ]
+    },
+    {
+      "type": "object",
+      "id": 251,
+      "properties": [
+        {
+          "identifier": "position",
+          "typeof": 248
+        },
+        {
+          "identifier": "size",
+          "typeof": 250
+        }
+      ]
+    },
+    {
+      "type": "union",
+      "id": 252,
+      "unions": [
+        246,
+        251
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 254,
+      "target": 253,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 255,
+      "target": 24,
+      "parameters": [
+        254
+      ]
+    },
+    {
+      "type": "intersection",
+      "id": 256,
+      "intersections": [
+        252,
+        255
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 257,
+      "target": 30,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 258,
+      "target": 225,
+      "parameters": [
+        257
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 259,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 260,
+      "target": 215,
+      "parameters": [
+        259
+      ]
+    },
+    {
+      "type": "object",
+      "id": 261,
+      "properties": [
+        {
+          "identifier": "position",
+          "typeof": 260
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 263,
+      "target": 262,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 264,
+      "target": 24,
+      "parameters": [
+        263
+      ]
+    },
+    {
+      "type": "intersection",
+      "id": 265,
+      "intersections": [
+        261,
+        264
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 266,
+      "target": 32,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 267,
+      "target": 225,
+      "parameters": [
+        266
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 268,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 269,
+      "target": 215,
+      "parameters": [
+        268
+      ]
+    },
+    {
+      "type": "parser-error",
+      "id": 270,
+      "message": "literal (FirstLiteralToken)"
+    },
+    {
+      "type": "reference",
+      "id": 271,
+      "target": 215,
+      "parameters": [
+        270
+      ]
+    },
+    {
+      "type": "object",
+      "id": 272,
+      "properties": [
+        {
+          "identifier": "position",
+          "typeof": 269
+        },
+        {
+          "identifier": "size",
+          "typeof": 271
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 273,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 274,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 275,
+      "keyword": "number"
+    },
+    {
+      "type": "keyword",
+      "id": 276,
+      "keyword": "number"
+    },
+    {
+      "type": "object",
+      "id": 277,
+      "properties": [
+        {
+          "identifier": "x",
+          "typeof": 273
+        },
+        {
+          "identifier": "y",
+          "typeof": 274
+        },
+        {
+          "identifier": "width",
+          "typeof": 275
+        },
+        {
+          "identifier": "height",
+          "typeof": 276
+        }
+      ]
+    },
+    {
+      "type": "union",
+      "id": 278,
+      "unions": [
+        272,
+        277
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 279,
+      "target": 34,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 280,
+      "target": 225,
+      "parameters": [
+        279
+      ]
+    },
+    {
+      "id": 283,
+      "type": "parser-error",
+      "message": "RealType Null"
+    },
+    {
+      "id": 284,
+      "type": "reference",
+      "target": 112,
+      "parameters": []
+    },
+    {
+      "id": 286,
+      "type": "reference",
+      "target": 285,
+      "parameters": []
+    },
+    {
+      "id": 282,
+      "type": "union",
+      "unions": [
+        283,
+        284,
+        286
+      ]
+    },
+    {
+      "id": 288,
+      "type": "reference",
+      "target": 287,
+      "parameters": []
+    },
+    {
+      "id": 290,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [],
+      "returns": 58
+    },
+    {
+      "id": 289,
+      "type": "object",
+      "properties": [
+        {
+          "identifier": "unsubscribe",
+          "typeof": 290
+        }
+      ]
+    },
+    {
+      "id": 281,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "element",
+          "typeof": 282
+        },
+        {
+          "identifier": "eventMap",
+          "typeof": 288
+        }
+      ],
+      "returns": 289
+    },
+    {
       "id": 293,
-      "type": "external"
+      "type": "reference",
+      "target": 292,
+      "parameters": [
+        282
+      ]
     },
     {
-      "identifier": "SVGGElement",
-      "module": "typescript/lib/lib.dom.d.ts",
-      "id": 303,
-      "type": "external"
+      "id": 296,
+      "type": "literal",
+      "literal": 2
     },
     {
-      "identifier": "PointerEvent",
-      "module": "typescript/lib/lib.dom.d.ts",
-      "id": 324,
-      "type": "external"
+      "id": 295,
+      "type": "reference",
+      "target": 21,
+      "parameters": [
+        296
+      ]
+    },
+    {
+      "id": 294,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "positionDelta",
+          "typeof": 295
+        }
+      ],
+      "returns": 58
+    },
+    {
+      "id": 299,
+      "type": "reference",
+      "target": 298,
+      "parameters": []
+    },
+    {
+      "id": 300,
+      "type": "keyword",
+      "keyword": "boolean"
+    },
+    {
+      "id": 297,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "event",
+          "typeof": 299
+        }
+      ],
+      "returns": 300
+    },
+    {
+      "id": 302,
+      "type": "reference",
+      "target": 301,
+      "parameters": []
+    },
+    {
+      "id": 291,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "ref",
+          "typeof": 293
+        },
+        {
+          "identifier": "onElementMove",
+          "typeof": 294
+        },
+        {
+          "identifier": "shouldStartDrag",
+          "typeof": 297
+        },
+        {
+          "identifier": "__3",
+          "typeof": 302
+        }
+      ],
+      "returns": 300
     }
   ],
-  "exports": [
+  "identifiers": [
     {
-      "declares": 37,
-      "parameters": [],
-      "doc": null,
-      "identifier": "EditablePointProps",
-      "id": 0,
-      "type": "type"
+      "id": 39,
+      "type": "external",
+      "name": "Vector",
+      "moduleName": "@lukekaalim/act-graphit/EditablePoint.ts"
     },
     {
-      "identifier": "EditablePoint",
-      "doc": null,
-      "signature": 44,
+      "type": "type",
       "id": 1,
-      "type": "function"
+      "name": "EditablePointProps",
+      "parameters": [],
+      "typeId": 49
     },
     {
-      "identifier": "globalDefs",
-      "doc": null,
-      "typeof": 47,
+      "id": 51,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act-graphit/EditablePoint.ts"
+    },
+    {
+      "type": "value",
       "id": 2,
-      "type": "variable"
+      "name": "EditablePoint",
+      "typeId": 52
     },
     {
-      "identifier": "registerSVGDef",
-      "doc": null,
-      "signature": 49,
+      "id": 53,
+      "type": "external",
+      "name": "Set",
+      "moduleName": "typescript/lib/lib.es2015.collection.d.ts"
+    },
+    {
+      "id": 55,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "value",
       "id": 3,
-      "type": "function"
+      "name": "globalDefs",
+      "typeId": 54
     },
     {
-      "identifier": "DefProvider",
-      "doc": null,
-      "signature": 52,
+      "type": "value",
       "id": 4,
-      "type": "function"
+      "name": "registerSVGDef",
+      "typeId": 57
     },
     {
-      "declares": 54,
-      "parameters": [],
-      "doc": null,
-      "identifier": "CartesianSpaceController",
+      "id": 60,
+      "type": "external",
+      "name": "Element",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "value",
       "id": 5,
-      "type": "type"
+      "name": "DefProvider",
+      "typeId": 59
     },
     {
-      "declares": 60,
-      "parameters": [],
-      "doc": null,
-      "identifier": "CartesianSpaceProps",
+      "id": 63,
+      "type": "external",
+      "name": "Vector",
+      "moduleName": "@lukekaalim/act-graphit/CartesianSpace.ts"
+    },
+    {
+      "type": "type",
       "id": 6,
-      "type": "type"
+      "name": "CartesianSpaceController",
+      "parameters": [],
+      "typeId": 68
     },
     {
-      "identifier": "CartesianSpace",
-      "doc": null,
-      "signature": 133,
+      "id": 72,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/act-graphit/CartesianSpace.ts"
+    },
+    {
+      "id": 83,
+      "type": "external",
+      "name": "Ref",
+      "moduleName": "@lukekaalim/act-graphit/CartesianSpace.ts"
+    },
+    {
+      "id": 86,
+      "type": "external",
+      "name": "SVGLineElement",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "id": 95,
+      "type": "external",
+      "name": "SVGPatternElement",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "type": "type",
       "id": 7,
-      "type": "function"
+      "name": "CartesianSpaceProps",
+      "parameters": [],
+      "typeId": 100
     },
     {
-      "identifier": "assertRefs",
-      "doc": null,
-      "signature": 136,
+      "id": 102,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act-graphit/CartesianSpace.ts"
+    },
+    {
+      "type": "value",
       "id": 8,
-      "type": "function"
+      "name": "CartesianSpace",
+      "typeId": 103
     },
     {
-      "identifier": "assertSVGParent",
-      "doc": null,
-      "signature": 179,
+      "id": 105,
+      "type": "external",
+      "name": "AssertRefsExtends",
+      "moduleName": "@lukekaalim/act-graphit/ResizingSpace.ts"
+    },
+    {
+      "id": 107,
+      "name": "T",
+      "type": "type-parameter",
+      "constraint": 106,
+      "default": null
+    },
+    {
+      "id": 109,
+      "type": "external",
+      "name": "AssertRefsReturn",
+      "moduleName": "@lukekaalim/act-graphit/ResizingSpace.ts"
+    },
+    {
+      "type": "value",
       "id": 9,
-      "type": "function"
+      "name": "assertRefs",
+      "typeId": 104
     },
     {
-      "identifier": "ResizingSpace",
-      "doc": null,
-      "signature": 186,
+      "id": 112,
+      "type": "external",
+      "name": "SVGElement",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "id": 114,
+      "name": "T",
+      "type": "type-parameter",
+      "constraint": 113,
+      "default": null
+    },
+    {
+      "id": 116,
+      "type": "external",
+      "name": "SVGSVGElement",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "type": "value",
       "id": 10,
-      "type": "function"
+      "name": "assertSVGParent",
+      "typeId": 111
     },
     {
-      "declares": 189,
-      "parameters": [],
-      "doc": null,
-      "identifier": "PositiveAxesProps",
+      "id": 118,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act-graphit/ResizingSpace.ts"
+    },
+    {
+      "type": "value",
       "id": 11,
-      "type": "type"
+      "name": "ResizingSpace",
+      "typeId": 119
     },
     {
-      "identifier": "PositiveAxes",
-      "doc": null,
-      "signature": 197,
+      "id": 121,
+      "type": "external",
+      "name": "Vector",
+      "moduleName": "@lukekaalim/act-graphit/Axes.ts"
+    },
+    {
+      "id": 125,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/act-graphit/Axes.ts"
+    },
+    {
+      "type": "type",
       "id": 12,
-      "type": "function"
+      "name": "PositiveAxesProps",
+      "parameters": [],
+      "typeId": 129
     },
     {
-      "declares": 200,
-      "parameters": [],
-      "doc": null,
-      "identifier": "ZeroBasedAxesProps",
+      "id": 131,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act-graphit/Axes.ts"
+    },
+    {
+      "type": "value",
       "id": 13,
-      "type": "type"
+      "name": "PositiveAxes",
+      "typeId": 132
     },
     {
-      "identifier": "ZeroBasedAxes",
-      "doc": null,
-      "signature": 205,
+      "type": "type",
       "id": 14,
-      "type": "function"
+      "name": "ZeroBasedAxesProps",
+      "parameters": [],
+      "typeId": 137
     },
     {
-      "declares": 208,
-      "parameters": [],
-      "doc": null,
-      "identifier": "UnitSizeProps",
+      "type": "value",
       "id": 15,
-      "type": "type"
+      "name": "ZeroBasedAxes",
+      "typeId": 139
     },
     {
-      "identifier": "UnitSize",
-      "doc": null,
-      "signature": 212,
+      "id": 142,
+      "type": "external",
+      "name": "Deps",
+      "moduleName": "@lukekaalim/act-graphit/Axes.ts"
+    },
+    {
+      "type": "type",
       "id": 16,
-      "type": "function"
+      "name": "UnitSizeProps",
+      "parameters": [],
+      "typeId": 144
     },
     {
-      "declares": 215,
-      "parameters": [],
-      "doc": null,
-      "identifier": "LinePathProps",
+      "type": "value",
       "id": 17,
-      "type": "type"
+      "name": "UnitSize",
+      "typeId": 146
     },
     {
-      "identifier": "LinePath",
-      "doc": null,
-      "signature": 221,
+      "id": 149,
+      "type": "external",
+      "name": "Vector",
+      "moduleName": "@lukekaalim/act-graphit/LinePath.ts"
+    },
+    {
+      "type": "type",
       "id": 18,
-      "type": "function"
-    },
-    {
-      "declares": 227,
-      "parameters": [
-        {
-          "identifier": "D",
-          "id": 224,
-          "extends": 225,
-          "default": null
-        }
-      ],
-      "doc": null,
-      "identifier": "Vector",
-      "id": 22,
-      "type": "type"
-    },
-    {
-      "declares": 228,
+      "name": "LinePathProps",
       "parameters": [],
-      "doc": null,
-      "identifier": "AnyVector",
+      "typeId": 155
+    },
+    {
+      "id": 157,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act-graphit/LinePath.ts"
+    },
+    {
+      "type": "value",
+      "id": 19,
+      "name": "LinePath",
+      "typeId": 158
+    },
+    {
+      "id": 159,
+      "name": "T",
+      "type": "type-parameter",
+      "constraint": null,
+      "default": null
+    },
+    {
+      "type": "type",
       "id": 20,
-      "type": "type"
+      "name": "Ring",
+      "parameters": [
+        159
+      ],
+      "typeId": 160
     },
     {
-      "declares": 242,
-      "parameters": [
-        {
-          "identifier": "D",
-          "id": 239,
-          "extends": 240,
-          "default": null
-        }
-      ],
-      "doc": null,
-      "identifier": "VectorOps",
+      "id": 161,
+      "type": "external",
+      "name": "Dimension",
+      "moduleName": "@lukekaalim/act-graphit/vector.ts"
+    },
+    {
+      "id": 163,
+      "name": "D",
+      "type": "type-parameter",
+      "constraint": 162,
+      "default": null
+    },
+    {
+      "type": "type",
       "id": 21,
-      "type": "type"
-    },
-    {
-      "identifier": "Vector",
-      "doc": null,
-      "signature": 250,
-      "id": 22,
-      "type": "function"
-    },
-    {
-      "declares": 259,
+      "name": "Vector",
       "parameters": [
-        {
-          "identifier": "T",
-          "id": 256,
-          "extends": 257,
-          "default": 258
-        }
+        163
       ],
-      "doc": null,
-      "identifier": "SVGCoreProps",
+      "typeId": 164
+    },
+    {
+      "type": "type",
+      "id": 22,
+      "name": "AnyVector",
+      "parameters": [],
+      "typeId": 175
+    },
+    {
+      "id": 177,
+      "name": "D",
+      "type": "type-parameter",
+      "constraint": 176,
+      "default": null
+    },
+    {
+      "type": "type",
       "id": 23,
-      "type": "type"
+      "name": "VectorOps",
+      "parameters": [
+        177
+      ],
+      "typeId": 185
     },
     {
-      "identifier": "remapCoreProps",
-      "doc": null,
-      "signature": 269,
+      "id": 188,
+      "name": "T",
+      "type": "type-parameter",
+      "constraint": 186,
+      "default": 187
+    },
+    {
+      "id": 192,
+      "type": "external",
+      "name": "Ref",
+      "moduleName": "@lukekaalim/act-graphit/elements.ts"
+    },
+    {
+      "type": "type",
       "id": 24,
-      "type": "function"
+      "name": "SVGCoreProps",
+      "parameters": [
+        188
+      ],
+      "typeId": 199
     },
     {
-      "declares": 274,
-      "parameters": [],
-      "doc": null,
-      "identifier": "LineProps",
+      "id": 202,
+      "name": "T",
+      "type": "type-parameter",
+      "constraint": 201,
+      "default": null
+    },
+    {
+      "id": 205,
+      "type": "external",
+      "name": "Record",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "type": "value",
       "id": 25,
-      "type": "type"
+      "name": "remapCoreProps",
+      "typeId": 200
     },
     {
-      "identifier": "Line",
-      "doc": null,
-      "signature": 278,
+      "id": 215,
+      "type": "external",
+      "name": "Vector",
+      "moduleName": "@lukekaalim/act-graphit/elements.ts"
+    },
+    {
+      "type": "type",
       "id": 26,
-      "type": "function"
+      "name": "LineProps",
+      "parameters": [],
+      "typeId": 223
     },
     {
-      "declares": 281,
-      "parameters": [],
-      "doc": null,
-      "identifier": "CircleProps",
+      "id": 225,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act-graphit/elements.ts"
+    },
+    {
+      "type": "value",
       "id": 27,
-      "type": "type"
+      "name": "Line",
+      "typeId": 226
     },
     {
-      "identifier": "Circle",
-      "doc": null,
-      "signature": 286,
+      "id": 236,
+      "type": "external",
+      "name": "SVGCircleElement",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "type": "type",
       "id": 28,
-      "type": "function"
+      "name": "CircleProps",
+      "parameters": [],
+      "typeId": 239
     },
     {
-      "declares": 289,
-      "parameters": [],
-      "doc": null,
-      "identifier": "RectProps",
+      "type": "value",
       "id": 29,
-      "type": "type"
+      "name": "Circle",
+      "typeId": 241
     },
     {
-      "identifier": "Rect",
-      "doc": null,
-      "signature": 294,
+      "id": 253,
+      "type": "external",
+      "name": "SVGRectElement",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "type": "type",
       "id": 30,
-      "type": "function"
+      "name": "RectProps",
+      "parameters": [],
+      "typeId": 256
     },
     {
-      "declares": 297,
-      "parameters": [],
-      "doc": null,
-      "identifier": "GroupProps",
+      "type": "value",
       "id": 31,
-      "type": "type"
+      "name": "Rect",
+      "typeId": 258
     },
     {
-      "identifier": "Group",
-      "doc": null,
-      "signature": 304,
+      "id": 262,
+      "type": "external",
+      "name": "SVGGElement",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "type": "type",
       "id": 32,
-      "type": "function"
-    },
-    {
-      "declares": 307,
+      "name": "GroupProps",
       "parameters": [],
-      "doc": null,
-      "identifier": "ForeignObjectProps",
+      "typeId": 265
+    },
+    {
+      "type": "value",
       "id": 33,
-      "type": "type"
+      "name": "Group",
+      "typeId": 267
     },
     {
-      "identifier": "ForeignObject",
-      "doc": null,
-      "signature": 308,
+      "type": "type",
       "id": 34,
-      "type": "function"
+      "name": "ForeignObjectProps",
+      "parameters": [],
+      "typeId": 278
     },
     {
-      "identifier": "subscribeMap",
-      "doc": null,
-      "signature": 311,
+      "type": "value",
       "id": 35,
-      "type": "function"
+      "name": "ForeignObject",
+      "typeId": 280
     },
     {
-      "identifier": "useDrag",
-      "doc": null,
-      "signature": 315,
+      "id": 285,
+      "type": "external",
+      "name": "HTMLElement",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "id": 287,
+      "type": "external",
+      "name": "EventMap",
+      "moduleName": "@lukekaalim/act-graphit/useDrag.ts"
+    },
+    {
+      "type": "value",
       "id": 36,
-      "type": "function"
+      "name": "subscribeMap",
+      "typeId": 281
+    },
+    {
+      "id": 292,
+      "type": "external",
+      "name": "ReadonlyRef",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "id": 298,
+      "type": "external",
+      "name": "PointerEvent",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "id": 301,
+      "type": "external",
+      "name": "DragOptions",
+      "moduleName": "@lukekaalim/act-graphit/useDrag.ts"
+    },
+    {
+      "type": "value",
+      "id": 37,
+      "name": "useDrag",
+      "typeId": 291
     }
   ],
-  "identifiers": {
-    "0": "EditablePointProps",
-    "1": "EditablePoint",
-    "2": "globalDefs",
-    "3": "registerSVGDef",
-    "4": "DefProvider",
-    "5": "CartesianSpaceController",
-    "6": "CartesianSpaceProps",
-    "7": "CartesianSpace",
-    "8": "assertRefs",
-    "9": "assertSVGParent",
-    "10": "ResizingSpace",
-    "11": "PositiveAxesProps",
-    "12": "PositiveAxes",
-    "13": "ZeroBasedAxesProps",
-    "14": "ZeroBasedAxes",
-    "15": "UnitSizeProps",
-    "16": "UnitSize",
-    "17": "LinePathProps",
-    "18": "LinePath",
-    "19": "Vector",
-    "20": "AnyVector",
-    "21": "VectorOps",
-    "22": "Vector",
-    "23": "SVGCoreProps",
-    "24": "remapCoreProps",
-    "25": "LineProps",
-    "26": "Line",
-    "27": "CircleProps",
-    "28": "Circle",
-    "29": "RectProps",
-    "30": "Rect",
-    "31": "GroupProps",
-    "32": "Group",
-    "33": "ForeignObjectProps",
-    "34": "ForeignObject",
-    "35": "subscribeMap",
-    "36": "useDrag",
-    "224": "D",
-    "239": "D",
-    "256": "T"
-  }
+  "comments": [],
+  "exports": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "diagnostics": []
 }

@@ -9,7 +9,7 @@
     "router",
     "sample-lib",
     "grimoire",
-    "doc-ts",
+    "grimoire-ts",
     "echo"
   ],
   "devDependencies": {

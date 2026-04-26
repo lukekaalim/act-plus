@@ -3,9 +3,7 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@types/lodash-es": "^4.17.12",
     "brace-expansion": "^2.0.2",
-    "lodash-es": "^4.17.22",
     "vite": "^7.1.10"
   },
   "dependencies": {
