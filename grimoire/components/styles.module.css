@@ -1,0 +1,24 @@
+/**
+Styles for simple top-level components
+*/
+
+.pill {
+  padding: 4px 8px;
+
+  border-radius: 12px;
+
+  color: white;
+  font-size: 14px;
+}
+
+.pillList {
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+
+  gap: 8px;
+
+
+  display: flex;
+  flex-direction: row;
+}

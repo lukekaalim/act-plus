@@ -42,6 +42,18 @@ export const EchoView: Component<EchoViewProps> = ({
     }),
 
     !!debug && [
+      h('h2', { id: 'Comments' }, `Comments`),
+      h('table', {}, [
+        h('tr', {}, [h('th', {}, 'ID'), h('th', {}, 'identifierID'), h('th', {}, 'Member Name'), h('th', {}, 'Text')]),
+        echo.comments.map(comment => {
+          return h('tr', {}, [
+            h('td', {}, comment.id),
+            h('td', {}, comment.identifier),
+            h('td', {}, comment.memberName),
+            h('td', {}, comment.text),
+          ])
+        })
+      ]),
       h('h2', { id: 'Externals' }, `Externals`),
       h('table', {}, [
         h('tr', {}, [h('th', {}, 'Name'), h('th', {}, 'Module')]),

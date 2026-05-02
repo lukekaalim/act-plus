@@ -1,6 +1,6 @@
 import { Component, h, Node, useMemo } from "@lukekaalim/act"
 import { EchoReadingContext, Identifier, TypeIdentifier, ValueIdentifier } from "@lukekaalim/echo"
-import { CodeBox, createHLJSBuilder, useDocApp } from "@lukekaalim/grimoire";
+import { CodeBox, createHLJSBuilder, Pill, PillList, useDocApp } from "@lukekaalim/grimoire";
 import * as tsdoc from '@microsoft/tsdoc';
 
 import { EchoPlugin } from "../Echo";
@@ -41,8 +41,7 @@ export const IdentifierView: Component<IdentifierViewProps> = ({
   }, [renderer, identifier]);
 
   const comment = useMemo(() => {
-    const type = context.getTypeOrThrow(identifier.typeId);
-    const commentID = context.commentByTypeID.get(type.id);
+    const commentID = context.commentByIdentifier.get(identifier.id);
     const comment = commentID && context.comments.get(commentID);
     if (!comment)
       return null;
@@ -54,7 +53,11 @@ export const IdentifierView: Component<IdentifierViewProps> = ({
   const fullyQualifiedName = context.qualifiedNameByIdentifier.get(identifier.id) as string;
 
   return [
-    header || h('h3', { id: !noId && `echo:${context.echo.moduleName}:${fullyQualifiedName}` }, fullyQualifiedName),
+    header || h('h3', { id: !noId && `echo:${context.echo.moduleName}:${fullyQualifiedName}`, style: { 'margin-bottom': 0 } }, fullyQualifiedName),
+    comment &&
+      h(PillList, { pills: comment.modifierTagSet.nodes.map(node => {
+          return h('li', {}, h(Pill, { text: node.tagName }))
+        }) }),
 
     children,
     h(CodeBox, { lines: syntax.output() }),

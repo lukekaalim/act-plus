@@ -1,6 +1,6 @@
 ---
 id: echo-5
-status: in-progress
+status: complete
 ---
 ### Declaration Simplification
 
@@ -34,5 +34,5 @@ Add:
       It's name and filesource are recorded
     - [x] GenericIdentifier. A parameter from a TypeAlias, Class, Interface, or Function.
   - [x] More support for classes/interfaces/functions as types
-  - [ ] Comments attached to types/type + member instead of declaration
-  - [ ] Error/Diagnostic Support for result structure.
+  - [x] Comments attached to types/type + member instead of declaration
+  - [x] Error/Diagnostic Support for result structure.

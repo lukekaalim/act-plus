@@ -14,3 +14,4 @@ export * from './vertical_nav_menu';
 export * from './page';
 
 export * from './themes';
+export * from './Pill';

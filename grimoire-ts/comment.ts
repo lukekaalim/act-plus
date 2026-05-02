@@ -1,5 +1,6 @@
 import { h, Node } from '@lukekaalim/act';
 import * as tsdoc from '@microsoft/tsdoc';
+import { Pill } from '@lukekaalim/grimoire';
 import { ParameterComment } from './components';
 
 export const renderDocCommentNode = (node: tsdoc.DocNode): Node => {
@@ -27,6 +28,12 @@ export const renderDocCommentNode = (node: tsdoc.DocNode): Node => {
         name: paramBlock.parameterName,
         description: renderDocCommentNode(paramBlock.content)
       })
+    case tsdoc.DocNodeKind.BlockTag:
+      const blockTag = node as tsdoc.DocBlockTag;
+      return h(Pill, { text: blockTag.tagName })
+    case tsdoc.DocNodeKind.CodeSpan:
+      const codeSpan = node as tsdoc.DocCodeSpan;
+      return h('code', {}, codeSpan.code)
     default:
       return `Unsupported (${node.kind})`
   }

@@ -6,8 +6,19 @@ import { Identifier, IdentifierID } from "../definitions/identifiers";
 import { buildIdentifiers } from "./identifiers";
 import { Type, TypeID } from "../definitions/type";
 import { Comment, CommentID } from "../definitions/comments";
-import { findSymbolsToExpand } from "./comments";
+import { buildComments, findSymbolsToExpand } from "./comments";
 
+/**
+ * @internal
+ * 
+ * The data structure used internally to construct
+ * an Echo of a module, using the Typescript API.
+ * 
+ * Most parts of echo take in this context object,
+ * filling out and reading from variable maps. At different
+ * stages of generation, some maps will be filled and others
+ * empty.
+ */
 export type ModuleBuildContext = {
   ts: TypescriptContext,
   source: ts.SourceFile,
@@ -48,6 +59,11 @@ const createContext = (ts: TypescriptContext, source: ts.SourceFile): ModuleBuil
 
 /**
  * Create an Echo of a module
+ * 
+ * Hi
+ * 
+ * @experimental
+ * @public
  */
 export const createEchoFromSourceFile = (
   name: string,
@@ -60,6 +76,7 @@ export const createEchoFromSourceFile = (
   discoverExportableSymbols(cx);
   findSymbolsToExpand(cx);
   buildIdentifiers(cx);
+  buildComments(cx);
 
   const moduleSymbol = cx.ts.checker.getSymbolAtLocation(cx.source) as ts.Symbol;
   const exportedSymbols = cx.symbolsByNamespaceSymbol.get(moduleSymbol) as ts.Symbol[];

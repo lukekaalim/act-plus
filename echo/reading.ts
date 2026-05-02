@@ -8,8 +8,8 @@ export type EchoReadingContext = {
   comments: Map<CommentID, Comment>,
 
   identifiersByName: Map<string, IdentifierID[]>,
-  commentByTypeID: Map<TypeID, CommentID>,
-  commentByTypeIDAndMember: Map<TypeID, Map<string, CommentID>>,
+  commentByIdentifier: Map<IdentifierID, CommentID>,
+  commentByIdentifierAndMember: Map<IdentifierID, Map<string, CommentID>>,
   qualifiedNameByIdentifier: Map<IdentifierID, string>,
 
 
@@ -27,8 +27,8 @@ export const createEchoReadingContext = (echo: Echo) => {
 
     identifiersByName: new Map(),
 
-    commentByTypeID: new Map(),
-    commentByTypeIDAndMember: new Map(),
+    commentByIdentifier: new Map(),
+    commentByIdentifierAndMember: new Map(),
     qualifiedNameByIdentifier: new Map(),
 
     getTypeOrThrow(id: TypeID) {
@@ -50,16 +50,18 @@ export const createEchoReadingContext = (echo: Echo) => {
   }
 
   for (const comment of echo.comments) {
-    if (comment.memberName) {
-      context.commentByTypeID.set(comment.typeId, comment.id);
+    if (!comment.memberName) {
+      context.commentByIdentifier.set(comment.identifier, comment.id);
     } else {
-      const memberMap = context.commentByTypeIDAndMember.get(comment.typeId) || new Map();
+      const memberMap = context.commentByIdentifierAndMember.get(comment.identifier) || new Map();
       if (memberMap.size === 0) {
-        context.commentByTypeIDAndMember.set(comment.typeId, memberMap);
+        context.commentByIdentifierAndMember.set(comment.identifier, memberMap);
       }
       memberMap.set(comment.memberName, comment.id);
     }
   }
+
+  console.log({ context })
 
   const visitNamespace = (qualifiers: string[], identifierId: IdentifierID) => {
     const identifier = context.identifiers.get(identifierId);

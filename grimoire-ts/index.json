@@ -2,98 +2,98 @@
   "moduleName": "grimoire-ts/index",
   "types": [
     {
-      "id": 10,
+      "id": 92,
       "type": "literal",
       "literal": "echo"
     },
     {
-      "id": 15,
+      "id": 97,
       "type": "keyword",
       "keyword": "string"
     },
     {
-      "id": 17,
+      "id": 99,
       "type": "reference",
-      "target": 16,
+      "target": 98,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 14,
+      "id": 96,
       "type": "reference",
-      "target": 13,
+      "target": 95,
       "meta": {
         "resolvedBy": "instance:referenceTargetSymbol"
       },
       "parameters": [
-        15,
-        17
+        97,
+        99
       ]
     },
     {
-      "id": 19,
+      "id": 101,
       "type": "reference",
-      "target": 16,
+      "target": 98,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 20,
+      "id": 102,
       "type": "keyword",
       "keyword": "void"
     },
     {
-      "id": 18,
+      "id": 100,
       "type": "function",
       "typeParameters": [],
       "parameters": [
         {
           "identifier": "path",
-          "typeof": 15
+          "typeof": 97
         },
         {
           "identifier": "context",
-          "typeof": 19
+          "typeof": 101
         }
       ],
-      "returns": 20
+      "returns": 102
     },
     {
-      "id": 24,
+      "id": 106,
       "type": "reference",
-      "target": 23,
+      "target": 105,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 25,
+      "id": 107,
       "type": "reference",
-      "target": 16,
+      "target": 98,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 22,
+      "id": 104,
       "type": "function",
       "typeParameters": [],
       "parameters": [
         {
           "identifier": "echo",
-          "typeof": 24
+          "typeof": 106
         }
       ],
-      "returns": 25
+      "returns": 107
     },
     {
-      "id": 12,
+      "id": 94,
       "type": "object",
       "meta": {
         "resolvedBy": "instance:objectWithProperties",
@@ -103,269 +103,269 @@
       "properties": [
         {
           "identifier": "moduleContexts",
-          "typeof": 14
+          "typeof": 96
         },
         {
           "identifier": "addModuleReference",
-          "typeof": 18
+          "typeof": 100
         },
         {
           "identifier": "addModule",
-          "typeof": 22
+          "typeof": 104
         }
       ]
     },
     {
-      "id": 9,
+      "id": 91,
       "type": "reference",
-      "target": 8,
+      "target": 90,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": [
-        10,
-        12
+        92,
+        94
       ]
     },
     {
       "type": "keyword",
-      "id": 26,
+      "id": 108,
       "keyword": "string"
     },
     {
       "type": "keyword",
-      "id": 27,
+      "id": 109,
       "keyword": "string"
     },
     {
       "type": "keyword",
-      "id": 28,
+      "id": 110,
       "keyword": "string"
     },
     {
       "type": "keyword",
-      "id": 29,
+      "id": 111,
       "keyword": "string"
     },
     {
       "type": "reference",
-      "id": 31,
-      "target": 30,
+      "id": 113,
+      "target": 112,
       "parameters": []
     },
     {
       "type": "object",
-      "id": 32,
+      "id": 114,
       "properties": [
         {
           "identifier": "id",
-          "typeof": 26
+          "typeof": 108
         },
         {
           "identifier": "name",
-          "typeof": 27
+          "typeof": 109
         },
         {
           "identifier": "typeName",
-          "typeof": 28
+          "typeof": 110
         },
         {
           "identifier": "typeLinkURL",
-          "typeof": 29
+          "typeof": 111
         },
         {
           "identifier": "description",
-          "typeof": 31
+          "typeof": 113
         }
       ]
     },
     {
       "type": "reference",
-      "id": 33,
-      "target": 2,
+      "id": 115,
+      "target": 84,
       "parameters": []
     },
     {
       "type": "reference",
-      "id": 35,
-      "target": 34,
+      "id": 117,
+      "target": 116,
       "parameters": [
-        33
+        115
       ]
     },
     {
       "type": "reference",
-      "id": 37,
-      "target": 36,
+      "id": 119,
+      "target": 118,
       "parameters": []
     },
     {
       "type": "reference",
-      "id": 39,
-      "target": 38,
+      "id": 121,
+      "target": 120,
       "parameters": []
     },
     {
       "type": "union",
-      "id": 40,
+      "id": 122,
       "unions": [
-        37,
-        39
+        119,
+        121
       ]
     },
     {
       "type": "reference",
-      "id": 42,
-      "target": 41,
+      "id": 124,
+      "target": 123,
       "parameters": []
     },
     {
       "type": "reference",
-      "id": 44,
-      "target": 43,
+      "id": 126,
+      "target": 125,
       "parameters": []
     },
     {
       "type": "keyword",
-      "id": 45,
+      "id": 127,
       "keyword": "boolean"
     },
     {
       "type": "object",
-      "id": 46,
+      "id": 128,
       "properties": [
         {
           "identifier": "identifier",
-          "typeof": 40
+          "typeof": 122
         },
         {
           "identifier": "context",
-          "typeof": 42
+          "typeof": 124
         },
         {
           "identifier": "header",
-          "typeof": 44
+          "typeof": 126
         },
         {
           "identifier": "noId",
-          "typeof": 45
+          "typeof": 127
         }
       ]
     },
     {
-      "id": 50,
+      "id": 132,
       "type": "reference",
-      "target": 49,
+      "target": 131,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 52,
+      "id": 134,
       "type": "reference",
-      "target": 51,
+      "target": 133,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 48,
+      "id": 130,
       "type": "union",
       "unions": [
-        50,
-        52
+        132,
+        134
       ]
     },
     {
-      "id": 53,
+      "id": 135,
       "type": "reference",
-      "target": 16,
+      "target": 98,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 55,
+      "id": 137,
       "type": "keyword",
       "keyword": "undefined"
     },
     {
-      "id": 56,
+      "id": 138,
       "type": "keyword",
       "keyword": "null"
     },
     {
-      "id": 57,
+      "id": 139,
       "type": "keyword",
       "keyword": "number"
     },
     {
-      "id": 58,
+      "id": 140,
       "type": "keyword",
       "keyword": "boolean"
     },
     {
-      "id": 59,
+      "id": 141,
       "type": "keyword",
       "keyword": "boolean"
     },
     {
-      "id": 61,
+      "id": 143,
       "type": "reference",
-      "target": 60,
+      "target": 142,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 65,
+      "id": 147,
       "type": "reference",
-      "target": 64,
+      "target": 146,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 63,
+      "id": 145,
       "type": "reference",
-      "target": 62,
+      "target": 144,
       "meta": {
         "resolvedBy": "instance:referenceTargetSymbol"
       },
       "parameters": [
-        65
+        147
       ]
     },
     {
-      "id": 54,
+      "id": 136,
       "type": "union",
       "unions": [
-        55,
-        56,
-        15,
-        57,
-        58,
-        59,
-        61,
-        63
+        137,
+        138,
+        97,
+        139,
+        140,
+        141,
+        143,
+        145
       ]
     },
     {
-      "id": 66,
+      "id": 148,
       "type": "union",
       "unions": [
-        55,
-        58,
-        59
+        137,
+        140,
+        141
       ]
     },
     {
-      "id": 47,
+      "id": 129,
       "type": "object",
       "meta": {
         "resolvedBy": "instance:objectWithProperties",
@@ -375,104 +375,104 @@
       "properties": [
         {
           "identifier": "identifier",
-          "typeof": 48
+          "typeof": 130
         },
         {
           "identifier": "context",
-          "typeof": 53
+          "typeof": 135
         },
         {
           "identifier": "header",
-          "typeof": 54
+          "typeof": 136
         },
         {
           "identifier": "noId",
-          "typeof": 66
+          "typeof": 148
         }
       ]
     },
     {
       "type": "reference",
-      "id": 68,
-      "target": 67,
+      "id": 150,
+      "target": 149,
       "parameters": [
-        47
+        129
       ]
     },
     {
       "type": "reference",
-      "id": 70,
-      "target": 69,
+      "id": 152,
+      "target": 151,
       "parameters": []
     },
     {
       "type": "reference",
-      "id": 72,
-      "target": 71,
+      "id": 154,
+      "target": 153,
       "parameters": []
     },
     {
       "type": "reference",
-      "id": 74,
-      "target": 73,
+      "id": 156,
+      "target": 155,
       "parameters": []
     },
     {
       "type": "keyword",
-      "id": 75,
+      "id": 157,
       "keyword": "boolean"
     },
     {
       "type": "keyword",
-      "id": 76,
+      "id": 158,
       "keyword": "boolean"
     },
     {
       "type": "object",
-      "id": 77,
+      "id": 159,
       "properties": [
         {
           "identifier": "context",
-          "typeof": 70
+          "typeof": 152
         },
         {
           "identifier": "echo",
-          "typeof": 72
+          "typeof": 154
         },
         {
           "identifier": "header",
-          "typeof": 74
+          "typeof": 156
         },
         {
           "identifier": "noId",
-          "typeof": 75
+          "typeof": 157
         },
         {
           "identifier": "debug",
-          "typeof": 76
+          "typeof": 158
         }
       ]
     },
     {
-      "id": 79,
+      "id": 161,
       "type": "reference",
-      "target": 16,
+      "target": 98,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 80,
+      "id": 162,
       "type": "reference",
-      "target": 23,
+      "target": 105,
       "meta": {
         "resolvedBy": "instance:aliasSymbol"
       },
       "parameters": []
     },
     {
-      "id": 78,
+      "id": 160,
       "type": "object",
       "meta": {
         "resolvedBy": "instance:objectWithProperties",
@@ -482,212 +482,212 @@
       "properties": [
         {
           "identifier": "context",
-          "typeof": 79
+          "typeof": 161
         },
         {
           "identifier": "echo",
-          "typeof": 80
+          "typeof": 162
         },
         {
           "identifier": "header",
-          "typeof": 54
+          "typeof": 136
         },
         {
           "identifier": "noId",
-          "typeof": 66
+          "typeof": 148
         },
         {
           "identifier": "debug",
-          "typeof": 66
+          "typeof": 148
         }
       ]
     },
     {
       "type": "reference",
-      "id": 82,
-      "target": 81,
+      "id": 164,
+      "target": 163,
       "parameters": [
-        78
+        160
       ]
     }
   ],
   "identifiers": [
     {
-      "id": 8,
+      "id": 90,
       "type": "external",
       "name": "PluginI",
       "moduleName": "@lukekaalim/grimoire"
     },
     {
-      "id": 13,
+      "id": 95,
       "type": "external",
       "name": "Map",
       "moduleName": "typescript/lib/lib.es2015.collection.d.ts"
     },
     {
-      "id": 16,
+      "id": 98,
       "type": "external",
       "name": "EchoReadingContext",
       "moduleName": "@lukekaalim/echo"
     },
     {
-      "id": 23,
+      "id": 105,
       "type": "external",
       "name": "Echo",
       "moduleName": "@lukekaalim/echo"
     },
     {
       "type": "type",
-      "id": 1,
+      "id": 83,
       "name": "EchoPlugin",
       "parameters": [],
-      "typeId": 9
+      "typeId": 91
     },
     {
-      "id": 30,
+      "id": 112,
       "type": "external",
       "name": "Node",
       "moduleName": "@lukekaalim/act"
     },
     {
       "type": "type",
-      "id": 2,
+      "id": 84,
       "name": "ParameterCommentProps",
       "parameters": [],
-      "typeId": 32
+      "typeId": 114
     },
     {
-      "id": 34,
+      "id": 116,
       "type": "external",
       "name": "Component",
       "moduleName": "@lukekaalim/act"
     },
     {
       "type": "value",
-      "id": 3,
+      "id": 85,
       "name": "ParameterComment",
-      "typeId": 35
+      "typeId": 117
     },
     {
-      "id": 36,
+      "id": 118,
       "type": "external",
       "name": "ValueIdentifier",
       "moduleName": "@lukekaalim/echo"
     },
     {
-      "id": 38,
+      "id": 120,
       "type": "external",
       "name": "TypeIdentifier",
       "moduleName": "@lukekaalim/echo"
     },
     {
-      "id": 41,
+      "id": 123,
       "type": "external",
       "name": "EchoReadingContext",
       "moduleName": "@lukekaalim/echo"
     },
     {
-      "id": 43,
+      "id": 125,
       "type": "external",
       "name": "Node",
       "moduleName": "@lukekaalim/act"
     },
     {
       "type": "type",
-      "id": 4,
+      "id": 86,
       "name": "IdentifierViewProps",
       "parameters": [],
-      "typeId": 46
+      "typeId": 128
     },
     {
-      "id": 49,
+      "id": 131,
       "type": "external",
       "name": "ValueIdentifier",
       "moduleName": "@lukekaalim/echo"
     },
     {
-      "id": 51,
+      "id": 133,
       "type": "external",
       "name": "TypeIdentifier",
       "moduleName": "@lukekaalim/echo"
     },
     {
-      "id": 60,
+      "id": 142,
       "type": "external",
       "name": "Element",
       "moduleName": "@lukekaalim/act"
     },
     {
-      "id": 62,
+      "id": 144,
       "type": "external",
       "name": "Array",
       "moduleName": "typescript/lib/lib.es5.d.ts"
     },
     {
-      "id": 64,
+      "id": 146,
       "type": "external",
       "name": "Node",
       "moduleName": "@lukekaalim/act"
     },
     {
-      "id": 67,
+      "id": 149,
       "type": "external",
       "name": "Component",
       "moduleName": "@lukekaalim/act"
     },
     {
       "type": "value",
-      "id": 5,
+      "id": 87,
       "name": "IdentifierView",
-      "typeId": 68
+      "typeId": 150
     },
     {
-      "id": 69,
+      "id": 151,
       "type": "external",
       "name": "EchoReadingContext",
       "moduleName": "@lukekaalim/echo"
     },
     {
-      "id": 71,
+      "id": 153,
       "type": "external",
       "name": "Echo",
       "moduleName": "@lukekaalim/echo"
     },
     {
-      "id": 73,
+      "id": 155,
       "type": "external",
       "name": "Node",
       "moduleName": "@lukekaalim/act"
     },
     {
       "type": "type",
-      "id": 6,
+      "id": 88,
       "name": "EchoViewProps",
       "parameters": [],
-      "typeId": 77
+      "typeId": 159
     },
     {
-      "id": 81,
+      "id": 163,
       "type": "external",
       "name": "Component",
       "moduleName": "@lukekaalim/act"
     },
     {
       "type": "value",
-      "id": 7,
+      "id": 89,
       "name": "EchoView",
-      "typeId": 82
+      "typeId": 164
     }
   ],
   "comments": [],
   "exports": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89
   ],
   "diagnostics": [
     {
@@ -788,6 +788,21 @@
     {
       "category": "semantic",
       "message": "Cannot find module './PageTransition.module.css' or its corresponding type declarations.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Property 'typeId' does not exist on type 'Comment'.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Property 'typeId' does not exist on type 'Comment'.",
+      "source": "Missing Source"
+    },
+    {
+      "category": "semantic",
+      "message": "Property 'typeId' does not exist on type 'Comment'.",
       "source": "Missing Source"
     }
   ]

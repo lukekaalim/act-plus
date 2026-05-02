@@ -18,12 +18,15 @@ export const createEchoPlugin = async (tsOptions: ts.CompilerOptions = DEFAULT_T
   const RESOLVED_ECHO_PREFIX = `\0echo:`;
   
   const watchedEntrypoints = new Set<string>();
+  const generatedIds = new Set<string>();
 
-  const host = ts.createWatchCompilerHost<ts.SemanticDiagnosticsBuilderProgram>(
+  const host = ts.createWatchCompilerHost<ts.EmitAndSemanticDiagnosticsBuilderProgram>(
     [],
     tsOptions,
     ts.sys,
-    ts.createSemanticDiagnosticsBuilderProgram
+    ts.createEmitAndSemanticDiagnosticsBuilderProgram,
+    () => {},
+    () => {}
   );
   const watcher = ts.createWatchProgram(host)
 
@@ -34,6 +37,20 @@ export const createEchoPlugin = async (tsOptions: ts.CompilerOptions = DEFAULT_T
       server.middlewares.use((req, res, next) => {
         next();
       })
+      host.afterProgramCreate = (program) => {
+        // Force a reload of all affected nodes
+        for (const moduleId of generatedIds) {
+          const mod = server.moduleGraph.getModuleById(moduleId)
+          if (mod)
+            server.moduleGraph.invalidateModule(mod)
+        }
+      }
+    },
+
+    handleHotUpdate(ctx) {
+      console.log(ctx.modules.map(m => m.id))
+      console.log(ctx.file)
+      return ctx.modules;
     },
 
     async resolveId(id, importer, options) {
@@ -76,7 +93,9 @@ export const createEchoPlugin = async (tsOptions: ts.CompilerOptions = DEFAULT_T
       if (!watchedEntrypoints.has(entrypoint)) {
         watchedEntrypoints.add(entrypoint)
         watcher.updateRootFileNames([...watchedEntrypoints])
+        generatedIds.add(id);
       }
+      console.log(`[EchoPlugin]: Fetching new Program"`)
       
       const builder = watcher.getProgram();
       const program = builder.getProgram();
@@ -92,6 +111,8 @@ export const createEchoPlugin = async (tsOptions: ts.CompilerOptions = DEFAULT_T
           message: typeof diag.messageText === 'string' &&  diag.messageText || 'Complex error',
           source: diag.source || 'Missing Source'
         })
+
+      console.log(`[EchoPlugin]: New echo for "${mod.moduleName}"`)
 
       return `export default ${JSON.stringify(mod, null, 2)}`;
     }
