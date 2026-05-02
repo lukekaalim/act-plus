@@ -1,5 +1,11 @@
 # @lukekaalim/echo
 
+## 3.0.0
+
+### Major Changes
+
+- 12c0547: Redid Echo internals, replacing Declaration with Identifier and redoing EchoModule (now just Echo) data structure
+
 ## 2.2.0
 
 ### Minor Changes

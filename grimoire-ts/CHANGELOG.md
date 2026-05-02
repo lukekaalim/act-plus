@@ -1,5 +1,16 @@
 # @lukekaalim/grimoire-ts
 
+## 2.0.0
+
+### Major Changes
+
+- 12c0547: Redid Echo internals, replacing Declaration with Identifier and redoing EchoModule (now just Echo) data structure
+
+### Patch Changes
+
+- Updated dependencies [12c0547]
+  - @lukekaalim/echo@3.0.0
+
 ## 1.2.0
 
 ### Minor Changes
