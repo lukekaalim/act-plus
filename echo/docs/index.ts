@@ -22,7 +22,7 @@ export const buildEchoDocs = (doc: DocApp<[EchoPlugin]>) => {
   });
 
   return;
-
+  /*
   for (const externalReference of Object.values(reflection.references)) {
     if (externalReference.module === 'typescript') {
       doc.reference.addExternal(
@@ -41,4 +41,5 @@ export const buildEchoDocs = (doc: DocApp<[EchoPlugin]>) => {
   doc.component.add('Center', ({children}) => {
     return h('span', { style: { display: 'flex', 'justify-content': 'center' } }, children)
   });
+  */
 }

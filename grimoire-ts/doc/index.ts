@@ -1,5 +1,5 @@
 import { DocApp } from "@lukekaalim/grimoire";
-//import { Declaration, EchoPlugin } from "@lukekaalim/grimoire-ts";
+import { EchoPlugin } from "@lukekaalim/grimoire-ts";
 
 import readmeMd from '../readme.md?raw';
 import apiMd from './api.md?raw';
@@ -23,6 +23,7 @@ export const buildGrimoireTSDocs = (doc: DocApp<[EchoPlugin]>) => {
   doc.reference.addExternal(`ts:typedoc.ReferenceType`, new URL('https://typedoc.org/api/classes/Models.ReferenceType.html'));
 
   return;
+  /*
 
   const stringType = EchoType.create('builtin', createId(), { builtin: 'string' })
   const numberType = EchoType.create('builtin', createId(), { builtin: 'number' })
@@ -45,7 +46,7 @@ export const buildGrimoireTSDocs = (doc: DocApp<[EchoPlugin]>) => {
  * @param my_param This parameter isn't used, yet!
  * @alpha
  * @public
- */`.trim();
+ `.trim();
 
   const comment: EchoTSDocComment = {
     id: createId(),
@@ -78,5 +79,5 @@ export const buildGrimoireTSDocs = (doc: DocApp<[EchoPlugin]>) => {
       h('h1', {}, 'My Super Cool API'),
       h(Declaration, { context, declaration })
     ]
-  })
+  })*/
 }

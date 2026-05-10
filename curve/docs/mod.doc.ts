@@ -560,8 +560,8 @@ const DerivitiveDemo: Component<{ progress: number, y: number }> = ({
   }, [a, b, c, d])
   const calcP3 = useMemo(() => (progress: number) => {
     return { x: progress * 400, y: bezier.cubic["2D"].polynomial(progress).p3 * 400 };
-    return Vector2D.ComponentsAPI.nary((a, b) => lerp(a, b, progress), b, c);
-    return bezier.cubic["2D"].velocity(a, b, c, d, progress)
+    //return Vector2D.ComponentsAPI.nary((a, b) => lerp(a, b, progress), b, c);
+    //return bezier.cubic["2D"].velocity(a, b, c, d, progress)
   }, [a, b, c, d]);
 
   const [calcVelocityX, calcVelocityY] = useMemo(() => {

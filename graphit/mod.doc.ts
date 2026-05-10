@@ -4,7 +4,7 @@ import { DocApp, MarkdownArticle, RAFBeat } from "@lukekaalim/grimoire";
 
 import { CartesianSpace, CartesianSpaceController } from "./CartesianSpace";
 import { LinePath } from "./LinePath";
-import { EchoPlugin, TypeDocPlugin } from "@lukekaalim/grimoire-ts";
+import { EchoPlugin } from "@lukekaalim/grimoire-ts";
 
 import readmeMd from './readme.md?raw';
 import structuresMd from './structures.md?raw';

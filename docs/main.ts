@@ -19,6 +19,7 @@ import iconPlusURL from './media/icon-plus.png';
 import { buildEchoDocs } from '../echo/docs';
 import { TaskPage } from './TaskPage';
 import { createSandboxDocs } from './sandbox';
+import { DocHero } from './components/Hero';
 
 const origin = createRelativeURLFactory();
 
@@ -142,7 +143,7 @@ const DemoPage = () => {
 
   };
   return h('div', { style }, [
-    h(Hero, {
+    h(DocHero, {
       backgroundContent: h('img', {
         src: iconPlusURL,
       }),

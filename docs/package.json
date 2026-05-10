@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "brace-expansion": "^2.0.2",
-    "vite": "^7.1.10"
+    "vite": "^8.0.10"
   },
   "dependencies": {
     "@lukekaalim/act": "^4.1.0",

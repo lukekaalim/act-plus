@@ -43,6 +43,8 @@ export type VectorAPI<T> = {
   subtract(left: T, right: T): T,
   multiply(left: T, right: T): T,
   divide(left: T, right: T): T,
+  distance(left: T, right: T): number,
+  length(left: T): number,
 
   ComponentsAPI: VectorComponentsAPI<T>,
   ScalarAPI: VectorScalarAPI<T>,
@@ -106,6 +108,15 @@ export const createVectorAPI = <T>(ComponentsAPI: VectorComponentsAPI<T>) => {
     divide(left, right) {
       return ComponentsAPI.binary(left, right, (l, r) => l / r)
     },
+    distance(left, right) {
+      const diff = VectorAPI.subtract(left, right);
+      const components = ComponentsAPI.components(diff);
+      return Math.hypot(...components);
+    },
+    length(left) {
+      const components = ComponentsAPI.components(left);
+      return Math.hypot(...components);
+    }
   }
 
   return VectorAPI;

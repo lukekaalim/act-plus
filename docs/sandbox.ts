@@ -6,7 +6,7 @@ import { EchoPlugin } from "@lukekaalim/grimoire-ts";
 
 export const createSandboxDocs = (docApp: DocApp<[EchoPlugin]>) => {
   return;
-  
+  /*
   docApp.route.add('/sandbox-test', [
     actReflection.exports.map(exportedId => {
       const declaration = actReflection.declarations[exportedId];
@@ -15,4 +15,5 @@ export const createSandboxDocs = (docApp: DocApp<[EchoPlugin]>) => {
     }),
     h('pre', {}, JSON.stringify(actReflection, null, 2))
   ])
+    */
 };

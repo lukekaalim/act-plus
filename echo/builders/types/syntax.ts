@@ -241,7 +241,7 @@ export const createSyntaxTypeBuilder = (context: ModuleBuildContext, builder: Ty
           case ts.SyntaxKind.KeyOfKeyword:
             return builder.fromTypeInstance(checker.getTypeAtLocation(node))
 
-            return pushType('operation', { operation: 'keyof', target })
+            //return pushType('operation', { operation: 'keyof', target })
           case ts.SyntaxKind.ReadonlyKeyword:
             return pushType('operation', { operation: 'readonly', target })
           case ts.SyntaxKind.UniqueKeyword:

@@ -113,8 +113,6 @@ export const useDOMHistoryPush = (router: Router, history: History, origin: stri
       router.replace(new URL(window.location.href), direction)
     })
   }, [state])
-
-  console.log({ state }, history.state)
 }
 
 export type RouterDOMIntegrationConfig = {

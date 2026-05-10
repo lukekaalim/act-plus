@@ -60,9 +60,7 @@ export const createEchoReadingContext = (echo: Echo) => {
       memberMap.set(comment.memberName, comment.id);
     }
   }
-
-  console.log({ context })
-
+  
   const visitNamespace = (qualifiers: string[], identifierId: IdentifierID) => {
     const identifier = context.identifiers.get(identifierId);
     if (!identifier)
