@@ -2,6 +2,8 @@ import { createContext, useContext } from "@lukekaalim/act";
 import { CoreAPI, createCoreAPI } from "./Core";
 import { AnyPluginArray, createPlugin, PluginAPI, PluginKeyArray } from "./Plugin";
 
+// TODO: To rename DocApp to DocBuilder as a better name, probably
+
 /**
  * The DocApp type represents a collection of data that describes a
  * documentation website. It collects things such as:

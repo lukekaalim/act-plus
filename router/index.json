@@ -1,0 +1,800 @@
+{
+  "moduleName": "index",
+  "types": [
+    {
+      "id": 12,
+      "type": "reference",
+      "target": 5,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 14,
+      "type": "reference",
+      "target": 13,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 11,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "router",
+          "typeof": 12
+        }
+      ],
+      "returns": 14
+    },
+    {
+      "type": "reference",
+      "id": 16,
+      "target": 15,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 17,
+      "properties": [
+        {
+          "identifier": "router",
+          "typeof": 16
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "id": 18,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 20,
+      "target": 19,
+      "parameters": []
+    },
+    {
+      "type": "reference",
+      "id": 22,
+      "target": 21,
+      "parameters": [
+        18,
+        20
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 24,
+      "target": 23,
+      "parameters": []
+    },
+    {
+      "type": "object",
+      "id": 25,
+      "properties": [
+        {
+          "identifier": "paths",
+          "typeof": 22
+        },
+        {
+          "identifier": "notFound",
+          "typeof": 24
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "reference",
+      "target": 5,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 31,
+      "type": "keyword",
+      "keyword": "string"
+    },
+    {
+      "id": 32,
+      "type": "reference",
+      "target": 27,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 30,
+      "type": "reference",
+      "target": 29,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        31,
+        32
+      ]
+    },
+    {
+      "id": 34,
+      "type": "keyword",
+      "keyword": "null"
+    },
+    {
+      "id": 35,
+      "type": "reference",
+      "target": 27,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 33,
+      "type": "union",
+      "unions": [
+        34,
+        35
+      ]
+    },
+    {
+      "id": 26,
+      "type": "function",
+      "typeParameters": [
+        27
+      ],
+      "parameters": [
+        {
+          "identifier": "router",
+          "typeof": 28
+        },
+        {
+          "identifier": "paths",
+          "typeof": 30
+        }
+      ],
+      "returns": 33
+    },
+    {
+      "type": "reference",
+      "id": 36,
+      "target": 13,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 37,
+      "keyword": "number"
+    },
+    {
+      "type": "literal",
+      "id": 38,
+      "literal": "go"
+    },
+    {
+      "type": "object",
+      "id": 39,
+      "properties": [
+        {
+          "identifier": "type",
+          "typeof": 38
+        }
+      ]
+    },
+    {
+      "type": "literal",
+      "id": 40,
+      "literal": "replace"
+    },
+    {
+      "type": "object",
+      "id": 41,
+      "properties": [
+        {
+          "identifier": "type",
+          "typeof": 40
+        }
+      ]
+    },
+    {
+      "type": "literal",
+      "id": 42,
+      "literal": "refocus"
+    },
+    {
+      "type": "object",
+      "id": 43,
+      "properties": [
+        {
+          "identifier": "type",
+          "typeof": 42
+        }
+      ]
+    },
+    {
+      "type": "union",
+      "id": 44,
+      "unions": [
+        39,
+        41,
+        43
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 46,
+      "target": 45,
+      "parameters": [
+        44
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 47,
+      "target": 13,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 48,
+      "keyword": "string"
+    },
+    {
+      "type": "union",
+      "id": 49,
+      "unions": [
+        47,
+        48
+      ]
+    },
+    {
+      "id": 50,
+      "type": "keyword",
+      "keyword": "void"
+    },
+    {
+      "type": "reference",
+      "id": 51,
+      "target": 13,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 52,
+      "keyword": "string"
+    },
+    {
+      "type": "union",
+      "id": 53,
+      "unions": [
+        51,
+        52
+      ]
+    },
+    {
+      "type": "function",
+      "id": 54,
+      "parameters": [
+        {
+          "identifier": "newLocation",
+          "typeof": 53
+        }
+      ],
+      "typeParameters": [],
+      "returns": 50
+    },
+    {
+      "type": "reference",
+      "id": 55,
+      "target": 13,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 56,
+      "keyword": "string"
+    },
+    {
+      "type": "union",
+      "id": 57,
+      "unions": [
+        55,
+        56
+      ]
+    },
+    {
+      "type": "function",
+      "id": 58,
+      "parameters": [
+        {
+          "identifier": "newLocation",
+          "typeof": 57
+        }
+      ],
+      "typeParameters": [],
+      "returns": 50
+    },
+    {
+      "type": "keyword",
+      "id": 59,
+      "keyword": "number"
+    },
+    {
+      "type": "function",
+      "id": 60,
+      "parameters": [
+        {
+          "identifier": "history_index",
+          "typeof": 59
+        }
+      ],
+      "typeParameters": [],
+      "returns": 50
+    },
+    {
+      "type": "class",
+      "id": 61,
+      "members": [
+        {
+          "type": "property",
+          "identifier": "location",
+          "typeof": 36
+        },
+        {
+          "type": "property",
+          "identifier": "history_index",
+          "typeof": 37
+        },
+        {
+          "type": "property",
+          "identifier": "events",
+          "typeof": 46
+        },
+        {
+          "type": "constructor",
+          "parameters": [
+            {
+              "identifier": "initialLocation",
+              "typeof": 49
+            }
+          ]
+        },
+        {
+          "type": "method",
+          "identifier": "go",
+          "typeof": 54
+        },
+        {
+          "type": "constructor",
+          "parameters": []
+        },
+        {
+          "type": "method",
+          "identifier": "replace",
+          "typeof": 58
+        },
+        {
+          "type": "method",
+          "identifier": "back",
+          "typeof": 60
+        }
+      ],
+      "implements": [],
+      "abstract": false,
+      "extends": null
+    },
+    {
+      "id": 63,
+      "type": "reference",
+      "target": 5,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 68,
+      "type": "reference",
+      "target": 67,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 66,
+      "type": "union",
+      "unions": [
+        34,
+        68
+      ]
+    },
+    {
+      "id": 65,
+      "type": "reference",
+      "target": 64,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        66
+      ]
+    },
+    {
+      "id": 62,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "router",
+          "typeof": 63
+        },
+        {
+          "identifier": "rootElement",
+          "typeof": 65
+        },
+        {
+          "identifier": "origin",
+          "typeof": 31
+        }
+      ],
+      "returns": 50
+    },
+    {
+      "id": 70,
+      "type": "reference",
+      "target": 5,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 71,
+      "type": "reference",
+      "target": 64,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": [
+        66
+      ]
+    },
+    {
+      "id": 69,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "router",
+          "typeof": 70
+        },
+        {
+          "identifier": "rootElement",
+          "typeof": 71
+        }
+      ],
+      "returns": 50
+    },
+    {
+      "id": 73,
+      "type": "reference",
+      "target": 5,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 75,
+      "type": "reference",
+      "target": 74,
+      "meta": {
+        "resolvedBy": "instance:symbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 77,
+      "type": "reference",
+      "target": 76,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 72,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "router",
+          "typeof": 73
+        },
+        {
+          "identifier": "history",
+          "typeof": 75
+        },
+        {
+          "identifier": "window",
+          "typeof": 77
+        }
+      ],
+      "returns": 50
+    },
+    {
+      "type": "reference",
+      "id": 78,
+      "target": 74,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 79,
+      "keyword": "string"
+    },
+    {
+      "type": "reference",
+      "id": 80,
+      "target": 76,
+      "parameters": []
+    },
+    {
+      "type": "keyword",
+      "id": 81,
+      "keyword": "null"
+    },
+    {
+      "type": "reference",
+      "id": 82,
+      "target": 67,
+      "parameters": []
+    },
+    {
+      "type": "union",
+      "id": 83,
+      "unions": [
+        81,
+        82
+      ]
+    },
+    {
+      "type": "reference",
+      "id": 85,
+      "target": 84,
+      "parameters": [
+        83
+      ]
+    },
+    {
+      "type": "object",
+      "id": 86,
+      "properties": [
+        {
+          "identifier": "history",
+          "typeof": 78
+        },
+        {
+          "identifier": "origin",
+          "typeof": 79
+        },
+        {
+          "identifier": "window",
+          "typeof": 80
+        },
+        {
+          "identifier": "rootElement",
+          "typeof": 85
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "type": "reference",
+      "target": 5,
+      "meta": {
+        "resolvedBy": "instance:referenceTargetSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 89,
+      "type": "reference",
+      "target": 9,
+      "meta": {
+        "resolvedBy": "instance:aliasSymbol"
+      },
+      "parameters": []
+    },
+    {
+      "id": 87,
+      "type": "function",
+      "typeParameters": [],
+      "parameters": [
+        {
+          "identifier": "router",
+          "typeof": 88
+        },
+        {
+          "identifier": "__1",
+          "typeof": 89
+        }
+      ],
+      "returns": 50
+    }
+  ],
+  "identifiers": [
+    {
+      "id": 13,
+      "type": "external",
+      "name": "URL",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "type": "value",
+      "id": 1,
+      "name": "useRouterLocation",
+      "typeId": 11
+    },
+    {
+      "id": 15,
+      "type": "external",
+      "name": "URLRouter",
+      "moduleName": "./URLRouter"
+    },
+    {
+      "type": "type",
+      "id": 2,
+      "name": "URLRouterComponentProps",
+      "parameters": [],
+      "typeId": 17
+    },
+    {
+      "id": 19,
+      "type": "external",
+      "name": "Node",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "id": 21,
+      "type": "external",
+      "name": "Map",
+      "moduleName": "typescript/lib/lib.es2015.collection.d.ts"
+    },
+    {
+      "id": 23,
+      "type": "external",
+      "name": "Component",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "type",
+      "id": 3,
+      "name": "RouterNodeMap",
+      "parameters": [],
+      "typeId": 25
+    },
+    {
+      "id": 27,
+      "name": "T",
+      "type": "type-parameter",
+      "constraint": null,
+      "default": null
+    },
+    {
+      "id": 29,
+      "type": "external",
+      "name": "Record",
+      "moduleName": "typescript/lib/lib.es5.d.ts"
+    },
+    {
+      "type": "value",
+      "id": 4,
+      "name": "useRouterPath",
+      "typeId": 26
+    },
+    {
+      "id": 45,
+      "type": "external",
+      "name": "EventEmitter",
+      "moduleName": "../event_emitter"
+    },
+    {
+      "type": "type",
+      "id": 5,
+      "name": "URLRouter",
+      "parameters": [],
+      "typeId": 61
+    },
+    {
+      "id": 64,
+      "type": "external",
+      "name": "Ref",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "id": 67,
+      "type": "external",
+      "name": "HTMLElement",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "type": "value",
+      "id": 6,
+      "name": "useDOMAnchorIntercept",
+      "typeId": 62
+    },
+    {
+      "type": "value",
+      "id": 7,
+      "name": "useDOMHashScroll",
+      "typeId": 69
+    },
+    {
+      "id": 74,
+      "type": "external",
+      "name": "History",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "id": 76,
+      "type": "external",
+      "name": "Window",
+      "moduleName": "typescript/lib/lib.dom.d.ts"
+    },
+    {
+      "type": "value",
+      "id": 8,
+      "name": "useDOMHistoryPush",
+      "typeId": 72
+    },
+    {
+      "id": 84,
+      "type": "external",
+      "name": "Ref",
+      "moduleName": "@lukekaalim/act"
+    },
+    {
+      "type": "type",
+      "id": 9,
+      "name": "RouterDOMIntegrationConfig",
+      "parameters": [],
+      "typeId": 86
+    },
+    {
+      "type": "value",
+      "id": 10,
+      "name": "useDOMIntegration",
+      "typeId": 87
+    }
+  ],
+  "comments": [
+    {
+      "id": 90,
+      "text": "/**\n * A URLRouter manages the current URL of a weboage and acts as an authority and subscribable event manager when it changes.\n *\n * Note that the URL router does not check if the app can render the path, or if it's event the correct origin, or if the parameters are correct.\n */\n",
+      "identifier": 5,
+      "memberName": null
+    }
+  ],
+  "exports": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "diagnostics": []
+}

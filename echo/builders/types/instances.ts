@@ -63,9 +63,6 @@ export const createTypeInstanceBuilder = (context: ModuleBuildContext, builder: 
           return pushType(type, 'parser-error', () => ({ message: `Reference missing symbol??` }))
         }
 
-        if (symbol.flags & ts.SymbolFlags.Alias) {
-          symbol = checker.getAliasedSymbol(symbol);
-        }
         const target = builder.getIdentifierFromSymbol(symbol);
         if (target)
           return pushType(type, 'reference', () => ({

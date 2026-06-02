@@ -263,7 +263,7 @@ export const DocHero = () => {
     }
   }, []);
 
-  return h(SVG, {}, h('svg', { viewBox: `0 0 ${WIDTH} ${HEIGHT}`, ref, style, preserveAspectRatio: 'none' }))
+  return h(SVG, {}, h('svg', { viewBox: `-0.5 -0.5 ${WIDTH + 1} ${HEIGHT + 1}`, ref, style, preserveAspectRatio: 'none' }))
 };
 
 const style = {

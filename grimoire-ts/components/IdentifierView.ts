@@ -14,6 +14,8 @@ export type IdentifierViewProps = {
   identifier: ValueIdentifier | TypeIdentifier,
   context: EchoReadingContext,
 
+  extras?: TypeIdentifier[],
+
   header?: Node,
   noId?: boolean,
 }
@@ -28,6 +30,7 @@ export const IdentifierView: Component<IdentifierViewProps> = ({
   identifier,
   context,
   header,
+  extras = [],
   noId = false,
   children
 }) => {
@@ -37,8 +40,15 @@ export const IdentifierView: Component<IdentifierViewProps> = ({
   const syntax = useMemo(() => {
     const syntax = createHLJSBuilder();
     
-    return renderer.renderIdentifier(syntax, identifier);
-  }, [renderer, identifier]);
+    renderer.renderIdentifier(syntax, identifier);
+
+    for (const extra of extras) {
+      syntax.newLine().newLine();
+      renderer.renderIdentifier(syntax, extra);
+    }
+
+    return syntax;
+  }, [renderer, identifier, extras]);
 
   const comment = useMemo(() => {
     const commentID = context.commentByIdentifier.get(identifier.id);
@@ -60,7 +70,7 @@ export const IdentifierView: Component<IdentifierViewProps> = ({
         }) }),
 
     children,
-    h(CodeBox, { lines: syntax.output() }),
+    h('div', { className: 'nord' }, h(CodeBox, { lines: syntax.output() })),
     comment && renderDocCommentNode(comment),
   ];
 }

@@ -17,49 +17,62 @@ const EXPAND_TAG = {
 };
 const config = new tsdoc.TSDocConfiguration();
 config.addTagDefinition(EXPAND_TAG)
+const tsDocParser = new tsdoc.TSDocParser(config);
+
 
 export const findSymbolsToExpand = (cx: ModuleBuildContext) => {
-  const tsDocParser = new tsdoc.TSDocParser(config);
-
+  // Check every exported symbol for a tsdoc comment "@expand" tag
   for (const [symbol, declarationNode] of cx.exportableDeclarationNodeBySymbol) {
-    switch (declarationNode.kind) {
-      case ts.SyntaxKind.TypeAliasDeclaration:
-      case ts.SyntaxKind.ClassDeclaration:
-      case ts.SyntaxKind.InterfaceDeclaration:
-        const start = declarationNode.getStart()
-        const fullStart = declarationNode.getFullStart();
-
-        const source = declarationNode.getSourceFile();
-
-        const preText = source.text.slice(fullStart, start).trim();
-
-        if (preText) {
-          const parserContext = tsDocParser.parseString(preText);
-          const hasExpandTag = parserContext.docComment.modifierTagSet.hasTag(EXPAND_TAG);
-
-          if (hasExpandTag)
-            cx.symbolsToExpand.add(symbol)
-        }
-
-        break;
-    }
+    processSymbolForTsDocContext(cx, symbol, declarationNode)
   }
 };
 
+export const processSymbolForTsDocContext = (
+  cx: ModuleBuildContext,
+  symbol: ts.Symbol,
+  declaration: ts.Node = (symbol.declarations || [])[0],
+): null | tsdoc.ParserContext => {
+  if (!declaration) {
+    cx.tsdocContextBySymbol.set(symbol, null);
+    return null;
+  }
+  // check for existing symbol
+  if (cx.tsdocContextBySymbol.has(symbol)) {
+    return cx.tsdocContextBySymbol.get(symbol) || null;
+  }
+
+  // parse the comment
+  const start = declaration.getFullStart();
+  const end = declaration.getStart();
+
+  const commentText = declaration.getSourceFile().text.slice(start, end).trim();
+  if (!commentText) {
+    cx.tsdocContextBySymbol.set(symbol, null);
+    return null;
+  }
+
+  const commentContext = tsDocParser.parseString(commentText);
+
+  const hasExpandTag = commentContext.docComment.modifierTagSet.hasTag(EXPAND_TAG);
+
+  if (hasExpandTag)
+    cx.symbolsToExpand.add(symbol)
+
+  cx.tsdocContextBySymbol.set(symbol, commentContext);
+  return commentContext;
+}
+
 export const createCommentBuilder = (cx: ModuleBuildContext) => {
-  const parser = new tsdoc.TSDocParser(config);
-  
   const readCommentForNodeAndSymbol = (node: ts.Node, symbol: ts.Symbol) => {
     const identifier = cx.identifierBySymbol.get(symbol);
     if (!identifier)
       return;
-    const start = node.getFullStart();
-    const end = node.getStart();
-    const commentText = node.getSourceFile().text.slice(start, end).trim();
-    if (!commentText)
+
+    const commentContext = processSymbolForTsDocContext(cx, symbol, node);
+
+    if (!commentContext)
       return;
 
-    const commentContext = parser.parseString(commentText);
     const reprintedComment = commentContext.docComment.emitAsTsdoc()
 
     const comment: Comment = {
@@ -73,8 +86,6 @@ export const createCommentBuilder = (cx: ModuleBuildContext) => {
 
   const readCommentForNode = (node: ts.Node) => {
     switch (node.kind) {
-      case ts.SyntaxKind.ModuleDeclaration:
-        return;
       case ts.SyntaxKind.VariableDeclaration: {
         const variableDeclaration = node as ts.VariableDeclaration;
         const symbol = cx.ts.checker.getSymbolAtLocation(variableDeclaration.name);
@@ -96,9 +107,14 @@ export const createCommentBuilder = (cx: ModuleBuildContext) => {
         const variableStatement = variableDeclarationList.parent;
         return readCommentForNodeAndSymbol(variableStatement, symbol);
       }
+      case ts.SyntaxKind.FunctionDeclaration:
+      case ts.SyntaxKind.ClassDeclaration:
+      case ts.SyntaxKind.ModuleDeclaration:
       case ts.SyntaxKind.TypeAliasDeclaration: {
-        const typeAlias = node as ts.TypeAliasDeclaration;
-        const symbol = cx.ts.checker.getSymbolAtLocation(typeAlias.name);
+        const declaration = node as ts.TypeAliasDeclaration | ts.ModuleDeclaration | ts.ClassDeclaration | ts.FunctionDeclaration | ts.NamespaceDeclaration;
+        if (!declaration.name)
+          return;
+        const symbol = cx.ts.checker.getSymbolAtLocation(declaration.name);
         if (!symbol)
           return;
 

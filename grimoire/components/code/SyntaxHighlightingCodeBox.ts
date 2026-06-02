@@ -3,7 +3,9 @@ import { createLowlight, common } from "lowlight";
 import { Nodes } from 'hast';
 import { CodeBox } from "./CodeBox";
 
-import { useDocThemeContext } from "../../lib";
+import nord from './themes/highlight.nord.css';
+
+//import { useDocThemeContext } from "../../lib";
 
 export type SyntaxHighlightingCodeBoxProps = {
   language?: string,
@@ -14,7 +16,7 @@ export type SyntaxHighlightingCodeBoxProps = {
 const lowlight = createLowlight(common);
 
 /**
- * Convert LowLight nodes into {@link @lukekaalim/act} Nodes
+ * Convert HAST nodes into {@link @lukekaalim/act} Nodes
  */
 export const renderLowlightNodes = (node: Nodes): Node => {
   switch (node.type) {
@@ -37,7 +39,7 @@ export const SyntaxHighlightingCodeBox: Component<SyntaxHighlightingCodeBoxProps
   code,
 }) => {
 
-  const theme = useDocThemeContext()
+  //const theme = useDocThemeContext()
 
   const ast = useMemo(() => {
     if (language)
@@ -45,5 +47,7 @@ export const SyntaxHighlightingCodeBox: Component<SyntaxHighlightingCodeBoxProps
     return lowlight.highlightAuto(code);
   }, [language, code]);
 
-  return h(CodeBox, { lines: [renderLowlightNodes(ast)] });
+  console.log("AAA")
+
+  return h('div', { classList: ['nord'] }, h(CodeBox, { lines: [renderLowlightNodes(ast)] }));
 };

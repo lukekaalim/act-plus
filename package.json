@@ -17,10 +17,10 @@
     "@types/brace-expansion": "^1.1.2",
     "@types/node": "^22.10.5",
     "nanoid": "^5.1.6",
-    "tsx": "^4.21.0"
+    "tsx": "^4.22.3"
   },
   "scripts": {
     "docs:dev": "vite docs",
-    "publish": "vite build docs; rsync docs/dist/* luke@DROPLET:website/plus -r"
+    "publish": "vite build docs; rsync docs/dist/* luke@170.64.146.134:website/plus -r"
   }
 }

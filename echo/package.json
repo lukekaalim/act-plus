@@ -6,6 +6,9 @@
   "author": "",
   "type": "module",
   "main": "index.ts",
+  "bin": {
+    "ts-echo": "bin.ts"
+  },
   "scripts": {
     "build": "tsup-node index.ts"
   },

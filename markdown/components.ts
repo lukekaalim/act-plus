@@ -126,26 +126,7 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}): Mdas
       return null;
     const component = (options.components || {})[node.name];
 
-    const attributes = Object.fromEntries(node.attributes.map(attribute => {
-      switch (attribute.type) {
-        case 'mdxJsxAttribute':
-          switch (typeof attribute.value) {
-            case 'string':
-              return [attribute.name, attribute.value];
-            case 'object':
-              if (attribute.value === null)
-                return [];
-              switch (attribute.value.type) {
-                case 'mdxJsxAttributeValueExpression':
-                  return [attribute.name, JSON.parse(attribute.value.value)]
-                default:
-                  return [];
-              }
-          }
-        case 'mdxJsxExpressionAttribute':
-          return []
-      }
-    }))
+    const attributes = buildMdxAttributes(node);
     return h(component, { attributes }, node.children.map(mdastToNode))
   }
 

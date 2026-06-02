@@ -1,13 +1,11 @@
-import { Component, h, Node } from "@lukekaalim/act";
-import { parser } from "@lukekaalim/act-markdown";
-import { Root } from "mdast";
-import { Article } from "../components/article/Article";
+import { Component, createId, h, Node } from "@lukekaalim/act";
 import { InlineErrorBox  } from "../components";
 import { CoreDebug } from "../components/debug/CoreDebug";
 import { DefaultDemoFrame, DemoMDX } from "../components/demo/Demo";
 import { NavLeaf, NavTree2, simplifyTree } from "../lib";
-import { ArticlePage } from "../components/page";
 import { RouterPage, RouterPageComponent } from "@lukekaalim/act-router";
+import { createPageAPI, PageAPI, PageContent } from "./Page";
+import { Article, ArticleAPI, ArticleDestination, ArticlePreprocessor, createArticleAPI } from "./article/api";
 
 /**
  * The CoreAPI is a list of API objects that contain
@@ -17,6 +15,7 @@ import { RouterPage, RouterPageComponent } from "@lukekaalim/act-router";
  * merged with a PluginAPI object to form the DocApp
  */
 export type CoreAPI = {
+  page: PageAPI,
   route: RoutesAPI,
   component: ComponentsAPI,
   article: ArticleAPI,
@@ -44,6 +43,8 @@ export type MDXComponent = Component<{ attributes: Record<string, string | void>
 export type MDXComponentEntry = {
   name: string,
   module?: string,
+  
+  calculateArticleDestinations?: (attributes: Record<string, string | void>) => ArticleDestination[],
   component: MDXComponent,
 };
 
@@ -91,30 +92,7 @@ export type IndirectReference = {
   fragment?: string,
 }
 
-/**
- * An Article is a kind of rich text document. Is specifically
- * a markdown document right now.
- */
-export type ArticleAPI = {
-  articles: Article[],
 
-  /**
-   * Add some markdown content as an Article.
-   * @param key 
-   * @param markdownContent
-   */
-  add(key: string, markdownContent: string, path?: string): Article,
-  addRawRoot(key: string, root: Root, path?: string): Article,
-
-  addArticlePreprocessor(preprocessor: ArticlePreprocessor): void,
-};
-export type ArticlePreprocessor = (article: Article) => void;
-export type ArticleKey = string;
-export type Article = {
-  key: ArticleKey,
-
-  content: Root,
-}
 
 export type Demo = {
   key: string,
@@ -137,8 +115,6 @@ export type DemoAPI = {
 };
 
 export const createCoreAPI = (): CoreAPI => {
-  const articles: Article[] = [];
-  const article_preprocessors: ArticlePreprocessor[] = [];
   const components: MDXComponentEntry[] = [];
   const routes: RouterPage[] = [];
   const demos: Demo[] = [];
@@ -147,6 +123,7 @@ export const createCoreAPI = (): CoreAPI => {
   const indirect_references: IndirectReference[] = []
 
   const core: CoreAPI = {
+    page: createPageAPI(() => core),
     route: {
       routes,
       add(path, content) {
@@ -257,31 +234,7 @@ export const createCoreAPI = (): CoreAPI => {
         return url;
       },
     },
-    article: {
-      articles,
-      add(key, markdownContent, path) {
-        const content = parser.parse(markdownContent)
-        return core.article.addRawRoot(key, content, path);
-      },
-      addArticlePreprocessor(preprocessor) {
-        article_preprocessors.push(preprocessor);
-      },
-      addRawRoot(key, content, path) {
-        const article = { key, content, path };
-
-        for (const preprocessor of article_preprocessors)
-          preprocessor(article);
-
-
-        if (article.path) {
-          core.route.add(article.path, h(ArticlePage, { articleKey: article.key }))
-          core.reference.add(`article:${article.key}`, article.path)
-        }
-
-        articles.push(article);
-        return article;
-      },
-    },
+    article: createArticleAPI(() => core),
     demos: {
       demos,
       frames: demo_frames,
@@ -325,6 +278,16 @@ export const createCoreAPI = (): CoreAPI => {
 
     return h('a', { href: url.href }, children);
   });
+  core.component.add('TODO', ({ children, attributes }) => h('code', {
+    style: {
+      color: 'black', 'font-style': 'italic', 'font-family': 'monospace',
+      'font-size': '16px',
+      'background': '#bebebe',
+      'padding': '4px',
+      'border-radius': '4px',
+      'white-space': 'nowrap'
+    }
+  }, ['// TODO ', attributes["m"] || attributes["message"] || children]))
 
   return core;
 }

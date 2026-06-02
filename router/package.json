@@ -2,5 +2,8 @@
   "name": "@lukekaalim/act-router",
   "version": "0.1.0",
   "main": "index.ts",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@lukekaalim/act": "^4.1.0"
+  }
 }

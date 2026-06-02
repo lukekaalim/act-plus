@@ -13,13 +13,9 @@ import { Article } from '@lukekaalim/grimoire/components/article/Article';
 
 export const buildEchoDocs = (doc: DocApp<[EchoPlugin]>) => {
 
-  const reflectionContext = doc.echo.addModule(reflection)
-  doc.article.add('echo.readme', readmeMD, '/packages/@lukekaalim/echo')
-  doc.route.add('/test', () => {
-    return h(Article, {}, [...doc.echo.moduleContexts.values()].map(context => {
-      return h(EchoView, { echo: context.echo, context, debug: true });
-    }))
-  });
+  doc.echo.addModule(reflection)
+
+  doc.page.add('packages/echo', doc.article.markdown(readmeMD));
 
   return;
   /*

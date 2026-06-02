@@ -1,14 +1,20 @@
-import { OpaqueID } from "@lukekaalim/act"
-
-export type SimpleTreeLeafID = OpaqueID<string>;
-export type SimpleTreeLeaf<T extends {}> = { parent: null | SimpleTreeLeafID, children: SimpleTreeLeafID[] } & T;
-
 /**
  * The SimpleTree data structure lets us describe
  * some hierarchial data generically.
+ * 
+ * Doubly-linked upwards and downwards.
  */
-export type SimpleTree<T extends {}> = {
-  leaves: Map<SimpleTreeLeafID, SimpleTreeLeaf<T>>,
-  root: null | SimpleTreeLeafID
-}
+export class SimpleTree<ID extends keyof any = string> {
+  leaves: Record<ID, { parent: ID | null, children: ID[] }> = {} as any;
+  root: ID;
 
+  constructor(root: ID) {
+    this.root = root;
+    this.leaves[root] = { parent: null, children: [] };
+  }
+
+  append(leaf: ID, parent: ID) {
+    this.leaves[leaf] = { parent, children: [] };
+    this.leaves[parent].children.push(leaf);
+  }
+}

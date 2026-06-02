@@ -45,12 +45,14 @@ const styles = {
     width: '100%',
     height: '100%',
     overflow: 'hidden',
+
+    gap: '8px'
   },
   column: {
     display: 'flex',
     'flex-direction': 'column',
     flex: 1,
-    margin: '16px',
+    //margin: '16px',
   },
   columnTitle: {
     'text-align': 'center'
@@ -65,7 +67,7 @@ const styles = {
     gap: '16px',
     'background': '#f2f2f2',
     flex: 1,
-    'border-radius': '32px',
+    'border-radius': '8px',
   },
   task: {
     padding: '16px',
@@ -78,6 +80,10 @@ const styles = {
     'text-decoration': 'underline',
     'font-size': '0.8em',
   },
+  taskStatus: {
+    'font-size': '0.8em',
+    'font-style': 'italic'
+  },
   taskId: {
     padding: '4px 8px',
     background: '#006050',
@@ -89,13 +95,17 @@ const styles = {
 
 const TaskColumn: Component<{ status: string, tasks: Task[] }> = ({ status, tasks }) => {
   return h('div', { style: styles.column }, [
-    h('h2', { style: styles.columnTitle }, status),
+    status && h('h2', { style: styles.columnTitle }, status),
     h('ul', { style: styles.columnList }, tasks.map(task => {
       return h('li', { style: styles.task }, [
         h('div', {}, [
           h('span', { style: styles.taskId }, task.id),
           ' ',
           h('span', { style: styles.taskFilename }, task.filename),
+          !status && [
+            ' ',
+            h('span', { style: styles.taskStatus }, task.status),
+          ]
         ]),
         renderMarkdown(task.root)
       ])
@@ -103,11 +113,16 @@ const TaskColumn: Component<{ status: string, tasks: Task[] }> = ({ status, task
   ])
 }
 
-export const TaskPage: Component = () => {
+export type TaskPageProps = {
+  filter?: (task: Task) => boolean
+};
 
-  const backlog = tasks.filter(t => t.status === 'backlog');
-  const inProgress = tasks.filter(t => t.status === 'in-progress');
-  const complete = tasks.filter(t => t.status === 'complete');
+export const TaskPage: Component<TaskPageProps> = ({ filter = () => true }) => {
+  const filteredTasks = tasks.filter(filter);
+
+  const backlog = filteredTasks.filter(t => t.status === 'backlog');
+  const inProgress = filteredTasks.filter(t => t.status === 'in-progress');
+  const complete = filteredTasks.filter(t => t.status === 'complete');
 
   return [
     h('div', { style: styles.page }, [
@@ -117,3 +132,9 @@ export const TaskPage: Component = () => {
     ])
   ]
 };
+
+export const TaskList: Component<TaskPageProps> = ({ filter = () => true }) => {
+  const filteredTasks = tasks.filter(filter);
+
+  return h(TaskColumn, { status: '', tasks: filteredTasks });
+}

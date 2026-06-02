@@ -1,6 +1,6 @@
 ---
 id: grimoire-1
-status: backlog
+status: in-progress
 ---
 ### Dynamic Sidebar
 

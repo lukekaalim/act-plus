@@ -3,15 +3,16 @@
 
   background-color: rgb(255, 255, 255);
   border-radius: 0 0 16px 16px;
-  box-shadow: 0 0 16px 16px rgba(0, 0, 0, 0.023);
+  box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.053);
 
   padding: 64px;
 
-  padding-bottom: 80vh;
+  min-height: 64vh;
+  margin-bottom: 5vh;
 
   width: var(--article-content-width, 800px);
 
-  font-size: 18px;
+  /*font-size: 18px;*/
 }
 
 .details {

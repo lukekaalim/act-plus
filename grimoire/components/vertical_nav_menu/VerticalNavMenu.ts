@@ -28,6 +28,9 @@ export const VerticalNavMenu: Component<VerticalNavMenuProps> = ({ tree }) => {
   ]);
 }
 
+/**
+ * @expand
+ */
 export type VerticalNavMenu2Props = {
   tree: NavTree2,
   rightAligned?: boolean,

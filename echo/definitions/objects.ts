@@ -15,6 +15,11 @@ export type TupleElement = {
   typeof: TypeID
 }
 
+export type Member =
+  | { type: 'property', identifier: string, typeof: TypeID }
+  | { type: 'constructor', parameters: Parameter[] }
+  | { type: 'method', identifier: string, typeof: TypeID }
+
 export type ObjectType = DefineType<'object', {
   properties: Property[],
 }>
@@ -28,7 +33,7 @@ export type TupleType = DefineType<'tuple', {
 }>
 
 export type ClassType = DefineType<'class', {
-  properties: Property[],
+  members: Member[],
 
   abstract: boolean,
   implements: TypeID[],

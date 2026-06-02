@@ -14,6 +14,7 @@ export const EchoPlugin = createPlugin('echo', (core) => {
   const EchoMDXRenderer: MDXComponent = ({ attributes, children }) => {
     const moduleId = attributes['module'] as string;
     const qualifiedName = attributes['name'] as string;
+    const extras = (attributes['extras'] || '').split(',').filter(Boolean);
 
     const context = moduleContexts.get(moduleId);
     if (!context)
@@ -28,7 +29,13 @@ export const EchoPlugin = createPlugin('echo', (core) => {
     if (!identifier || (identifier.type !== 'value' && identifier.type !== 'type'))
       return h(InlineErrorBox, {}, `No declaration of name "${qualifiedName}" found`)
 
-    return h(IdentifierView, { identifier, context }, children);
+    const extraIdentifiers = extras.map(name => {
+      const identifierId = (context.identifiersByName.get(name) || [])[0];
+      const identifier = context.getIdentifierOrThrow(identifierId, 'type');
+      return identifier;
+    })
+
+    return h(IdentifierView, { identifier, context, extras: extraIdentifiers }, children);
   }
 
   const EchoModuleMDXRenderer: MDXComponent = ({ attributes, children }) => {
@@ -52,8 +59,35 @@ export const EchoPlugin = createPlugin('echo', (core) => {
     }
   }
 
-  core.component.add('Echo', EchoMDXRenderer)
-  core.component.add('EchoModule', EchoModuleMDXRenderer)
+  const entry = core.component.add('Echo', EchoMDXRenderer)
+  core.component.add('EchoModule', EchoModuleMDXRenderer);
+  entry.calculateArticleDestinations = (attributes) => {
+    const module = attributes['module'];
+    const name = attributes['name'];
+    if (!module)
+      return [];
+
+    const context = moduleContexts.get(module);
+    if (!context)
+      return [];
+
+    if (!name) {
+      return context.exportedIdentifiers.map(identifier => {
+        const fullyQualifiedName = context.qualifiedNameByIdentifier.get(identifier.id) as string;
+        const fragment = `echo:${context.echo.moduleName}:${fullyQualifiedName}`;
+        return { name: identifier.name, fragment, depth: 2 }
+      })
+    } else {
+      const [identifierId] = context.identifiersByName.get(name) || [];
+      if (!identifierId)
+        return [];
+      const identifier = context.getIdentifierOrThrow(identifierId);
+
+      const fullyQualifiedName = context.qualifiedNameByIdentifier.get(identifierId) as string;
+      const fragment = `echo:${context.echo.moduleName}:${fullyQualifiedName}`;
+      return [{ name: identifier.name, fragment, depth: 2 }]
+    }
+  };
 
   core.article.addArticlePreprocessor((article) => {
     visit(article.content, 'mdxJsxFlowElement', node => {
@@ -79,8 +113,8 @@ export const EchoPlugin = createPlugin('echo', (core) => {
           return;
 
         if (!qualifiedName) {
-          for (const exportId of Object.values(context.echo.exports)) {
-            const fullyQualifiedName = context.qualifiedNameByIdentifier.get(exportId) as string;
+          for (const identifier of context.exportedIdentifiers) {
+            const fullyQualifiedName = context.qualifiedNameByIdentifier.get(identifier.id) as string;
 
             const key = `echo:${context.echo.moduleName}:${fullyQualifiedName}`;
             core.reference.addIndirect(key, `article:${article.key}`, key)

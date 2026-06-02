@@ -12,8 +12,9 @@ export type EchoReadingContext = {
   commentByIdentifierAndMember: Map<IdentifierID, Map<string, CommentID>>,
   qualifiedNameByIdentifier: Map<IdentifierID, string>,
 
+  exportedIdentifiers: Identifier[],
 
-  getTypeOrThrow(id: TypeID): Type,
+  getTypeOrThrow<T = Type["type"]>(id: TypeID, typeOfType?: T): Extract<Type, { type: T }>,
   getIdentifierOrThrow<T extends Identifier["type"] = Identifier["type"]>(id: IdentifierID, expectedType?: T): Extract<Identifier, { type: T }>
 };
 
@@ -26,16 +27,20 @@ export const createEchoReadingContext = (echo: Echo) => {
     comments: new Map(echo.comments.map(c => [c.id, c])),
 
     identifiersByName: new Map(),
+    exportedIdentifiers: [],
 
     commentByIdentifier: new Map(),
     commentByIdentifierAndMember: new Map(),
     qualifiedNameByIdentifier: new Map(),
 
-    getTypeOrThrow(id: TypeID) {
+    getTypeOrThrow<T = Type["type"]>(id: TypeID, typeOfType?: T) {
       const type = context.types.get(id);
       if (!type)
         throw new Error(`Type "${id}" not found`);
-      return type;
+      if (typeOfType && type.type !== typeOfType) {
+        throw new Error(`Type ${id} was not type "${typeOfType}"`)
+      }
+      return type as Extract<Type, { type: T }>;
     },
     getIdentifierOrThrow<T extends Identifier["type"] = Identifier["type"]>(id: IdentifierID, expectedType?: T): Extract<Identifier, { type: T }> {
       const identifier = context.identifiers.get(id);
@@ -67,6 +72,7 @@ export const createEchoReadingContext = (echo: Echo) => {
       throw new Error(`${qualifiers.join('.')} (${identifierId}) identifier not found in namespace`)
 
     const qualifiedName = [...qualifiers, identifier.name].join('.');
+    context.exportedIdentifiers.push(identifier);
 
     context.qualifiedNameByIdentifier.set(identifier.id, qualifiedName);
     if (identifier.type === 'type') {

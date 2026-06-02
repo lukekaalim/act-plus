@@ -5,7 +5,8 @@ import { ModuleBuildContext } from "../echo"
 import { Type, TypeID } from "../../definitions/type"
 import { ExtractTypePropsByName } from "../../definitions/meta"
 import { createId } from "../../utils"
-import { Property } from "../../definitions/objects"
+import { Member, Parameter, Property } from "../../definitions/objects"
+import { processSymbolForTsDocContext } from "../comments"
 
 /**
  * Functions for building types based off the typescript AST
@@ -17,9 +18,11 @@ export type SyntaxTypeBuilder = {
 
   fromSignatureDeclaration(signatureDeclaration: ts.SignatureDeclarationBase): TypeID,
   
-  fromFunctionDeclaration(functionDeclaration: ts.FunctionDeclaration): TypeID,
+  fromFunctionDeclaration(functionDeclaration: ts.FunctionLikeDeclarationBase): TypeID,
   fromClassDeclaration(classDeclaration: ts.ClassDeclaration): TypeID,
   fromInterfaceDeclaration(interfaceDeclaration: ts.InterfaceDeclaration): TypeID,
+
+  fromParameters(parameters: ts.ParameterDeclaration[]): Parameter[],
 }
 
 /**
@@ -41,8 +44,15 @@ export const createSyntaxTypeBuilder = (context: ModuleBuildContext, builder: Ty
    * @param props Any properties of the EchoType, excluding the "type" and "id" attributes.
    * @returns The ID of the new EchoType.
    */
-  const pushType = <T extends Type["type"]>(type: T, props: ExtractTypePropsByName<T>) => {
+  const pushType = <T extends Type["type"]>(
+    type: T,
+    props: ExtractTypePropsByName<T> | ((id: TypeID) => ExtractTypePropsByName<T>)
+  ) => {
     const id = createId<"TypeID">();
+    if (typeof props === 'function') {
+      props = props(id);
+    }
+
     const echoType = {
       type,
       id,
@@ -148,7 +158,7 @@ export const createSyntaxTypeBuilder = (context: ModuleBuildContext, builder: Ty
 
     return pushType('function', {
       parameters: functionType.parameters.map(parameter => {
-        const name = functionType.name;
+        const name = parameter.name;
         const parameterType = parameter.type ? builder.fromAnyNode(parameter.type) : builder.fromTypeInstance(checker.getTypeAtLocation(parameter));
         if (name && name.kind === ts.SyntaxKind.Identifier) {
           return {
@@ -157,7 +167,7 @@ export const createSyntaxTypeBuilder = (context: ModuleBuildContext, builder: Ty
           }
         }
         return {
-          identifier: 'kinda hard to tell',
+          identifier: name ? ts.SyntaxKind[name.kind] : 'no name!',
           typeof: parameterType
         }
       }),
@@ -172,16 +182,19 @@ export const createSyntaxTypeBuilder = (context: ModuleBuildContext, builder: Ty
     if (!symbol) {
       throw new Error(`Unknown type reference`);
     }
+
+    const declaration = (symbol.declarations || [])[0];
+    if (declaration) {
+      processSymbolForTsDocContext(context, symbol);
+    }
+
     if (context.symbolsToExpand.has(symbol)) {
-      console.log(`Expanding symbol: "${symbol.name}"`)
       return builder.fromTypeInstance(checker.getTypeAtLocation(reference), true);
     }
 
     const parameters = (reference.typeArguments || []).map(fromAnyTypeNode);
     const target = builder.getIdentifierFromSymbol(symbol);
     if (!target) {
-      const declaration = (symbol.declarations || [])[0];
-
       return pushType('parser-error', { message: `No Target for symbol (${symbol.name}, ${ts.SyntaxKind[declaration.kind]})` })
     }
     return pushType('reference', { target, parameters });
@@ -258,31 +271,18 @@ export const createSyntaxTypeBuilder = (context: ModuleBuildContext, builder: Ty
 
   builder.fromAnyNode = fromAnyTypeNode;
   builder.fromTypeParameterDeclaration = fromTypeParameterDeclaration;
-  builder.fromFunctionDeclaration = (functionDeclaration) => {
-    const functionInstance = checker.getTypeAtLocation(functionDeclaration);
-    const signature = checker.getSignaturesOfType(functionInstance, ts.SignatureKind.Call)[0];
 
+  builder.fromFunctionDeclaration = (functionDeclaration) => {
     let returns;
     if (functionDeclaration.type) {
       returns = builder.fromAnyNode(functionDeclaration.type);
     } else {
+      const functionInstance = checker.getTypeAtLocation(functionDeclaration);
+      const signature = checker.getSignaturesOfType(functionInstance, ts.SignatureKind.Call)[0];
       returns = builder.fromTypeInstance(signature.getReturnType());
     }
 
-    const parameters = functionDeclaration.parameters.map((parameter, parameterIndex) => {
-      if (parameter.type) {
-        return {
-          identifier: 'placeholder name',
-          typeof: builder.fromAnyNode(parameter.type)
-        };
-      } else {
-        const parameterType = checker.getTypeAtLocation(parameter);
-        return {
-          identifier: 'placeholder name',
-          typeof: builder.fromTypeInstance(parameterType)
-        };
-      }
-    })
+    const parameters = builder.fromParameters([...functionDeclaration.parameters])
     const typeParameters = (functionDeclaration.typeParameters || []).map(typeParameter => {
       return builder.fromTypeParameterDeclaration(typeParameter)
     })
@@ -293,9 +293,67 @@ export const createSyntaxTypeBuilder = (context: ModuleBuildContext, builder: Ty
       returns,
     })
   };
+  builder.fromParameters = (parameters: ts.ParameterDeclaration[]) => {
+    return parameters.map((parameter, parameterIndex) => {
+      if (parameter.type) {
+        if (parameter.name.kind === ts.SyntaxKind.Identifier) {
+          return {
+            identifier: parameter.name.text,
+            typeof: builder.fromAnyNode(parameter.type)
+          };
+        }
+          return {
+            identifier: '<Unimplemented complex name>',
+            typeof: builder.fromAnyNode(parameter.type)
+          };
+      } else {
+        const parameterType = checker.getTypeAtLocation(parameter);
+        return {
+          identifier: 'placeholder name',
+          typeof: builder.fromTypeInstance(parameterType)
+        };
+      }
+    });
+  };
+
+
   builder.fromClassDeclaration = (classDeclaration) => {
     return pushType('class', {
-      properties: [],
+      members: classDeclaration.members.map((member): Member | null => {
+        switch (member.kind) {
+          case ts.SyntaxKind.Constructor:
+            const constructorMember = member as ts.ConstructorDeclaration;
+            return { type: 'constructor', parameters: builder.fromParameters([...constructorMember.parameters]) };
+          case ts.SyntaxKind.PropertyDeclaration:
+            const propertyMember = member as ts.PropertyDeclaration;
+            if (propertyMember.name.kind !== ts.SyntaxKind.Identifier)
+              return null;
+            if (propertyMember.type)
+              return {
+                type: 'property',
+                identifier: propertyMember.name.text,
+                typeof: builder.fromAnyNode(propertyMember.type)
+              };
+            return {
+              type: 'property',
+              identifier: propertyMember.name.text,
+              typeof: builder.fromTypeInstance(checker.getTypeAtLocation(propertyMember))
+            };
+          case ts.SyntaxKind.MethodDeclaration:
+            const methodMember = member as ts.MethodDeclaration;
+            if (methodMember.name.kind !== ts.SyntaxKind.Identifier)
+              return null;
+            
+            return {
+              type: 'method',
+              identifier: methodMember.name.text,
+              typeof: builder.fromFunctionDeclaration(methodMember)
+            };
+          case ts.SyntaxKind.SemicolonClassElement:
+            return { type: 'constructor', parameters: [] };
+        }
+        return (null as never);
+      }).filter(x => !!x),
       implements: [],
       abstract: false,
       extends: null,

@@ -87,13 +87,13 @@ export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ m
     }
   }), []);
 
-  const nodes = useMemo(() => renderer(finalRoot), [markdown, renderer]);
+  const nodes = useMemo(() => renderer(finalRoot), [finalRoot, renderer]);
 
   if (finalRoot.children[0] && finalRoot.children[0].type === 'yaml') {
     const child = finalRoot.children[0];
     const frontmatter = YAML.parse(child.value);
     
-    return h(Article, {}, [
+    return [
       h(ArticleMetadata, {
         hiddenTagKeys: [],
         meta: {
@@ -106,8 +106,8 @@ export const StaticMarkdownArticle: Component<StaticMarkdownArticleProps> = ({ m
       }),
       nodes,
       children,
-    ]);
+    ];
   }
 
-  return h(Article, {}, nodes);
+  return nodes;
 }

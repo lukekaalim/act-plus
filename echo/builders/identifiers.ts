@@ -76,6 +76,7 @@ export const buildIdentifiers = (cx: ModuleBuildContext) => {
         })
         return;
       }
+      case ts.SyntaxKind.NamespaceExport:
       case ts.SyntaxKind.ModuleDeclaration: {
         const typeId: TypeID = createId();
         const namespaceExports = cx.symbolsByNamespaceSymbol.get(symbol) as ts.Symbol[];
@@ -88,10 +89,11 @@ export const buildIdentifiers = (cx: ModuleBuildContext) => {
           exports: namespaceIdentifiers
         })
         cx.identifiers.set(id, {
-          type: 'value',
+          type: 'type',
           id,
           name,
           typeId,
+          parameters: [],
         })
         return;
       }

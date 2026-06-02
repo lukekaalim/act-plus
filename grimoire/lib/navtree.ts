@@ -1,4 +1,6 @@
 import { createId, Node } from "@lukekaalim/act";
+import { Page } from "../application/Page";
+import { SimpleTree } from "./tree";
 
 export type NavTreeLink = {
   content: null | string,
@@ -253,4 +255,35 @@ const visitLeaves = (tree: NavTree2, leafId: NavLeafID, callback: (leaf: NavLeaf
   callback(leaf);
   for (const child of leaf.children)
     visitLeaves(tree, child, callback);
+}
+
+export const buildNavTreeFromPages = (pages: Page[]) => {
+  const root = pages.find(page => page.path === '/');
+  if (!root)
+    throw new Error(`No "/" path to build navtree from`);
+
+  const tree = new SimpleTree<string>('/');
+
+  // run in order of shortest->longest path segments
+  const pagePathParts = pages
+    .map(page => page.path.split('/').filter(Boolean)) // Skip path segments that include duplicate '/'
+    .filter(segments => segments.length > 0) // skip root
+    .sort((left, right) => left.length - right.length)
+
+  const addSegmentsLeaf = (segments: string[]) => {
+    const parentSegments = segments.slice(0, segments.length - 1)
+    const leaf = segments.join('/');
+    const parent = parentSegments.join('/') || '/';
+
+    if (!tree.leaves[parent]) {
+      addSegmentsLeaf(parentSegments)
+    }
+    tree.append(leaf, parent);
+  }
+
+  for (const segments of pagePathParts) {
+    addSegmentsLeaf(segments)
+  }
+
+  return tree;
 }

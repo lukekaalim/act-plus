@@ -18,7 +18,7 @@ export type EchoViewProps = {
 export const EchoView: Component<EchoViewProps> = ({
   context,
   echo,
-  header,
+  header = null,
   children,
   noId = false,
   debug = false
@@ -30,13 +30,24 @@ export const EchoView: Component<EchoViewProps> = ({
 
     
   return [
-    header || h('h2', { id: `echo:${echo.moduleName}` }, echo.moduleName),
+    header,// || h('h2', { id: `echo:${echo.moduleName}` }, echo.moduleName),
     children,
     echo.exports.map(id => {
       const identifier = context.getIdentifierOrThrow(id);
 
       if ((identifier.type === 'type-parameter') || identifier.type === 'external')
         return null;
+
+      const type = context.getTypeOrThrow(identifier.typeId);
+      if (type.type === 'namespace') {
+        return [
+          h(IdentifierView, { noId, context, identifier }),
+          type.exports
+            .map(exs => context.getIdentifierOrThrow(exs))
+            .filter(identifier => identifier.type === 'type' || identifier.type === 'value')
+            .map(identifier => h(IdentifierView, { noId, context, identifier }))
+        ];
+      }
 
       return h(IdentifierView, { noId, context, identifier });
     }),

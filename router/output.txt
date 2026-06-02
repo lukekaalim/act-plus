@@ -1,0 +1,1259 @@
+Lets go!
+Adding to identifierBySymbol URLRouter <ref *1> SymbolObject {
+  flags: 32,
+  escapedName: 'URLRouter',
+  declarations: [
+    NodeObject {
+      pos: 68,
+      end: 3586,
+      kind: 264,
+      id: 0,
+      flags: 0,
+      modifierFlagsCache: 536870944,
+      transformFlags: 16778401,
+      parent: [SourceFileObject],
+      original: undefined,
+      emitNode: undefined,
+      symbol: [Circular *1],
+      localSymbol: [SymbolObject],
+      modifiers: [Array],
+      name: [IdentifierObject],
+      typeParameters: undefined,
+      heritageClauses: undefined,
+      members: [Array],
+      jsDoc: [Array]
+    }
+  ],
+  valueDeclaration: <ref *2> NodeObject {
+    pos: 68,
+    end: 3586,
+    kind: 264,
+    id: 0,
+    flags: 0,
+    modifierFlagsCache: 536870944,
+    transformFlags: 16778401,
+    parent: SourceFileObject {
+      pos: 0,
+      end: 3587,
+      kind: 308,
+      id: 0,
+      flags: 0,
+      modifierFlagsCache: 0,
+      transformFlags: 16778401,
+      parent: undefined,
+      original: undefined,
+      emitNode: undefined,
+      statements: [Array],
+      endOfFileToken: [TokenObject],
+      text: 'import { createEventEmitter, EventEmitter } from "../event_emitter";\n' +
+        '\n' +
+        '\n' +
+        '/**\n' +
+        ' * A URLRouter manages the current URL of a weboage and acts\n' +
+        ' * as an authority and subscribable event manager when it changes.\n' +
+        ' * \n' +
+        ' * Note that the URL router does not check if the app can render the path,\n' +
+        " * or if it's event the correct origin, or if the parameters are correct.\n" +
+        ' */\n' +
+        'export class URLRouter {\n' +
+        '  /**\n' +
+        '   * The URL of the current webpage. Will be replaced\n' +
+        '   * with a different value as the page changes.\n' +
+        '   * \n' +
+        '   * Get the path via `URLRouter.location.pathname` or the params\n' +
+        '   * with `URLRouter.location.searchParams`.\n' +
+        '   * \n' +
+        "   * Listen to it's changes by listening for `go` or `replace` events.\n" +
+        '   */\n' +
+        '  location: URL;\n' +
+        '  /**\n' +
+        '   * This value represents your position in the history stack.\n' +
+        '   * \n' +
+        '   * This value is almost entirely driven by the browser.\n' +
+        '   */\n' +
+        '  history_index: number = 0;\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Changes to the router cause RouterEvents to be emitted.\n' +
+        '   * \n' +
+        "   * The router's state is changed first, and then the event is emitted.\n" +
+        '   * \n' +
+        '   * The various events are:\n' +
+        '   *  - `go`. The location has changed, due to navigating forwards or backwards.\n' +
+        '   *  - `replace`. The current location has changed, but the history state is untouched.\n' +
+        '   *  - `refocus`. An attempt to navigate was made, but the destination is\n' +
+        '   *    the same as the current location, so nothing changed.\n' +
+        '   */\n' +
+        '  events: EventEmitter<\n' +
+        "    | { type: 'go' }\n" +
+        "    | { type: 'replace' }\n" +
+        "    | { type: 'refocus' }\n" +
+        '  > = createEventEmitter();\n' +
+        '\n' +
+        '  constructor(initialLocation: URL | string) {\n' +
+        '    let url;\n' +
+        "    if (typeof initialLocation === 'string') {\n" +
+        '      url = new URL(initialLocation);\n' +
+        '    } else {\n' +
+        '      url = initialLocation;\n' +
+        '    }\n' +
+        '    this.location = url;\n' +
+        '  }\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Navigate to a new location!\n' +
+        '   * \n' +
+        '   * The new location can be the same path, but with a different\n' +
+        '   * hash or searchParams.\n' +
+        '   * \n' +
+        '   * This adds the new location to the history stack.\n' +
+        '   * \n' +
+        '   * If the URL is (via string comparison) the same as the current location, a "refocus" event is sent\n' +
+        '   * and the history is not changed.\n' +
+        '   * \n' +
+        '   * Emits a "go" or "refocus" event.\n' +
+        '   * \n' +
+        '   * @see `URLRouter.replace` for a version that does not alter the history stack.\n' +
+        '   * \n' +
+        '   * @param newLocation A URL or string of the new location. If a string is passed,\n' +
+        '   * a new URL object is constructed and the current location is used as the "base path".\n' +
+        '   */\n' +
+        '  go(newLocation: URL | string) {\n' +
+        '    let url: URL;\n' +
+        '\n' +
+        "    if (typeof newLocation === 'string') {\n" +
+        '      url = new URL(newLocation, this.location);\n' +
+        '    } else {\n' +
+        '      url = newLocation;\n' +
+        '    }\n' +
+        '\n' +
+        '    if (this.location.href === url.href) {\n' +
+        "      this.events.emit({ type: 'refocus' });\n" +
+        '      return;\n' +
+        '    }\n' +
+        '\n' +
+        '    this.location = url;\n' +
+        '\n' +
+        "    this.events.emit({ type: 'go' });\n" +
+        '  };\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Replaces the current location with a new location,\n' +
+        '   * but does not append the history stack. (The "current" location\n' +
+        '   * in the history stack is replaced however)\n' +
+        '   * \n' +
+        '   * Does not check for location equality for refocus events.\n' +
+        '   * \n' +
+        '   * Emits a "replace" event.\n' +
+        '   * \n' +
+        '   * @param newLocation \n' +
+        '   */\n' +
+        '  replace(newLocation: URL | string) {\n' +
+        '    let url: URL;\n' +
+        '\n' +
+        "    if (typeof newLocation === 'string') {\n" +
+        '      url = new URL(newLocation, this.location);\n' +
+        '    } else {\n' +
+        '      url = newLocation;\n' +
+        '    }\n' +
+        '    \n' +
+        '    this.location = url;\n' +
+        "    this.events.emit({ type: 'replace' });\n" +
+        '  }\n' +
+        '  \n' +
+        '  /**\n' +
+        '   * Navigate to a location in the history.\n' +
+        '   * @param history_index The position in the `router.history` array\n' +
+        '   * that you are navigating to.\n' +
+        '   */\n' +
+        '  back(history_index: number) {\n' +
+        '    \n' +
+        '    this.history_index = history_index;\n' +
+        '  }\n' +
+        '}\n',
+      fileName: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      path: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      resolvedPath: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      originalFileName: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      languageVersion: 9,
+      languageVariant: 0,
+      scriptKind: 3,
+      isDeclarationFile: false,
+      hasNoDefaultLib: false,
+      locals: [Map],
+      nextContainer: [NodeObject],
+      endFlowNode: [Object],
+      nodeCount: 252,
+      identifierCount: 76,
+      symbolCount: 32,
+      parseDiagnostics: [],
+      bindDiagnostics: [],
+      bindSuggestionDiagnostics: undefined,
+      lineMap: undefined,
+      externalModuleIndicator: [NodeObject],
+      setExternalModuleIndicator: [Function: callback],
+      pragmas: Map(0) {},
+      checkJsDirective: undefined,
+      referencedFiles: [],
+      typeReferenceDirectives: [],
+      libReferenceDirectives: [],
+      amdDependencies: [],
+      commentDirectives: undefined,
+      identifiers: [Map],
+      packageJsonLocations: undefined,
+      packageJsonScope: undefined,
+      imports: [Array],
+      moduleAugmentations: [],
+      ambientModuleNames: [],
+      classifiableNames: [Set],
+      impliedNodeFormat: undefined,
+      jsDocParsingMode: 0,
+      version: '765ca3ee1d627de093c7377869645a34d9a536650643f6f4206fda6c03712da2',
+      symbol: [SymbolObject]
+    },
+    original: undefined,
+    emitNode: undefined,
+    symbol: [Circular *1],
+    localSymbol: SymbolObject {
+      flags: 1048576,
+      escapedName: 'URLRouter',
+      declarations: [Array],
+      valueDeclaration: undefined,
+      id: 0,
+      mergeId: 0,
+      parent: undefined,
+      members: undefined,
+      exports: undefined,
+      exportSymbol: [Circular *1],
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    modifiers: [
+      [TokenObject],
+      pos: 68,
+      end: 366,
+      hasTrailingComma: false,
+      transformFlags: 0
+    ],
+    name: IdentifierObject {
+      pos: 372,
+      end: 382,
+      kind: 80,
+      id: 0,
+      flags: 0,
+      transformFlags: 0,
+      parent: [Circular *2],
+      emitNode: undefined,
+      escapedText: 'URLRouter',
+      jsDoc: undefined,
+      flowNode: [Object],
+      symbol: undefined
+    },
+    typeParameters: undefined,
+    heritageClauses: undefined,
+    members: [
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      pos: 384,
+      end: 3584,
+      hasTrailingComma: false,
+      transformFlags: 16778401
+    ],
+    jsDoc: [ [NodeObject] ]
+  },
+  id: 0,
+  mergeId: 0,
+  parent: <ref *3> SymbolObject {
+    flags: 512,
+    escapedName: '"/home/lukekaalim/Projects/act-plus/router/v2/URLRouter"',
+    declarations: [ [SourceFileObject] ],
+    valueDeclaration: SourceFileObject {
+      pos: 0,
+      end: 3587,
+      kind: 308,
+      id: 0,
+      flags: 0,
+      modifierFlagsCache: 0,
+      transformFlags: 16778401,
+      parent: undefined,
+      original: undefined,
+      emitNode: undefined,
+      statements: [Array],
+      endOfFileToken: [TokenObject],
+      text: 'import { createEventEmitter, EventEmitter } from "../event_emitter";\n' +
+        '\n' +
+        '\n' +
+        '/**\n' +
+        ' * A URLRouter manages the current URL of a weboage and acts\n' +
+        ' * as an authority and subscribable event manager when it changes.\n' +
+        ' * \n' +
+        ' * Note that the URL router does not check if the app can render the path,\n' +
+        " * or if it's event the correct origin, or if the parameters are correct.\n" +
+        ' */\n' +
+        'export class URLRouter {\n' +
+        '  /**\n' +
+        '   * The URL of the current webpage. Will be replaced\n' +
+        '   * with a different value as the page changes.\n' +
+        '   * \n' +
+        '   * Get the path via `URLRouter.location.pathname` or the params\n' +
+        '   * with `URLRouter.location.searchParams`.\n' +
+        '   * \n' +
+        "   * Listen to it's changes by listening for `go` or `replace` events.\n" +
+        '   */\n' +
+        '  location: URL;\n' +
+        '  /**\n' +
+        '   * This value represents your position in the history stack.\n' +
+        '   * \n' +
+        '   * This value is almost entirely driven by the browser.\n' +
+        '   */\n' +
+        '  history_index: number = 0;\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Changes to the router cause RouterEvents to be emitted.\n' +
+        '   * \n' +
+        "   * The router's state is changed first, and then the event is emitted.\n" +
+        '   * \n' +
+        '   * The various events are:\n' +
+        '   *  - `go`. The location has changed, due to navigating forwards or backwards.\n' +
+        '   *  - `replace`. The current location has changed, but the history state is untouched.\n' +
+        '   *  - `refocus`. An attempt to navigate was made, but the destination is\n' +
+        '   *    the same as the current location, so nothing changed.\n' +
+        '   */\n' +
+        '  events: EventEmitter<\n' +
+        "    | { type: 'go' }\n" +
+        "    | { type: 'replace' }\n" +
+        "    | { type: 'refocus' }\n" +
+        '  > = createEventEmitter();\n' +
+        '\n' +
+        '  constructor(initialLocation: URL | string) {\n' +
+        '    let url;\n' +
+        "    if (typeof initialLocation === 'string') {\n" +
+        '      url = new URL(initialLocation);\n' +
+        '    } else {\n' +
+        '      url = initialLocation;\n' +
+        '    }\n' +
+        '    this.location = url;\n' +
+        '  }\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Navigate to a new location!\n' +
+        '   * \n' +
+        '   * The new location can be the same path, but with a different\n' +
+        '   * hash or searchParams.\n' +
+        '   * \n' +
+        '   * This adds the new location to the history stack.\n' +
+        '   * \n' +
+        '   * If the URL is (via string comparison) the same as the current location, a "refocus" event is sent\n' +
+        '   * and the history is not changed.\n' +
+        '   * \n' +
+        '   * Emits a "go" or "refocus" event.\n' +
+        '   * \n' +
+        '   * @see `URLRouter.replace` for a version that does not alter the history stack.\n' +
+        '   * \n' +
+        '   * @param newLocation A URL or string of the new location. If a string is passed,\n' +
+        '   * a new URL object is constructed and the current location is used as the "base path".\n' +
+        '   */\n' +
+        '  go(newLocation: URL | string) {\n' +
+        '    let url: URL;\n' +
+        '\n' +
+        "    if (typeof newLocation === 'string') {\n" +
+        '      url = new URL(newLocation, this.location);\n' +
+        '    } else {\n' +
+        '      url = newLocation;\n' +
+        '    }\n' +
+        '\n' +
+        '    if (this.location.href === url.href) {\n' +
+        "      this.events.emit({ type: 'refocus' });\n" +
+        '      return;\n' +
+        '    }\n' +
+        '\n' +
+        '    this.location = url;\n' +
+        '\n' +
+        "    this.events.emit({ type: 'go' });\n" +
+        '  };\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Replaces the current location with a new location,\n' +
+        '   * but does not append the history stack. (The "current" location\n' +
+        '   * in the history stack is replaced however)\n' +
+        '   * \n' +
+        '   * Does not check for location equality for refocus events.\n' +
+        '   * \n' +
+        '   * Emits a "replace" event.\n' +
+        '   * \n' +
+        '   * @param newLocation \n' +
+        '   */\n' +
+        '  replace(newLocation: URL | string) {\n' +
+        '    let url: URL;\n' +
+        '\n' +
+        "    if (typeof newLocation === 'string') {\n" +
+        '      url = new URL(newLocation, this.location);\n' +
+        '    } else {\n' +
+        '      url = newLocation;\n' +
+        '    }\n' +
+        '    \n' +
+        '    this.location = url;\n' +
+        "    this.events.emit({ type: 'replace' });\n" +
+        '  }\n' +
+        '  \n' +
+        '  /**\n' +
+        '   * Navigate to a location in the history.\n' +
+        '   * @param history_index The position in the `router.history` array\n' +
+        '   * that you are navigating to.\n' +
+        '   */\n' +
+        '  back(history_index: number) {\n' +
+        '    \n' +
+        '    this.history_index = history_index;\n' +
+        '  }\n' +
+        '}\n',
+      fileName: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      path: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      resolvedPath: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      originalFileName: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      languageVersion: 9,
+      languageVariant: 0,
+      scriptKind: 3,
+      isDeclarationFile: false,
+      hasNoDefaultLib: false,
+      locals: [Map],
+      nextContainer: [NodeObject],
+      endFlowNode: [Object],
+      nodeCount: 252,
+      identifierCount: 76,
+      symbolCount: 32,
+      parseDiagnostics: [],
+      bindDiagnostics: [],
+      bindSuggestionDiagnostics: undefined,
+      lineMap: undefined,
+      externalModuleIndicator: [NodeObject],
+      setExternalModuleIndicator: [Function: callback],
+      pragmas: Map(0) {},
+      checkJsDirective: undefined,
+      referencedFiles: [],
+      typeReferenceDirectives: [],
+      libReferenceDirectives: [],
+      amdDependencies: [],
+      commentDirectives: undefined,
+      identifiers: [Map],
+      packageJsonLocations: undefined,
+      packageJsonScope: undefined,
+      imports: [Array],
+      moduleAugmentations: [],
+      ambientModuleNames: [],
+      classifiableNames: [Set],
+      impliedNodeFormat: undefined,
+      jsDocParsingMode: 0,
+      version: '765ca3ee1d627de093c7377869645a34d9a536650643f6f4206fda6c03712da2',
+      symbol: [Circular *3]
+    },
+    id: 0,
+    mergeId: 0,
+    parent: undefined,
+    members: undefined,
+    exports: Map(1) { 'URLRouter' => [Circular *1] },
+    exportSymbol: undefined,
+    constEnumOnlyModule: undefined,
+    isReferenced: undefined,
+    lastAssignmentPos: undefined,
+    links: undefined
+  },
+  members: Map(7) {
+    'location' => SymbolObject {
+      flags: 4,
+      escapedName: 'location',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    'history_index' => SymbolObject {
+      flags: 4,
+      escapedName: 'history_index',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    'events' => SymbolObject {
+      flags: 4,
+      escapedName: 'events',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    '__constructor' => SymbolObject {
+      flags: 16384,
+      escapedName: '__constructor',
+      declarations: [Array],
+      valueDeclaration: undefined,
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    'go' => SymbolObject {
+      flags: 8192,
+      escapedName: 'go',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    'replace' => SymbolObject {
+      flags: 8192,
+      escapedName: 'replace',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    'back' => SymbolObject {
+      flags: 8192,
+      escapedName: 'back',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    }
+  },
+  exports: Map(1) {
+    'prototype' => SymbolObject {
+      flags: 4194308,
+      escapedName: 'prototype',
+      declarations: undefined,
+      valueDeclaration: undefined,
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    }
+  },
+  exportSymbol: undefined,
+  constEnumOnlyModule: undefined,
+  isReferenced: undefined,
+  lastAssignmentPos: undefined,
+  links: undefined
+}
+true
+IdentifierBySymbol (10) does not have URLRouter <ref *1> SymbolObject {
+  flags: 32,
+  escapedName: 'URLRouter',
+  declarations: [
+    NodeObject {
+      pos: 68,
+      end: 3586,
+      kind: 264,
+      id: 0,
+      flags: 0,
+      modifierFlagsCache: 536870944,
+      transformFlags: 16778401,
+      parent: [SourceFileObject],
+      original: undefined,
+      emitNode: undefined,
+      symbol: [Circular *1],
+      localSymbol: [SymbolObject],
+      modifiers: [Array],
+      name: [IdentifierObject],
+      typeParameters: undefined,
+      heritageClauses: undefined,
+      members: [Array],
+      jsDoc: [Array]
+    }
+  ],
+  valueDeclaration: <ref *2> NodeObject {
+    pos: 68,
+    end: 3586,
+    kind: 264,
+    id: 0,
+    flags: 0,
+    modifierFlagsCache: 536870944,
+    transformFlags: 16778401,
+    parent: SourceFileObject {
+      pos: 0,
+      end: 3587,
+      kind: 308,
+      id: 0,
+      flags: 0,
+      modifierFlagsCache: 0,
+      transformFlags: 16778401,
+      parent: undefined,
+      original: undefined,
+      emitNode: undefined,
+      statements: [Array],
+      endOfFileToken: [TokenObject],
+      text: 'import { createEventEmitter, EventEmitter } from "../event_emitter";\n' +
+        '\n' +
+        '\n' +
+        '/**\n' +
+        ' * A URLRouter manages the current URL of a weboage and acts\n' +
+        ' * as an authority and subscribable event manager when it changes.\n' +
+        ' * \n' +
+        ' * Note that the URL router does not check if the app can render the path,\n' +
+        " * or if it's event the correct origin, or if the parameters are correct.\n" +
+        ' */\n' +
+        'export class URLRouter {\n' +
+        '  /**\n' +
+        '   * The URL of the current webpage. Will be replaced\n' +
+        '   * with a different value as the page changes.\n' +
+        '   * \n' +
+        '   * Get the path via `URLRouter.location.pathname` or the params\n' +
+        '   * with `URLRouter.location.searchParams`.\n' +
+        '   * \n' +
+        "   * Listen to it's changes by listening for `go` or `replace` events.\n" +
+        '   */\n' +
+        '  location: URL;\n' +
+        '  /**\n' +
+        '   * This value represents your position in the history stack.\n' +
+        '   * \n' +
+        '   * This value is almost entirely driven by the browser.\n' +
+        '   */\n' +
+        '  history_index: number = 0;\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Changes to the router cause RouterEvents to be emitted.\n' +
+        '   * \n' +
+        "   * The router's state is changed first, and then the event is emitted.\n" +
+        '   * \n' +
+        '   * The various events are:\n' +
+        '   *  - `go`. The location has changed, due to navigating forwards or backwards.\n' +
+        '   *  - `replace`. The current location has changed, but the history state is untouched.\n' +
+        '   *  - `refocus`. An attempt to navigate was made, but the destination is\n' +
+        '   *    the same as the current location, so nothing changed.\n' +
+        '   */\n' +
+        '  events: EventEmitter<\n' +
+        "    | { type: 'go' }\n" +
+        "    | { type: 'replace' }\n" +
+        "    | { type: 'refocus' }\n" +
+        '  > = createEventEmitter();\n' +
+        '\n' +
+        '  constructor(initialLocation: URL | string) {\n' +
+        '    let url;\n' +
+        "    if (typeof initialLocation === 'string') {\n" +
+        '      url = new URL(initialLocation);\n' +
+        '    } else {\n' +
+        '      url = initialLocation;\n' +
+        '    }\n' +
+        '    this.location = url;\n' +
+        '  }\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Navigate to a new location!\n' +
+        '   * \n' +
+        '   * The new location can be the same path, but with a different\n' +
+        '   * hash or searchParams.\n' +
+        '   * \n' +
+        '   * This adds the new location to the history stack.\n' +
+        '   * \n' +
+        '   * If the URL is (via string comparison) the same as the current location, a "refocus" event is sent\n' +
+        '   * and the history is not changed.\n' +
+        '   * \n' +
+        '   * Emits a "go" or "refocus" event.\n' +
+        '   * \n' +
+        '   * @see `URLRouter.replace` for a version that does not alter the history stack.\n' +
+        '   * \n' +
+        '   * @param newLocation A URL or string of the new location. If a string is passed,\n' +
+        '   * a new URL object is constructed and the current location is used as the "base path".\n' +
+        '   */\n' +
+        '  go(newLocation: URL | string) {\n' +
+        '    let url: URL;\n' +
+        '\n' +
+        "    if (typeof newLocation === 'string') {\n" +
+        '      url = new URL(newLocation, this.location);\n' +
+        '    } else {\n' +
+        '      url = newLocation;\n' +
+        '    }\n' +
+        '\n' +
+        '    if (this.location.href === url.href) {\n' +
+        "      this.events.emit({ type: 'refocus' });\n" +
+        '      return;\n' +
+        '    }\n' +
+        '\n' +
+        '    this.location = url;\n' +
+        '\n' +
+        "    this.events.emit({ type: 'go' });\n" +
+        '  };\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Replaces the current location with a new location,\n' +
+        '   * but does not append the history stack. (The "current" location\n' +
+        '   * in the history stack is replaced however)\n' +
+        '   * \n' +
+        '   * Does not check for location equality for refocus events.\n' +
+        '   * \n' +
+        '   * Emits a "replace" event.\n' +
+        '   * \n' +
+        '   * @param newLocation \n' +
+        '   */\n' +
+        '  replace(newLocation: URL | string) {\n' +
+        '    let url: URL;\n' +
+        '\n' +
+        "    if (typeof newLocation === 'string') {\n" +
+        '      url = new URL(newLocation, this.location);\n' +
+        '    } else {\n' +
+        '      url = newLocation;\n' +
+        '    }\n' +
+        '    \n' +
+        '    this.location = url;\n' +
+        "    this.events.emit({ type: 'replace' });\n" +
+        '  }\n' +
+        '  \n' +
+        '  /**\n' +
+        '   * Navigate to a location in the history.\n' +
+        '   * @param history_index The position in the `router.history` array\n' +
+        '   * that you are navigating to.\n' +
+        '   */\n' +
+        '  back(history_index: number) {\n' +
+        '    \n' +
+        '    this.history_index = history_index;\n' +
+        '  }\n' +
+        '}\n',
+      fileName: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      path: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      resolvedPath: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      originalFileName: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      languageVersion: 9,
+      languageVariant: 0,
+      scriptKind: 3,
+      isDeclarationFile: false,
+      hasNoDefaultLib: false,
+      locals: [Map],
+      nextContainer: [NodeObject],
+      endFlowNode: [Object],
+      nodeCount: 252,
+      identifierCount: 76,
+      symbolCount: 32,
+      parseDiagnostics: [],
+      bindDiagnostics: [],
+      bindSuggestionDiagnostics: undefined,
+      lineMap: undefined,
+      externalModuleIndicator: [NodeObject],
+      setExternalModuleIndicator: [Function: callback],
+      pragmas: Map(0) {},
+      checkJsDirective: undefined,
+      referencedFiles: [],
+      typeReferenceDirectives: [],
+      libReferenceDirectives: [],
+      amdDependencies: [],
+      commentDirectives: undefined,
+      identifiers: [Map],
+      packageJsonLocations: undefined,
+      packageJsonScope: undefined,
+      imports: [Array],
+      moduleAugmentations: [],
+      ambientModuleNames: [],
+      classifiableNames: [Set],
+      impliedNodeFormat: undefined,
+      jsDocParsingMode: 0,
+      version: '765ca3ee1d627de093c7377869645a34d9a536650643f6f4206fda6c03712da2',
+      symbol: [SymbolObject]
+    },
+    original: undefined,
+    emitNode: undefined,
+    symbol: [Circular *1],
+    localSymbol: SymbolObject {
+      flags: 1048576,
+      escapedName: 'URLRouter',
+      declarations: [Array],
+      valueDeclaration: undefined,
+      id: 0,
+      mergeId: 0,
+      parent: undefined,
+      members: undefined,
+      exports: undefined,
+      exportSymbol: [Circular *1],
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    modifiers: [
+      [TokenObject],
+      pos: 68,
+      end: 366,
+      hasTrailingComma: false,
+      transformFlags: 0
+    ],
+    name: IdentifierObject {
+      pos: 372,
+      end: 382,
+      kind: 80,
+      id: 0,
+      flags: 0,
+      transformFlags: 0,
+      parent: [Circular *2],
+      emitNode: undefined,
+      escapedText: 'URLRouter',
+      jsDoc: undefined,
+      flowNode: [Object],
+      symbol: undefined
+    },
+    typeParameters: undefined,
+    heritageClauses: undefined,
+    members: [
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      [NodeObject],
+      pos: 384,
+      end: 3584,
+      hasTrailingComma: false,
+      transformFlags: 16778401
+    ],
+    jsDoc: [ [NodeObject] ]
+  },
+  id: 15,
+  mergeId: 0,
+  parent: <ref *3> SymbolObject {
+    flags: 512,
+    escapedName: '"/home/lukekaalim/Projects/act-plus/router/v2/URLRouter"',
+    declarations: [ [SourceFileObject] ],
+    valueDeclaration: SourceFileObject {
+      pos: 0,
+      end: 3587,
+      kind: 308,
+      id: 0,
+      flags: 0,
+      modifierFlagsCache: 0,
+      transformFlags: 16778401,
+      parent: undefined,
+      original: undefined,
+      emitNode: undefined,
+      statements: [Array],
+      endOfFileToken: [TokenObject],
+      text: 'import { createEventEmitter, EventEmitter } from "../event_emitter";\n' +
+        '\n' +
+        '\n' +
+        '/**\n' +
+        ' * A URLRouter manages the current URL of a weboage and acts\n' +
+        ' * as an authority and subscribable event manager when it changes.\n' +
+        ' * \n' +
+        ' * Note that the URL router does not check if the app can render the path,\n' +
+        " * or if it's event the correct origin, or if the parameters are correct.\n" +
+        ' */\n' +
+        'export class URLRouter {\n' +
+        '  /**\n' +
+        '   * The URL of the current webpage. Will be replaced\n' +
+        '   * with a different value as the page changes.\n' +
+        '   * \n' +
+        '   * Get the path via `URLRouter.location.pathname` or the params\n' +
+        '   * with `URLRouter.location.searchParams`.\n' +
+        '   * \n' +
+        "   * Listen to it's changes by listening for `go` or `replace` events.\n" +
+        '   */\n' +
+        '  location: URL;\n' +
+        '  /**\n' +
+        '   * This value represents your position in the history stack.\n' +
+        '   * \n' +
+        '   * This value is almost entirely driven by the browser.\n' +
+        '   */\n' +
+        '  history_index: number = 0;\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Changes to the router cause RouterEvents to be emitted.\n' +
+        '   * \n' +
+        "   * The router's state is changed first, and then the event is emitted.\n" +
+        '   * \n' +
+        '   * The various events are:\n' +
+        '   *  - `go`. The location has changed, due to navigating forwards or backwards.\n' +
+        '   *  - `replace`. The current location has changed, but the history state is untouched.\n' +
+        '   *  - `refocus`. An attempt to navigate was made, but the destination is\n' +
+        '   *    the same as the current location, so nothing changed.\n' +
+        '   */\n' +
+        '  events: EventEmitter<\n' +
+        "    | { type: 'go' }\n" +
+        "    | { type: 'replace' }\n" +
+        "    | { type: 'refocus' }\n" +
+        '  > = createEventEmitter();\n' +
+        '\n' +
+        '  constructor(initialLocation: URL | string) {\n' +
+        '    let url;\n' +
+        "    if (typeof initialLocation === 'string') {\n" +
+        '      url = new URL(initialLocation);\n' +
+        '    } else {\n' +
+        '      url = initialLocation;\n' +
+        '    }\n' +
+        '    this.location = url;\n' +
+        '  }\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Navigate to a new location!\n' +
+        '   * \n' +
+        '   * The new location can be the same path, but with a different\n' +
+        '   * hash or searchParams.\n' +
+        '   * \n' +
+        '   * This adds the new location to the history stack.\n' +
+        '   * \n' +
+        '   * If the URL is (via string comparison) the same as the current location, a "refocus" event is sent\n' +
+        '   * and the history is not changed.\n' +
+        '   * \n' +
+        '   * Emits a "go" or "refocus" event.\n' +
+        '   * \n' +
+        '   * @see `URLRouter.replace` for a version that does not alter the history stack.\n' +
+        '   * \n' +
+        '   * @param newLocation A URL or string of the new location. If a string is passed,\n' +
+        '   * a new URL object is constructed and the current location is used as the "base path".\n' +
+        '   */\n' +
+        '  go(newLocation: URL | string) {\n' +
+        '    let url: URL;\n' +
+        '\n' +
+        "    if (typeof newLocation === 'string') {\n" +
+        '      url = new URL(newLocation, this.location);\n' +
+        '    } else {\n' +
+        '      url = newLocation;\n' +
+        '    }\n' +
+        '\n' +
+        '    if (this.location.href === url.href) {\n' +
+        "      this.events.emit({ type: 'refocus' });\n" +
+        '      return;\n' +
+        '    }\n' +
+        '\n' +
+        '    this.location = url;\n' +
+        '\n' +
+        "    this.events.emit({ type: 'go' });\n" +
+        '  };\n' +
+        '\n' +
+        '  /**\n' +
+        '   * Replaces the current location with a new location,\n' +
+        '   * but does not append the history stack. (The "current" location\n' +
+        '   * in the history stack is replaced however)\n' +
+        '   * \n' +
+        '   * Does not check for location equality for refocus events.\n' +
+        '   * \n' +
+        '   * Emits a "replace" event.\n' +
+        '   * \n' +
+        '   * @param newLocation \n' +
+        '   */\n' +
+        '  replace(newLocation: URL | string) {\n' +
+        '    let url: URL;\n' +
+        '\n' +
+        "    if (typeof newLocation === 'string') {\n" +
+        '      url = new URL(newLocation, this.location);\n' +
+        '    } else {\n' +
+        '      url = newLocation;\n' +
+        '    }\n' +
+        '    \n' +
+        '    this.location = url;\n' +
+        "    this.events.emit({ type: 'replace' });\n" +
+        '  }\n' +
+        '  \n' +
+        '  /**\n' +
+        '   * Navigate to a location in the history.\n' +
+        '   * @param history_index The position in the `router.history` array\n' +
+        '   * that you are navigating to.\n' +
+        '   */\n' +
+        '  back(history_index: number) {\n' +
+        '    \n' +
+        '    this.history_index = history_index;\n' +
+        '  }\n' +
+        '}\n',
+      fileName: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      path: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      resolvedPath: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      originalFileName: '/home/lukekaalim/Projects/act-plus/router/v2/URLRouter.ts',
+      languageVersion: 9,
+      languageVariant: 0,
+      scriptKind: 3,
+      isDeclarationFile: false,
+      hasNoDefaultLib: false,
+      locals: [Map],
+      nextContainer: [NodeObject],
+      endFlowNode: [Object],
+      nodeCount: 252,
+      identifierCount: 76,
+      symbolCount: 32,
+      parseDiagnostics: [],
+      bindDiagnostics: [],
+      bindSuggestionDiagnostics: undefined,
+      lineMap: undefined,
+      externalModuleIndicator: [NodeObject],
+      setExternalModuleIndicator: [Function: callback],
+      pragmas: Map(0) {},
+      checkJsDirective: undefined,
+      referencedFiles: [],
+      typeReferenceDirectives: [],
+      libReferenceDirectives: [],
+      amdDependencies: [],
+      commentDirectives: undefined,
+      identifiers: [Map],
+      packageJsonLocations: undefined,
+      packageJsonScope: undefined,
+      imports: [Array],
+      moduleAugmentations: [],
+      ambientModuleNames: [],
+      classifiableNames: [Set],
+      impliedNodeFormat: undefined,
+      jsDocParsingMode: 0,
+      version: '765ca3ee1d627de093c7377869645a34d9a536650643f6f4206fda6c03712da2',
+      symbol: [Circular *3]
+    },
+    id: 14,
+    mergeId: 0,
+    parent: undefined,
+    members: undefined,
+    exports: Map(1) { 'URLRouter' => [Circular *1] },
+    exportSymbol: undefined,
+    constEnumOnlyModule: undefined,
+    isReferenced: undefined,
+    lastAssignmentPos: undefined,
+    links: undefined
+  },
+  members: Map(7) {
+    'location' => SymbolObject {
+      flags: 4,
+      escapedName: 'location',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    'history_index' => SymbolObject {
+      flags: 4,
+      escapedName: 'history_index',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    'events' => SymbolObject {
+      flags: 4,
+      escapedName: 'events',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    '__constructor' => SymbolObject {
+      flags: 16384,
+      escapedName: '__constructor',
+      declarations: [Array],
+      valueDeclaration: undefined,
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    'go' => SymbolObject {
+      flags: 8192,
+      escapedName: 'go',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    'replace' => SymbolObject {
+      flags: 8192,
+      escapedName: 'replace',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    },
+    'back' => SymbolObject {
+      flags: 8192,
+      escapedName: 'back',
+      declarations: [Array],
+      valueDeclaration: [NodeObject],
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    }
+  },
+  exports: Map(1) {
+    'prototype' => SymbolObject {
+      flags: 4194308,
+      escapedName: 'prototype',
+      declarations: undefined,
+      valueDeclaration: undefined,
+      id: 0,
+      mergeId: 0,
+      parent: [Circular *1],
+      members: undefined,
+      exports: undefined,
+      exportSymbol: undefined,
+      constEnumOnlyModule: undefined,
+      isReferenced: undefined,
+      lastAssignmentPos: undefined,
+      links: undefined
+    }
+  },
+  exportSymbol: undefined,
+  constEnumOnlyModule: undefined,
+  isReferenced: undefined,
+  lastAssignmentPos: undefined,
+  links: undefined
+}
+Resolving reference to URLRouter
+false
+IdentifierBySymbol (11) does not have URLRouter <ref *1> SymbolObject {
+  flags: 2097152,
+  escapedName: 'URLRouter',
+  declarations: [
+    NodeObject {
+      pos: 58,
+      end: 68,
+      kind: 277,
+      id: 0,
+      flags: 0,
+      modifierFlagsCache: 536870912,
+      transformFlags: 0,
+      parent: [NodeObject],
+      original: undefined,
+      emitNode: undefined,
+      symbol: [Circular *1],
+      localSymbol: undefined,
+      isTypeOnly: false,
+      propertyName: undefined,
+      name: [IdentifierObject]
+    }
+  ],
+  valueDeclaration: undefined,
+  id: 131,
+  mergeId: 0,
+  parent: undefined,
+  members: undefined,
+  exports: undefined,
+  exportSymbol: undefined,
+  constEnumOnlyModule: undefined,
+  isReferenced: 788968,
+  lastAssignmentPos: undefined,
+  links: undefined
+}
+Resolving reference to Map
+Resolving reference to Node
+Resolving reference to Component
+Resolving reference to URL
+Resolving reference to EventEmitter
+Resolving reference to URL
+Resolving reference to URL
+Resolving reference to URL
+Resolving reference to History
+Resolving reference to Window
+Resolving reference to Ref
+Resolving reference to HTMLElement
+Wrote 10 exports to mod.json @ 1780276892002 in 0.03s

@@ -39,19 +39,22 @@ export const createExternalTypeBuilder = (cx: ModuleBuildContext, builder: TypeB
   // for a given symbol, what it it's qualified name
   const qualifiedNameForSymbol = new Map<ts.Symbol, string>();
 
-  const visitedModules = new Set<ts.Symbol>();
+  const visitedModules = new Set<string>();
 
   const getIdentifierFromSymbol = (symbol: ts.Symbol): null | IdentifierID => {
-    const id: IdentifierID = cx.identifierBySymbol.get(symbol) || createId();
+    if (symbol.flags & ts.SymbolFlags.Alias) {
+      symbol = cx.ts.checker.getAliasedSymbol(symbol);
+    }
 
-    if (cx.identifiers.has(id))
-      return id;
+    if (cx.identifierBySymbol.has(symbol)) {
+      return cx.identifierBySymbol.get(symbol) as IdentifierID;
+    }
+    const id: IdentifierID =createId();
 
     let identifier: Identifier;
 
     const declaration = (symbol.declarations || [])[0] as ts.Declaration;
     if (!declaration) {
-      console.warn(`Requested reference for undeclared symbol (${symbol.name})`)
       identifier = {
         id,
         type: 'external',
@@ -62,14 +65,13 @@ export const createExternalTypeBuilder = (cx: ModuleBuildContext, builder: TypeB
       cx.identifierBySymbol.set(symbol, id);
       return identifier.id;
     }
-
     const sourceFile = declaration.getSourceFile();
-
     visitModule(sourceFile);
 
     if (moduleNameFromSymbol.has(symbol) && qualifiedNameForSymbol.has(symbol)) {
       const name = qualifiedNameForSymbol.get(symbol) as string;
       const moduleName = moduleNameFromSymbol.get(symbol) as string;
+
 
       identifier = {
         id,
@@ -129,19 +131,10 @@ export const createExternalTypeBuilder = (cx: ModuleBuildContext, builder: TypeB
 
 
   const visitModule = (sourceFile: ts.SourceFile) => {
-
-    // get symbol for sourcefile
-    const moduleSymbol = cx.ts.checker.getSymbolAtLocation(sourceFile);
-
-    if (!moduleSymbol) {
-      console.warn(`Missing module symbol for "${sourceFile.fileName}"`)
-      return;
-    }
-
     // check if sourcefile has been visited
-    if (visitedModules.has(moduleSymbol))
+    if (visitedModules.has(sourceFile.fileName))
       return;
-    visitedModules.add(moduleSymbol);
+    visitedModules.add(sourceFile.fileName);
 
     const packageInfo = findPackageFromSourceFile(sourceFile);
     if (!packageInfo)
@@ -149,11 +142,10 @@ export const createExternalTypeBuilder = (cx: ModuleBuildContext, builder: TypeB
     
     // check if package has been visited
     const packageSourceFile = getSourcefileFromName(packageInfo.package);
-    const packageSymbol = cx.ts.checker.getSymbolAtLocation(packageSourceFile) as ts.Symbol;
     // visit symbols for package
-    if (visitedModules.has(packageSymbol))
+    if (!packageSourceFile || visitedModules.has(packageSourceFile.fileName))
       return;
-    visitedModules.add(packageSymbol);
+    visitedModules.add(packageSourceFile.fileName);
 
     const visitSymbols = (qualifiers: string[], symbols: ts.Symbol[]) => {
       for (const symbol of symbols) {
@@ -165,7 +157,7 @@ export const createExternalTypeBuilder = (cx: ModuleBuildContext, builder: TypeB
               const namespace = declaration as ts.ModuleDeclaration;
               const namespaceSymbol = checker.getSymbolAtLocation(namespace.name);
               if (namespaceSymbol) {
-                const symbols = checker.getExportsOfModule(moduleSymbol);
+                const symbols = checker.getExportsOfModule(namespaceSymbol);
                 visitSymbols([...qualifiers, namespace.name.text], symbols);
               }
             }
@@ -179,8 +171,11 @@ export const createExternalTypeBuilder = (cx: ModuleBuildContext, builder: TypeB
       }
     }
 
-    const symbols = checker.getExportsOfModule(packageSymbol);
-    visitSymbols([], symbols);
+    const packageSymbol = cx.ts.checker.getSymbolAtLocation(packageSourceFile);
+    if (packageSymbol) {
+      const symbols = checker.getExportsOfModule(packageSymbol);
+      visitSymbols([], symbols);
+    }
   }
 
   const findPackageFromSourceFile = (sourceFile: ts.SourceFile): null | PackageFileReferenceInfo => {
@@ -227,7 +222,9 @@ export const createExternalTypeBuilder = (cx: ModuleBuildContext, builder: TypeB
     }
     const packageSourceFile = program.getSourceFile(moduleReference.resolvedModule.resolvedFileName)
     if (!packageSourceFile) {
-      throw new Error(`Could not find source file "${moduleReference.resolvedModule.resolvedFileName}"`)
+      // There are cases where a legit file is resolvable, but not included in the typescript
+      // program (because it was never directly referenced).
+      return null;
     }
 
     return packageSourceFile;

@@ -25,6 +25,8 @@
 <Demo demo="CodeBox" />
 
 
-<TypeDoc project="@lukekaalim/grimoire" name="VerticalNavMenu2" extras="VerticalNavMenu2Props" />
+<Echo module="@lukekaalim/grimoire" name="VerticalNavMenu2" extras="VerticalNavMenu2Props" />
 
 <Demo demo="VerticalNavMenu" />
+
+<Demo demo="TableOfContents" />

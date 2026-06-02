@@ -1,5 +1,7 @@
 import { Component, h, useRef, useState } from '@lukekaalim/act';
-import { render } from '@lukekaalim/act-web';
+import { createWebNodeBuilder, HTML, render } from '@lukekaalim/act-web';
+
+import { createDebugPopup, renderDEV } from '@lukekaalim/act-insight';
 
 import {
   useRouter,
@@ -10,7 +12,11 @@ import {
   createRelativeURLFactory,
   WebLink,
 } from '@lukekaalim/act-router';
-import {  Grid3, Hero, TopBanner, createDocApp, SimpleTheme, BannerLink, IconTextBannerLogo, BoneTheme } from '@lukekaalim/grimoire';
+import {
+  Grid3, Hero, TopBanner, createDocApp, SimpleTheme,
+  BannerLink, IconTextBannerLogo, BoneTheme, DEFAULT_THEME,
+  IconAndLabel, icons
+} from '@lukekaalim/grimoire';
 
 import { EchoPlugin } from '@lukekaalim/grimoire-ts';
 import { SVGRepo } from '@lukekaalim/act-icons';
@@ -20,6 +26,11 @@ import { buildEchoDocs } from '../echo/docs';
 import { TaskPage } from './TaskPage';
 import { createSandboxDocs } from './sandbox';
 import { DocHero } from './components/Hero';
+import { DocSite } from '@lukekaalim/grimoire/DocSite';
+
+import packagesMd from './packages.md?raw';
+import {  } from '@lukekaalim/grimoire/components/icon';
+import { routerDocs } from '@lukekaalim/act-router/docs';
 
 const origin = createRelativeURLFactory();
 
@@ -170,7 +181,7 @@ const DemoPage = () => {
       cards: [
         {
           id: 'doc',
-          destination: origin.createURL('/packages/@lukekaalim/grimoire'),
+          destination: origin.createURL('/packages/grimoire'),
           content: [
             h('h3', {}, '@lukekaalim/grimoire'),
             h('p', {}, 'A component library for building developer documentation websites in act!'),
@@ -178,7 +189,7 @@ const DemoPage = () => {
         },
         {
           id: 'echo',
-          destination: origin.createURL('/packages/@lukekaalim/echo'),
+          destination: origin.createURL('/packages/echo'),
           content: [
             h('h3', {}, '@lukekaalim/echo'),
             h('p', {}, 'Typescript Reflection library, for reading your types at runtime!'),
@@ -186,7 +197,7 @@ const DemoPage = () => {
         },
         {
           id: 'tsdoc',
-          destination: origin.createURL('/packages/@lukekaalim/grimoire-ts'),
+          destination: origin.createURL('/packages/grimoire-ts'),
           content: [
             h('h3', {}, '@lukekaalim/grimoire-ts'),
             h('p', {}, 'Components for building typescript docs using the Typescript Compiler API, and the tsdoc tool'),
@@ -194,7 +205,7 @@ const DemoPage = () => {
         },
         {
           id: 'httpdoc',
-          destination: origin.createURL('/packages/@lukekaalim/grimoire-http'),
+          destination: origin.createURL('/packages/grimoire-http'),
           content: [
             h('h3', {}, '@lukekaalim/grimoire-http'),
             h('p', {}, 'Components for building openapi/swagger, blueprint, JsonSchema (or other HTTP API specification tools)'),
@@ -202,7 +213,7 @@ const DemoPage = () => {
         },
         {
           id: 'graphit',
-          destination: origin.createURL('/packages/@lukekaalim/act-graphit'),
+          destination: origin.createURL('/packages/act-graphit'),
           content: [
             h('h3', {}, '@lukekaalim/act-graphit'),
             h('p', {}, 'Components for drawing SVGs, and controls for editing them dynamically'),
@@ -210,7 +221,7 @@ const DemoPage = () => {
         },
         {
           id: 'curve',
-          destination: origin.createURL('/packages/@lukekaalim/act-curve'),
+          destination: origin.createURL('/packages/act-curve'),
           content: [
             h('h3', {}, '@lukekaalim/act-curve'),
             h('p', {}, 'Animation Library for act, from 1 to 3 dimensions. Keyframes, bezier curves, render loops.'),
@@ -218,7 +229,7 @@ const DemoPage = () => {
         },
         {
           id: 'markdown',
-          destination: origin.createURL('/packages/@lukekaalim/act-markdown'),
+          destination: origin.createURL('/packages/act-markdown'),
           content: [
             h('h3', {}, '@lukekaalim/act-markdown'),
             h('p', {}, 'Markdown rendering library - uses the mdast AST to generate lovley markdown. Support for various plugins, as well as MDX!'),
@@ -226,7 +237,7 @@ const DemoPage = () => {
         },
         {
           id: 'router',
-          destination: origin.createURL('/packages/@lukekaalim/act-router'),
+          destination: origin.createURL('/packages/router'),
           content: [
             h('h3', {}, '@lukekaalim/act-router'),
             h('p', {}, 'Page/Link library for handling SPAs neatly.'),
@@ -235,7 +246,7 @@ const DemoPage = () => {
         {
           
           id: 'icons',
-          destination: origin.createURL('/packages/@lukekaalim/act-icons'),
+          destination: origin.createURL('/packages/act-icons'),
           content: [
             h('h3', {}, '@lukekaalim/act-icons'),
             h('p', {}, 'Simple Icon library that intergrates with a few Icon APIs to provide images based on icon IDs'),
@@ -251,8 +262,6 @@ doc.route.add('/', h(DemoPage))
 
 
 doc.route.add('/tasks', h(TaskPage))
-
-const wait = (time: number) => new Promise(resolve => setTimeout(resolve, time));
 
 type UnionToIntersection<U> = 
   (U extends any ? (x: U)=>void : never) extends ((x: infer I)=>void) ? I : never
@@ -278,6 +287,23 @@ const {
 
 buildEchoDocs(doc);
 
+doc.page
+  .addNodePage('/', h(DemoPage))
+  .addTopLevelNavLink(h(IconAndLabel, { iconURL: icons.solid.black.house, imgStyle: { filter: 'invert()' } }, 'Home'), '/')
+
+  .addLanding('packages', 'Packages', doc.article.markdown(packagesMd))
+  .addTopLevelNavLink('Packages', '/packages')
+  .addBook('Packages', 'packages')
+    .link(null, 'packages')
+    .link('Grimoire', 'packages/grimoire')
+    .link('Echo', 'packages/echo')
+    .link('Router', 'packages/router')
+  .app.page
+  .addNodePage('tasks', h(TaskPage))
+  .addTopLevelNavLink('Tasks', '/tasks')
+
+routerDocs(doc);
+
 buildGrimoireDocs(doc);
 buildGrimoireTSDocs(doc);
 //createSampleDocPages(doc);
@@ -297,7 +323,18 @@ const main = () => {
       h(BannerLink, { link: '/tasks' }, 'Tasks'),
     ]
   }
-  render(h(SimpleTheme, { doc, banner }), document.body);
+  
+  const onClickDebug = () => {
+    createDebugPopup(act.reconciler);
+  }
+
+  const act = renderDEV(h(HTML, {}, h(DocSite, { app: doc, theme: {
+    ...DEFAULT_THEME,
+    Header({ children }) {
+      return h(DEFAULT_THEME.Header, {}, [children, h('button', { onClick: onClickDebug }, 'Open Debugger')])
+    }
+  } })), [createWebNodeBuilder(document.body)]);
 };
+
 
 main();

@@ -14,6 +14,7 @@ export type TSExportableDeclaration =
   | ts.ClassDeclaration
   | ts.InterfaceDeclaration
   | ts.ExportSpecifier
+  | ts.NamespaceExport
 
 
 export const discoverExportableSymbols = (cx: ModuleBuildContext) => {
@@ -40,11 +41,44 @@ export const discoverExportableSymbols = (cx: ModuleBuildContext) => {
       }
       
       cx.exportableDeclarationNodeBySymbol.set(symbol, declarationNode);
-      cx.identifierBySymbol.set(symbol, createId());
+      const id = createId<"IdentifierID">();
+
+      cx.identifierBySymbol.set(symbol, id);
 
       if (declarationNode.kind === ts.SyntaxKind.ModuleDeclaration) {
         // Recurse into namespaces
         const symbols = cx.ts.checker.getExportsOfModule(symbol);
+        cx.symbolsByNamespaceSymbol.set(symbol, symbols);
+        discoverAllExportableSymbols(symbols);
+      }
+      if (declarationNode.kind === ts.SyntaxKind.NamespaceExport) {
+        const declaration = declarationNode.parent.moduleSpecifier as ts.StringLiteral;
+        const path = declarationNode.getSourceFile().fileName.startsWith('/')
+          ? declarationNode.getSourceFile().fileName
+          : cx.ts.host.getCurrentDirectory() + '/' + declarationNode.getSourceFile().fileName
+
+        // Resolve the filename
+        const declarationResolution = ts.resolveModuleName(
+          declaration.text,
+          path,
+          cx.ts.program.getCompilerOptions(),
+          cx.ts.host
+        )
+        
+        if (!declarationResolution.resolvedModule) {
+          throw new Error(`Could not resolve "${declaration.text}" from "${path}"`);
+        }
+
+        const filename = declarationResolution.resolvedModule.resolvedFileName;
+        const sourceFile = cx.ts.program.getSourceFile(filename);
+        if (!sourceFile)
+          throw new Error();
+
+        const sourceSymbol = cx.ts.checker.getSymbolAtLocation(sourceFile);
+        if (!sourceSymbol)
+          throw new Error();
+
+        const symbols = cx.ts.checker.getExportsOfModule(sourceSymbol);
         cx.symbolsByNamespaceSymbol.set(symbol, symbols);
         discoverAllExportableSymbols(symbols);
       }
@@ -65,6 +99,7 @@ export const isSupportedDeclaration = (declaration: ts.Declaration): declaration
     case ts.SyntaxKind.ExportSpecifier:
     case ts.SyntaxKind.ClassDeclaration:
     case ts.SyntaxKind.InterfaceDeclaration:
+    case ts.SyntaxKind.NamespaceExport:
       return true;
     default:
       return false;

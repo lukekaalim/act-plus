@@ -1,4 +1,5 @@
 import ts from "typescript";
+import * as tsdoc from '@microsoft/tsdoc';
 import { Echo } from "../definitions/module";
 import { discoverExportableSymbols, TSExportableDeclaration } from "./symbols";
 import { createTypescriptContext, Host, TypescriptContext } from "./typescript";
@@ -32,6 +33,10 @@ export type ModuleBuildContext = {
 
   visitedModules: Set<ts.Symbol>,
 
+  /**
+   * TsdocContext would be null is there is explicilty no comment associated with a symbol.
+   */
+  tsdocContextBySymbol: Map<ts.Symbol, null | tsdoc.ParserContext>,
   symbolsToExpand: Set<ts.Symbol>,
   symbolsByNamespaceSymbol: Map<ts.Symbol, ts.Symbol[]>,
   exportableDeclarationNodeBySymbol: Map<ts.Symbol, TSExportableDeclaration>,
@@ -51,6 +56,7 @@ const createContext = (ts: TypescriptContext, source: ts.SourceFile): ModuleBuil
 
     visitedModules: new Set(),
 
+    tsdocContextBySymbol: new Map(),
     symbolsToExpand: new Set(),
     symbolsByNamespaceSymbol: new Map(),
     exportableDeclarationNodeBySymbol: new Map(),

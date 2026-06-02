@@ -1,0 +1,57 @@
+.iconLink {
+  display: inline-flex;
+
+  height: 18px;
+
+  border-radius: 12px;
+  background-color: rgb(234, 234, 234);
+
+  padding: 8px 12px;
+  gap: 8px;
+
+  font-size: 12px;
+
+  transition: color 0.2s, background-color 0.2s;
+
+  width: auto;
+  color: black;
+
+  text-decoration: none;
+}
+
+.icon {
+  margin: auto;
+}
+
+.iconLink > span {
+  margin: auto 0;
+}
+
+.iconLink:hover > img {
+  transition: filter 0.2s;
+  filter: none;
+}
+
+.iconLink:hover > img {
+  filter: invert();
+}
+
+.iconLink:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(68, 68, 68);
+}
+
+.iconAndLabel {
+  display: flex;
+  flex-direction: row;
+
+  height: 100%;
+  gap: 8px;
+}
+.iconAndLabel > span {
+  margin: auto 0;
+}
+
+.iconAndLabel > img {
+  padding: 8px 0;
+}

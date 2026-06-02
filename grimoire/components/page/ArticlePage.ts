@@ -1,6 +1,6 @@
 import { Component, h, useEffect, useMemo, useRef, useState } from "@lukekaalim/act"
 import { ArticleKey, useDocApp } from "../../application"
-import { buildNavTreeFromDOM, createNavTreeBuilder, NavTree2, useDocThemeContext } from "../../lib"
+import { buildNavTreeFromDOM, createNavTreeBuilder, DEFAULT_THEME, NavTree2 } from "../../lib"
 import { SidePanelContainer } from "../sidenav"
 import { VerticalNavMenu2 } from "../vertical_nav_menu"
 import { StaticMarkdownArticle } from "../article/MarkdownArticle"
@@ -13,7 +13,7 @@ export type ArticlePageProps = {
 
 export const ArticlePage: Component<ArticlePageProps> = ({ articleKey, navTree }) => {
   const doc = useDocApp([]);
-  const theme = useDocThemeContext();
+  //const theme = useDocThemeContext();
 
   const ref = useRef<HTMLElement | null>(null)
   const [tree, setTree] = useState<NavTree2 | null>(null);
@@ -32,7 +32,7 @@ export const ArticlePage: Component<ArticlePageProps> = ({ articleKey, navTree }
     return h(InlineErrorBox, {}, `No Article with key "${articleKey}" found in DocApp`)
 
   const node = h(SidePanelContainer, {
-    left: h(theme.VerticalNav),
+    //left: h(DEFAULT_THEME.Sidebar, { app: doc, theme: DEFAULT_THEME }),
     right: tree && h(VerticalNavMenu2, { tree, rightAligned: true }),
   }, h(StaticMarkdownArticle, { root: article.content }))
 

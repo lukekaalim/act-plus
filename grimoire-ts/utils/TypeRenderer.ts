@@ -1,6 +1,9 @@
 
 import { h } from "@lukekaalim/act";
-import { EchoReadingContext, Type, Identifier, TypeID, TypeParameterIdentifier, TypeIdentifier, ValueIdentifier } from "@lukekaalim/echo";
+import {
+  EchoReadingContext, Type, Identifier,
+  TypeID, TypeParameterIdentifier, TypeIdentifier, ValueIdentifier,
+} from "@lukekaalim/echo";
 import { DocApp, HLJSBuilder, hljsClassNames } from "@lukekaalim/grimoire";
 import { EchoPlugin } from "../Echo";
 
@@ -143,8 +146,10 @@ export const createTypeRenderer = (context: EchoReadingContext, docApp: DocApp<[
           const location = docApp.reference.resolveRouteLink(`echo:${context.echo.moduleName}:${qualifiedName}`)
           if (location)
             syntax.node(h('a', { href: location.href, classList: [hljsClassNames.titleClass] }, qualifiedName))
-          else
+          else {
+            console.log(`Failed to find location of ${echoType.target} (${qualifiedName})`)
             syntax.titleClass(qualifiedName)
+          }
         } else {
           syntax.titleClass(`<ReferenceNotFound id="${echoType.target}" />`)
         }
@@ -157,6 +162,33 @@ export const createTypeRenderer = (context: EchoReadingContext, docApp: DocApp<[
         return syntax;
       default:
         return syntax.comment(`<Unsupported(Renderer) type "${echoType.type}" />`)
+      case 'class': {
+        visitedTypes.add(echoType.id);
+        if (echoType.members.length === 0) {
+          syntax.text('{}');
+          return syntax;
+        }
+        syntax.text('{').newLine(1);
+        renderDelimitedList(echoType.members, (member) => {
+          switch (member.type) {
+            case 'property':
+              const propertyType = context.getTypeOrThrow(member.typeof);
+              syntax.text(member.identifier).text(': ');
+              return renderType(syntax, propertyType);
+            case 'method':
+              const methodType = context.getTypeOrThrow(member.typeof, 'function' as const);
+              syntax.titleClass(member.identifier);
+              renderCallableSignature(syntax, methodType, true);
+              return;
+            case 'constructor':
+              syntax.keyword('constructor');
+              renderParameters(syntax, member.parameters);
+              return;
+          }
+        }, () => syntax.text(', ').newLine())
+        syntax.newLine(-1).text('}');
+        return syntax;
+      }
       case 'object': {
         visitedTypes.add(echoType.id);
         if (echoType.properties.length === 0) {
@@ -181,26 +213,31 @@ export const createTypeRenderer = (context: EchoReadingContext, docApp: DocApp<[
     }
   }
 
-  const renderCallableSignature = (syntax: HLJSBuilder, callable: Type.Function, isMethod: boolean) => {
-    const typeParameters = callable.typeParameters
-      .map(id => context.identifiers.get(id) as Identifier)
-      .filter(id => id.type === 'type-parameter')
-
-    renderTypeParametersDeclaration(syntax, typeParameters);
+  const renderParameters = (syntax: HLJSBuilder, parameters: Type.Function.Parameter[]) => {
     syntax.text('(');
-    if (callable.parameters.length > 0) {
+    if (parameters.length > 0) {
       syntax.indent(1).newLine()
-      renderDelimitedList(callable.parameters, param => {
+      renderDelimitedList(parameters, param => {
         syntax.params(param.identifier)
         syntax.text(': ')
         renderType(syntax, context.getTypeOrThrow(param.typeof));
       }, () => syntax.text(', ').newLine())
       syntax.indent(-1).newLine()
     }
+    syntax.text(')');
+  }
+
+  const renderCallableSignature = (syntax: HLJSBuilder, callable: Type.Function, isMethod: boolean) => {
+    const typeParameters = callable.typeParameters
+      .map(id => context.identifiers.get(id) as Identifier)
+      .filter(id => id.type === 'type-parameter')
+
+    renderTypeParametersDeclaration(syntax, typeParameters);
+    renderParameters(syntax, callable.parameters);
     if (isMethod)
-      syntax.text('): ');
+      syntax.text(': ');
     else
-      syntax.text(') => ');
+      syntax.text(' => ');
     renderType(syntax, context.getTypeOrThrow(callable.returns))
   }
 
@@ -210,28 +247,35 @@ export const createTypeRenderer = (context: EchoReadingContext, docApp: DocApp<[
     
     switch (identifier.type) {
       case 'type':
-        syntax
-          .keyword('type ')
-          .title(qualifiedName);
-        renderTypeParametersDeclaration(syntax, identifier.parameters.map(id => context.getIdentifierOrThrow(id, 'type-parameter')));
-        syntax.text(' = ');
-
-        renderType(syntax, type);
-        return syntax;
-      case 'value': {
         switch (type.type) {
           case 'namespace':
-            syntax.keyword("namespace ").titleClass(qualifiedName);
+            syntax.keyword("namespace ").titleClass(identifier.name);
             return syntax;
+          case 'class':
+            syntax.keyword('class ').titleClass(identifier.name).space()
+            renderType(syntax, type);
+            return syntax
+          default:
+            syntax
+              .keyword('type ')
+              .title(identifier.name);
+            renderTypeParametersDeclaration(syntax, identifier.parameters.map(id => context.getIdentifierOrThrow(id, 'type-parameter')));
+            syntax.text(' = ');
+
+            renderType(syntax, type);
+            return syntax;
+        }
+      case 'value': {
+        switch (type.type) {
           case 'function':
-            syntax.keyword('function ').titleClass(qualifiedName)
+            syntax.keyword('function ').titleClass(identifier.name)
               renderCallableSignature(syntax, type, true);
             return syntax;
           case 'parser-error':
             return syntax.comment(`<Unsupported(Reflector) declaration "${type.message}" />`)
           default:
             syntax.keyword('let ')
-              .title(qualifiedName);
+              .title(identifier.name);
             syntax.text(': ')
             renderType(syntax, type);
             return syntax;

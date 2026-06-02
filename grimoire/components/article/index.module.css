@@ -1,0 +1,87 @@
+.breadcrumbNav {
+
+}
+
+.breadcrumbLink {
+  color: grey;
+}
+
+.breadcrumbList {
+  display: block;
+
+  list-style: none;
+
+  color: grey;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbList > li {
+  display: inline;
+}
+
+.paginationNav {
+  display: flex;
+  flex-direction: row;
+
+  flex: 1;
+  margin: 64px 0 8px 0;
+
+  gap: 32px;
+}
+
+.paginationNav > .left {
+  margin-right: auto;
+}
+.paginationNav > .right {
+  margin-left: auto;
+}
+
+.paginationNav > .left, .paginationNav > .right {
+  flex: 1;
+  max-width: 50%;
+}
+
+.paginationNavLink {
+  border: 1px solid rgb(168, 168, 168);
+  padding: 12px;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+
+  background-color: rgba(186, 220, 250, 0);
+  transition: background-color 0.2s;
+}
+.paginationNavLink:hover {
+  background-color: rgba(205, 233, 255, 0.125);
+}
+
+.paginationLinkDirection {
+  color: rgb(78, 78, 78);
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.paginationLinkTitle {
+  color: var(--primary-color, rgb(57, 120, 238));
+  text-decoration: underline;
+  text-decoration-color: rgba(57, 120, 238, 0);
+  font-weight: bold;
+  transition: text-decoration-color 0.2s;
+}
+.paginationNavLink:hover > .paginationLinkTitle {
+  text-decoration-color: rgb(57, 120, 238);
+}
+
+.paginationLinkDescription {
+  color: black;
+}
+
+.paginationNav > .left > .paginationNavLink {
+  align-items: start;
+}
+.paginationNav > .right > .paginationNavLink {
+  align-items: end;
+}

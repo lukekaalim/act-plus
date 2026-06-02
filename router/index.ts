@@ -6,3 +6,5 @@ export * from './url';
 export * from './pages';
 export * from './router';
 export * from './link';
+
+export * as v2 from './v2';

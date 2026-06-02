@@ -61,13 +61,19 @@ and a typescript one.
 // docs/main.ts
 import { render } from '@lukekaalim/act-web';
 import { h } from '@lukekaalim/act';
-import { createDocApp, SimpleDocTheme } from '@lukekaalim/grimoire';
+import { DocBuilder, DocSite } from '@lukekaalim/grimoire';
 
-// A simple DocApp instance with no content or plugins
-const doc = createDocApp();
+// A DocBuilder instance here lets us add content easily
+const doc = new DocBuilder();
 
-// Render into "document.body" with the "SimpleDocTheme"
-render(h(SimpleDocTheme, { doc }), document.body);
+// Add some sample content to the hopepage
+doc.pages.add('/', [
+  h('h1', {}, 'Welcome to my docs!'),
+  h('p', {}, 'This is some test content. Hope you enjoy the page :D'.)
+])
+
+// Render into "document.body" with the default doc theme
+render(h(DocSite, { data: doc.data }), document.body);
 ```
 
 <Demo demo="Quickstart.3" />
@@ -80,16 +86,30 @@ to give it a bit of page structure inside our
 
 
 ```ts
-// ...
+/* skipping the previous imports */
+import readme from '../README.md?raw';
+import api from '../API.md?raw';
+import contributing from '../CONTRIBUTING.md?raw';
 
-import readmeMd from '../README.md?raw';
+const doc = new DocBuilder();
 
-const doc = createDocApp();
+// Load the markdown into the "article builder"
+// for parsing and processing. The names of the properties
+// are going to act as their 'id'.
+const myArticles = doc.articles.addMarkdown({
+  readme,
+  api,
+  contributing
+});
 
-// Add the "readme" file as the root page
-doc.markdown.add('readme', readmeMd, '/');
+// Map the markdown onto some paths on the website
+doc.pages.addArticles({
+  '/': 'readme',
+  '/api': 'api',
+  '/contributing': 'contributing',
+});
 
-// ...
+render(h(DocSite, { data: doc.data }), document.body);
 ```
 
 <Demo demo="Quickstart.4" />
@@ -111,3 +131,11 @@ If you write up some useful bits of re-usable code, then maybe consider
 your hand at adding it into a Plugin yourself!
 
 <Demo demo="Quickstart.5" />
+
+## Articles
+
+## Demos
+
+## Extending Markdown
+
+## Custom Themeing
