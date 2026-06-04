@@ -1,5 +1,16 @@
 # @lukekaalim/grimoire-ts
 
+## 2.1.0
+
+### Minor Changes
+
+- 83c1e5c: Grimoire DocApp, DocTheme, DocSite now main exports
+
+### Patch Changes
+
+- Updated dependencies [83c1e5c]
+  - @lukekaalim/echo@3.1.0
+
 ## 2.0.0
 
 ### Major Changes

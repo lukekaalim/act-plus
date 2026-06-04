@@ -1,5 +1,16 @@
 # @lukekaalim/grimoire
 
+## 3.0.0
+
+### Major Changes
+
+- 83c1e5c: Grimoire DocApp, DocTheme, DocSite now main exports
+
+### Patch Changes
+
+- Updated dependencies [83c1e5c]
+  - @lukekaalim/act-router@0.2.0
+
 ## 2.2.0
 
 ### Minor Changes

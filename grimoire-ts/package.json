@@ -1,9 +1,9 @@
 {
   "name": "@lukekaalim/grimoire-ts",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "index.ts",
   "dependencies": {
-    "@lukekaalim/echo": "3.0.0",
+    "@lukekaalim/echo": "3.1.0",
     "@microsoft/tsdoc": "^0.15.1",
     "typedoc": "^0.28.14",
     "typescript": "^5.9.2",

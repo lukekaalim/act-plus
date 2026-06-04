@@ -1,5 +1,11 @@
 # @lukekaalim/echo
 
+## 3.1.0
+
+### Minor Changes
+
+- 83c1e5c: Grimoire DocApp, DocTheme, DocSite now main exports
+
 ## 3.0.0
 
 ### Major Changes

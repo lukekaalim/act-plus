@@ -14,8 +14,8 @@
     "@lukekaalim/act-markdown": "^2.1.0",
     "@lukekaalim/act-router": "*",
     "@lukekaalim/act-web": "^5.0.0",
-    "@lukekaalim/grimoire": "2.2.0",
-    "@lukekaalim/grimoire-ts": "2.0.0",
+    "@lukekaalim/grimoire": "3.0.0",
+    "@lukekaalim/grimoire-ts": "2.1.0",
     "rxjs": "^7.8.2",
     "yaml": "^2.8.3"
   }
