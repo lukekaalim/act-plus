@@ -13,11 +13,9 @@
     "echo"
   ],
   "devDependencies": {
-    "@changesets/cli": "^2.29.8",
-    "@types/brace-expansion": "^1.1.2",
+    "@changesets/cli": "^2.31.0",
     "@types/node": "^22.10.5",
-    "nanoid": "^5.1.6",
-    "tsx": "^4.22.3"
+    "tsx": "^4.22.4"
   },
   "scripts": {
     "docs:dev": "vite docs",

@@ -127,6 +127,8 @@ export const createMdastRenderer = (options: MarkdownRendererOptions = {}): Mdas
     const component = (options.components || {})[node.name];
 
     const attributes = buildMdxAttributes(node);
+    if (!component)
+      return h('pre', {}, `Missing MDX Component "${node.name}"`)
     return h(component, { attributes }, node.children.map(mdastToNode))
   }
 

@@ -5,15 +5,15 @@
   "devDependencies": {
     "brace-expansion": "^2.0.2",
     "tsx": "^4.21.0",
-    "vite": "^8.0.10"
+    "vite": "^8.0.16"
   },
   "dependencies": {
     "@lukekaalim/act": "^4.1.0",
     "@lukekaalim/act-icons": "^1.1.0",
-    "@lukekaalim/act-insight": "^1.1.0",
+    "@lukekaalim/act-insight": "^2.0.0",
     "@lukekaalim/act-markdown": "^2.1.0",
     "@lukekaalim/act-router": "*",
-    "@lukekaalim/act-web": "^5.0.0",
+    "@lukekaalim/act-web": "^5.1.1",
     "@lukekaalim/grimoire": "3.0.0",
     "@lukekaalim/grimoire-ts": "2.1.0",
     "rxjs": "^7.8.2",

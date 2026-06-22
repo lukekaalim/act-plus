@@ -86,11 +86,11 @@ export const CodeBox: Component<CodeBoxProps> = ({ lines, lineStart = 0 }) => {
     if (lineCount) {
       setLineGuess(lineCount.length + 1)
     }
-  }, [lines.length])
+  }, [lines])
 
 
   if (lines.length < 2) {
-    return h('code', { className: classes.codeBox }, h('table', {}, [
+    return h('code', { className: classes.codeBox, key: 'guessing' }, h('table', {}, [
       h('tbody', {}, Array.from({ length: lineGuess }).map((_, lineOffset) => {
         const lineIndex = lineStart + lineOffset
         return h('tr', {}, [
@@ -102,7 +102,7 @@ export const CodeBox: Component<CodeBoxProps> = ({ lines, lineStart = 0 }) => {
     ]))
   }
 
-  return h('code', { className: classes.codeBox }, h('table', {}, [
+  return h('code', { className: classes.codeBox, key: 'non-guessing' }, h('table', {}, [
     h('tbody', {}, lines.map((line, lineOffset) => {
       const lineIndex = lineStart + lineOffset
       return h('tr', {}, [
