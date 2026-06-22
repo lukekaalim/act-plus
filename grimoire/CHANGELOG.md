@@ -1,5 +1,13 @@
 # @lukekaalim/grimoire
 
+## 3.0.1
+
+### Patch Changes
+
+- Fix CodeBox being used across pages incorrectly, MDX components trying to render undefined element & erronous inclusion of typedoc
+- Updated dependencies
+  - @lukekaalim/act-markdown@2.1.1
+
 ## 3.0.0
 
 ### Major Changes

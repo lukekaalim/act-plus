@@ -11,11 +11,11 @@
     "@lukekaalim/act": "^4.1.0",
     "@lukekaalim/act-icons": "^1.1.0",
     "@lukekaalim/act-insight": "^2.0.0",
-    "@lukekaalim/act-markdown": "^2.1.0",
+    "@lukekaalim/act-markdown": "^2.1.1",
     "@lukekaalim/act-router": "*",
     "@lukekaalim/act-web": "^5.1.1",
-    "@lukekaalim/grimoire": "3.0.0",
-    "@lukekaalim/grimoire-ts": "2.1.0",
+    "@lukekaalim/grimoire": "3.0.1",
+    "@lukekaalim/grimoire-ts": "2.1.1",
     "rxjs": "^7.8.2",
     "yaml": "^2.8.3"
   }

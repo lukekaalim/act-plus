@@ -1,5 +1,11 @@
 # @lukekaalim/act-markdown
 
+## 2.1.1
+
+### Patch Changes
+
+- Fix CodeBox being used across pages incorrectly, MDX components trying to render undefined element & erronous inclusion of typedoc
+
 ## 2.1.0
 
 ### Minor Changes
