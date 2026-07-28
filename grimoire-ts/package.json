@@ -9,6 +9,6 @@
     "unist-util-visit": "^5.0.0"
   },
   "peerDependencies": {
-    "@lukekaalim/act": "^4.1.0"
+    "@lukekaalim/act": "^5.0.0"
   }
 }

@@ -4,6 +4,6 @@
   "main": "index.ts",
   "type": "module",
   "dependencies": {
-    "@lukekaalim/act": "^4.1.0"
+    "@lukekaalim/act": "^5.0.0"
   }
 }
